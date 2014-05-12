@@ -1,0 +1,84 @@
+		PMA2.1基础模块修改说明
+	PMA2.1中基础模块进行了较大的改动，在保留主体功能不变的同时，
+进行了代码的重构。主要是将代码中出现的冗余部分提取，抽象为统一
+的模块，方便以后的代码维护及版本升级。
+×目录简要说明
+	./comm communication 基础模块中负责通信的部分, 包含内部通信(interior_daemonr.c)\外部通信(exterior_daemon.c)\报文处理部分(handler)
+	./conf configration  基础模块中负责配置文件读取和解析(conf.c), 默认的配置文件为pma.conf
+	./control control    供所有模块使用，替代switch，实现运行中可变控制(control.c)
+	./lib	library	公共的lib库，主要包含原有CR使用的部分库及自己编写的库等(包括链表等实现，zebra线程，pthread线程池，共享内存，信号量等）
+	./logger logger	全局可用,分为server和client，基础模块启动的Server端负责发送日志，其他本地模块调用接口发送。开发样例详见logsrv.c logcli.c
+	./mmanager module manager 基础模块的模块管理，对已注册的模块进行管理
+	./reg	register	基础模块向PMS注册的功能
+	./timer	timer		通用模块，一个简易的定时器，可定时执行任务
+	./utils	utils tools	 编写代码常用的一些宏定义及头文件定义集合
+	./vty	virtual terminal 基础模块的虚拟终端模块
+
+代码更改细节备忘
+
+    comm 部分
+    comm.c comm.h 主要是和PMS通信时由PMA发起的连接相关处理，包括连接，打包，发送，接收ack并处理这几个过程。
+    要点：
+    连接过程采用了非阻塞的tcp连接过程。早期测试过程中，PMA与PMS连接的过程中，网络拓扑的改变，会引起PMA和PMS连接中断，而一个连接如果处在连接
+    过程中，则会阻塞，导致长时间的程序阻塞，故采用了非阻塞的tcp connect过程。除了设置socket描述符的非阻塞标志，非阻塞的连接主要是靠errno来
+    判断连接状态，调用connect函数后，判断errno是否为EINPROGRESS, 不是的话即无法连接，否则进入select来监听描述符的读写状态，这里可以设置连接的
+    超时时间。当检测到描述符可写即可认为完成了连接。
+
+    发送时，根据连接状态判断直接发送到PMS，还是通过ALCA发送。具体的发送逻辑可以参考白皮书，要注意和alca通信的报文格式和PMS格式不同。
+
+    comm_utils.c comm_utils.h 是几个用到的工具函数和通信报文的格式定义。
+
+    exterior_daemon.c exterior_daemon.h 是PMA和PMS通信时由PMS发起的连接的相关处理。主要是建立监听服务，报文接收和报文处理。
+
+    handler.c handler.h 是PMA和PMS通信报文的处理函数。函数的命名基本包含了处理的报文类型和含义。
+
+    interior_daemon.c interior_daemon.h 是基础模块和内部模块通信的功能函数.
+
+    conf 部分
+    conf.c conf.h 是pma读取配置，解析配置文件的部分。修改主要是将xml配置文件解析的方式进行了抽象，parse_item对xml条目中值进行提取，
+    包括数字，字符串和IP地址。
+    基础模块存储了其他模块的配置，struct conf 和 ic_conf , pea_conf ， dbm_conf。 其他模块的配置将会在模块注册后发送到对应模块。亦可在vty改动设置后
+    发送对应模块。
+
+    control 部分
+    control.c control.h 是针对原有switch对报文处理的大量重复代码的解决方案。通过维护报文类型和报文处理的方式的对应方式列表，减少代码的重复编写。
+    建立一个列表的过程为init_ctls() create_ctl()  add_ctl()  在执行的地方调用run_ctl即可。
+
+    lib 部分
+    主要是用到的一些功能性模块，包含原来从zebra源码中的一些文件和自定义的功能。
+    event.c ----> 函数队列, 可以加入队列函数，并在一个统一的地方按照FIFO的方式执行这些函数。
+    if.c ----> 网卡接口数据接口，及zebra定义的接口数据结构操作的方法。
+    linklist.c ----> 双向链表的一个实现
+    log.c ----> zebra中一个log方式
+    memory.c ---> zebra中内存分配的几个函数
+    prefix.c ----> zebra中对网络地址前缀的数据结构定义
+    semph.c ----> 自定义的进程级信号量使用，进程同步和互斥必须
+    shmem.c ----> 自定已的共享内存的实现，主要用与进程间大量结构化数据快速通信
+    table.c ----> zebra中对路由表的定义
+    thread.c ----> zebra中自定义的线程，其原理采用了多个事件队列，并按照固定优先级对队列中事件取出并执行。此模块无法保证抢占性。
+    thread_pool.c ----> 自定义的pthread实现的线程池，线程池的好处是降低线程创建的开销。在需要重复创建和销毁线程时效率明显。
+    vector.c ----> zebra实现的一个vector 数据结构
+    
+    logger 部分
+    logger为新构建模块，主要功能是提供一个接口给应用程序，将程序在运行中的log保存起来，并由logger模块的守护进程统一发送给专用的log服务器。
+    logger.c 是定义的logger的接口层，包含应用程序应该使用的log发送函数logger(). 此模块需要一个配置文件，即针对不同类型的log设定的控制文件，
+    通过读取此文件，来决定是否将此类型的日志消息发送到服务器端。
+    logger_daemon.c 是logger模块的守护进程。主要是从共享内存里面读取本地记录的log，并将日志打包为合适的格式发送到log服务器。
+
+    mmanager 部分
+    mmanager.c 是从原有的基础模块的bm.c文件中分离出来的。主要是模块注册后对模块的管理，包括模块添加和信息统计等功能。
+
+    reg 部分
+    PMA注册， 和原来的没有改动。
+
+    timer 部分
+    timer.c 定义了利用pthread实现的定时器,此定时器的精度为1s，具体使用方式可参考代码中的定时器相关代码。
+
+    utils 部分
+    common.h ----> 常用的头文件都包含在此，不用考虑头文件引用不够的问题。
+    pma_err.h ----> pma中函数用到的一些返回码
+    utils.h ----> 常用的工具函数，主要是DEBUG这个宏定义 USING等宏用法可直接参考源码文件
+    xml.c xml.h ----> 对xml解析的一个简单封装，可用来查询xml树形结构中的特定属性名的值。
+    
+    vty 部分
+    vty.c vty.h 是针对基础模块的虚拟终端控制。与PMA2.0没有变化。

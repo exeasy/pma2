@@ -1,0 +1,26 @@
+#ifndef __LSD_CMN_H__
+#     define __LSD_CMN_H__
+
+#define LSD_VERSION 2
+#define LSD_CHECKSUM 0x12345
+#define NO_ERR 0
+#define NO_MEM_ERR -1
+#define NOT_FOUND_ERR -2
+#define ALREADY_EXISTS_ERR -3
+#define N0_DEPENDENCE_ERR -4
+#define WR_FROMAT_ERR -5
+#define CONTAINER_EMPTY_ERR -6
+#define ASSERT_ERR -7
+#define ILLEGAL_ARGS_ERR -8
+#define IO_ERR -9
+
+#define SERIOUS_ERR -255
+
+#define IC_MESSAGE_TYPE_HELLO_H 1
+#define IC_MESSAGE_TYPE_HELLO_L 2
+#define IC_MESSAGE_TYPE_EXCHANGE 3
+#define IC_MESSAGE_TYPE_FLOOD 4
+#define IC_MESSAGE_TYPE_LFA_CHANGE 5
+#define IC_MESSAGE_TYPE_LFA_ADVERTISE 6
+
+#endif /* __LSD_CMN_H__ */

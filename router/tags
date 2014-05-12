@@ -1,0 +1,307 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ACCESS	interface.h	/^                 ACCESS = 0 , BACKBONE = 1$/;"	e	enum:if_type
+ACLOCAL	Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma\/missing aclocal-1.14$/;"	m
+ACLOCAL_M4	Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
+AMTAR	Makefile	/^AMTAR = $${TAR-tar}$/;"	m
+AM_DEFAULT_VERBOSITY	Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
+AM_V_AR	Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
+AM_V_CC	Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
+AM_V_CCLD	Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
+AM_V_GEN	Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
+AM_V_P	Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
+AM_V_at	Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
+AM_V_lt	Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
+AR	Makefile	/^AR = ar$/;"	m
+ARFLAGS	Makefile	/^ARFLAGS = cru$/;"	m
+AUTOCONF	Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma\/missing autoconf$/;"	m
+AUTOHEADER	Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma\/missing autoheader$/;"	m
+AUTOMAKE	Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma\/missing automake-1.14$/;"	m
+AWK	Makefile	/^AWK = gawk$/;"	m
+BACKBONE	interface.h	/^                 ACCESS = 0 , BACKBONE = 1$/;"	e	enum:if_type
+CC	Makefile	/^CC = gcc$/;"	m
+CCDEPMODE	Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
+CCLD	Makefile	/^CCLD = $(CC)$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g -O2$/;"	m
+COMPILE	Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
+CONFIGFILE	interface.h	52;"	d
+CONFIG_CLEAN_FILES	Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
+CONFIG_CLEAN_VPATH_FILES	Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
+CONFIG_HEADER	Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
+CPP	Makefile	/^CPP = gcc -E$/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS = $/;"	m
+CTAGS	Makefile	/^CTAGS = ctags$/;"	m
+CYGPATH_W	Makefile	/^CYGPATH_W = echo$/;"	m
+DEFAULT_INCLUDES	Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
+DEFS	Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
+DEPDIR	Makefile	/^DEPDIR = .deps$/;"	m
+DISTFILES	Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
+DIST_COMMON	Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
+DIST_SOURCES	Makefile	/^DIST_SOURCES = $(libpmarouter_a_SOURCES)$/;"	m
+DLLTOOL	Makefile	/^DLLTOOL = false$/;"	m
+DOWN	interface.h	/^                 DOWN = 0,$/;"	e	enum:if_state
+DSYMUTIL	Makefile	/^DSYMUTIL = $/;"	m
+DUMPBIN	Makefile	/^DUMPBIN = $/;"	m
+ECHO_C	Makefile	/^ECHO_C = $/;"	m
+ECHO_N	Makefile	/^ECHO_N = -n$/;"	m
+ECHO_T	Makefile	/^ECHO_T = $/;"	m
+EGREP	Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
+ETAGS	Makefile	/^ETAGS = etags$/;"	m
+EXEEXT	Makefile	/^EXEEXT = $/;"	m
+FGREP	Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
+GREP	Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
+HEADERS	Makefile	/^HEADERS = $(noinst_HEADERS)$/;"	m
+IFNAMSIZ	interface.h	4;"	d
+INSTALL	Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
+INSTALL_DATA	Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
+INSTALL_HEADER	Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
+INSTALL_SCRIPT	Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
+INSTALL_STRIP_PROGRAM	Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
+LD	Makefile	/^LD = \/usr\/bin\/ld$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
+LIBOBJS	Makefile	/^LIBOBJS = $/;"	m
+LIBRARIES	Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
+LIBS	Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
+LIBTOOL	Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
+LIB_SNMP_INCLUDE	Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
+LIB_SNMP_LIB	Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
+LIB_XML_INCLUDE	Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
+LINK	Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+LIPO	Makefile	/^LIPO = $/;"	m
+LN_S	Makefile	/^LN_S = ln -s$/;"	m
+LTCOMPILE	Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+LTLIBOBJS	Makefile	/^LTLIBOBJS = $/;"	m
+MAKEINFO	Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma\/missing makeinfo$/;"	m
+MANIFEST_TOOL	Makefile	/^MANIFEST_TOOL = :$/;"	m
+MKDIR_P	Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
+NETLINK_ROUTE	routertable.h	5;"	d
+NM	Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
+NMEDIT	Makefile	/^NMEDIT = $/;"	m
+NORMAL_INSTALL	Makefile	/^NORMAL_INSTALL = :$/;"	m
+NORMAL_UNINSTALL	Makefile	/^NORMAL_UNINSTALL = :$/;"	m
+OBJDUMP	Makefile	/^OBJDUMP = objdump$/;"	m
+OBJEXT	Makefile	/^OBJEXT = o$/;"	m
+OTOOL	Makefile	/^OTOOL = $/;"	m
+OTOOL64	Makefile	/^OTOOL64 = $/;"	m
+PACKAGE	Makefile	/^PACKAGE = pma$/;"	m
+PACKAGE_BUGREPORT	Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
+PACKAGE_NAME	Makefile	/^PACKAGE_NAME = pma$/;"	m
+PACKAGE_STRING	Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
+PACKAGE_TARNAME	Makefile	/^PACKAGE_TARNAME = pma$/;"	m
+PACKAGE_URL	Makefile	/^PACKAGE_URL = $/;"	m
+PACKAGE_VERSION	Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
+PATH_SEPARATOR	Makefile	/^PATH_SEPARATOR = :$/;"	m
+POST_INSTALL	Makefile	/^POST_INSTALL = :$/;"	m
+POST_UNINSTALL	Makefile	/^POST_UNINSTALL = :$/;"	m
+PRE_INSTALL	Makefile	/^PRE_INSTALL = :$/;"	m
+PRE_UNINSTALL	Makefile	/^PRE_UNINSTALL = :$/;"	m
+Q_CTID	interface.h	9;"	d
+Q_HWADDR	interface.h	13;"	d
+Q_IPADDR	interface.h	12;"	d
+Q_NAME	interface.h	8;"	d
+Q_NID	interface.h	11;"	d
+Q_RID	interface.h	10;"	d
+Q_STATE	interface.h	6;"	d
+Q_TYPE	interface.h	7;"	d
+RANLIB	Makefile	/^RANLIB = ranlib$/;"	m
+ROUTERTABLE_H	routertable.h	3;"	d
+ROUTER_BGP	interface.h	32;"	d
+ROUTER_OSPF	interface.h	31;"	d
+SED	Makefile	/^SED = \/usr\/bin\/sed$/;"	m
+SET_MAKE	Makefile	/^SET_MAKE = $/;"	m
+SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
+SNMP_ROUTE	routertable.h	6;"	d
+SOURCES	Makefile	/^SOURCES = $(libpmarouter_a_SOURCES)$/;"	m
+STRIP	Makefile	/^STRIP = strip$/;"	m
+UP	interface.h	/^                 UP = 1$/;"	e	enum:if_state
+VERSION	Makefile	/^VERSION = 2.1$/;"	m
+__INTERFACE_H__	interface.h	2;"	d
+__ROUTER_H__	router.h	2;"	d
+abs_builddir	Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma\/router$/;"	m
+abs_srcdir	Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma\/router$/;"	m
+abs_top_builddir	Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma$/;"	m
+abs_top_srcdir	Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma$/;"	m
+ac_ct_AR	Makefile	/^ac_ct_AR = ar$/;"	m
+ac_ct_CC	Makefile	/^ac_ct_CC = gcc$/;"	m
+ac_ct_DUMPBIN	Makefile	/^ac_ct_DUMPBIN = $/;"	m
+acquire_type	routertable.h	/^	int acquire_type;$/;"	m	struct:route_table	access:public
+agent_addr	interface.h	/^    struct in_addr agent_addr;$/;"	m	struct:neighbor	typeref:struct:neighbor::in_addr	access:public
+agentid	router.h	/^    u32 agentid;$/;"	m	struct:router	access:public
+am__aclocal_m4_deps	Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
+am__can_run_installinfo	Makefile	/^am__can_run_installinfo = \\$/;"	m
+am__cd	Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
+am__configure_deps	Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
+am__define_uniq_tagged_files	Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
+am__depfiles_maybe	Makefile	/^am__depfiles_maybe = depfiles$/;"	m
+am__include	Makefile	/^am__include = include$/;"	m
+am__is_gnu_make	Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
+am__leading_dot	Makefile	/^am__leading_dot = .$/;"	m
+am__make_dryrun	Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
+am__make_keepgoing	Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
+am__make_running_with_option	Makefile	/^am__make_running_with_option = \\$/;"	m
+am__mv	Makefile	/^am__mv = mv -f$/;"	m
+am__quote	Makefile	/^am__quote = $/;"	m
+am__tagged_files	Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
+am__tar	Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
+am__uniquify_input	Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
+am__untar	Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
+am__v_AR_	Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_AR_0	Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
+am__v_AR_1	Makefile	/^am__v_AR_1 = $/;"	m
+am__v_CCLD_	Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CCLD_0	Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
+am__v_CCLD_1	Makefile	/^am__v_CCLD_1 = $/;"	m
+am__v_CC_	Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CC_0	Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
+am__v_CC_1	Makefile	/^am__v_CC_1 = $/;"	m
+am__v_GEN_	Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_GEN_0	Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
+am__v_GEN_1	Makefile	/^am__v_GEN_1 = $/;"	m
+am__v_P_	Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_P_0	Makefile	/^am__v_P_0 = false$/;"	m
+am__v_P_1	Makefile	/^am__v_P_1 = :$/;"	m
+am__v_at_	Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_at_0	Makefile	/^am__v_at_0 = @$/;"	m
+am__v_at_1	Makefile	/^am__v_at_1 = $/;"	m
+am__v_lt_	Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_lt_0	Makefile	/^am__v_lt_0 = --silent$/;"	m
+am__v_lt_1	Makefile	/^am__v_lt_1 = $/;"	m
+am_libpmarouter_a_OBJECTS	Makefile	/^am_libpmarouter_a_OBJECTS = interface.$(OBJEXT) router.$(OBJEXT) \\$/;"	m
+areaid	interface.h	/^    u32 areaid;$/;"	m	struct:proto_info	access:public
+bindir	Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
+build	Makefile	/^build = i686-pc-linux-gnu$/;"	m
+build_alias	Makefile	/^build_alias = $/;"	m
+build_cpu	Makefile	/^build_cpu = i686$/;"	m
+build_os	Makefile	/^build_os = linux-gnu$/;"	m
+build_triplet	Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
+build_vendor	Makefile	/^build_vendor = pc$/;"	m
+builddir	Makefile	/^builddir = .$/;"	m
+check_interface_status	interface.c	/^int check_interface_status(char* cstatus){$/;"	f	signature:(char* cstatus)
+cost	interface.h	/^    u32 cost;$/;"	m	struct:proto_info	access:public
+create_router	router.c	/^struct router *create_router();$/;"	p	file:
+ctl_id	interface.h	/^    u32 ctl_id;$/;"	m	struct:rinterface	access:public
+datadir	Makefile	/^datadir = ${datarootdir}$/;"	m
+datarootdir	Makefile	/^datarootdir = ${prefix}\/share$/;"	m
+depcomp	Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
+details	interface.h	/^    struct interface* details;$/;"	m	struct:rinterface	typeref:struct:rinterface::interface	access:public
+docdir	Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
+dvidir	Makefile	/^dvidir = ${docdir}$/;"	m
+exec_prefix	Makefile	/^exec_prefix = ${prefix}$/;"	m
+get_address_of_interface	interface.c	/^int get_address_of_interface(struct rinterface* iface, struct list **result, int *total)$/;"	f	signature:(struct rinterface* iface, struct list **result, int *total)
+get_interface	interface.c	/^int get_interface(struct list * iflist, int qtype, void *query, struct list **result, int *total)$/;"	f	signature:(struct list * iflist, int qtype, void *query, struct list **result, int *total)
+get_prefix_len	interface.c	/^int get_prefix_len(char* mask){$/;"	f	signature:(char* mask)
+get_prefix_length	routertable.c	/^int get_prefix_length(char* mask){$/;"	f	signature:(char* mask)
+get_route_table_by_netlink	routertable.c	/^int get_route_table_by_netlink(struct route_table *rt)$/;"	f	signature:(struct route_table *rt)
+get_route_table_by_snmp	routertable.c	/^int  get_route_table_by_snmp(struct route_table *rt)$/;"	f	signature:(struct route_table *rt)
+get_self_router	router.c	/^struct router *get_self_router();$/;"	p	file:
+host	Makefile	/^host = i686-pc-linux-gnu$/;"	m
+host_alias	Makefile	/^host_alias = $/;"	m
+host_cpu	Makefile	/^host_cpu = i686$/;"	m
+host_os	Makefile	/^host_os = linux-gnu$/;"	m
+host_triplet	Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
+host_vendor	Makefile	/^host_vendor = pc$/;"	m
+htmldir	Makefile	/^htmldir = ${docdir}$/;"	m
+hw_state	interface.h	/^    enum if_state hw_state;$/;"	m	struct:rinterface	typeref:enum:rinterface::if_state	access:public
+ifList	interface.c	/^struct ifTable* ifList;$/;"	v	typeref:struct:ifTable
+if_state	interface.h	/^enum if_state{$/;"	g
+if_type	interface.h	/^enum if_type$/;"	g
+iflist	router.h	/^    struct list* iflist;$/;"	m	struct:router	typeref:struct:router::list	access:public
+iflist_init	interface.c	/^struct list* iflist_init() {$/;"	f
+includedir	Makefile	/^includedir = ${prefix}\/include$/;"	m
+info	interface.h	/^    void *info;$/;"	m	struct:proto_info	access:public
+infodir	Makefile	/^infodir = ${datarootdir}\/info$/;"	m
+init_local_router	router.c	/^int init_local_router(int routerid, int pmaid, int routerip)$/;"	f	signature:(int routerid, int pmaid, int routerip)
+inited	router.h	/^    u8 inited;$/;"	m	struct:router	access:public
+install_sh	Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma\/install-sh$/;"	m
+install_sh_DATA	Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
+install_sh_PROGRAM	Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
+install_sh_SCRIPT	Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
+interface_add	interface.c	/^void interface_add(struct list * iflist, struct rinterface* iface)$/;"	f	signature:(struct list * iflist, struct rinterface* iface)
+interface_delete	interface.c	/^void interface_delete(struct list *iflist, struct rinterface *iface)$/;"	f	signature:(struct list *iflist, struct rinterface *iface)
+libdir	Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
+libexecdir	Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
+libpmarouter_a_AR	Makefile	/^libpmarouter_a_AR = $(AR) $(ARFLAGS)$/;"	m
+libpmarouter_a_LIBADD	Makefile	/^libpmarouter_a_LIBADD =$/;"	m
+libpmarouter_a_OBJECTS	Makefile	/^libpmarouter_a_OBJECTS = $(am_libpmarouter_a_OBJECTS)$/;"	m
+libpmarouter_a_SOURCES	Makefile	/^libpmarouter_a_SOURCES = interface.c router.c routertable.c$/;"	m
+load_interface_type_from_config	interface.c	/^int load_interface_type_from_config()$/;"	f
+localedir	Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
+localrouter	router.c	/^struct router localrouter;$/;"	v	typeref:struct:router
+localstatedir	Makefile	/^localstatedir = ${prefix}\/var$/;"	m
+mandir	Makefile	/^mandir = ${datarootdir}\/man$/;"	m
+mkdir_p	Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
+mkinstalldirs	Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
+name	interface.h	/^    char name[IFNAMSIZ+1];$/;"	m	struct:rinterface	access:public
+neighbor	interface.h	/^    struct neighbor *neighbor;$/;"	m	struct:rinterface	typeref:struct:rinterface::neighbor	access:public
+neighbor	interface.h	/^struct neighbor{$/;"	s
+neighbor::agent_addr	interface.h	/^    struct in_addr agent_addr;$/;"	m	struct:neighbor	typeref:struct:neighbor::in_addr	access:public
+neighbor::rid	interface.h	/^    u32 rid;$/;"	m	struct:neighbor	access:public
+neighbor::router_addr	interface.h	/^    struct in_addr router_addr;$/;"	m	struct:neighbor	typeref:struct:neighbor::in_addr	access:public
+noinst_HEADERS	Makefile	/^noinst_HEADERS = interface.h router.h routertable.h$/;"	m
+noinst_LIBRARIES	Makefile	/^noinst_LIBRARIES = libpmarouter.a$/;"	m
+oldincludedir	Makefile	/^oldincludedir = \/usr\/include$/;"	m
+op_state	interface.h	/^    enum if_state op_state;$/;"	m	struct:rinterface	typeref:enum:rinterface::if_state	access:public
+pdfdir	Makefile	/^pdfdir = ${docdir}$/;"	m
+pkgdatadir	Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
+pkgincludedir	Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
+pkglibdir	Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
+pkglibexecdir	Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
+prefix	Makefile	/^prefix = \/usr\/local$/;"	m
+program_transform_name	Makefile	/^program_transform_name = s,x,x,$/;"	m
+proto_info	interface.h	/^    struct proto_info *proto_info;$/;"	m	struct:rinterface	typeref:struct:rinterface::proto_info	access:public
+proto_info	interface.h	/^struct proto_info{$/;"	s
+proto_info::areaid	interface.h	/^    u32 areaid;$/;"	m	struct:proto_info	access:public
+proto_info::cost	interface.h	/^    u32 cost;$/;"	m	struct:proto_info	access:public
+proto_info::info	interface.h	/^    void *info;$/;"	m	struct:proto_info	access:public
+proto_info::proto_type	interface.h	/^    u32 proto_type;$/;"	m	struct:proto_info	access:public
+proto_type	interface.h	/^    u32 proto_type;$/;"	m	struct:proto_info	access:public
+psdir	Makefile	/^psdir = ${docdir}$/;"	m
+rid	interface.h	/^    u32 rid;$/;"	m	struct:neighbor	access:public
+rinterface	interface.h	/^struct rinterface{$/;"	s
+rinterface::ctl_id	interface.h	/^    u32 ctl_id;$/;"	m	struct:rinterface	access:public
+rinterface::details	interface.h	/^    struct interface* details;$/;"	m	struct:rinterface	typeref:struct:rinterface::interface	access:public
+rinterface::hw_state	interface.h	/^    enum if_state hw_state;$/;"	m	struct:rinterface	typeref:enum:rinterface::if_state	access:public
+rinterface::name	interface.h	/^    char name[IFNAMSIZ+1];$/;"	m	struct:rinterface	access:public
+rinterface::neighbor	interface.h	/^    struct neighbor *neighbor;$/;"	m	struct:rinterface	typeref:struct:rinterface::neighbor	access:public
+rinterface::op_state	interface.h	/^    enum if_state op_state;$/;"	m	struct:rinterface	typeref:enum:rinterface::if_state	access:public
+rinterface::proto_info	interface.h	/^    struct proto_info *proto_info;$/;"	m	struct:rinterface	typeref:struct:rinterface::proto_info	access:public
+rinterface::type	interface.h	/^    enum if_type type;$/;"	m	struct:rinterface	typeref:enum:rinterface::if_type	access:public
+rinterface::vinterface	interface.h	/^    void *vinterface;$/;"	m	struct:rinterface	access:public
+route_table	routertable.h	/^struct route_table{$/;"	s
+route_table::acquire_type	routertable.h	/^	int acquire_type;$/;"	m	struct:route_table	access:public
+route_table::route_table_len	routertable.h	/^	int route_table_len;$/;"	m	struct:route_table	access:public
+route_table::routerip	routertable.h	/^	char routerip[24];$/;"	m	struct:route_table	access:public
+route_table::routes	routertable.h	/^	struct route* routes;$/;"	m	struct:route_table	typeref:struct:route_table::route	access:public
+route_table_get	routertable.c	/^int route_table_get(struct route_table * rt)$/;"	f	signature:(struct route_table * rt)
+route_table_get	routertable.h	/^int route_table_get(struct route_table * rt);$/;"	p	signature:(struct route_table * rt)
+route_table_len	routertable.h	/^	int route_table_len;$/;"	m	struct:route_table	access:public
+router	router.h	/^struct router{$/;"	s
+router::agentid	router.h	/^    u32 agentid;$/;"	m	struct:router	access:public
+router::iflist	router.h	/^    struct list* iflist;$/;"	m	struct:router	typeref:struct:router::list	access:public
+router::inited	router.h	/^    u8 inited;$/;"	m	struct:router	access:public
+router::routerid	router.h	/^    u32 routerid;$/;"	m	struct:router	access:public
+router::routerip	router.h	/^    struct in_addr routerip;$/;"	m	struct:router	typeref:struct:router::in_addr	access:public
+router_addr	interface.h	/^    struct in_addr router_addr;$/;"	m	struct:neighbor	typeref:struct:neighbor::in_addr	access:public
+routerid	router.h	/^    u32 routerid;$/;"	m	struct:router	access:public
+routerip	router.h	/^    struct in_addr routerip;$/;"	m	struct:router	typeref:struct:router::in_addr	access:public
+routerip	routertable.h	/^	char routerip[24];$/;"	m	struct:route_table	access:public
+routes	routertable.h	/^	struct route* routes;$/;"	m	struct:route_table	typeref:struct:route_table::route	access:public
+sbindir	Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
+set_neighbor_agent_address	interface.c	/^int set_neighbor_agent_address(int pmaid, int addr)$/;"	f	signature:(int pmaid, int addr)
+sharedstatedir	Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
+srcdir	Makefile	/^srcdir = .$/;"	m
+subdir	Makefile	/^subdir = router$/;"	m
+sysconfdir	Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
+target_alias	Makefile	/^target_alias = $/;"	m
+top_build_prefix	Makefile	/^top_build_prefix = ..\/$/;"	m
+top_builddir	Makefile	/^top_builddir = ..$/;"	m
+top_srcdir	Makefile	/^top_srcdir = ..$/;"	m
+transform	Makefile	/^transform = $(program_transform_name)$/;"	m
+type	interface.h	/^    enum if_type type;$/;"	m	struct:rinterface	typeref:enum:rinterface::if_type	access:public
+update_interface_from_snmp	interface.c	/^int update_interface_from_snmp(char *routerip)$/;"	f	signature:(char *routerip)
+vinterface	interface.h	/^    void *vinterface;$/;"	m	struct:rinterface	access:public

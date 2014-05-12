@@ -1,0 +1,3 @@
+noinst_LIBRARIES=libmodulemanager.a
+libmodulemanager_a_SOURCES=module_manager.c 
+noinst_HEADERS=module_manager.h

@@ -1,0 +1,204 @@
+autoscan: warning: missing AC_CHECK_FUNCS([bzero]) wanted by: 
+	comm/comm.c:52
+	server/socket.c:23
+autoscan: warning: missing AC_CHECK_FUNCS([getcwd]) wanted by: 
+	lib/log.c:440
+autoscan: warning: missing AC_CHECK_FUNCS([gettimeofday]) wanted by: 
+	lib/thread.c:234
+	lib/thread.c:340
+	lib/thread.c:449
+	lib/thread.c:490
+	lib/thread.c:569
+	utils/utils.h:48
+autoscan: warning: missing AC_CHECK_FUNCS([memset]) wanted by: 
+	comm/comm.c:261
+	comm/comm.c:404
+	comm/comm_daemon.c:48
+	comm/comm_daemon.c:140
+	comm/comm_daemon.c:162
+	comm/comm_utils.c:31
+	comm/local_daemon.c:74
+	comm/local_daemon.c:84
+	comm/local_daemon.c:341
+	conf/conf.c:85
+	conf/conf.c:243
+	conf/conf.c:267
+	conf/conf.c:291
+	conf/conf.c:335
+	lib/if.c:56
+	lib/if.c:201
+	lib/if.c:202
+	lib/if.c:315
+	lib/if.c:504
+	lib/linklist.c:34
+	lib/linklist.c:52
+	lib/log.c:322
+	lib/prefix.c:253
+	lib/prefix.c:422
+	lib/table.c:271
+	lib/table.c:285
+	lib/thread.c:687
+	lib/vector.c:87
+	policy/policy_table.c:10
+	reg/reg.c:16
+autoscan: warning: missing AC_CHECK_FUNCS([select]) wanted by: 
+	comm/comm.c:92
+	lib/thread.c:589
+	server/server.c:91
+autoscan: warning: missing AC_CHECK_FUNCS([socket]) wanted by: 
+	comm/comm.c:59
+	comm/comm.c:533
+	comm/comm_daemon.c:69
+	comm/local_daemon.c:98
+	server/socket.c:17
+autoscan: warning: missing AC_CHECK_FUNCS([strchr]) wanted by: 
+	lib/prefix.c:209
+	lib/prefix.c:356
+autoscan: warning: missing AC_CHECK_FUNCS([strdup]) wanted by: 
+	lib/log.c:382
+	lib/memory.c:108
+autoscan: warning: missing AC_CHECK_FUNCS([strerror]) wanted by: 
+	comm/comm.c:31
+	comm/comm.c:219
+	comm/comm.c:246
+	comm/comm.c:284
+	comm/comm.c:296
+	comm/comm.c:317
+	comm/comm.c:329
+	comm/comm.c:333
+	comm/comm_daemon.c:72
+	comm/comm_daemon.c:79
+	comm/comm_daemon.c:85
+	comm/comm_daemon.c:91
+	comm/comm_daemon.c:97
+	comm/comm_daemon.c:109
+	comm/comm_daemon.c:169
+	comm/comm_daemon.c:183
+	comm/comm_daemon.c:199
+	comm/comm_daemon.c:253
+	comm/local_daemon.c:125
+	comm/local_daemon.c:190
+	comm/local_daemon.c:203
+	comm/local_daemon.c:210
+	comm/local_daemon.c:219
+	comm/local_daemon.c:240
+	comm/local_daemon.c:244
+	comm/local_daemon.c:270
+	comm/local_daemon.c:275
+	comm/local_daemon.c:287
+	comm/local_daemon.c:297
+	comm/local_daemon.c:387
+	comm/local_daemon.c:448
+	lib/thread.c:598
+	policy/policy_parse.c:102
+	policy/policy_parse.c:107
+	server/socket.c:56
+autoscan: warning: missing AC_CHECK_FUNCS([strtol]) wanted by: 
+	conf/conf.c:72
+	conf/conf.c:74
+	conf/conf.c:76
+	conf/conf.c:193
+	conf/conf.c:208
+	conf/conf.c:220
+	conf/conf.c:230
+	conf/conf.c:250
+	conf/conf.c:274
+	conf/conf.c:298
+	conf/conf.c:324
+	conf/conf.c:344
+	conf/conf.c:362
+	conf/conf.c:373
+	policy/policy_parse.c:42
+	policy/policy_parse.c:54
+	policy/policy_parse.c:57
+	policy/policy_parse.c:60
+	policy/policy_parse.c:63
+	policy/policy_parse.c:66
+autoscan: warning: missing AC_CHECK_HEADERS([arpa/inet.h]) wanted by: 
+	lib/zebra.h:142
+	utils/common.h:10
+autoscan: warning: missing AC_CHECK_HEADERS([fcntl.h]) wanted by: 
+	lib/zebra.h:49
+	utils/common.h:18
+autoscan: warning: missing AC_CHECK_HEADERS([limits.h]) wanted by: 
+	lib/zebra.h:83
+autoscan: warning: missing AC_CHECK_HEADERS([netdb.h]) wanted by: 
+	lib/zebra.h:139
+	utils/common.h:14
+autoscan: warning: missing AC_CHECK_HEADERS([netinet/in.h]) wanted by: 
+	comm/comm_utils.h:6
+	lib/zebra.h:109
+	utils/common.h:11
+autoscan: warning: missing AC_CHECK_HEADERS([stddef.h]) wanted by: 
+	lib/memory.h:191
+autoscan: warning: missing AC_CHECK_HEADERS([stdlib.h]) wanted by: 
+	lib/zebra.h:44
+	utils/common.h:5
+autoscan: warning: missing AC_CHECK_HEADERS([string.h]) wanted by: 
+	lib/zebra.h:51
+	utils/common.h:6
+autoscan: warning: missing AC_CHECK_HEADERS([strings.h]) wanted by: 
+	lib/zebra.h:84
+autoscan: warning: missing AC_CHECK_HEADERS([sys/ioctl.h]) wanted by: 
+	lib/zebra.h:66
+	utils/common.h:26
+autoscan: warning: missing AC_CHECK_HEADERS([sys/param.h]) wanted by: 
+	lib/zebra.h:62
+autoscan: warning: missing AC_CHECK_HEADERS([sys/socket.h]) wanted by: 
+	comm/comm_utils.h:5
+	lib/zebra.h:102
+autoscan: warning: missing AC_CHECK_HEADERS([sys/time.h]) wanted by: 
+	pma_icm.c:8
+	lib/zebra.h:60
+	utils/common.h:8
+autoscan: warning: missing AC_CHECK_HEADERS([syslog.h]) wanted by: 
+	lib/log.h:25
+	lib/zebra.h:73
+autoscan: warning: missing AC_CHECK_HEADERS([unistd.h]) wanted by: 
+	lib/zebra.h:42
+	utils/common.h:7
+autoscan: warning: missing AC_FUNC_MALLOC wanted by: 
+	pma_icm.c:15
+	comm/comm.c:141
+	comm/comm.c:148
+	comm/comm.c:232
+	comm/comm.c:315
+	comm/comm.c:529
+	comm/comm.c:550
+	comm/comm_daemon.c:138
+	comm/comm_daemon.c:180
+	comm/comm_utils.c:26
+	comm/comm_utils.c:45
+	comm/local_daemon.c:73
+	comm/local_daemon.c:355
+	comm/local_daemon.c:470
+	control/control.c:9
+	control/control.c:22
+	lib/memory.c:56
+	lib/thread_pool.c:53
+	lib/thread_pool.c:68
+	reg/reg.c:14
+	server/server.c:52
+	server/server.c:132
+	server/socket.c:79
+autoscan: warning: missing AC_FUNC_REALLOC wanted by: 
+	lib/memory.c:88
+autoscan: warning: missing AC_TYPE_SIZE_T wanted by: 
+	comm/comm_daemon.c:126
+	comm/comm_utils.c:25
+	comm/comm_utils.c:44
+	conf/conf.c:55
+	lib/memory.c:43
+	lib/memory.c:52
+	lib/memory.c:68
+	lib/memory.c:84
+	lib/memory.c:136
+	lib/memory.c:150
+	lib/memory.c:164
+	lib/memory.h:212
+	lib/memory.h:213
+	lib/memory.h:214
+	lib/memory.h:221
+	lib/memory.h:226
+	lib/memory.h:227
+	lib/memory.h:233

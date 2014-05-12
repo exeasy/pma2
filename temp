@@ -1,0 +1,10 @@
+
+icm_SOURCES=pma_icm.c
+icm_LDADD=./lib/libpma.a\
+		  ./handle/libpmahandle.a\
+		  ./comm/libpmacomm.a\
+		  ./conf/libpmaconf.a\
+		  ./policy/libpmapolicy.a\
+		  ./utils/libpmautils.a
+icm_CFLAGS=-I/usr/include/libxml2 -O2 -g
+icm_LDFLAGS=-lpthread -lxml2
