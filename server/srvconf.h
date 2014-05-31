@@ -36,9 +36,12 @@
 #define UPDATELSA 12
 #define ADDROUTE 13
 #define UPDATEROUTE 14
-#define UP_NETWORK_INFO 15
+#define UP_DEVICE_INFO 15
 #define UP_ROUTE_INFO 16
-#define UP_INTERFACE_INFO 17
+#define UP_TRAFFICE_INFO 17
+#define UP_OSPF_INTERFACE_INFO 18
+#define UP_BGP_INTERFACE_INFO 19
+#define UP_BGP_PATH_TABLE_INFO 20
 
 #define NETWORK_INFO 21
 #define LSDB_INFO	22
@@ -54,9 +57,12 @@
 #define NETINFO_REQ 52
 #define SNAPSHOOT_REQ 53
 #define PMA_LIST 54
-#define IC_CONF 55
+#define ICM_CONF 55
 #define DBM_CONF 56
-#define PEA_CONF 57
+#define PEM_CONF 57
+
+#define BGP_MRAI    60
+#define TC_TUNNEL_COMMAND 61
 
 
 

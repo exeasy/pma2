@@ -5,6 +5,7 @@
 #include <interior_daemon.h>
 #include <mmanager/module_manager.h>
 #include <conf/conf.h>
+#include <server/srvconf.h>
 
 struct ctl * module_handle;
 int bm_status = 0;
@@ -32,7 +33,11 @@ int interior_daemon_init()
 	add_ctl(module_handle, OSPF_SPF,			handle_ospf_spf_signal_ic_to_dbm,	1);
 	add_ctl(module_handle, POLICY_INFO,			handle_send_policy_dbm_to_pea,		1);
 	add_ctl(module_handle, UP_ROUTE_INFO,		handle_route_table_ic_to_pms,		1);
-	add_ctl(module_handle, UP_INTERFACE_INFO,	handle_tc_message_to_pms,			1);
+	add_ctl(module_handle, UP_DEVICE_INFO,	handle_device_info_ic_to_pms,			1);
+	add_ctl(module_handle, UP_OSPF_INTERFACE_INFO,		handle_ospf_interface_ic_to_pms,		1);
+	add_ctl(module_handle, UP_BGP_INTERFACE_INFO,		handle_bgp_interface_ic_to_pms,		1);
+	add_ctl(module_handle, UP_TRAFFICE_INFO,		handle_traffice_info_ic_to_pms,		1);
+	add_ctl(module_handle, UP_BGP_PATH_TABLE_INFO,		handle_bgp_path_info_ic_to_pms,		1);
 	global_pma_buff.length = 0;
 	global_pma_buff.buff = (char*) malloc(MAXBUF);
 	interior_daemon_start();

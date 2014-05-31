@@ -54,11 +54,11 @@ int send_packet(Packet_header* pkt)
 			module_status = M_STATUS_OFFLINE;
 		}
 		DEBUG(ERROR, "send_packet send failed :type:[%d] --%s",pkt->pkt_type, strerror(errno));
+		free(pkt);
 		return -1;
 	}
 	DEBUG(INFO, "%d %d %u %u send_packet send", global_bm_sock,pkt->pkt_type, pkt->pkt_len, ret);
 	free(pkt);
-
 	return ret;
 }
 

@@ -3,68 +3,6 @@
 
 #define MAXBUF 50000
 
-#define PMA_VERSION 3
-
-#define ICM		1
-#define DBM		2
-#define PEM		3
-#define BM		4
-#define PMS		5
-
-/* pkt type by Macro.Z 2013-01-23 begin */
-#define MODREG 1
-#define EVENTREG 2
-#define HEARTPKT 3
-#define ACK 4
-/*Macro.Z 2013-01-23 end*/
-
-
-/* IC module's actions by Macro.Z 2013-01-23 begin */
-#define ADDLSA 11
-#define UPDATELSA 12
-#define ADDROUTE 13
-#define UPDATEROUTE 14
-#define UP_NETWORK_INFO 15
-#define UP_ROUTE_INFO 16
-#define UP_INTERFACE_INFO 17
-/*Macro.Z 2013-01-23 end*/
-
-
-/* DBM's actions by Macro.Z 2013-01-23 begin */
-#define NETWORK_INFO 21
-#define LSDB_INFO	22
-#define POLICY_INFO 231//for test
-/*Macro.Z 2013-01-23 end*/
-
-/* PEA's actions by Macro.Z 2013-03-15 begin */
-#define OSPF_SPF 31
-#define POLICY_REQUEST 32
-/*Macro.Z 2013-03-15 end*/
-
-
-/* BM's actions by Macro.Z 2013-03-15 begin */
-#define POLICY_LIST  51
-#define NETINFO_REQ 52
-#define SNAPSHOOT_REQ 53
-#define PMA_LIST 54
-#define ICM_CONF 55
-#define DBM_CONF 56
-#define PEM_CONF 57
-
-/*Macro.Z 2013-03-15 end*/
-
-
-
-/*TCM 2013-04-15 begin*/
-#define TC_TO_PMA_INTERFACE_INFO 23
-#define TC_TO_PMA_FLOW_INFO 24
-/*TCM 2013-04-15 end*/
-
-#define BM_STATUS_ALL_READY 3  //module:ic+dbm+pea
-#define BM_STATUS_TINY_READY 2 //module:ic+pea
-#define BM_STATUS_NOT_READY 1 //module:other
-#define BM_STATUS_CLOSED 0 //only the basemodule
-#define BGP_MRAI    60
 
 #define BUFFLEN 1024  //not used
 #define SERVER_PORT "8888"

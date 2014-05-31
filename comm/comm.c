@@ -34,10 +34,15 @@ int comm_init(void) //no snapshoot version
 {
 	int ret = 0;
 	data_handle = create_ctl(1024);
-	add_ctl(data_handle, OPS_PMS_LOGIN_RESP_OK, handle_ops_pms_login_resp_ok, 1);
-	add_ctl(data_handle, OPS_PMS_LOGIN_FAILED, handle_packet_show_content, 1);
-	add_ctl(data_handle, OPS_ACK_FAILED, handle_ops_ack_failed,1);
-	add_ctl(data_handle, OPS_ACK, handle_ops_ack,1);
+	add_ctl(data_handle, OPS_PMS_PMA_INFO_ACK, handle_ops_ack, 1);
+	add_ctl(data_handle, OPS_PMS_PMA_INFO_ERR_ACK, handle_ops_ack_failed, 1);
+	add_ctl(data_handle, OPS_PMS_PMA_INIT_REPLY, handle_pma_init_reply, 1);
+	//* version 2.0 *//
+//	add_ctl(data_handle, OPS_PMS_LOGIN_RESP_OK, handle_ops_pms_login_resp_ok, 1);
+//	add_ctl(data_handle, OPS_PMS_LOGIN_FAILED, handle_packet_show_content, 1);
+//	add_ctl(data_handle, OPS_ACK_FAILED, handle_ops_ack_failed,1);
+//	add_ctl(data_handle, OPS_ACK, handle_ops_ack,1);
+	//* version 2.0 *//
 //	capsu_handle = create_ctl(10);
 //	add_ctl(capsu_handle, OPS_PMA_TRANS_PACKET, encapsulate_trans_packet, 1);
 //	add_ctl(capsu_handle, OPS_PMA_LOGIN, encapsulate_normal_packet, 1);
@@ -293,7 +298,6 @@ int send_packet(struct packet *pkt)
 		return -1;
 	}
 	DEBUG(INFO, "%s %d %d %u %u send_packet send",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len, ret);
-
 	return ret;
 }
 
@@ -554,8 +558,7 @@ int pms_reply_handle(struct packet *pkt)
 
 	struct pma_pms_header *header = (struct pma_pms_header *)pkt->data;
 
-	run_ctl( data_handle, pkt->ops_type , pkt);
-
+	return run_ctl( data_handle, pkt->ops_type , pkt);
 }
 int show_interface()
 {

@@ -3,7 +3,7 @@
 #include "includes/snmpcore.h"
 #include "includes/oids.h"
 #include "includes/typemapper.h"
-
+typedef unsigned int u32;
 tableopt iftable = { 
 	.column = 10, 
 	.mapper = iftable_mapper, 
@@ -96,6 +96,118 @@ itemopt bgpidentifier = {
 	.oids = BGPIDENTIFIER,
 	.itemhead = NULL
 };
+
+session_id_t global_snmp_session;
+extern session_id_t create_session(char* ip, char* community);
+
+int snmp_init(const char* routerip)
+{
+	global_snmp_session  = create_session(routerip, "public");
+	return 0;
+}
+
+int is_inited(){
+	return global_snmp_session;
+}
+
+int get_ospf_routerid(char* routerid)
+{
+	if( routerid == NULL && is_inited() == 0) return -1;
+	update_item(global_snmp_session, &ospfrouterid);
+	strcpy(routerid, ospfrouterid.itemhead);
+	clear_item(&ospfrouterid);
+	return 0;
+}
+int get_bgp_routerid(char* routerid)
+{
+	if( routerid == NULL && is_inited() == 0) return -1;
+	update_item(global_snmp_session, &bgpidentifier);
+	strcpy(routerid, bgpidentifier.itemhead);
+	clear_item(&bgpidentifier);
+	return 0;
+}
+int get_bgp_asid(char* asid)
+{
+	if( asid == NULL && is_inited() == 0) return -1;
+	update_item(global_snmp_session, &bgplocalas);
+	strcpy(asid, bgplocalas.itemhead);
+	clear_item(&bgplocalas);
+	return 0;
+}
+
+int get_bgp_peer_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &bgppeertable);
+	int ret =callback((void*)bgppeertable.tablehead);
+	clear_table(&bgppeertable);
+	return ret;
+}
+int get_bgp_path_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &bgppathtable);
+	int ret =callback((void*)bgppathtable.tablehead);
+	clear_table(&bgppathtable);
+	return ret;
+}
+int get_if_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &iftable);
+	int ret =callback((void*)iftable.tablehead);
+	clear_table(&iftable);
+	return ret;
+}
+int get_ipaddr_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &ipaddrtable);
+	int ret =callback((void*)ipaddrtable.tablehead);
+	clear_table(&ipaddrtable);
+	return ret;
+}
+int get_iproute_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &iproutetable);
+	int ret =callback((void*)iproutetable.tablehead);
+	clear_table(&iproutetable);
+	return ret;
+}
+int get_ospf_area_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &ospfareatable);
+	int ret =callback((void*)ospfareatable.tablehead);
+	clear_table(&ospfareatable);
+	return ret;
+}
+int get_ospf_ifmetric_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &ospfifmetrictable);
+	int ret =callback((void*)ospfifmetrictable.tablehead);
+	clear_table(&ospfifmetrictable);
+	return ret;
+}
+int get_ospf_if_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &ospfiftable);
+	int ret =callback((void*)ospfiftable.tablehead);
+	clear_table(&ospfiftable);
+	return ret;
+}
+int get_ospf_neighbor_table(callbackptr callback)
+{
+	if( is_inited() == 0) return -1;
+	update_table(global_snmp_session, &ospfneighbortable);
+	int ret =callback((void*)ospfneighbortable.tablehead);
+	clear_table(&ospfneighbortable);
+	return ret;
+}
+
 session_id_t create_session(char* ip, char* community){
 	if( ip == NULL || community == NULL ) return (session_id_t)(-1);
 	snmpsession* s = (snmpsession*)malloc(sizeof(snmpsession));
@@ -349,4 +461,5 @@ int update_table(session_id_t s, tableopt* table)
 			dp = dp + fields;
 		}
 	}
+	free_data(data, entries, fields);
 }

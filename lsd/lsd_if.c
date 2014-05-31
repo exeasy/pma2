@@ -140,6 +140,7 @@ int lsd_iflist_init()
             backbone->_type = BACKBONE_ETH;
             if( face->neighbor != NULL)
             {
+				backbone->neighbor_pma.device_id = face->neighbor->devid;
                 backbone->neighbor_pma.rid = face->neighbor->rid;
                 backbone->neighbor_pma.router_addr = face->neighbor->router_addr;
                 backbone->neighbor_pma.pma_ctl_addr = face->neighbor->agent_addr;
@@ -162,6 +163,7 @@ int lsd_iflist_init()
                 {
                     az = malloc_z(struct autonomous_zone);
                     az->az_id = areaid;
+					az->device_id = localrouter.agentid;
                     az->r_id = localrouter.routerid;
 					cr_lsdb_init(&az->lsdb, az->r_id);
                     autonomous_zone_add(az);
@@ -197,7 +199,7 @@ struct backbone_eth* get_backbone_by_neighbor_id(struct autonomous_zone* az, int
     struct backbone_eth * eth = az->backbones;
     while(eth)
     {
-            if ( eth->neighbor_pma.rid == id )
+            if ( eth->neighbor_pma.device_id == id )
                 return eth;
         eth = eth->next;
     }

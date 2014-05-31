@@ -5,11 +5,20 @@
 #include <lib/prefix.h>
 #include <lib/linklist.h>
 #include <snmp/includes/pma_api.h>
+#include <snmp/includes/snmpcore.h>
+#include <server/srvconf.h>
 #include "router.h"
 #include "interface.h"
 
 extern struct router localrouter;
 struct ifTable* ifList;
+
+//extern function
+char* ospf_interface_info_to_xml(struct list* iflist);
+char* device_info_to_xml(struct list* iflist);
+char* ifrate_info_to_xml(struct list* iflist);
+char* bgp_path_attr_to_xml(char* data);
+
 struct list* iflist_init() {
     struct list * iflist = list_new();
     return iflist;
@@ -175,7 +184,7 @@ int load_interface_type_from_config()
 		}
         else 
         {
-            type = UNKNOWN;
+            type = ACCESS;
         }
        struct list* iflist = localrouter.iflist;
        struct list* result = list_new();
@@ -212,12 +221,12 @@ int get_prefix_len(char* mask){
 	return 32-count;
 }
 
-int set_neighbor_agent_address(int pmaid, int addr)
+int set_neighbor_agent_address(int devid, int rid, int addr)
 {
     struct list* iflist = localrouter.iflist;
     struct list* result = list_new();
     int total = 0;
-    int qid = pmaid;
+    int qid = rid;
     char routerip[24];
     char destip[24];
     char gateway[24];
@@ -228,12 +237,239 @@ int set_neighbor_agent_address(int pmaid, int addr)
     {
         struct rinterface* iface = (struct rinterface*)result->head->data;
         iface->neighbor->agent_addr.s_addr = addr;
+		iface->neighbor->devid = devid; 
         inet_ntop(AF_INET,&iface->neighbor->router_addr, gateway,24); 
         addStaticRoute(routerip, destip, "255.255.255.255", gateway);
     }
 	list_delete_all_node(result);
 	list_free(result);
     return 0;
+}
+
+int rate_refresh_timeval = 2;//1 second 
+int ifrate_first_run = 0;
+int update_ifrate_info(struct InterfaceTable* table)
+{
+	struct list* iflist = localrouter.iflist;
+	if( iflist == NULL ){
+		DEBUG(ERROR,"please run update_interface_from_snmp first");
+		return -1;
+	}
+	struct InterfaceTable* ifnode = table->next;
+	while(ifnode)
+	{
+		int i = atoi(ifnode->ifindex);
+        struct list* result = list_new();
+		struct rinterface* iface;
+
+        int total = 0;
+        get_interface( iflist, Q_CTID, &i, &result , &total );
+        if ( total >= 1)
+        {
+            iface = (struct rinterface*)result->head->data;
+			u64 send_first = iface->send_packet;
+			u64 recv_first = iface->recv_packet;
+			u64 send_second = atoll(ifnode->ifoutoctets);
+			u64 recv_second = atoll(ifnode->ifinoctets);
+			iface->send_rate = (send_second - send_first)/rate_refresh_timeval;
+			iface->recv_rate = (recv_second - recv_first)/rate_refresh_timeval;
+			iface->send_packet = send_second;
+			iface->recv_packet = recv_second;
+        }
+		else{//find new interface
+			
+		}
+	    list_delete_all_node(result);
+	    list_free(result);
+		ifnode = ifnode->next;
+	}
+	if( ifrate_first_run ==0 ){
+		ifrate_first_run = 1;
+		return 0;
+	}
+	char* buff = ifrate_info_to_xml(iflist);
+	//send the packet
+	int len = strlen(buff);
+	module_send_data(buff, len , UP_TRAFFICE_INFO);
+//	printf("%s\n",buff);
+	free(buff);
+}
+
+void ifrate_info_detect_daemon()
+{
+	get_if_table(update_ifrate_info);
+}
+
+
+int bgp_path_attr_table_last_len = 0;
+int update_bgp_path_attr_table(struct bgpPathAttrTable* table)
+{
+	int is_changed = 0;
+	struct bgpPathAttrTable* attrnode = table->next;
+	char buff[10240];
+	int len = 0;
+	sprintf(buff,"bgp4PathAttrPeer bgp4PathAttrIpAddrPrefixLen bgp4PathAttrIpAddrPrefix bgp4PathAttrOrigin\
+bgp4PathAttrASPathSegment bgp4PathAttrNextHop bgp4PathAttrMultiExitDisc bgp4PathAttrLocalPref\
+bgp4PathAttrAtomicAggregate bgp4PathAttrAggregatorAS bgp4PathAttrAggregatorAddr bgp4PathAttrCalcLocalPref\
+bgp4PathAttrBest bgp4PathAttrUnknown\n");
+	len = strlen(buff);
+	while( attrnode ){
+		sprintf(buff+len,"%s %s %s %s %s %s %s %s %s %s %s %s %s ?\n",
+				attrnode->peer,
+				attrnode->addr_prefix_len,
+				attrnode->addr_prefix,
+				attrnode->origin,
+				attrnode->as_path_segment,
+				attrnode->nexthop,
+				attrnode->multi_exit_disc,
+				attrnode->local_pref,
+				attrnode->atomic_aggregate,
+				attrnode->aggregator_as,
+				attrnode->aggregator_addr,
+				attrnode->calc_localpref,
+				attrnode->best);
+		len = strlen(buff);
+		attrnode = attrnode->next;
+	}
+	if( bgp_path_attr_table_last_len != len ){
+		bgp_path_attr_table_last_len = len;
+		char* newbuff = bgp_path_attr_to_xml(buff);
+		module_send_data(newbuff, len, UP_BGP_PATH_TABLE_INFO); 
+		free(newbuff);
+	}
+}
+int bgp_path_attr_table_detect_thread()
+{
+	get_bgp_path_table(update_bgp_path_attr_table);
+}
+
+int ospf_interface_run_first = 0;
+int update_ospf_interface_info(struct ospfIfTable* table)
+{
+	int is_changed = 0;
+	struct list* iflist = localrouter.iflist;
+	if( iflist == NULL ){
+		DEBUG(ERROR,"please run update_interface_from_snmp first");
+		return -1;
+	}
+	
+	struct ospfIfTable* ifnode = table->next;
+	while(ifnode)
+	{
+		struct in_addr ipdata;
+		inet_pton(AF_INET, ifnode->ipaddress, &ipdata);
+        struct list* result = list_new();
+		struct rinterface* iface;
+
+        int total = 0;
+        get_interface( iflist, Q_IPADDR, &ipdata , &result , &total );
+        if ( total >= 1)
+        {
+            iface = (struct rinterface*)result->head->data;
+			int hello_t = atoi(ifnode->hello);
+			int dead_t = atoi(ifnode->dead);
+			struct ospf_proto_info* p = (struct ospf_proto_info*)(iface->proto_info->info);
+			int hello_o = p->hello_interval;
+			int dead_o = p->dead_interval;
+			if( hello_t != hello_o || dead_o != dead_o  ){
+				is_changed = 1;
+				p->hello_interval = hello_t;
+				p->dead_interval = dead_t;
+			}
+        }
+		else{//find new interface
+			
+		}
+	    list_delete_all_node(result);
+	    list_free(result);
+		ifnode = ifnode->next;
+	}
+	if( is_changed ){
+		char* buff = ospf_interface_info_to_xml(iflist);
+		//send the packet
+		int len = strlen(buff);
+		module_send_data(buff,len, UP_OSPF_INTERFACE_INFO);
+		printf("%s\n",buff);
+		free(buff);
+		return 0;
+	}
+	if( ospf_interface_run_first == 0) 
+	{
+		char* buff = ospf_interface_info_to_xml(iflist);
+		int len = strlen(buff);
+		module_send_data(buff,len, UP_OSPF_INTERFACE_INFO);
+		printf("%s\n", buff);
+		free(buff);
+		ospf_interface_run_first = 1;
+		return 0;
+	}
+}
+// OSPF INTERFACE && UPDATE THREAD
+void ospf_interface_info_update_thread()
+{
+	get_ospf_if_table(update_ospf_interface_info);
+}
+
+
+int device_info_run_first = 0;
+// Hw_STATE effects
+int update_device_info(struct InterfaceTable* table)
+{
+	int is_changed = 0;
+	struct list* iflist = localrouter.iflist;
+	if( iflist == NULL ){
+		DEBUG(ERROR,"please run update_interface_from_snmp first");
+		return -1;
+	}
+	
+	struct InterfaceTable* ifnode = table->next;
+	while(ifnode)
+	{
+		int i = atoi(ifnode->ifindex);
+        struct list* result = list_new();
+		struct rinterface* iface;
+
+        int total = 0;
+        get_interface( iflist, Q_CTID, &i, &result , &total );
+        if ( total >= 1)
+        {
+            iface = (struct rinterface*)result->head->data;
+			int hw_state = check_interface_status( ifnode->ifadminstatus );
+			if( hw_state != iface->hw_state ){
+				is_changed = 1;
+				iface->hw_state = hw_state;
+			}
+        }
+		else{//find new interface
+			
+		}
+	    list_delete_all_node(result);
+	    list_free(result);
+		ifnode = ifnode->next;
+	}
+	if( is_changed ){
+		char* buff = device_info_to_xml(iflist);
+		//send the packet
+		int len = strlen(buff);
+		module_send_data(buff,len, UP_DEVICE_INFO);
+		printf("%s\n",buff);
+		free(buff);
+	}
+	if( device_info_run_first == 0)
+	{
+		char* buff = device_info_to_xml(iflist);
+		int len = strlen(buff);
+		module_send_data(buff,len, UP_DEVICE_INFO);
+		printf("%s\n", buff);
+		free(buff);
+		device_info_run_first = 1;
+	}
+}
+
+// device_info && update_thread
+void device_info_update_thread()
+{
+	get_if_table(update_device_info);
 }
 
 int update_interface_from_snmp(char *routerip)
@@ -347,6 +583,12 @@ int update_interface_from_snmp(char *routerip)
 		{
 			proto->proto_type = ROUTER_OSPF;
 			proto->u.areaid = atoi(node->areaId);
+			if( proto->info == NULL)
+				proto->info = malloc_z(struct ospf_proto_info);
+			((struct ospf_proto_info*)proto->info)->hello_interval = 
+				atoi(node->ospfIfHelloInterval);
+			((struct ospf_proto_info*)proto->info)->dead_interval = 
+				atoi(node->ospfIfDeadInterval);
 		}
 		else {}
         proto->cost = atoi(node->ospfCost);
@@ -365,7 +607,7 @@ int update_interface_from_snmp(char *routerip)
 		struct in_addr nbrid;
 		nbrid.s_addr = 0;
 		inet_pton(AF_INET, node->nbrRouteId, &nbrid );
-		newif->neighbor->rid = ntohl(nbrid.s_addr); 
+		newif->neighbor->rid = nbrid.s_addr; 
 		DEBUG(INFO, "Neighbor ID: %d", newif->neighbor->rid);
 		inet_pton(AF_INET, node->ospfNbrIp, &newif->neighbor->router_addr);
 		DEBUG(INFO, "Neighbor IP: %s", node->ospfNbrIp);
@@ -376,6 +618,221 @@ int update_interface_from_snmp(char *routerip)
 	}
 	load_interface_type_from_config();
     localrouter.inited = 1;
+}
+char* ospf_interface_info_to_xml(struct list* iflist){
+	xmlDocPtr doc = create_xml_doc();
+	if( iflist == NULL )
+		return NULL;
+	xmlNodePtr devnode;
+	xmlNodePtr childnode;
+	ifTable* node = ifList->next;
+	
+	xmlNodePtr rootnode = create_xml_root_node(doc, "OSPF_INTERFACE");
+	struct timeval now;
+	gettimeofday(&now, NULL);
+	char * time = PRINTTIME(now);
+	add_xml_child(rootnode, "timestamp",time); free(time);
+
+	devnode = add_xml_child(rootnode, "device", NULL);
+	char* aid[24];
+	sprintf(aid,"%d", localrouter.agentid);
+	add_xml_child_prop(devnode, "id",aid); 
+
+	char value[50];
+	while(node)
+	{
+		// Query The Latest TimeInterval
+        struct list* result = list_new();
+		struct rinterface* iface;
+		int i = atoi(node->ifdex);
+		struct ospf_proto_info* ospf_info = NULL;
+        int total = 0;
+        get_interface( iflist, Q_CTID, &i, &result , &total );
+        if ( total >= 1)
+        {
+            iface = (struct rinterface*)result->head->data;
+			ospf_info = (struct ospf_proto_info*)iface->proto_info->info;
+        }
+		else return 0;
+	    list_delete_all_node(result);
+	    list_free(result);
+		
+		childnode = add_xml_child(devnode, "interface", NULL);
+		add_xml_child_prop(childnode, "id", node->ifdex);
+		if( localrouter.type == OSPF_ROUTER )
+			sprintf(value,"ospf");
+		else if( localrouter.type == BGP_ROUTER )
+			sprintf(value,"bgp");
+		add_xml_child(childnode, "protocol", value);
+		add_xml_child(childnode, "area_id", node->areaId);
+		sprintf(value, "%d",ospf_info->hello_interval);
+		add_xml_child(childnode, "hello_timeval", value);
+		memset(value,0,50);
+		sprintf(value, "%d",ospf_info->dead_interval);
+		add_xml_child(childnode, "dead_timeval", value);
+		memset(value,0,50);
+		sprintf(value,"%d",iface->type);
+		add_xml_child(childnode, "type", value);
+		node = node->next;
+	}
+	u8 *xmlbuff;
+	int len  = 0;
+	xmlDocDumpFormatMemoryEnc( doc, &xmlbuff, &len, "UTF-8", 0 );
+	char *buff = (char*)malloc(len+1);
+	memcpy(buff, xmlbuff, len);
+	buff[len]= 0;
+	xmlFree(xmlbuff);
+	xmlFreeDoc(doc);
+	return buff;
+}
+
+char* device_info_to_xml(struct list* iflist){
+	xmlDocPtr doc = create_xml_doc();
+	if( iflist == NULL )
+		return NULL;
+	xmlNodePtr devnode;
+	xmlNodePtr childnode;
+	
+	xmlNodePtr rootnode = create_xml_root_node(doc, "DEVICE_INFO");
+	struct timeval now;
+	gettimeofday(&now, NULL);
+	char * time = PRINTTIME(now);
+	add_xml_child(rootnode, "timestamp",time); free(time);
+
+	devnode = add_xml_child(rootnode, "device", NULL);
+	char aid[24];
+	sprintf(aid,"%d", localrouter.agentid);
+	add_xml_child_prop(devnode, "id",aid); 
+
+	ifTable* node = ifList->next;
+
+
+	char value[50];
+	while(node)
+	{
+		// Query The Latest HW_STATE
+        struct list* result = list_new();
+		struct rinterface* iface;
+		int i = atoi(node->ifdex);
+
+        int total = 0;
+        get_interface( iflist, Q_CTID, &i, &result , &total );
+        if ( total >= 1)
+        {
+            iface = (struct rinterface*)result->head->data;
+			int hw_state =  iface->hw_state ;
+			sprintf(value,"%d",hw_state);
+        }
+		else return 0;
+	    list_delete_all_node(result);
+	    list_free(result);
+		// Add the Element
+		childnode = add_xml_child(devnode, "interface", NULL);
+		add_xml_child_prop(childnode, "id", node->ifdex);
+		add_xml_child(childnode, "interface_name", node->ifDescr);
+		add_xml_child(childnode, "ipv4_address", node->ip);
+		add_xml_child(childnode, "ipv4_mask", node->netMask);
+		add_xml_child(childnode, "mac_address", node->physAddress);
+		add_xml_child(childnode, "if_bandwidth", node->ifBandwidth);
+		add_xml_child(childnode, "hw_status", value);
+		node = node->next;
+	}
+	u8 *xmlbuff;
+	int len  = 0;
+	xmlDocDumpFormatMemoryEnc( doc, &xmlbuff, &len, "UTF-8", 0 );
+	char *buff = (char*)malloc(len+1);
+	memcpy(buff, xmlbuff, len);
+	buff[len]= 0;
+	xmlFree(xmlbuff);
+	xmlFreeDoc(doc);
+	return buff;
+}
+char* ifrate_info_to_xml(struct list* iflist){
+	xmlDocPtr doc = create_xml_doc();
+	if( iflist == NULL )
+		return NULL;
+	xmlNodePtr devnode;
+	xmlNodePtr childnode;
+	
+	xmlNodePtr rootnode = create_xml_root_node(doc, "TRAFFIC_INFO");
+	struct timeval now;
+	gettimeofday(&now, NULL);
+	char * time = PRINTTIME(now);
+	add_xml_child(rootnode, "timestamp",time); free(time);
+
+	devnode = add_xml_child(rootnode, "device", NULL);
+	char aid[24];
+	sprintf(aid,"%d", localrouter.agentid);
+	add_xml_child_prop(devnode, "id",aid); 
+
+	ifTable* node = ifList->next;
+
+
+	char value[50];
+	while(node)
+	{
+        struct list* result = list_new();
+		struct rinterface* iface;
+		int i = atoi(node->ifdex);
+
+        int total = 0;
+        get_interface( iflist, Q_CTID, &i, &result , &total );
+        if ( total >= 1)
+        {
+            iface = (struct rinterface*)result->head->data;
+        }
+		else return 0;
+	    list_delete_all_node(result);
+	    list_free(result);
+		// Add the Element
+		childnode = add_xml_child(devnode, "interface", NULL);
+		add_xml_child_prop(childnode, "id", node->ifdex);
+		sprintf(value,"%lld",iface->send_rate);
+		add_xml_child(childnode, "out_rate", value);
+		memset(value, 0x0, 50);
+		sprintf(value,"%lld",iface->recv_rate);
+		add_xml_child(childnode, "in_rate", value);
+		node = node->next;
+	}
+	u8 *xmlbuff;
+	int len  = 0;
+	xmlDocDumpFormatMemoryEnc( doc, &xmlbuff, &len, "UTF-8", 0 );
+	char *buff = (char*)malloc(len+1);
+	memcpy(buff, xmlbuff, len);
+	buff[len]= 0;
+	xmlFree(xmlbuff);
+	xmlFreeDoc(doc);
+	return buff;
+}
+
+char* bgp_path_attr_to_xml(char* data)
+{
+	xmlDocPtr doc = create_xml_doc();
+	xmlNodePtr devnode;
+	xmlNodePtr childnode;
+	
+	xmlNodePtr rootnode = create_xml_root_node(doc, "SNAPSHOT");
+	devnode = add_xml_child(rootnode, "ROUTER", NULL);
+	char aid[24];
+	sprintf(aid,"%d", localrouter.agentid);
+	add_xml_child_prop(devnode, "id",aid); 
+
+	struct timeval now;
+	gettimeofday(&now, NULL);
+	char * time = PRINTTIME(now);
+	add_xml_child(devnode, "timestamp",time); free(time);
+
+	add_xml_child(devnode, "BgpPathAttrTable", data);
+
+	u8 *xmlbuff;
+	int len  = 0;
+	xmlDocDumpFormatMemoryEnc( doc, &xmlbuff, &len, "UTF-8", 0 );
+	char *buff = (char*)malloc(len+1);
+	memcpy(buff, xmlbuff, len);
+	buff[len]= 0;
+	xmlFree(xmlbuff);
+	xmlFreeDoc(doc);
+	return buff;
 }
 
 char *interfaceinfo_to_xml(ifTable *head)
@@ -394,7 +851,7 @@ char *interfaceinfo_to_xml(ifTable *head)
 	add_xml_child(rootnode, "timestamp",time); free(time);
 
 	routernode = add_xml_child(rootnode, "ROUTER", NULL);
-	char* rid[24];
+	char rid[24];
 	sprintf(rid,"%d", localrouter.routerid);
 	add_xml_child_prop(routernode, "id",rid); 
 
@@ -437,14 +894,65 @@ void get_interface_info_from_snmp(char* routerip, char** buff, int* len)
 //	printIftable(ifList->next);
 }
 
-int device_interface_pack_xml();
 
-int traffic_info_pack_xml();
+int bgp_interface_info_to_xml()
+{
+	xmlDocPtr doc = create_xml_doc();
+	xmlNodePtr devnode;
+	xmlNodePtr childnode;
+	ifTable* node = ifList->next;
+	
+	xmlNodePtr rootnode = create_xml_root_node(doc, "BGP_INTERFACE");
+	struct timeval now;
+	gettimeofday(&now, NULL);
+	char * time = PRINTTIME(now);
+	add_xml_child(rootnode, "timestamp",time); free(time);
 
-int ospf_interface_pack_xml();
+	devnode = add_xml_child(rootnode, "device", NULL);
+	char* aid[24];
+	sprintf(aid,"%d", localrouter.agentid);
+	add_xml_child_prop(devnode, "id",aid); 
 
-int ospf_link_state_pack_xml();
+	char value[50];
+	while(node)
+	{
+		// Query The Latest TimeInterval
+        struct list* result = list_new();
+		struct rinterface* iface;
+		struct proto_info *pinfo;
+		int i = atoi(node->ifdex);
+        int total = 0;
+        get_interface( iflist, Q_CTID, &i, &result , &total );
+        if ( total >= 1)
+        {
+            iface = (struct rinterface*)result->head->data;
+			pinfo = iface->proto_info;
+        }
+		else return 0;
+	    list_delete_all_node(result);
+	    list_free(result);
+		
+		childnode = add_xml_child(devnode, "interface", NULL);
+		add_xml_child_prop(childnode, "id", node->ifdex);
+		add_xml_child(childnode, "protocol", "bgp");
+		sprintf(value, "%d", pinfo->bgp_type);
+		add_xml_child(childnode, "type", value);
+		node = node->next;
+	}
+	u8 *xmlbuff;
+	int len  = 0;
+	xmlDocDumpFormatMemoryEnc( doc, &xmlbuff, &len, "UTF-8", 0 );
+	char *buff = (char*)malloc(len+1);
+	memcpy(buff, xmlbuff, len);
+	buff[len]= 0;
+	xmlFree(xmlbuff);
+	xmlFreeDoc(doc);
+	return buff;
+}
 
-int bgp_interface_pack_xml();
-
-int bgp_link_state_pack_xml();
+int send_bgp_interface_info()
+{
+	char* buff = bgp_interface_info_to_xml();
+	int len = strlen(buff);
+	module_send_data( buff, len, UP_BGP_INTERFACE_INFO);
+}

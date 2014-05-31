@@ -23,6 +23,7 @@ enum if_type
 };
 
 struct neighbor{
+	u32 devid;
     u32 rid;
     struct in_addr router_addr;
     struct in_addr agent_addr;
@@ -32,6 +33,14 @@ struct neighbor{
 #define ROUTER_BGP  2
 #define BGP_EBGP 1
 #define BGP_IBGP 2
+
+struct ospf_proto_info {
+	u32 hello_interval;
+	u32 dead_interval;
+};
+
+
+
 struct proto_info{
     u32 proto_type;
 union{
@@ -52,11 +61,19 @@ struct rinterface{
     struct proto_info *proto_info;
     struct neighbor *neighbor;
     struct interface* details;
+	u64 send_rate;
+	u64 recv_rate;
+	u64 send_packet;
+	u64 recv_packet;
     void *vinterface;
 };
 
 #define CONFIGFILE "interface.cfg"
 void get_interface_info_from_snmp(char* routerip, char** buff, int* len);
 int update_interface_from_snmp(char *routerip);
+void device_info_update_thread();
+void ospf_interface_info_update_thread();
+void ifrate_info_detect_daemon();
+int send_bgp_interface_info();
 
 #endif /* __INTERFACE_H__ */

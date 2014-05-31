@@ -108,8 +108,8 @@ am_libpmaicm_a_OBJECTS = icm.$(OBJEXT) server.$(OBJEXT) \
 libpmaicm_a_OBJECTS = $(am_libpmaicm_a_OBJECTS)
 libpmapem_a_AR = $(AR) $(ARFLAGS)
 libpmapem_a_LIBADD =
-am_libpmapem_a_OBJECTS = pem.$(OBJEXT) server.$(OBJEXT) \
-	socket.$(OBJEXT)
+am_libpmapem_a_OBJECTS = libpmapem_a-pem.$(OBJEXT) \
+	libpmapem_a-server.$(OBJEXT) libpmapem_a-socket.$(OBJEXT)
 libpmapem_a_OBJECTS = $(am_libpmapem_a_OBJECTS)
 libpmasocket_a_AR = $(AR) $(ARFLAGS)
 libpmasocket_a_LIBADD =
@@ -131,12 +131,12 @@ DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
 	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
@@ -322,6 +322,7 @@ libpmaicm_a_SOURCES = icm.c\
 					server.c\
 					socket.c
 
+libpmapem_a_CFLAGS = -I/usr/include/libxml2
 all: all-am
 
 .SUFFIXES:
@@ -388,7 +389,9 @@ distclean-compile:
 
 include ./$(DEPDIR)/dbm.Po
 include ./$(DEPDIR)/icm.Po
-include ./$(DEPDIR)/pem.Po
+include ./$(DEPDIR)/libpmapem_a-pem.Po
+include ./$(DEPDIR)/libpmapem_a-server.Po
+include ./$(DEPDIR)/libpmapem_a-socket.Po
 include ./$(DEPDIR)/server.Po
 include ./$(DEPDIR)/socket.Po
 
@@ -412,6 +415,48 @@ include ./$(DEPDIR)/socket.Po
 #	$(AM_V_CC)source='$<' object='$@' libtool=yes \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(LTCOMPILE) -c -o $@ $<
+
+libpmapem_a-pem.o: pem.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -MT libpmapem_a-pem.o -MD -MP -MF $(DEPDIR)/libpmapem_a-pem.Tpo -c -o libpmapem_a-pem.o `test -f 'pem.c' || echo '$(srcdir)/'`pem.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/libpmapem_a-pem.Tpo $(DEPDIR)/libpmapem_a-pem.Po
+#	$(AM_V_CC)source='pem.c' object='libpmapem_a-pem.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -c -o libpmapem_a-pem.o `test -f 'pem.c' || echo '$(srcdir)/'`pem.c
+
+libpmapem_a-pem.obj: pem.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -MT libpmapem_a-pem.obj -MD -MP -MF $(DEPDIR)/libpmapem_a-pem.Tpo -c -o libpmapem_a-pem.obj `if test -f 'pem.c'; then $(CYGPATH_W) 'pem.c'; else $(CYGPATH_W) '$(srcdir)/pem.c'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/libpmapem_a-pem.Tpo $(DEPDIR)/libpmapem_a-pem.Po
+#	$(AM_V_CC)source='pem.c' object='libpmapem_a-pem.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -c -o libpmapem_a-pem.obj `if test -f 'pem.c'; then $(CYGPATH_W) 'pem.c'; else $(CYGPATH_W) '$(srcdir)/pem.c'; fi`
+
+libpmapem_a-server.o: server.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -MT libpmapem_a-server.o -MD -MP -MF $(DEPDIR)/libpmapem_a-server.Tpo -c -o libpmapem_a-server.o `test -f 'server.c' || echo '$(srcdir)/'`server.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/libpmapem_a-server.Tpo $(DEPDIR)/libpmapem_a-server.Po
+#	$(AM_V_CC)source='server.c' object='libpmapem_a-server.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -c -o libpmapem_a-server.o `test -f 'server.c' || echo '$(srcdir)/'`server.c
+
+libpmapem_a-server.obj: server.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -MT libpmapem_a-server.obj -MD -MP -MF $(DEPDIR)/libpmapem_a-server.Tpo -c -o libpmapem_a-server.obj `if test -f 'server.c'; then $(CYGPATH_W) 'server.c'; else $(CYGPATH_W) '$(srcdir)/server.c'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/libpmapem_a-server.Tpo $(DEPDIR)/libpmapem_a-server.Po
+#	$(AM_V_CC)source='server.c' object='libpmapem_a-server.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -c -o libpmapem_a-server.obj `if test -f 'server.c'; then $(CYGPATH_W) 'server.c'; else $(CYGPATH_W) '$(srcdir)/server.c'; fi`
+
+libpmapem_a-socket.o: socket.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -MT libpmapem_a-socket.o -MD -MP -MF $(DEPDIR)/libpmapem_a-socket.Tpo -c -o libpmapem_a-socket.o `test -f 'socket.c' || echo '$(srcdir)/'`socket.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/libpmapem_a-socket.Tpo $(DEPDIR)/libpmapem_a-socket.Po
+#	$(AM_V_CC)source='socket.c' object='libpmapem_a-socket.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -c -o libpmapem_a-socket.o `test -f 'socket.c' || echo '$(srcdir)/'`socket.c
+
+libpmapem_a-socket.obj: socket.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -MT libpmapem_a-socket.obj -MD -MP -MF $(DEPDIR)/libpmapem_a-socket.Tpo -c -o libpmapem_a-socket.obj `if test -f 'socket.c'; then $(CYGPATH_W) 'socket.c'; else $(CYGPATH_W) '$(srcdir)/socket.c'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/libpmapem_a-socket.Tpo $(DEPDIR)/libpmapem_a-socket.Po
+#	$(AM_V_CC)source='socket.c' object='libpmapem_a-socket.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmapem_a_CFLAGS) $(CFLAGS) -c -o libpmapem_a-socket.obj `if test -f 'socket.c'; then $(CYGPATH_W) 'socket.c'; else $(CYGPATH_W) '$(srcdir)/socket.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

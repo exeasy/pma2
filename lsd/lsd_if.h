@@ -12,6 +12,7 @@ enum eth_state{
 
 struct neighbor_pma{
     u32 rid;
+	u32 device_id;
     struct in_addr pma_ctl_addr;
     struct in_addr router_addr;
 };
@@ -58,6 +59,7 @@ struct lsd_router //we use this struct to record the area and access interface
 struct autonomous_zone //area in ospf 
 {
      struct autonomous_zone* next; 
+	 u32 device_id ; //agent id 
      u32 r_id;  //routerid exposed to the area
      u32 az_id;  //area id
      id_t lsdb; // lsdb of the area

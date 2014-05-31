@@ -2,10 +2,11 @@
 <pma_conf>
 <comm_type>1</comm_type>
 <version>3</version>
+<as_num>0</as_num>
 <pma_id>0.0.0.124</pma_id>
 <listen_port>8025</listen_port>
 <server>
-<ip>192.168.3.248</ip>
+<ip>192.168.69.9</ip>
 <port>9181</port>
 </server>
 <alca>
@@ -22,6 +23,7 @@
 </rltm>
 <module>
 <ic>
+<device_type>1</device_type>
 <outside_enable>0</outside_enable>
 <router_ip>127.0.0.1</router_ip>
 <local_ip>10.10.124.124</local_ip>

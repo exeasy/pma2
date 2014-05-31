@@ -11,4 +11,4 @@ libpmadbm_a_SOURCES=dbm.c\
 libpmaicm_a_SOURCES=icm.c\
 					server.c\
 					socket.c
-
+libpmapem_a_CFLAGS=-I/usr/include/libxml2

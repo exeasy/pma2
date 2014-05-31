@@ -9,6 +9,7 @@ struct dbm_conf{
 	int snapshoot_timeval;
 	int policy_type;
 	int pma_id;
+	int router_id;
 };
 
 struct lsdb_msgheader{

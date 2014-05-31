@@ -12,8 +12,10 @@
 #include <router/interface.h>
 #include <router/routertable.h>
 #include <snmp/includes/pma_api.h>
+#include <snmp/includes/snmpcore.h>
 #include <lsd/lsdsrv.h>
 #include <logger/logger.h>
+#include <snmp/includes/snmpcore.h>
 #include "icm.h"
 
 
@@ -25,6 +27,9 @@ pthread_t lsd_thread;
 pthread_t rt_thread;
 pthread_t spf_thread;
 pthread_t ifinfo_thread;
+pthread_t devinfo_thread;
+pthread_t ospfinfo_thread;
+pthread_t bgppath_thread;
 
 struct icm_conf conf;
 
@@ -36,10 +41,10 @@ int icm_init()
     module_init(ICM);
     lsd_init();
     lsd_thread = 0;
-    set_conf_type(IC_CONF);
+    set_conf_type(ICM_CONF);
     add_ctl(packet_handler, PMA_LIST, pma_list_handle,1 );
     add_ctl(packet_handler, ACK,      ack_handle, 1);
-    add_ctl(packet_handler, IC_CONF, conf_handle, 1);
+    add_ctl(packet_handler, ICM_CONF, conf_handle, 1);
 	pool = malloc_z(Pool);
 	init_pthread_pool(pool);
 	start_pthread_pool(pool);
@@ -50,74 +55,9 @@ icm_start()
 {
     module_start();
 }
+extern itemopt ospfrouterid;
+extern itemopt bgpidentifier;
 
-    int
-conf_handle( struct Packet_header *pkt )
-{
-    if ( pkt->pkt_len == 0) return 0;
-	memcpy(&conf,pkt->pkt,pkt->pkt_len);
-	int self_id  = conf.pma_id;
-	//router id 
-	char routerid[24];
-	//local ip
-    char local_ip[24];
-	//local address mask
-    char local_mask[24];
-	//router ip
-	static char routerip[24];
-
-	inet_ntop(AF_INET,&conf.local_ip,local_ip,24);
-	inet_ntop(AF_INET,&conf.netmask,local_mask,24);
-	inet_ntop(AF_INET,&conf.router_ip,routerip,24);	
-	DEBUG(INFO,"Receive Config:\nRouterID[%d]\nRouterIP:[%s]\nPMAIP[%s]\nPMANETMASK[%s]\n",\
-		self_id,routerip,local_ip,local_mask);
-	struct in_addr pma_addr;
-	inet_pton(AF_INET,local_ip,&pma_addr);//local_ip come from the config recv by the basemodule.
-
-	//device type ( 1: ospf 2: bgp 3:both)
-	int type = conf.device_type;
-
-	if( type == OSPF_ROUTER )
-	getOspfRouterId(routerip,routerid);//get the router id
-	else if ( type == BGP_ROUTER )
-	getBgpRouterId(routerip, routerid);
-	else {}
-
-	int rid = 0 ;
-	inet_pton(AF_INET, routerid, &rid);
-
-	
-    init_local_router(rid , self_id, conf.router_ip, type);
-	
-    update_interface_from_snmp(routerip);
-//	char ip[24] = "192.168.84.128";
-//	struct in_addr temp; 
-//	inet_pton(AF_INET, ip , &temp);
-//
-//    set_neighbor_agent_address(1,temp.s_addr);
-//	sprintf(ip,"192.168.84.101");
-//	inet_pton(AF_INET, ip , &temp);
-//    set_neighbor_agent_address(1,temp.s_addr);
-//    lsd_iflist_init();
-//    if( lsd_thread == 0 )
-//    pthread_create(&lsd_thread ,NULL,  lsd_start ,  NULL);
-//	if ( rt_thread == 0 )
-//		pthread_create(&rt_thread, NULL, route_table_obtain , NULL);
-	//Init the Neighbor_list
-	//init_neighbor_list(pma_addr);
-	//LoadInterfaceFromSnmp();
-	//int ifid = conf.if_id;
-	//if(ifid == -1)
-	//{
-	//	update_timer_all_interface();
-	//}
-	//else
-	//{
-	//	update_timer_by_interface_id(ifid);
-	//}
-	//init_flag = 1;
-    
-}
 
 int delay_time(int n)//ms
 {
@@ -125,6 +65,31 @@ int delay_time(int n)//ms
 	delay.tv_sec = n/1000;
 	delay.tv_usec = n%1000 * 1000; // n ms
 	select(0, NULL, NULL, NULL, &delay);
+}
+
+void bgp_path_attr_table_detect_daemon()
+{
+	while(1){
+		bgp_path_attr_table_detect_thread();
+		delay_time(1000);
+	}
+}
+
+void interface_detect_daemon()
+{
+	while(1)
+	{
+		device_info_update_thread();
+		delay_time(1000);
+	}
+}
+void ospf_interface_detect_daemon()
+{
+	while(1)
+	{
+		ospf_interface_info_update_thread();
+		delay_time(1000);
+	}
 }
 
 void route_table_thread(void* args)
@@ -166,7 +131,7 @@ void ifinfo_thread_function(void *args)
 	char* routerip = (char*)args;
 	char* buff; int len;
 	get_interface_info_from_snmp(routerip, &buff, &len);
-	module_send_data(buff, len, UP_INTERFACE_INFO); 
+	module_send_data(buff, len, UP_TRAFFICE_INFO); 
 	free(buff);
 }
 int ifinfo_daemon()
@@ -175,7 +140,8 @@ int ifinfo_daemon()
 	inet_ntop(AF_INET, &conf.router_ip,routerip,24); 
 	while(1)
 	{
-		ifinfo_thread_function(routerip);
+		ifrate_info_detect_daemon();
+//		ifinfo_thread_function(routerip);
 //		add_task_to_pool(pool, ifinfo_thread_function, (void*)routerip);
 		printf("Put the ifinfo task into pool\n");
 		delay_time(2000);
@@ -248,7 +214,6 @@ int send_route_table(struct route_table * rt)
 }
 
 
-
     int
 pma_list_handle( struct Packet_header *pkt )
 {
@@ -259,22 +224,83 @@ pma_list_handle( struct Packet_header *pkt )
 	struct pma_list* pmalist = (struct pma_list*)data;
     for( i = 0; i< count ; i++)
     {
-        int id = ntohl(pmalist[i].pma_id);
-        char helloip[24];
-        sprintf(helloip, "10.10.%d.%d",id,id);
-        struct in_addr ip;
-        inet_pton(AF_INET, helloip, &ip);
-        printf("set neighbor pma %d %s\n",id, helloip);
-        set_neighbor_agent_address(id, ip);
+        int devid = pmalist[i].device_id;
+		int rid = pmalist[i].router_id;
+		struct in_addr ip = pmalist[i].ip;
+        set_neighbor_agent_address(devid, rid, ip);
     }
     lsd_iflist_init();
 	// lsd 采用了zebra 伪线程，这里没有使用timer定时器，而是直接新建了线程，在线程内部无限循环
     if( lsd_thread == 0 )
 	    pthread_create(&lsd_thread ,NULL,  lsd_start ,  NULL);
+}
+    int
+conf_handle( struct Packet_header *pkt )
+{
+    if ( pkt->pkt_len == 0) return 0;
+	memcpy(&conf,pkt->pkt,pkt->pkt_len);
+	int self_id  = conf.pma_id;
+	//router id 
+	char routerid[24];
+	//local ip
+    char local_ip[24];
+	//local address mask
+    char local_mask[24];
+	//router ip
+	static char routerip[24];
+
+	inet_ntop(AF_INET,&conf.local_ip,local_ip,24);
+	inet_ntop(AF_INET,&conf.netmask,local_mask,24);
+	inet_ntop(AF_INET,&conf.router_ip,routerip,24);	
+	DEBUG(INFO,"Receive Config:\nRouterID[%d]\nRouterIP:[%s]\nPMAIP[%s]\nPMANETMASK[%s]\n",\
+		self_id,routerip,local_ip,local_mask);
+	struct in_addr pma_addr;
+	inet_pton(AF_INET,local_ip,&pma_addr);//local_ip come from the config recv by the basemodule.
+
+	snmp_init(routerip);
+
+	//device type ( 1: ospf 2: bgp 3:both)
+	int type = conf.device_type;
+
+
+	if( type == OSPF_ROUTER )
+	{
+		get_ospf_routerid(routerid);
+	}
+//	getOspfRouterId(routerip,routerid);//get the router id
+	else if ( type == BGP_ROUTER )
+	{
+		get_bgp_routerid(routerid);
+	}
+//	getBgpRouterId(routerip, routerid);
+	else {}
+
+	int rid = 0 ;
+	inet_pton(AF_INET, routerid, &rid);
+
+
+    init_local_router(rid , self_id, conf.router_ip, type);
+	
+    update_interface_from_snmp(routerip);
 	if ( rt_thread == 0 )
 		pthread_create(&rt_thread, NULL, route_table_daemon , NULL);
-	if ( spf_thread == 0 )
-		pthread_create(&spf_thread, NULL, spf_count_daemon, NULL);
 	if ( ifinfo_thread == 0 )
 		pthread_create(&ifinfo_thread, NULL, ifinfo_daemon, NULL);
+	if ( devinfo_thread == 0 )
+		pthread_create(&devinfo_thread, NULL, interface_detect_daemon, NULL);
+
+	if ( type == OSPF_ROUTER )
+	{
+	if ( spf_thread == 0 )
+		pthread_create(&spf_thread, NULL, spf_count_daemon, NULL);
+	if ( ospfinfo_thread == 0 )
+		pthread_create(&ospfinfo_thread, NULL, ospf_interface_detect_daemon, NULL);
+	}
+
+	if ( type == BGP_ROUTER )
+	{
+	if ( bgppath_thread == 0 )
+		pthread_create(&bgppath_thread, NULL, bgp_path_attr_table_detect_daemon, NULL);
+	send_bgp_interface_info();
+	}
 }

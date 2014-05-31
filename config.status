@@ -393,7 +393,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile utils/Makefile policy/Makefile conf/Makefile control/Makefile comm/Makefile lib/Makefile reg/Makefile logger/Makefile mmanager/Makefile router/Makefile server/Makefile timer/Makefile snmp/Makefile netlink/Makefile lsdb/Makefile db/Makefile ddc/Makefile lsd/Makefile vty/Makefile test/Makefile"
+config_files=" Makefile utils/Makefile policy/Makefile conf/Makefile control/Makefile command/Makefile comm/Makefile lib/Makefile reg/Makefile logger/Makefile mmanager/Makefile router/Makefile server/Makefile timer/Makefile snmp/Makefile netlink/Makefile lsdb/Makefile db/Makefile ddc/Makefile lsd/Makefile vty/Makefile test/Makefile"
 config_headers=" config.h"
 config_commands=" depfiles libtool"
 
@@ -808,6 +808,7 @@ do
     "policy/Makefile") CONFIG_FILES="$CONFIG_FILES policy/Makefile" ;;
     "conf/Makefile") CONFIG_FILES="$CONFIG_FILES conf/Makefile" ;;
     "control/Makefile") CONFIG_FILES="$CONFIG_FILES control/Makefile" ;;
+    "command/Makefile") CONFIG_FILES="$CONFIG_FILES command/Makefile" ;;
     "comm/Makefile") CONFIG_FILES="$CONFIG_FILES comm/Makefile" ;;
     "lib/Makefile") CONFIG_FILES="$CONFIG_FILES lib/Makefile" ;;
     "reg/Makefile") CONFIG_FILES="$CONFIG_FILES reg/Makefile" ;;

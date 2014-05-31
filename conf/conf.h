@@ -19,6 +19,7 @@ struct dbm_conf{
 	int snapshoot_timeval;
 	int policy_type;
 	int pma_id;
+	int router_id;
 };
 
 struct pea_conf{
@@ -47,6 +48,7 @@ struct conf{
 extern struct conf pma_conf;
 extern char *conf_file;
 extern int conf_init();
+extern int get_device_type();
 extern int get_comm_type(void);
 extern int get_version();
 char *get_alca_address();

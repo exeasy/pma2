@@ -3,6 +3,7 @@
 #include <conf/conf.h>
 #include <comm/interior_daemon.h>
 #include <mmanager/module_manager.h>
+#include <server/srvconf.h>
 #include <vty.h>
 
 int vty_server();

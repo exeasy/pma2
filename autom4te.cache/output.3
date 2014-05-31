@@ -15395,10 +15395,9 @@ LIB_SNMP_INCLUDE=/usr/local/snmp/include/
 
 LIB_SNMP_LIB=/usr/local/snmp/lib/
 
-# Checks for typedefs, structures, and compiler characteristics.
-
+# Checks for typedefs, structures, and compiler characteristics.  
 # Checks for library functions.
-ac_config_files="$ac_config_files Makefile utils/Makefile policy/Makefile conf/Makefile control/Makefile comm/Makefile lib/Makefile reg/Makefile logger/Makefile mmanager/Makefile router/Makefile server/Makefile timer/Makefile snmp/Makefile netlink/Makefile lsdb/Makefile db/Makefile ddc/Makefile lsd/Makefile vty/Makefile test/Makefile"
+ac_config_files="$ac_config_files Makefile utils/Makefile policy/Makefile conf/Makefile control/Makefile command/Makefile comm/Makefile lib/Makefile reg/Makefile logger/Makefile mmanager/Makefile router/Makefile server/Makefile timer/Makefile snmp/Makefile netlink/Makefile lsdb/Makefile db/Makefile ddc/Makefile lsd/Makefile vty/Makefile test/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -16512,6 +16511,7 @@ do
     "policy/Makefile") CONFIG_FILES="$CONFIG_FILES policy/Makefile" ;;
     "conf/Makefile") CONFIG_FILES="$CONFIG_FILES conf/Makefile" ;;
     "control/Makefile") CONFIG_FILES="$CONFIG_FILES control/Makefile" ;;
+    "command/Makefile") CONFIG_FILES="$CONFIG_FILES command/Makefile" ;;
     "comm/Makefile") CONFIG_FILES="$CONFIG_FILES comm/Makefile" ;;
     "lib/Makefile") CONFIG_FILES="$CONFIG_FILES lib/Makefile" ;;
     "reg/Makefile") CONFIG_FILES="$CONFIG_FILES reg/Makefile" ;;

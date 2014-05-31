@@ -2,6 +2,7 @@
 #define PMA_HANDLER_H
 
 struct router_list{
+	int devid;
 	int rid;
 	int ip_addr;
 	struct router_list* next;
@@ -11,6 +12,8 @@ struct router_list{
 int handle_ops_pms_policy_send(void *);
 //OPS_PMS_MARI_SEND
 int handle_ops_pms_mari_send(void *);
+//OPS_TUNNEL_COMMAND
+int handle_ops_pms_tun_command(void *args);
 //NEIGHBOR_LIST
 int handle_ops_pms_neighbor_list(void *);
 //TC_TO_PMA_INTERFACE_INFO
@@ -28,6 +31,8 @@ int handle_ops_pms_tc_cmd(void *);
 //OPS_PMA_TRANS_PACKET
 int handle_trans_packet_to_pms(void *);
 
+//OPS_PMA_INIT_REPLY
+int handle_pma_init_reply(void* args);
 //OPS_PMS_LOGIN_RESP_OK
 int handle_ops_pms_login_resp_ok(void *);
 //OPS_PMS_LOGIN_FAILED
@@ -57,7 +62,16 @@ int handle_send_policy_dbm_to_pea(void *args);
 int handle_route_table_ic_to_pms(void *args);
 //UP_INTERFACE_INFO
 int handle_tc_message_to_pms(void *args);
-
+//UP_TRAFFICE_INFO
+int handle_traffice_info_ic_to_pms(void *args);
+//UP_BGP_INTERFACE_INFO
+int handle_bgp_interface_ic_to_pms(void *args);
+//UP_OSPF_INTERFACE_INFO
+int handle_ospf_interface_ic_to_pms(void *args);
+//UP_DEVICE_INFO
+int handle_device_info_ic_to_pms(void *args);
+//UP_BGP_PATH_TABLE_INFO
+int handle_bgp_path_info_ic_to_pms(void *args);
 
 int save_router_list_to_xml();
 int send_router_list_to_ic();

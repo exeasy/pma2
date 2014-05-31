@@ -555,11 +555,12 @@ m4trace:configure.ac:25: -1- m4_pattern_allow([^LIB_SNMP_INCLUDE$])
 m4trace:configure.ac:26: -1- AC_SUBST([LIB_SNMP_LIB], [/usr/local/snmp/lib/])
 m4trace:configure.ac:26: -1- AC_SUBST_TRACE([LIB_SNMP_LIB])
 m4trace:configure.ac:26: -1- m4_pattern_allow([^LIB_SNMP_LIB$])
-m4trace:configure.ac:30: -1- AC_CONFIG_FILES([Makefile
+m4trace:configure.ac:29: -1- AC_CONFIG_FILES([Makefile
 				utils/Makefile
 				policy/Makefile
 				conf/Makefile
 				control/Makefile
+				command/Makefile
 				comm/Makefile
 				lib/Makefile
 				reg/Makefile

@@ -6,28 +6,28 @@
 #include "lsdb_sender.h"
 
 
-char* create_interface_table_packet(char* iftable,int iflen,int* pkt_len){
-	int len = sizeof(Packet_header)+iflen;
-	Packet_header* packet = (Packet_header*)malloc(len);
-	packet->pkt_type = UP_INTERFACE_INFO;
-	packet->pkt_version = PMA_VERSION;
-	packet->pkt_len =len;
-	memcpy(packet->pkt,iftable,iflen);
-	*pkt_len = len;
-	return packet;
-}
-
-
-char* create_route_table_packet(char* rt,int rt_len,int* pkt_len){
-	int len = sizeof(Packet_header)+rt_len;
-	Packet_header* packet = (Packet_header*)malloc(len);
-	packet->pkt_type = UP_ROUTE_INFO;
-	packet->pkt_version = PMA_VERSION;
-	packet->pkt_len = len ;
-	memcpy(packet->pkt,rt,rt_len);
-	*pkt_len = len;
-	return packet;
-}
+//char* create_interface_table_packet(char* iftable,int iflen,int* pkt_len){
+//	int len = sizeof(Packet_header)+iflen;
+//	Packet_header* packet = (Packet_header*)malloc(len);
+//	packet->pkt_type = UP_INTERFACE_INFO;
+//	packet->pkt_version = PMA_VERSION;
+//	packet->pkt_len =len;
+//	memcpy(packet->pkt,iftable,iflen);
+//	*pkt_len = len;
+//	return packet;
+//}
+//
+//
+//char* create_route_table_packet(char* rt,int rt_len,int* pkt_len){
+//	int len = sizeof(Packet_header)+rt_len;
+//	Packet_header* packet = (Packet_header*)malloc(len);
+//	packet->pkt_type = UP_ROUTE_INFO;
+//	packet->pkt_version = PMA_VERSION;
+//	packet->pkt_len = len ;
+//	memcpy(packet->pkt,rt,rt_len);
+//	*pkt_len = len;
+//	return packet;
+//}
 
 char* create_lsdb_packet(int action,lsdb_Msg* msg,int* len){
 	int lsdb_msg_len = sizeof(lsdb_MsgHeader)+ sizeof(lsdb_Msg);

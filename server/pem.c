@@ -6,10 +6,16 @@
 #include <control/control.h>
 #include <logger/logger.h>
 #include <snmp/includes/pma_api.h>
+#include <utils/xml.h>
+#include <command/routercmd.h>
 #include "pem.h"
 
 ifTable *ifList;
 int ifaceList[MAX_INTERFACE];
+struct bgp_interface * ebgp_list;
+struct bgp_interface * ibgp_list;
+char router_ip[24];
+char as_id[24];
 
 struct pem_conf conf;
 
@@ -18,10 +24,12 @@ int pem_init()
 	log_type_init();
 	log_init();
 	module_init(PEM);
-	set_conf_type(PEA_CONF);
-	add_ctl(packet_handler, PEA_CONF, conf_handle, 1 );
+	set_conf_type(PEM_CONF);
+	add_ctl(packet_handler, PEM_CONF, conf_handle, 1 );
 	add_ctl(packet_handler, ACK, ack_handle, 1);
 	add_ctl(packet_handler, POLICY_INFO,policy_handle,1 );
+	add_ctl(packet_handler, BGP_MRAI, mrai_handle, 1);
+	add_ctl(packet_handler, TC_TUNNEL_COMMAND, tunnel_command_handle, 1);
 } 
 
 int pem_start()
@@ -38,9 +46,177 @@ int conf_handle(struct Packet_header* pkt)
 	inet_ntop(AF_INET,&conf.router_ip, tmp, 24);
 	DEBUG(INFO, "Config parse: %d %s\n",conf.pma_id, tmp);
 	init_interface_list();
+	init_bgp_interface();
 	return 1;
 }
+//Get the interface running egp
+int init_bgp_interface()
+{
+    ebgp_list = (struct bgp_interface *)malloc(sizeof(struct bgp_interface));
+    ibgp_list = (struct bgp_interface *)malloc(sizeof(struct bgp_interface));
+    ebgp_list->next = NULL;
+    ibgp_list->next = NULL;
+    inet_ntop(AF_INET,&conf.router_ip,router_ip,24);
+    ifTable *iflist = NULL;
+    ifTable *ifp = NULL;
+    getBgpIfInfos(router_ip,&iflist);
+    if(iflist == NULL)
+    {
+        printf("Get interface info from snmp error\n");
+        return -1;
+    }
+    struct bgp_interface *handle = ebgp_list;
+    struct bgp_interface *handle_i = ibgp_list;
+    getBgpLocalAs(router_ip,as_id);
+    int localasid = atoi(as_id);
+    ifp = iflist->next;
+    while(ifp!=NULL)
+    {
+        int remoteasid = atoi(ifp->areaId);
+        if(remoteasid == localasid)//ibgp
+        {
+            handle_i->next = (struct bgp_interface *)malloc(sizeof(struct bgp_interface));
+            handle_i = handle_i->next;
+            handle_i->ifid = atoi(ifp->ifdex);
+            strcpy(handle_i->name, ifp->ifDescr);
+            strcpy(handle_i->local_ip, ifp->ip);
+            strcpy(handle_i->neighbor_ip, ifp->ospfNbrIp);
+            handle_i->next = NULL;
+            //handle_i = handle_i->next;
+        }
+        else if(remoteasid != 0)//ebgp
+        {
+            handle->next = (struct bgp_interface *)malloc(sizeof(struct bgp_interface));
+            handle = handle->next;
+            handle->ifid = atoi(ifp->ifdex);
+            strcpy(handle->name, ifp->ifDescr);
+            strcpy(handle->local_ip,ifp->ip);
+            strcpy(handle->neighbor_ip,ifp->ospfNbrIp);
+            handle->next = NULL;
+        }
+        ifp = ifp->next;
+    }
+    handle = ebgp_list->next;
+    while(handle!=NULL)
+    {
+        printf("Inteface %d\n",handle->ifid);
+        printf("Name %s\n",handle->name);
+        printf("LocalAddress %s\n",handle->local_ip);
+        printf("RemoteAddress %s\n",handle->neighbor_ip);
+        handle = handle -> next;
+    }
+    handle_i = ibgp_list->next;
+    while(handle_i!=NULL)
+    {
+        printf("Inteface %d\n",handle_i->ifid);
+        printf("Name %s\n",handle_i->name);
+        printf("LocalAddress %s\n",handle_i->local_ip);
+        printf("RemoteAddress %s\n",handle_i->neighbor_ip);
+        handle_i = handle_i -> next;
+    }
+}
 
+
+int set_interface_mrai(char* ifname, int value)
+{
+    if(value < 0 || value > 100)
+    {
+        printf("Mrai value not right\n");
+        return -1;
+    }
+
+    struct bgp_interface *handle = ebgp_list->next;
+    while(handle!=NULL)
+    {
+        if(strcmp(handle->name, ifname) == 0)
+        {
+            DEBUG(INFO,"RouterIP:%s Area: %s Neighbor: %s Value:%d",router_ip, as_id ,handle->neighbor_ip, value);
+            setBgpPeerUpdateInterval(router_ip, as_id, handle->neighbor_ip, value);
+            break;
+        }
+        handle = handle -> next;
+    }
+    return 0;
+}
+int handle_mrai_value(char* pkt, int length)
+{
+    xmlDocPtr doc = NULL;
+    xmlNodePtr root_node = NULL;
+
+    char* xmlbuff = (char*)malloc(length);
+    memcpy(xmlbuff, pkt, length);
+
+    doc = xmlParseDoc((xmlChar *)pkt);
+
+    if(doc == NULL)
+    {
+        DEBUG(ERROR, "xmlParseDoc failed %s", strerror(errno));
+                return -1;
+    }
+
+    root_node = xmlDocGetRootElement(doc);
+
+    if (root_node == NULL) {
+                xmlFreeDoc(doc);
+                DEBUG(ERROR, "xmlDocGetRootElement failed %s", strerror(errno));
+                return -1;
+        }
+
+    xmlNodePtr cur_node = NULL;
+        xmlNodePtr child_node = NULL;
+        char *endptr = NULL;
+        int base = 10;
+        int count = 0;
+    xmlChar* name;
+    xmlChar* ifname;
+    for (cur_node = root_node->children; cur_node!= NULL; cur_node = cur_node->next) {
+                if (cur_node->type == XML_ELEMENT_NODE) {
+                        if (xmlStrcmp(cur_node->name, (const xmlChar *)("timestamp")) == 0) {
+                                continue;
+                                }
+            if (xmlStrcmp(cur_node->name, (const xmlChar *)("item")) == 0 )
+            {
+               name =  xmlGetProp(cur_node, "name");
+               if(xmlStrcmp(name , (const xmlChar*)("interfacename")) == 0)
+               {
+                    ifname = xmlNodeListGetString(doc, cur_node->xmlChildrenNode, 1);
+
+               }
+               else if(xmlStrcmp(name , (const xmlChar*)("mrai")) == 0)
+               {
+                    xmlChar* Value = xmlNodeListGetString(doc,cur_node->xmlChildrenNode,1);
+                    int value = strtol((char *)Value, &endptr, base);
+                    set_interface_mrai((char*)ifname,value);
+                    xmlFree(name);
+                    xmlFree(Value);
+               }
+            }
+                }
+    }
+
+
+    //From PMS recevied a mrai value, then we set it to the interface running EGP
+    //first get the value from packet
+   /* char sdata[64];
+    strncpy(sdata,pkt,length);
+    int value = atoi(sdata);
+    */
+    return 0;
+
+
+}
+int mrai_handle(struct Packet_header* pkt)
+{
+	if( pkt->pkt_len == 0) return 0;
+	int ret = handle_mrai_value(pkt->pkt, pkt->pkt_len);
+	return ret;
+}
+int tunnel_command_handle(struct Packet_header* pkt)
+{
+	if( pkt->pkt_len == 0) return 0 ;
+	int ret = ExecuteRouterCMD(pkt->pkt, pkt->pkt_len);
+	return ret;
+}
 int policy_handle(struct Packet_header* pkt)
 {
 	if( pkt->pkt_len == 0) return 0;

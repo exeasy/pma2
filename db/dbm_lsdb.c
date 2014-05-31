@@ -2,8 +2,10 @@
 #include <utils/utils.h>
 #include <sqlite3.h>
 #include <dbutils.h>
+#include <server/dbm.h>
 #include "dbm_lsdb.h"
 
+extern struct dbm_conf conf;
 extern sqlite3 *db;
 extern struct query_reuslt * query_result ;
 
@@ -325,8 +327,7 @@ struct link_info* get_link_states_of_router(u32 areaid,u32 routerid , int *count
 void pack_lsdb_xml_header(char *buff,int *len, u32 routerid )
 {
 	sprintf(buff+*len,"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-						"<SNAPSHOT>\n"
-						"<ROUTER id=\"%d\">\n",routerid);
+						"<LINKSTATE>\n");
 	*len = strlen(buff);
 	time_t raw_time;
 	struct tm* time_info;
@@ -340,7 +341,7 @@ void pack_lsdb_xml_header(char *buff,int *len, u32 routerid )
 			time_info->tm_min,
 			time_info->tm_sec);
 	*len = strlen(buff);
-    sprintf(buff+*len, "<LSDB>\n");
+	sprintf(buff+*len, "<device id=\"%d\">\n",conf.pma_id);
     *len = strlen(buff);
 }
 void pack_lsdb_xml_router_of_area(char *buff, int *len , u32 routerid, u32 areaid)
@@ -352,11 +353,11 @@ void pack_lsdb_xml_router_of_area(char *buff, int *len , u32 routerid, u32 areai
 	{
 		sprintf(buff+*len, "\t\t<interface id=\"%d\">\n",links->ifid);
 		*len = strlen(buff);
-		sprintf(buff+*len, "\t\t\t<area_id>%d</area_id>\n",links->areaid);
+//		sprintf(buff+*len, "\t\t\t<area_id>%d</area_id>\n",links->areaid);
+//		*len = strlen(buff);
+		sprintf(buff+*len, "\t\t\t<n_device_id>%d</n_device_id>\n",links->nrid);
 		*len = strlen(buff);
-		sprintf(buff+*len, "\t\t\t<neighbor_id>%d</neighbor_id>\n",links->nrid);
-		*len = strlen(buff);
-		sprintf(buff+*len, "\t\t\t<neighbor_if>%d</neighbor_if>\n",links->nifid);
+		sprintf(buff+*len, "\t\t\t<n_interface_id>%d</n_interface_id>\n",links->nifid);
 		*len = strlen(buff);
 		sprintf(buff+*len, "\t\t\t<metric>%d</metric>\n",links->metric);
 		*len = strlen(buff);
@@ -370,14 +371,12 @@ void pack_lsdb_xml_router_of_area(char *buff, int *len , u32 routerid, u32 areai
 
 void pack_lsdb_xml_footer(char *buff , int *len)
 {
-    sprintf(buff+*len, "</LSDB>\n");
-    *len = strlen(buff);
-	sprintf(buff+*len, "</ROUTER>\n</SNAPSHOT>\n");
+	sprintf(buff+*len, "</device>\n</LINKSTATE>\n");
 	*len = strlen(buff);
 }
 /*  type == 1 local router links state */
 /*  type == 0 local area likns state */
-char* format_lsdb_to_xml(u32 areaid, u32 routerid,int type)
+char* format_lsdb_to_xml(u32 areaid, u32 deviceid,int type)
 {
 	int count;
 	struct link_info* links = get_link_states(areaid, &count);
@@ -386,21 +385,21 @@ char* format_lsdb_to_xml(u32 areaid, u32 routerid,int type)
 	char* buff = (char*)malloc(count*200+1024);
 	memset(buff, 0x00 , count*200+1024);
 	int len =0;
-	pack_lsdb_xml_header(buff, &len, routerid);
+	pack_lsdb_xml_header(buff, &len, deviceid);
 	while(routers)
 	{
 		int num = 0;
 		int rid = routers->rid;
-		if ( type == 1 && rid != routerid )
+		if ( type == 1 && rid != deviceid )
 		{
 			routers = routers->next;
 			continue;
 		}
-		sprintf(buff+len, "\t<router id=\"%d\">\n",rid);
-		len = strlen(buff);
+//		sprintf(buff+len, "\t<router id=\"%d\">\n",rid);
+//		len = strlen(buff);
         pack_lsdb_xml_router_of_area(buff, &len, rid, areaid);
-		sprintf(buff+len, "\t</router>\n");
-		len = strlen(buff);
+//		sprintf(buff+len, "\t</router>\n");
+//		len = strlen(buff);
 		routers  = routers->next;
 	}
     pack_lsdb_xml_footer(buff, &len);

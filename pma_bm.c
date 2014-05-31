@@ -3,14 +3,17 @@
 #include <comm/handler.h>
 #include <comm/header.h>
 #include <comm/comm.h>
+#include <conf/conf.h>
 #include <reg/reg.h>
 #include <control/control.h>
 #include <vty/vty.h>
+#include <snmp/includes/snmpcore.h>
 #include <logger/logger.h>
 int test(void *args)
 {
 	printf("This is a test pkt handle\n");
 }
+extern struct conf pma_conf;
 int main()
 {
 	
@@ -79,12 +82,44 @@ int main()
 	}
 	while(ret != 0);
 
+	char routerip[24];
+	char routerid[24];
+	inet_ntop(AF_INET, &pma_conf.ic_config.router_ip, routerip,24);
+	snmp_init(routerip);
+	if( pma_conf.ic_config.device_type == OSPF_ROUTER )
+	{
+		get_ospf_routerid(routerid);
+	}
+	else if ( pma_conf.ic_config.device_type == BGP_ROUTER )
+	{
+		get_bgp_routerid(routerid);
+	}
+	inet_pton(AF_INET, routerid, &pma_conf.dbm_config.router_id);
+	DEBUG(INFO,"AGENT INIT....");
+	do{
+		ret = agent_init_request(routerid);
+		if( ret != 0)
+		{
+			DEBUG(ERROR, "AGENT INIT ERROR");
+		}
+		else{
+			DEBUG(INFO,"AGENT INITED");
+			break;
+		}
+		sleep(10);
+	}
+	while( ret != 0);
+
 #endif
     ret = USING(timer);
     if (ret != 0 ){
         DEBUG(ERROR, "INIT TIMER FAILED");
         return -1;
     }
+
+	/* start the heart beat */
+	set_timer( 5, heart_beat_send, NULL, 0);
+
 	ret = USING(vty);
 	if (ret != 0) {
 		DEBUG(ERROR, "INIT VTY FAILED");

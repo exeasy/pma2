@@ -98,7 +98,7 @@ am__v_AR_0 = @echo "  AR      " $@;
 am__v_AR_1 = 
 libpmareg_a_AR = $(AR) $(ARFLAGS)
 libpmareg_a_LIBADD =
-am_libpmareg_a_OBJECTS = reg.$(OBJEXT)
+am_libpmareg_a_OBJECTS = libpmareg_a-reg.$(OBJEXT)
 libpmareg_a_OBJECTS = $(am_libpmareg_a_OBJECTS)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
@@ -116,12 +116,12 @@ DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
 	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
@@ -290,6 +290,7 @@ top_builddir = ..
 top_srcdir = ..
 noinst_LIBRARIES = libpmareg.a
 libpmareg_a_SOURCES = reg.c
+libpmareg_a_CFLAGS = -I../ -I/usr/include/libxml2
 noinst_HEADERS = reg.h
 all: all-am
 
@@ -340,7 +341,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/reg.Po
+include ./$(DEPDIR)/libpmareg_a-reg.Po
 
 .c.o:
 	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -362,6 +363,20 @@ include ./$(DEPDIR)/reg.Po
 #	$(AM_V_CC)source='$<' object='$@' libtool=yes \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(LTCOMPILE) -c -o $@ $<
+
+libpmareg_a-reg.o: reg.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmareg_a_CFLAGS) $(CFLAGS) -MT libpmareg_a-reg.o -MD -MP -MF $(DEPDIR)/libpmareg_a-reg.Tpo -c -o libpmareg_a-reg.o `test -f 'reg.c' || echo '$(srcdir)/'`reg.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/libpmareg_a-reg.Tpo $(DEPDIR)/libpmareg_a-reg.Po
+#	$(AM_V_CC)source='reg.c' object='libpmareg_a-reg.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmareg_a_CFLAGS) $(CFLAGS) -c -o libpmareg_a-reg.o `test -f 'reg.c' || echo '$(srcdir)/'`reg.c
+
+libpmareg_a-reg.obj: reg.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmareg_a_CFLAGS) $(CFLAGS) -MT libpmareg_a-reg.obj -MD -MP -MF $(DEPDIR)/libpmareg_a-reg.Tpo -c -o libpmareg_a-reg.obj `if test -f 'reg.c'; then $(CYGPATH_W) 'reg.c'; else $(CYGPATH_W) '$(srcdir)/reg.c'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/libpmareg_a-reg.Tpo $(DEPDIR)/libpmareg_a-reg.Po
+#	$(AM_V_CC)source='reg.c' object='libpmareg_a-reg.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libpmareg_a_CFLAGS) $(CFLAGS) -c -o libpmareg_a-reg.obj `if test -f 'reg.c'; then $(CYGPATH_W) 'reg.c'; else $(CYGPATH_W) '$(srcdir)/reg.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

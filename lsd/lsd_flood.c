@@ -254,7 +254,7 @@ void flood_spread_access_link_state(struct access_eth* eth, u8 state)
 	struct autonomous_zone* azs = g_lsd_router.azs;
 	while(azs)
 	{
-		key.rt_id = azs->r_id;
+		key.rt_id = azs->device_id;
 		id_t lsdb = azs->lsdb;
 
 		struct cr_lsdb_link_state link_state;
@@ -286,7 +286,7 @@ void flood_spread_backbone_link_state(struct backbone_eth* eth, u8 state)
 	struct link_state_key key;
 	struct lsd_neighbor_info neighbor;
 	key.if_id = eth->_ifid;
-	key.rt_id = eth->az->r_id;
+	key.rt_id = eth->az->device_id;
 	hello_get_neighbor_info(eth, &neighbor);
 	assert(neighbor.rt_id != 0);
 	key.n_rt_id = neighbor.rt_id;
@@ -327,7 +327,7 @@ int spread_local_link_state(struct thread* t)
 		struct autonomous_zone* azs = g_lsd_router.azs;
 		while(azs)
 		{
-			key.rt_id = azs->r_id;
+			key.rt_id = azs->device_id;
 			id_t lsdb = azs->lsdb;
 
 			struct cr_lsdb_link_state link_state;
@@ -353,7 +353,7 @@ int spread_local_link_state(struct thread* t)
 		while(bbs)
 		{
 			struct link_state_key key;
-			key.rt_id = azs->r_id;
+			key.rt_id = azs->device_id;
 			key.if_id = bbs->_ifid;
 			struct lsd_neighbor_info neighbor;
 			hello_get_neighbor_info(bbs, &neighbor);

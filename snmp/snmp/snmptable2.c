@@ -65,6 +65,8 @@ SOFTWARE.
 
 #include <net-snmp/net-snmp-includes.h>
 #include <includes/snmpget.h>
+#include <pthread.h>
+pthread_mutex_t snmp_lock = PTHREAD_MUTEX_INITIALIZER;
 
 struct column {
     int             width;
@@ -126,6 +128,7 @@ int
 snmptable(char *ip ,char *comm, char *oid, int* entryptr, 
 		int *fieldptr, char ***datastr)
 {
+	pthread_mutex_lock(&snmp_lock);
 	INIT_CLEANER
     netsnmp_session session, *ss;
     int            total_entries = 0;
@@ -167,6 +170,7 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
     rootlen = MAX_OID_LEN;
     if (!snmp_parse_oid(oid, root, &rootlen)) {
         snmp_perror(oid);
+		pthread_mutex_unlock(&snmp_lock);
         exit(1);
     }
     localdebug = netsnmp_ds_get_boolean(NETSNMP_DS_LIBRARY_ID,
@@ -185,6 +189,7 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
          * diagnose snmp_open errors with the input netsnmp_session pointer
          */
         snmp_sess_perror("snmptable", &session);
+		pthread_mutex_unlock(&snmp_lock);
         SOCK_CLEANUP;
 		FREE_CLEANER
         exit(1);
@@ -231,6 +236,7 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
         printf("%s: No entries\n", table_name);
     if (extra_columns)
 	printf("%s: WARNING: More columns on agent than in MIB\n", table_name);
+	pthread_mutex_unlock(&snmp_lock);
 
     return 0;
 }

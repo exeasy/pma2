@@ -1,6 +1,7 @@
 #include <utils/utils.h>
 #include <utils/common.h>
 #include <comm/interior_daemon.h>
+#include <server/srvconf.h>
 #include <module_manager.h>
 
 struct module_register_table g_m_register_table[100];

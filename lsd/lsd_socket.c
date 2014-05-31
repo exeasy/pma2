@@ -189,7 +189,7 @@ int lsd_receive (struct thread *thread)
 }
 int lsd_send (struct backbone_eth* eth,struct lsd_head *head)
 {
-	if( eth->neighbor_pma.rid == 0 || eth->neighbor_pma.pma_ctl_addr.s_addr== 0){//No neighbor
+	if( eth->neighbor_pma.device_id == 0 || eth->neighbor_pma.pma_ctl_addr.s_addr== 0){//No neighbor
 		//DEBUG(INFO,"the interface don't connect any router");
 		return -1;
 	}
@@ -203,7 +203,7 @@ int lsd_send (struct backbone_eth* eth,struct lsd_head *head)
 	addr.sin_family = AF_INET;
 
 	head->area_id = eth->az->az_id;
-	head->r_id = eth->az->r_id;
+	head->r_id = eth->az->device_id;
 	head->if_id = eth->_ifid;
 	head->icsum = LSD_CHECKSUM;
 	head->version = LSD_VERSION;

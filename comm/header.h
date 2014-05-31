@@ -10,8 +10,42 @@
 /*!
  * “数据包类型定义”
  */
-#define OPS_ACK					9
-#define OPS_ACK_FAILED			10
+#define OPS_PMA_LOGIN			1
+#define OPS_PMS_LOGIN_ACK		2
+#define OPS_PMA_INIT_REQUEST		3
+#define OPS_PMS_PMA_INIT_REPLY	4
+#define OPS_PMA_DEVICE_INFO		5
+#define OPS_PMA_ROUTER_CONF_INFO	6
+#define OPS_PMA_OSPF_CONF_INFO	7
+#define OPS_PMA_OSPF_LINKSTATE	8
+#define OPS_PMA_OSPF_INTERFACE_INFO	9
+#define OPS_PMA_BGP_CONF_INFO	10
+#define OPS_PMA_BGP_LINKSTATE	11
+#define OPS_PMA_BGP_INTERFACE_INFO	12
+#define OPS_PMA_FLOW_INFO		13
+#define OPS_PMA_TRAFFIC_INFO	14
+#define OPS_PMA_HEARTBEAT		15
+#define OPS_PMS_PMA_NEIGHBOR_INFO	16
+#define OPS_PMS_PMA_POLICY_INFO	17
+#define OPS_PMS_PMA_INFO_ACK	18
+#define OPS_PMS_PMA_INFO_ERR_ACK 19
+#define OPS_PMA_ROUTING_TABLE 20
+#define OPS_PMA_LINKSTATE	78
+#define OPS_PMA_ROUTING_TABLE 79
+
+#define OPS_BGP_UPDATEMESSAGE 71
+#define OPS_BGP_RIB			72
+#define OPS_BGP_CONF		73
+#define OPS_BGP_NEIGHBOR	77
+
+
+#define OPS_PMS_MARI_SEND	142
+#define OPS_TUNNEL_COMMAND	40
+#define OPS_TUNNEL_RESULT	41
+
+
+#define OPS_ACK					18
+#define OPS_ACK_FAILED			19
 //pma - pms
 #define OPS_PMA_LOGIN			1	/*!< 代理向服务端发送的注册数据包 */
 #define OPS_PMS_LOGIN_RESP_OK	2//2->9	/*!< 服务器返回的注册结果数据包，结果为“成功” */

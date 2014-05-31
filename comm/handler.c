@@ -6,6 +6,7 @@
 #include "header.h"
 #include "comm_utils.h"
 #include "conf/conf.h"
+#include <server/srvconf.h>
 #include "timer/timer.h"
 #define TC_CMD_ADDR "127.0.0.1"
 #define TC_CMD_PORT 8026
@@ -19,29 +20,31 @@ int init_router_list()
 {
 	rList = (struct router_list*)malloc(sizeof(struct router_list));
 	rList->ip_addr = 0;
+	rList->devid = 0;
 	rList->rid = 0;
 	rList->next = NULL;
 	printf("INIT ROUTER LIST SUCCESS\n");
 }
 
-int find_router_by_id(int rid)
+int find_router_by_id(int id)
 {
 	struct router_list* tmp = rList->next;
 	while(tmp!=NULL)
 	{
-		if(tmp->rid == rid)
+		if(tmp->devid == id)
 			break;
 		tmp = tmp->next;
 	}
 	return tmp;
 }
 
-int insert_router_list(int rid,int ip_addr)
+int insert_router_list(int devid, int rid,int ip_addr)
 {
-	struct router_list* tmp = find_router_by_id(rid);
+	struct router_list* tmp = find_router_by_id(devid);
 	if(tmp==NULL)
 	{
 		struct router_list* router = (struct router_list*)malloc(sizeof(struct router_list));
+		router->devid = devid;
 		router->rid = rid;
 		router->ip_addr = ip_addr;
 		router->next = rList->next;
@@ -75,6 +78,18 @@ int handle_ops_pms_mari_send(void *args)
 	pkt->data += sizeof(struct pma_pms_header);
 	pkt->len -= sizeof(struct pma_pms_header);
 	send_message_to_module(PEM, BGP_MRAI, pkt->data, pkt->len);
+	int ret = send_ack_to_pms(pkt);
+	if(ret)
+		return 0;
+	return -1;
+}
+int handle_ops_pms_tun_command(void *args)
+{
+	struct packet *pkt = (struct packet*)args;
+	DEBUG(INFO, "%s %d %d %u handle",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
+	pkt->data += sizeof(struct pma_pms_header);
+	pkt->len -= sizeof(struct pma_pms_header);
+	send_message_to_module(PEM, OPS_TUNNEL_COMMAND, pkt->data, pkt->len);
 	int ret = send_ack_to_pms(pkt);
 	if(ret)
 		return 0;
@@ -138,70 +153,19 @@ int handle_ospf_spf_signal_ic_to_dbm(void *args)
 	return send_message_to_module(DBM, OSPF_SPF, buff, len);
 }
 
+
 int handle_ops_pms_tc_cmd(void *args)
 {
-	struct packet *pkt = (struct packet*)args;
+	struct packet * pkt = (struct packet*)args;
+	int ack_t = OPS_ACK;
 	DEBUG(INFO, "%s %d %d %u handle",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
-
+	pkt->data += sizeof(struct pma_pms_header);
+	pkt->len -= sizeof(struct pma_pms_header);
+	send_message_to_module(PEM, TC_TUNNEL_COMMAND , pkt->data, pkt->len);
 	int ret = send_ack_to_pms(pkt);
 	if(ret)
 		return 0;
-	ret = create_connect(get_rltm_address(), get_rltm_port());
-	if( ret == -1)
-	{
-		DEBUG(ERROR, "can't send the command to tc, create connection error");
-		return -1;
-	}
-	struct packet send_pkt;
-	int pkt_len = pkt->len - sizeof(struct pma_pms_header);
-	pkt->data += sizeof(struct pma_pms_header);
-
-
-	send_pkt.ops_type = TC_CMD_PMS_TO_PEA;
-	send_pkt.len = pkt_len;
-	send_pkt.sockfd = ret;
-
-	send_pkt.timeout = 5;
-	strncpy(send_pkt.ip,get_rltm_address(),sizeof(TC_CMD_ADDR));
-
-	int errorcode = encapsulate_packet(&send_pkt,pkt->data);
-	if (errorcode == -1){
-		DEBUG(ERROR, "%s %d %d encapsulate_packet", pkt->ip, pkt->sockfd,pkt->ops_type);
-		close_connect(ret);
-		return -1;
-	}
-
-	errorcode = send_packet(&send_pkt);
-	if (errorcode == -1){
-		DEBUG(ERROR, "%s %d %d send_packet", pkt->ip, pkt->sockfd,pkt->ops_type);
-		close_connect(ret);
-		return -1;
-	}
-
-	errorcode = recv_packet(&send_pkt,1);//old packet format
-	if (errorcode == -1){
-		DEBUG(ERROR, "%s %d %d recv_packet", pkt->ip, pkt->sockfd,pkt->ops_type);
-		close_connect(ret);
-		return -1;
-	}
-	close_connect(ret);
-
-	struct common_header* ptr = (struct common_header*)send_pkt.data;
-	send_pkt.len -= sizeof(struct common_header);
-	send_pkt.data = ptr + sizeof(struct common_header);
-	DEBUG(INFO,"%d",send_pkt.len);
-
-	//	ret = handle_ops_tc_cmd_ack_to_pms(&send_pkt);
-	if(ret == 0)
-	{
-		DEBUG(INFO,"COMMAND TC EXCUATE SUCCESS");
-		return 0;
-	}
-	else
-	{
-		DEBUG(ERROR,"COMMAND TC EXCUATE ERROR");
-		return -1;
-	}
+	return -1;
 }
 int handle_trans_packet_to_pms(void *args)
 {
@@ -236,11 +200,19 @@ int handle_ops_pms_login_resp_ok(void *args)
 	memcpy(xml_policy_buff.buff, pkt->data + sizeof(struct pma_pms_header),xml_policy_buff.length);
     printf("%d %s\n",xml_policy_buff.length, xml_policy_buff.buff);
 
-	/*Macro.Z 2013-03-27 end*/
-//	if (process_policy(pkt->data + sizeof(struct pma_pms_header), pkt->len) == -1) {
-//		DEBUG(ERROR, "%s %d %d %u POLICY PROCESS FAILED",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
-//		return -1;
-//	}
+	DEBUG(INFO, "%s %d %d %u POLICY PROCESS SUCCEED",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
+	return 0;
+}
+//handle agent inited reply
+int handle_pma_init_reply(void* args)
+{
+	struct packet *pkt = (struct packet*)args;
+	DEBUG(INFO, "%s %d %d %u handle",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
+	int len  = pkt->len - sizeof(struct pma_pms_header);
+	xml_policy_buff.buff = (char*)malloc(len);
+	xml_policy_buff.length = len;
+	memcpy(xml_policy_buff.buff, pkt->data + sizeof(struct pma_pms_header),xml_policy_buff.length);
+    printf("%d %s\n",xml_policy_buff.length, xml_policy_buff.buff);
 	DEBUG(INFO, "%s %d %d %u POLICY PROCESS SUCCEED",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
 	return 0;
 }
@@ -258,17 +230,26 @@ int handle_ops_pms_login_failed(void *args)
 //OPS_ACK_FAILED
 int handle_ops_ack_failed(void *args)
 {
+	struct packet *pkt = (struct packet*)args;
+	if( pkt->ops_type == OPS_PMS_PMA_INFO_ERR_ACK )
+		DEBUG(INFO,"ERR ACK RECEIVED");
+	return -1;
 }
 //OPS_ACK
 int handle_ops_ack(void *args)
 {
+	struct packet *pkt = (struct packet*)args;
+	if( pkt->ops_type == OPS_PMS_PMA_INFO_ACK )
+		DEBUG(INFO,"CORRECT ACK RECEIVED");
+	return 0;
 }
 int process_neighbor_list(char* xml){
 	if(rList == NULL)
 		init_router_list();
 
-	int router_id;
-	struct in_addr pma_addr;
+	int agent_id;
+	struct in_addr router_addr;
+	struct in_addr ctl_addr;
 	xmlDocPtr doc = NULL;
 	xmlNodePtr root_node = NULL;
 
@@ -301,22 +282,25 @@ int process_neighbor_list(char* xml){
 		{
 			count++;
 			xmlChar* pma_id = xmlGetProp(cur_node, "id");
-			router_id = strtol((char *)pma_id, &endptr, base);
+			agent_id = strtol((char *)pma_id, &endptr, base);
+			pthread_mutex_lock(&router_list_mutex);
 			for(child_node = cur_node->children;child_node!=NULL;child_node = child_node->next){
 				if (child_node->type == XML_ELEMENT_NODE) {
-					if(xmlStrcmp(child_node->name, (const xmlChar* )("ipv4_address"))== 0){
+					if(xmlStrcmp(child_node->name, (const xmlChar* )("router_id"))== 0){
 						xmlChar* addr = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
-						//printf("IP:%s\n",addr);
-						inet_pton(AF_INET,addr,&pma_addr);
-						pthread_mutex_lock(&router_list_mutex);
-						router_id = htonl(router_id);
-						insert_router_list(router_id,pma_addr.s_addr);
-						pthread_mutex_unlock(&router_list_mutex);
+						inet_pton(AF_INET,addr,&router_addr);
+						xmlFree(addr);
+					}
+					else if( xmlStrcmp(child_node->name, (const xmlChar*)("agent_control_ip")) == 0){
+						xmlChar* addr = xmlNodeListGetString(doc, child_node->xmlChildrenNode, 1);
+						inet_pton(AF_INET, addr, &ctl_addr);
 						xmlFree(addr);
 					}
 				}
 			}	
+			insert_router_list(agent_id, router_addr.s_addr,ctl_addr.s_addr);
 			xmlFree(pma_id);
+			pthread_mutex_unlock(&router_list_mutex);
 		}
 	}
 	if (router_list_timer == -1)
@@ -406,7 +390,7 @@ int handle_lsdb_snapshoot_dbm_to_pms(void *args)
 	local_module_header *pkt = (local_module_header*)(info->data);
 	char *buff = (char*)pkt->pkt;
 	int len = pkt->pkt_len - sizeof(local_module_header);
-	send_message_to_pms(get_server_address(), get_server_port(), OPS_PMA_SNAPSHOT_SEND, buff, len); 
+	send_message_to_pms(get_server_address(), get_server_port(), OPS_PMA_LINKSTATE, buff, len); 
 }
 //NETWORK_INFO
 int handle_network_info_dbm_to_pms(void *args)
@@ -506,7 +490,7 @@ int handle_route_table_ic_to_pms(void *args)
 	char *buff = save_router_table_to_xml(data);
 	int len = strlen(buff);
 	return send_message_to_pms(get_server_address(), get_server_port(),
-		OPS_PMA_SNAPSHOT_SEND, buff, len);
+		OPS_PMA_ROUTING_TABLE, buff, len);
 	
 }
 //UP_INTERFACE_INFO
@@ -519,6 +503,52 @@ int handle_tc_message_to_pms(void *args)
 	int len = pkt->pkt_len - sizeof(local_module_header);
 	return send_message_to_pms(get_server_address(), get_server_port(), 
 			TC_TO_PMA_INTERFACE_INFO, buff, len);
+}
+
+int handle_device_info_ic_to_pms(void *args)
+{
+	struct pkt* info = (struct pkt*)args;
+	local_module_header *pkt = (local_module_header*)(info->data);
+	char* buff = (char*)pkt->pkt;
+	int len = pkt->pkt_len - sizeof(local_module_header);
+	return send_message_to_pms(get_server_address(), get_server_port(),
+			OPS_PMA_DEVICE_INFO, buff, len);
+}
+int handle_ospf_interface_ic_to_pms(void *args)
+{
+	struct pkt* info = (struct pkt*)args;
+	local_module_header *pkt = (local_module_header*)(info->data);
+	char* buff = (char*)pkt->pkt;
+	int len = pkt->pkt_len - sizeof(local_module_header);
+	return send_message_to_pms(get_server_address(), get_server_port(),
+			OPS_PMA_OSPF_INTERFACE_INFO, buff, len);
+}
+int handle_bgp_interface_ic_to_pms(void *args)
+{
+	struct pkt* info = (struct pkt*)args;
+	local_module_header *pkt = (local_module_header*)(info->data);
+	char* buff = (char*)pkt->pkt;
+	int len = pkt->pkt_len - sizeof(local_module_header);
+	return send_message_to_pms(get_server_address(), get_server_port(),
+			OPS_PMA_BGP_INTERFACE_INFO, buff, len);
+}
+int handle_traffice_info_ic_to_pms(void *args)
+{
+	struct pkt* info = (struct pkt*)args;
+	local_module_header *pkt = (local_module_header*)(info->data);
+	char* buff = (char*)pkt->pkt;
+	int len = pkt->pkt_len - sizeof(local_module_header);
+	return send_message_to_pms(get_server_address(), get_server_port(),
+			OPS_PMA_TRAFFIC_INFO, buff, len);
+}
+int handle_bgp_path_info_ic_to_pms(void *args)
+{
+	struct pkt* info = (struct pkt*)args;
+	local_module_header* pkt = (local_module_header*)(info->data);
+	char* buff = (char*)pkt->pkt;
+	int len = pkt->pkt_len - sizeof(local_module_header);
+	return send_message_to_pms(get_server_address(), get_server_port(),
+			OPS_PMA_ROUTING_TABLE, buff, len);
 }
 
 int send_router_list_to_ic()
@@ -548,15 +578,17 @@ int save_router_list_to_xml()
 	int count = 0;
 	while(tmp!=NULL)
 	{
-		memcpy(pkt_ptr,&tmp->rid,sizeof(int));
+		memcpy(pkt_ptr, &tmp->devid, sizeof(int));
+		printf("AgentID:%d\n", tmp->devid);
+		memcpy(pkt_ptr+sizeof(int),&tmp->rid,sizeof(int));
 		printf("RouterID:%d\n",tmp->rid);
-		memcpy(pkt_ptr+sizeof(int),&tmp->ip_addr,sizeof(int));
+		memcpy(pkt_ptr+2*sizeof(int),&tmp->ip_addr,sizeof(int));
 		printf("RouterIP:%d\n",tmp->ip_addr);
-		pkt_ptr = pkt_ptr+2*sizeof(int);	
+		pkt_ptr = pkt_ptr+3*sizeof(int);	
 		count++;
 		tmp = tmp->next;
 	}
-	int len = count*2*sizeof(int);
+	int len = count*3*sizeof(int);
 	printf("########%d##########\n",len);
 	memcpy(global_pma_buff.buff,ptr,len);
 	global_pma_buff.length = len;

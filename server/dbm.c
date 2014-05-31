@@ -50,6 +50,7 @@ int conf_handle( struct Packet_header *pkt)
 	if ( pkt->pkt_len == 0) return 0;
 	memcpy( &conf, pkt->pkt, pkt->pkt_len);
 	DEBUG(INFO, "PMAID %d", conf.pma_id );
+	DEBUG(INFO, "ROUTERID %d", conf.router_id);
 	DEBUG(INFO, "SNAPTIME %d", conf.snapshoot_timeval);
 	DEBUG(INFO, "POLICY_TYPE %d", conf.policy_type);
 }
@@ -63,7 +64,7 @@ int link_state_handler(struct Packet_header *pkt)
 		case ADDLSA:
 			insert_link_state(lsa);
 			spf_signal_handler(NULL);
-            snapshoot_sender();
+//            snapshoot_sender();
 			break;
 		case UPDATELSA:
 			{
@@ -81,11 +82,11 @@ int link_state_handler(struct Packet_header *pkt)
 				}
 				if ( origin_status == 3 && lsa->status != 3 )//link broken
 				{
-					fah_protect_link(conf.pma_id , lsa);
+					fah_protect_link(conf.router_id , lsa);
 				}
 				else if ( origin_status == 0 && lsa->status != 0) //link recover
 				{
-					fah_set_default_timer(conf.pma_id, lsa);
+					fah_set_default_timer(conf.router_id, lsa);
 				}
 				break;
 			}
@@ -104,8 +105,8 @@ int policy_table_handler(struct Packet_header *pkt)
 //snapshoot timer  function
 int send_all_snapshoot(void* args)
 {
-    int routerid = conf.pma_id;
- 	char* buff = format_all_area_lsdb_to_xml(routerid);
+    int deviceid = conf.pma_id;
+ 	char* buff = format_all_area_lsdb_to_xml(deviceid);
 	module_send_data(buff, strlen(buff), LSDB_INFO); 
     free(buff);
     pthread_detach(pthread_self());

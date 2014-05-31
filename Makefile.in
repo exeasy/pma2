@@ -78,9 +78,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-bin_PROGRAMS = bm$(EXEEXT) logsrv$(EXEEXT) logcli$(EXEEXT) \
-	pem$(EXEEXT) threadtest$(EXEEXT) snmptest$(EXEEXT) \
-	icm$(EXEEXT) nltest$(EXEEXT) dbtest$(EXEEXT) dbm$(EXEEXT)
+bin_PROGRAMS = bm$(EXEEXT) pem$(EXEEXT) icm$(EXEEXT) dbm$(EXEEXT) \
+	qconf$(EXEEXT)
 subdir = .
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
@@ -103,9 +102,9 @@ bm_OBJECTS = $(am_bm_OBJECTS)
 bm_DEPENDENCIES = ./comm/libpmacomm.a ./conf/libpmaconf.a \
 	./control/libpmactl.a ./utils/libpmautils.a \
 	./server/libpmasocket.a ./mmanager/libmodulemanager.a \
-	./timer/libpmatimer.a ./logger/libploggersrv.a \
-	./logger/libplogger.a ./lib/libpma.a ./reg/libpmareg.a \
-	./vty/libpmavty.a
+	./timer/libpmatimer.a ./snmp/libsnmpapi.a \
+	./logger/libploggersrv.a ./logger/libplogger.a ./lib/libpma.a \
+	./reg/libpmareg.a ./vty/libpmavty.a
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -119,43 +118,22 @@ dbm_DEPENDENCIES = ./server/libpmadbm.a ./server/libpmasocket.a \
 dbm_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(dbm_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-am_dbtest_OBJECTS = dbtest.$(OBJEXT)
-dbtest_OBJECTS = $(am_dbtest_OBJECTS)
-dbtest_DEPENDENCIES = ./db/libpmadb.a ./utils/libpmautils.a
 am_icm_OBJECTS = pma_icm.$(OBJEXT)
 icm_OBJECTS = $(am_icm_OBJECTS)
-icm_DEPENDENCIES = ./server/libpmaicm.a ./server/libpmasocket.a \
-	./router/libpmarouter.a ./lsd/libpmalsd.a ./lsdb/libpmalsdb.a \
+icm_DEPENDENCIES = ./server/libpmaicm.a ./router/libpmarouter.a \
+	./lsd/libpmalsd.a ./lsdb/libpmalsdb.a \
 	./netlink/libpmanetlink.a ./snmp/libsnmpapi.a \
-	./control/libpmactl.a ./logger/libplogger.a ./lib/libpma.a \
-	./utils/libpmautils.a
-am_logcli_OBJECTS = logcli.$(OBJEXT)
-logcli_OBJECTS = $(am_logcli_OBJECTS)
-logcli_DEPENDENCIES = ./logger/libplogger.a ./utils/libpmautils.a \
-	./lib/libpma.a
-am_logsrv_OBJECTS = logsrv.$(OBJEXT)
-logsrv_OBJECTS = $(am_logsrv_OBJECTS)
-logsrv_DEPENDENCIES = ./logger/libploggersrv.a ./logger/libplogger.a \
-	./conf/libpmaconf.a ./comm/libpmacomm.a ./control/libpmactl.a \
-	./utils/libpmautils.a ./mmanager/libmodulemanager.a \
-	./timer/libpmatimer.a ./lib/libpma.a
-am_nltest_OBJECTS = nltest.$(OBJEXT)
-nltest_OBJECTS = $(am_nltest_OBJECTS)
-nltest_DEPENDENCIES = ./netlink/libpmanetlink.a \
-	./router/libpmarouter.a ./snmp/libsnmpapi.a \
-	./utils/libpmautils.a
+	./control/libpmactl.a ./server/libpmasocket.a \
+	./logger/libplogger.a ./lib/libpma.a ./utils/libpmautils.a
 am_pem_OBJECTS = pma_pem.$(OBJEXT)
 pem_OBJECTS = $(am_pem_OBJECTS)
 pem_DEPENDENCIES = ./server/libpmapem.a ./server/libpmasocket.a \
 	./control/libpmactl.a ./logger/libplogger.a ./lib/libpma.a \
-	./snmp/libsnmpapi.a ./utils/libpmautils.a
-am_snmptest_OBJECTS = snmptest.$(OBJEXT)
-snmptest_OBJECTS = $(am_snmptest_OBJECTS)
-snmptest_DEPENDENCIES = ./router/libpmarouter.a ./snmp/libsnmpapi.a \
-	./lib/libpma.a ./utils/libpmautils.a
-am_threadtest_OBJECTS = threadtest.$(OBJEXT)
-threadtest_OBJECTS = $(am_threadtest_OBJECTS)
-threadtest_DEPENDENCIES = ./lib/libpma.a ./utils/libpmautils.a
+	./command/libpmacommand.a ./snmp/libsnmpapi.a \
+	./utils/libpmautils.a
+am_qconf_OBJECTS = qconf.$(OBJEXT)
+qconf_OBJECTS = $(am_qconf_OBJECTS)
+qconf_DEPENDENCIES = ./comm/libpmacommlite.a ./utils/libpmautils.a
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -190,14 +168,10 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(bm_SOURCES) $(dbm_SOURCES) $(dbtest_SOURCES) \
-	$(icm_SOURCES) $(logcli_SOURCES) $(logsrv_SOURCES) \
-	$(nltest_SOURCES) $(pem_SOURCES) $(snmptest_SOURCES) \
-	$(threadtest_SOURCES)
-DIST_SOURCES = $(bm_SOURCES) $(dbm_SOURCES) $(dbtest_SOURCES) \
-	$(icm_SOURCES) $(logcli_SOURCES) $(logsrv_SOURCES) \
-	$(nltest_SOURCES) $(pem_SOURCES) $(snmptest_SOURCES) \
-	$(threadtest_SOURCES)
+SOURCES = $(bm_SOURCES) $(dbm_SOURCES) $(icm_SOURCES) $(pem_SOURCES) \
+	$(qconf_SOURCES)
+DIST_SOURCES = $(bm_SOURCES) $(dbm_SOURCES) $(icm_SOURCES) \
+	$(pem_SOURCES) $(qconf_SOURCES)
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -405,7 +379,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = lib utils comm conf reg server  control  timer  mmanager vty logger snmp router lsd lsdb netlink db ddc policy test
+SUBDIRS = lib utils comm conf reg server  control  timer  mmanager vty logger snmp router lsd lsdb netlink db ddc policy command
 AM_CFLAGS = -O2 -ggdb3 -std=c99 -I$(LIB_XML_INCLUDE) -I$(LIB_SNMP_INCLUDE) -lnetsnmp 
 AM_LDFLAGS = -L$(LIB_SNMP_LIB)
 bm_SOURCES = pma_bm.c
@@ -416,6 +390,7 @@ bm_LDADD = ./comm/libpmacomm.a\
 		 ./server/libpmasocket.a\
 		 ./mmanager/libmodulemanager.a\
 		 ./timer/libpmatimer.a\
+		 ./snmp/libsnmpapi.a\
 		 ./logger/libploggersrv.a\
 		 ./logger/libplogger.a\
 		 ./lib/libpma.a\
@@ -424,6 +399,10 @@ bm_LDADD = ./comm/libpmacomm.a\
 
 #bm_CFLAGS=-I/usr/include/libxml2 -D BMODULE -D OSPF_VERSION -D LOCAL_TEST -std=c99 -O2 -g
 #bm_LDFLAGS=-lpthread -lxml2
+qconf_SOURCES = qconf.c
+qconf_LDADD = ./comm/libpmacommlite.a\
+			./utils/libpmautils.a
+
 dbm_SOURCES = pma_dbm.c
 dbm_LDADD = ./server/libpmadbm.a\
 		  ./server/libpmasocket.a\
@@ -440,13 +419,13 @@ dbm_CFLAGS = $(AM_CFLAGS) -D LINUX_VERSION
 #dbm_CFLAGS=-I/usr/include/libxml2 -lxml2 -D DBMODULE -D OSPF_VERSION  -std=c99 -O2 -g
 icm_SOURCES = pma_icm.c
 icm_LDADD = ./server/libpmaicm.a\
-		  ./server/libpmasocket.a\
 		  ./router/libpmarouter.a\
 		  ./lsd/libpmalsd.a\
 		  ./lsdb/libpmalsdb.a\
 		  ./netlink/libpmanetlink.a\
 		  ./snmp/libsnmpapi.a\
 		 ./control/libpmactl.a\
+		  ./server/libpmasocket.a\
 		 ./logger/libplogger.a\
 		 ./lib/libpma.a\
 		  ./utils/libpmautils.a
@@ -459,6 +438,7 @@ pem_LDADD = ./server/libpmapem.a\
 		 ./control/libpmactl.a\
 		 ./logger/libplogger.a\
 		 ./lib/libpma.a\
+		 ./command/libpmacommand.a\
 		 ./snmp/libsnmpapi.a\
 		  ./utils/libpmautils.a
 
@@ -472,6 +452,7 @@ snmptest_SOURCES = snmptest.c
 snmptest_LDADD = ./router/libpmarouter.a\
 			   ./snmp/libsnmpapi.a\
 			   ./lib/libpma.a\
+		  		./server/libpmasocket.a\
 			   ./utils/libpmautils.a
 
 #snmptest_CFLAGS=-std=c99 -O2 -g -L/usr/local/snmp/lib -lpthread -lnetsnmp
@@ -504,6 +485,7 @@ nltest_SOURCES = nltest.c
 nltest_LDADD = ./netlink/libpmanetlink.a\
 			 ./router/libpmarouter.a\
 			 ./snmp/libsnmpapi.a\
+		  	./server/libpmasocket.a\
 			 ./utils/libpmautils.a
 
 dbtest_SOURCES = dbtest.c
@@ -526,7 +508,8 @@ EXTRA_DIST = config/* \
 		   interface.cfg\
 		   pmalog.conf\
 		   pma.db\
-		   test
+		   test\
+			pma.sh
 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
@@ -640,37 +623,17 @@ dbm$(EXEEXT): $(dbm_OBJECTS) $(dbm_DEPENDENCIES) $(EXTRA_dbm_DEPENDENCIES)
 	@rm -f dbm$(EXEEXT)
 	$(AM_V_CCLD)$(dbm_LINK) $(dbm_OBJECTS) $(dbm_LDADD) $(LIBS)
 
-dbtest$(EXEEXT): $(dbtest_OBJECTS) $(dbtest_DEPENDENCIES) $(EXTRA_dbtest_DEPENDENCIES) 
-	@rm -f dbtest$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(dbtest_OBJECTS) $(dbtest_LDADD) $(LIBS)
-
 icm$(EXEEXT): $(icm_OBJECTS) $(icm_DEPENDENCIES) $(EXTRA_icm_DEPENDENCIES) 
 	@rm -f icm$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(icm_OBJECTS) $(icm_LDADD) $(LIBS)
-
-logcli$(EXEEXT): $(logcli_OBJECTS) $(logcli_DEPENDENCIES) $(EXTRA_logcli_DEPENDENCIES) 
-	@rm -f logcli$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(logcli_OBJECTS) $(logcli_LDADD) $(LIBS)
-
-logsrv$(EXEEXT): $(logsrv_OBJECTS) $(logsrv_DEPENDENCIES) $(EXTRA_logsrv_DEPENDENCIES) 
-	@rm -f logsrv$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(logsrv_OBJECTS) $(logsrv_LDADD) $(LIBS)
-
-nltest$(EXEEXT): $(nltest_OBJECTS) $(nltest_DEPENDENCIES) $(EXTRA_nltest_DEPENDENCIES) 
-	@rm -f nltest$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(nltest_OBJECTS) $(nltest_LDADD) $(LIBS)
 
 pem$(EXEEXT): $(pem_OBJECTS) $(pem_DEPENDENCIES) $(EXTRA_pem_DEPENDENCIES) 
 	@rm -f pem$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(pem_OBJECTS) $(pem_LDADD) $(LIBS)
 
-snmptest$(EXEEXT): $(snmptest_OBJECTS) $(snmptest_DEPENDENCIES) $(EXTRA_snmptest_DEPENDENCIES) 
-	@rm -f snmptest$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(snmptest_OBJECTS) $(snmptest_LDADD) $(LIBS)
-
-threadtest$(EXEEXT): $(threadtest_OBJECTS) $(threadtest_DEPENDENCIES) $(EXTRA_threadtest_DEPENDENCIES) 
-	@rm -f threadtest$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(threadtest_OBJECTS) $(threadtest_LDADD) $(LIBS)
+qconf$(EXEEXT): $(qconf_OBJECTS) $(qconf_DEPENDENCIES) $(EXTRA_qconf_DEPENDENCIES) 
+	@rm -f qconf$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(qconf_OBJECTS) $(qconf_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -679,15 +642,10 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dbm-pma_dbm.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dbtest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logcli.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logsrv.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nltest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pma_bm.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pma_icm.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pma_pem.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/snmptest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/threadtest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/qconf.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

@@ -72,6 +72,8 @@
 #endif
 
 #include <net-snmp/net-snmp-includes.h>
+#include <pthread.h>
+pthread_mutex_t snmp_lock = PTHREAD_MUTEX_INITIALIZER;
 
 struct column {
 	int width;
@@ -82,6 +84,7 @@ struct column {
 
 int snmptable(char *ip, char * comm, char *oidstr, int *entryptr,
 		int *fieldptr, char ***dataptrr) {
+	pthread_mutex_lock(&snmp_lock);
 	struct column *column = NULL;
 	char **data = NULL;
 	char **indices = NULL;
@@ -594,6 +597,7 @@ int snmptable(char *ip, char * comm, char *oidstr, int *entryptr,
 	//    memcpy(&dataptr,&data,sizeof(&data));
 //	snmp_close(&session);
 
+	pthread_mutex_unlock(&snmp_lock);
 	return 0;
 }
 void free_data(char **datap, int e, int f) {

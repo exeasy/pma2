@@ -454,6 +454,11 @@ int conf_init()
 	return 0;
 }
 
+int get_device_type()
+{
+	return pma_conf.ic_config.device_type;
+}
+
 int get_version(void)
 {
 	return pma_conf.version;
@@ -520,4 +525,3 @@ int get_comm_type(void)
 {
 	return pma_conf.comm_type;
 }
-

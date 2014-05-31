@@ -20,7 +20,8 @@ struct icm_conf{
 };
 
 struct pma_list{
-	int pma_id;
+	int device_id;
+	int router_id;
 	struct in_addr ip;
 };
 

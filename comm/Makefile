@@ -103,6 +103,10 @@ am_libpmacomm_a_OBJECTS = libpmacomm_a-comm_utils.$(OBJEXT) \
 	libpmacomm_a-exterior_daemon.$(OBJEXT) \
 	libpmacomm_a-comm.$(OBJEXT) libpmacomm_a-handler.$(OBJEXT)
 libpmacomm_a_OBJECTS = $(am_libpmacomm_a_OBJECTS)
+libpmacommlite_a_AR = $(AR) $(ARFLAGS)
+libpmacommlite_a_LIBADD =
+am_libpmacommlite_a_OBJECTS = comm_lite.$(OBJEXT)
+libpmacommlite_a_OBJECTS = $(am_libpmacommlite_a_OBJECTS)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -141,8 +145,8 @@ AM_V_CCLD = $(am__v_CCLD_$(V))
 am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(libpmacomm_a_SOURCES)
-DIST_SOURCES = $(libpmacomm_a_SOURCES)
+SOURCES = $(libpmacomm_a_SOURCES) $(libpmacommlite_a_SOURCES)
+DIST_SOURCES = $(libpmacomm_a_SOURCES) $(libpmacommlite_a_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -291,11 +295,12 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-noinst_LIBRARIES = libpmacomm.a 
+noinst_LIBRARIES = libpmacomm.a  libpmacommlite.a
 libpmacomm_a_SOURCES = comm_utils.c interior_daemon.c exterior_daemon.c  comm.c  handler.c
 noinst_HEADERS = comm_utils.h\
 	exterior_daemon.h comm.h interior_daemon.h header.h  handler.h
 
+libpmacommlite_a_SOURCES = comm_lite.c comm_lite.h
 libpmacomm_a_CFLAGS = -I$(LIB_XML_INCLUDE)
 all: all-am
 
@@ -340,12 +345,18 @@ libpmacomm.a: $(libpmacomm_a_OBJECTS) $(libpmacomm_a_DEPENDENCIES) $(EXTRA_libpm
 	$(AM_V_AR)$(libpmacomm_a_AR) libpmacomm.a $(libpmacomm_a_OBJECTS) $(libpmacomm_a_LIBADD)
 	$(AM_V_at)$(RANLIB) libpmacomm.a
 
+libpmacommlite.a: $(libpmacommlite_a_OBJECTS) $(libpmacommlite_a_DEPENDENCIES) $(EXTRA_libpmacommlite_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libpmacommlite.a
+	$(AM_V_AR)$(libpmacommlite_a_AR) libpmacommlite.a $(libpmacommlite_a_OBJECTS) $(libpmacommlite_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libpmacommlite.a
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/comm_lite.Po
 include ./$(DEPDIR)/libpmacomm_a-comm.Po
 include ./$(DEPDIR)/libpmacomm_a-comm_utils.Po
 include ./$(DEPDIR)/libpmacomm_a-exterior_daemon.Po

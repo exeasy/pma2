@@ -10,8 +10,9 @@
 #define GETELEMENT(p,i) (((char**)p)+i);
 #define GETNEXTPTR(p,i) (((char**)(p))+i);
 
-typedef unsigned int u32;
 typedef unsigned int session_id_t;
+
+typedef int (*callbackptr)(void*);
 
 typedef struct snmpsession{
 	char ip[32];
@@ -160,5 +161,20 @@ struct bgpPathAttrTable {
 	char* best;
 	struct bgpPathArrtTable* next;
 } ;
+
+
+
+int get_ospf_routerid(char* routerid);
+int get_bgp_routerid(char* routerid);
+int get_bgp_asid(char* asid);
+int get_bgp_peer_table(callbackptr callback);
+int get_bgp_path_table(callbackptr callback);
+int get_if_table(callbackptr callback);
+int get_ipaddr_table(callbackptr callback);
+int get_iproute_table(callbackptr callback);
+int get_ospf_area_table(callbackptr callback);
+int get_ospf_ifmetric_table(callbackptr callback);
+int get_ospf_if_table(callbackptr callback);
+int get_ospf_neighbor_table(callbackptr callback);
 
 #endif /* end of includse guard: SNMPCORE_H */

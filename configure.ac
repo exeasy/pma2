@@ -24,14 +24,14 @@ AC_DEFINE(OSPF_VERSION,,support the ospf protocol)
 AC_SUBST(LIB_XML_INCLUDE, /usr/include/libxml2/)
 AC_SUBST(LIB_SNMP_INCLUDE, /usr/local/snmp/include/)
 AC_SUBST(LIB_SNMP_LIB, /usr/local/snmp/lib/)
-# Checks for typedefs, structures, and compiler characteristics.
-
+# Checks for typedefs, structures, and compiler characteristics.  
 # Checks for library functions.
 AC_CONFIG_FILES(Makefile
 				utils/Makefile
 				policy/Makefile
 				conf/Makefile
 				control/Makefile
+				command/Makefile
 				comm/Makefile
 				lib/Makefile
 				reg/Makefile
