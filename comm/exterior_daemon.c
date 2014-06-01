@@ -23,11 +23,12 @@ int exterior_daemon_init(void)
 	add_ctl(upload_handle, OPS_PMS_MARI_SEND,         handle_ops_pms_mari_send,			1);
 	add_ctl(upload_handle, OPS_PMS_PMA_NEIGHBOR_INFO, handle_ops_pms_neighbor_list,		1);
 	add_ctl(upload_handle, OPS_TUNNEL_COMMAND,        handle_ops_pms_tun_command,		1);
-
+	
 	//add_ctl(upload_handle, TC_CMD_PMS_TO_PEA,         handle_ops_pms_tc_cmd,			1);
 	add_ctl(upload_handle, OPS_PMA_ROUTER_CONF_INFO,  handle_trans_message,		1);
 	add_ctl(upload_handle, OPS_PMA_OSPF_CONF_INFO,    handle_trans_message,		1);
 	add_ctl(upload_handle, OPS_PMA_BGP_CONF_INFO,     handle_trans_message,		1);
+	add_ctl(upload_handle, OPS_PMA_FLOW_INFO,		  handle_trans_message,		1);
 
 	add_ctl(upload_handle, BGP_TO_PMA_UPDATE_MESSAGE, handle_trans_message,		1);
 	add_ctl(upload_handle, BGP_TO_PMA_RIB,            handle_trans_message,		1);
