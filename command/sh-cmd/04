@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -eq 1 ]; then      
+    var=`iptables -t mangle --line-numbers -L FORWARD | grep mpls | grep $1 | awk '{print $1}'`
+    var2=`iptables -t mangle -L FORWARD | grep mpls | grep $1 | awk '{print $7}'`
+    iptables -t mangle -D FORWARD $var;mpls nhlfe del key $var2
+
+elif [ $# -eq 2 ]; then    
+    var=`iptables -t mangle --line-numbers -L FORWARD | grep mpls | grep $1 | grep $2 | awk '{print $1}'`
+    var2=`iptables -t mangle -L FORWARD | grep mpls | grep $1 | grep $2 | awk '{print $7}'`
+    iptables -t mangle -D FORWARD $var;mpls nhlfe del key $var2
+    
+else
+    echo "the number of parameter must be 1 or 2!"
+fi
+

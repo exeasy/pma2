@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 4 ]; then
+    mpls ilm add label gen $1 labelspace 0
+    var=`mpls nhlfe add key 0 instructions push gen $2 nexthop $3 ipv4 $4 | grep key |cut -c 17-26`
+    mpls xc add ilm_label gen $1 ilm_labelspace 0 nhlfe_key $var
+else
+    echo "the number of parameter must be 4!"
+fi

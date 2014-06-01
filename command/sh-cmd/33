@@ -1,0 +1,6 @@
+#!/bin/bash
+
+nif = "eth""`expr $2 + 1`"
+mac=`ssh root@$3 "arp -a | grep $nif" | awk '{print $4}' | head -1`
+
+ssh root@$3 "dpctl add-flow unix:/var/run/s0 dl_type=0x0800,nw_dst=$1,actions=mod_dl_dst:$mac,output:$2"

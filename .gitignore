@@ -1,0 +1,44 @@
+# Object files
+*.o
+*.ko
+*.log
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# VIM swap file
+*.swp
+
+.deps
+
+
+ABOUT-NLS
+autom4te.cache
+aclocal.m4
+ar-lib
+autoscan.log
+config.h
+config.h.in
+config.log
+config.status
+config.guess
+config.sub
+compile
+depcomp
+install-sh
+libtool
+Makefile
+Makefile.in
+stamp-h1

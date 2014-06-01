@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ssh root@$2 "iptables -t filter -D FORWARD -d $1"
+ssh root@$2 "dpctl del-flows unix:/var/run/s0 dl_type=0x0800,nw_dst=$1"
+
+
+

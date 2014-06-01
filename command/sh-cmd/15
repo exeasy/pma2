@@ -1,0 +1,3 @@
+#!/bin/bash
+dpctl unix:/var/run/s0 flow-mod cmd=del,table=0
+

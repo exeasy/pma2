@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ssh root@$3 "iptables -t filter -A FORWARD -d $1 -j DROP"
+ssh root@$3 "dpctl add-flow unix:/var/run/s0 dl_type=0x0800,nw_dst=$1,actions=output:$2"

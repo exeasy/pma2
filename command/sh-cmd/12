@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $# -ne 3 ]; then
+    echo "the number of parameter must be 3!"
+    exit 1
+fi
+
+PORT=0
+#find the eth's port number of ofdatapath
+for fname in `ls /proc/sys/net/ipv4/conf | grep 'eth'`; do
+    PORT=`expr $PORT + 1`
+    if [ "$fname" = "$2" ]; then
+       break 
+    fi    
+done
+
+dpctl unix:/var/run/s0 flow-mod cmd=add,table=0 eth_type=0x8847,mpls_label=$1 apply:set_field=eth_dst:$3,output=$PORT
+

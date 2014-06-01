@@ -1,0 +1,32 @@
+#!/bin/bash
+
+PORT=0
+
+if [ $# -eq 4 ]; then  
+   iptables -t filter -A FORWARD -d $1 -j DROP
+   #find the eth's port number of ofdatapath
+   for fname in `ls /proc/sys/net/ipv4/conf | grep 'eth'`; do
+       PORT=`expr $PORT + 1`
+       if [ "$fname" = "$3" ]; then
+          break 
+       fi    
+   done 
+   dpctl unix:/var/run/s0 flow-mod cmd=add,table=0 eth_type=0x800,ip_dst=$1 apply:push_mpls=0x8847,set_field=mpls_label:$2,set_field=eth_dst:$4,output=$PORT
+   
+elif [ $# -eq 5 ]; then
+   iptables -t filter -A FORWARD -s $1 -d $2 -j DROP
+   #find the eth's port number of ofdatapath
+   for fname in `ls /proc/sys/net/ipv4/conf | grep 'eth'`; do
+       PORT=`expr $PORT + 1`
+       if [ "$fname" = "$4" ]; then
+          break 
+       fi    
+   done
+   dpctl unix:/var/run/s0 flow-mod cmd=add,table=0 eth_type=0x800,ip_src=$1,ip_dst=$2 apply:push_mpls=0x8847,set_field=mpls_label:$3,set_field=eth_dst:$5,output=$PORT
+   
+else
+   echo "the number of parameter must be 4 or 5!"
+   
+fi
+
+

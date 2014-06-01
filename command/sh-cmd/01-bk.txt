@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ $# -eq 5 ]; then 
+	var1=`ssh root@$5 "mpls nhlfe add key 0 instructions push gen $2 nexthop $3 ipv4 $4 | grep key |cut -c 17-26"`
+	var2=`ssh root@$5 "ip route show | grep mpls | grep $1"`
+	if [ -n "$var2" ];then
+		ssh root@$5 "ip route del $var2"
+	fi
+	ssh root@$5 "ip route add $1 via $4 mpls $var1"
+
+elif [ $# -eq 6 ]; then 
+	var1=`ssh root@$6 "mpls nhlfe add key 0 instructions push gen $3 nexthop $4 ipv4 $5 | grep key |cut -c 17-26"`
+	var2=`ssh root@$6 "iptables -t mangle --line-numbers -L FORWARD | grep mpls | grep $1 | grep $2" | awk '{print $1}'`
+	if [ -n "$var2" ];then
+		ssh root@$6 "iptables -t mangle -D FORWARD $var2"
+	fi
+	ssh root@$6 "iptables -t mangle -A FORWARD -s $1 -d $2 -j mpls --nhlfe $var1"
+
+else 
+	echo "the number of parameter must be 5 or 6!"
+fi
+
+
+mpls nhlfe show | grep -B  1 100 | grep key| awk '{print $4}'

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -eq 1 ]; then
+    mpls ilm add label gen $1 labelspace 0
+else
+    echo "the number of parameter must be 1"
+fi
+

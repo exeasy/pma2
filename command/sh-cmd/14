@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# -eq 1 ]; then
+    dpctl unix:/var/run/s0 flow-mod cmd=del,table=0 eth_type=0x800,ip_dst=$1;iptables -t filter -D FORWARD -d $1 -j DROP
+
+elif [ $# -eq 2 ]; then
+    dpctl unix:/var/run/s0 flow-mod cmd=del,table=0 eth_type=0x800,ip_src=$1,ip_dst=$2;iptables -t filter -D FORWARD -s $1 -d $2 -j DROP
+else
+   echo "the number of parameter must be 1 or 2!"
+fi
+

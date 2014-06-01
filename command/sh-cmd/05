@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# echo Deleting all mpls settings ...
+# echo Deleting all mpls - xc settings
+
+xc_output=`mpls xc show | cut -c 9-75`
+
+#parse by line, if there are multiple lines
+
+number_of_lines=`echo $xc_output|wc -l`
+
+for i in `seq 1 $number_of_lines` 
+do
+  xc_output_line=`echo $xc_output| head -$i | tail -1`
+  #echo Deleting: mpls xc del $xc_output_line
+  mpls xc del $xc_output
+  
+  #increment i
+  i=`expr $i+1`
+done
+  
+# echo Deleting all mpls - ip route settings
+nr_of_lines=`ip route show |grep mpls |wc -l`
+for i in `seq 1 $nr_of_lines `
+do
+ output=`ip route show |grep mpls |head -1`
+ # echo Deleting: ip route del $output
+ ip route del $output
+ i=`expr $i+1`
+done
+ 
+
+var1=`ip route show table 1`
+  if [ ! -z "$var1" ]; then
+       ip route del table 1
+       ip route flush table 1
+  fi
+
+var1=`ip route show table 2`
+  if [ ! -z "$var1" ]; then
+     ip route del table 2
+     ip route flush table 2
+  fi
+					    
+#echo Flushing iptables chains
+#echo Flushing iptables -t nat
+#echo Flushing iptables -t mangle
+iptables -F
+iptables -t nat -F
+iptables -t mangle -F
+
+#echo Deleting all mpls - nhlfe settings
+nr_of_lines=`mpls nhlfe show |grep key |wc -l`
+for i in `seq 1 $nr_of_lines `
+do
+ output=`mpls nhlfe show |grep key |cut -c 17-26 |head -1`
+ #echo Deleting: mpls nhlfe del key $output
+ mpls nhlfe del key $output
+ i=`expr $i+1`
+done
+
+#echo Deleting all mpls - ilm settings
+nr_of_lines=`mpls ilm show |grep ILM |wc -l`
+for i in `seq 1 $nr_of_lines `
+do
+ output=`mpls ilm show |grep ILM |cut -c 10-37 |head -1`
+#echo Deleting: mpls ilm del $output
+ mpls ilm del $output
+ i=`expr $i+1`
+done
+		    
