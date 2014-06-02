@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pma_conf>
+<device_type>11</device_type>
 <comm_type>1</comm_type>
 <version>3</version>
 <as_num>0</as_num>
@@ -23,7 +24,6 @@
 </rltm>
 <module>
 <ic>
-<device_type>1</device_type>
 <outside_enable>0</outside_enable>
 <router_ip>127.0.0.1</router_ip>
 <local_ip>10.10.8.8</local_ip>
@@ -33,5 +33,8 @@
 <snapshot_timeval>5</snapshot_timeval>
 <policy_type>0</policy_type>
 </dbm>
+<pem>
+<fast_mpls>1</fast_mpls>
+</pem>
 </module>
 </pma_conf>

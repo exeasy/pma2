@@ -1,4 +1,5 @@
 #!/bin/bash
+export LD_LIBRARY_PATH=$LDLIBRARY_PATH:./command/
 
 pma_start(){
 	./bm > bm.log 2>&1 &

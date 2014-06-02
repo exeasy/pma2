@@ -22,3 +22,48 @@ char* PRINTTIME(struct timeval timeinfo){
     printf("%s",timestr);
     return timestr;
 }
+/* Trim whitespace and newlines from a string
+ */
+size_t strtrim(char *str)
+{
+	char *end, *pch = str;
+
+	if(str == NULL || *str == '\0') {
+		/* string is empty, so we're done. */
+		return 0;
+	}
+
+	while(isspace((unsigned char)*pch)) {
+		pch++;
+	}
+	if(pch != str) {
+		size_t len = strlen(pch);
+		if(len) {
+			memmove(str, pch, len + 1);
+			pch = str;
+		} else {
+			*str = '\0';
+		}
+	}
+
+	/* check if there wasn't anything but whitespace in the string. */
+	if(*str == '\0') {
+		return 0;
+	}
+
+	end = (str + strlen(str) - 1);
+	while(isspace((unsigned char)*end)) {
+		end--;
+	}
+	*++end = '\0';
+
+	return end - pch;
+}
+
+
+int adv_atoi(char* str, int base)
+{
+	 char* endptr = NULL;
+	 if ( str == NULL) return -1;
+	 return strtol( str, &endptr, base); 
+}

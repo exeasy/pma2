@@ -125,12 +125,15 @@ icm_DEPENDENCIES = ./server/libpmaicm.a ./router/libpmarouter.a \
 	./netlink/libpmanetlink.a ./snmp/libsnmpapi.a \
 	./control/libpmactl.a ./server/libpmasocket.a \
 	./logger/libplogger.a ./lib/libpma.a ./utils/libpmautils.a
-am_pem_OBJECTS = pma_pem.$(OBJEXT)
+am_pem_OBJECTS = pem-pma_pem.$(OBJEXT)
 pem_OBJECTS = $(am_pem_OBJECTS)
 pem_DEPENDENCIES = ./server/libpmapem.a ./server/libpmasocket.a \
 	./control/libpmactl.a ./logger/libplogger.a ./lib/libpma.a \
 	./command/libpmacommand.a ./snmp/libsnmpapi.a \
 	./utils/libpmautils.a
+pem_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(pem_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 am_qconf_OBJECTS = qconf.$(OBJEXT)
 qconf_OBJECTS = $(am_qconf_OBJECTS)
 qconf_DEPENDENCIES = ./comm/libpmacommlite.a ./utils/libpmautils.a
@@ -442,7 +445,7 @@ pem_LDADD = ./server/libpmapem.a\
 		 ./snmp/libsnmpapi.a\
 		  ./utils/libpmautils.a
 
-#pem_CFLAGS=-I/usr/include/libxml2 -L/usr/local/snmp/lib -lnetsnmp -D PEMODULE -D OSPF_VERSION -std=c99 -O2 -g
+pem_CFLAGS = -D PEMODULE -L./command/ -L$(LIB_SNMP_LIB) -lxtables -liptc -lmpls -liptables -lnetsnmp 
 threadtest_SOURCES = threadtest.c
 threadtest_LDADD = ./lib/libpma.a\
 				 ./utils/libpmautils.a
@@ -504,11 +507,14 @@ testxml_LDADD = ./comm/libpmacomm.a\
 			 ./utils/libpmautils.a
 
 EXTRA_DIST = config/* \
+		   command/libiptables.so\
+		   command/libmpls.so\
 		   pma.conf\
 		   interface.cfg\
 		   pmalog.conf\
 		   pma.db\
 		   test\
+		   icm.ini\
 			pma.sh
 
 all: config.h
@@ -629,7 +635,7 @@ icm$(EXEEXT): $(icm_OBJECTS) $(icm_DEPENDENCIES) $(EXTRA_icm_DEPENDENCIES)
 
 pem$(EXEEXT): $(pem_OBJECTS) $(pem_DEPENDENCIES) $(EXTRA_pem_DEPENDENCIES) 
 	@rm -f pem$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(pem_OBJECTS) $(pem_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(pem_LINK) $(pem_OBJECTS) $(pem_LDADD) $(LIBS)
 
 qconf$(EXEEXT): $(qconf_OBJECTS) $(qconf_DEPENDENCIES) $(EXTRA_qconf_DEPENDENCIES) 
 	@rm -f qconf$(EXEEXT)
@@ -642,9 +648,9 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/dbm-pma_dbm.Po
+include ./$(DEPDIR)/pem-pma_pem.Po
 include ./$(DEPDIR)/pma_bm.Po
 include ./$(DEPDIR)/pma_icm.Po
-include ./$(DEPDIR)/pma_pem.Po
 include ./$(DEPDIR)/qconf.Po
 
 .c.o:
@@ -681,6 +687,20 @@ dbm-pma_dbm.obj: pma_dbm.c
 #	$(AM_V_CC)source='pma_dbm.c' object='dbm-pma_dbm.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(dbm_CFLAGS) $(CFLAGS) -c -o dbm-pma_dbm.obj `if test -f 'pma_dbm.c'; then $(CYGPATH_W) 'pma_dbm.c'; else $(CYGPATH_W) '$(srcdir)/pma_dbm.c'; fi`
+
+pem-pma_pem.o: pma_pem.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(pem_CFLAGS) $(CFLAGS) -MT pem-pma_pem.o -MD -MP -MF $(DEPDIR)/pem-pma_pem.Tpo -c -o pem-pma_pem.o `test -f 'pma_pem.c' || echo '$(srcdir)/'`pma_pem.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/pem-pma_pem.Tpo $(DEPDIR)/pem-pma_pem.Po
+#	$(AM_V_CC)source='pma_pem.c' object='pem-pma_pem.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(pem_CFLAGS) $(CFLAGS) -c -o pem-pma_pem.o `test -f 'pma_pem.c' || echo '$(srcdir)/'`pma_pem.c
+
+pem-pma_pem.obj: pma_pem.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(pem_CFLAGS) $(CFLAGS) -MT pem-pma_pem.obj -MD -MP -MF $(DEPDIR)/pem-pma_pem.Tpo -c -o pem-pma_pem.obj `if test -f 'pma_pem.c'; then $(CYGPATH_W) 'pma_pem.c'; else $(CYGPATH_W) '$(srcdir)/pma_pem.c'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/pem-pma_pem.Tpo $(DEPDIR)/pem-pma_pem.Po
+#	$(AM_V_CC)source='pma_pem.c' object='pem-pma_pem.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(pem_CFLAGS) $(CFLAGS) -c -o pem-pma_pem.obj `if test -f 'pma_pem.c'; then $(CYGPATH_W) 'pma_pem.c'; else $(CYGPATH_W) '$(srcdir)/pma_pem.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

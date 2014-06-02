@@ -5,6 +5,8 @@
 #include <pthread.h>
 
 char* PRINTTIME(struct timeval timeinfo);
+size_t strtrim(char *str);
+int adv_atoi(char* str, int base);
 
 	// This macro call the m_init();
 #define USING(m)\

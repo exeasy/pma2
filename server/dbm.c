@@ -64,7 +64,7 @@ int link_state_handler(struct Packet_header *pkt)
 		case ADDLSA:
 			insert_link_state(lsa);
 			spf_signal_handler(NULL);
-//            snapshoot_sender();
+            snapshoot_sender();
 			break;
 		case UPDATELSA:
 			{

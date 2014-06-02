@@ -1385,7 +1385,7 @@ Current	test/include/gtest/internal/gtest-param-util.h	/^  virtual const T* Curr
 D	db/sqlite3.c	/^  int Y, M, D;       \/* Year, month, and day *\/$/;"	m	struct:DateTime	file:	access:public
 DATA	utils/utils.h	/^	DATA,$/;"	e	enum:DBG_LEVEL
 DBFILE	db/dbutils.h	5;"	d
-DBG	utils/utils.h	40;"	d
+DBG	utils/utils.h	42;"	d
 DBG_LEVEL	utils/utils.h	/^enum DBG_LEVEL{$/;"	g
 DBM	server/srvconf.h	20;"	d
 DBM_CONF	server/srvconf.h	61;"	d
@@ -1400,8 +1400,8 @@ DB_UnresetViews	db/sqlite3.c	10167;"	d	file:
 DCOORD	db/sqlite3.c	141837;"	d	file:
 DCOORD	db/sqlite3.c	141839;"	d	file:
 DDC_H	ddc/ddc.h	3;"	d
-DEBUG	utils/utils.h	45;"	d
-DEBUG_LEVEL	utils/utils.h	42;"	d
+DEBUG	utils/utils.h	47;"	d
+DEBUG_LEVEL	utils/utils.h	44;"	d
 DEFAULT_DEAD	ddc/fah.c	8;"	d	file:
 DEFAULT_HELLO	ddc/fah.c	7;"	d	file:
 DEFAULT_H_DEAD	conf/conf.c	15;"	d	file:
@@ -2009,6 +2009,7 @@ FABS	db/sqlite3.c	143429;"	d	file:
 FAIL	test/include/gtest/gtest.h	1877;"	d
 FALSE	utils/common.h	45;"	d
 FALSE	utils/list.h	4;"	d
+FAST_MPLS	conf/conf.c	44;"	d	file:
 FATAL	utils/utils.h	/^	FATAL = 0,$/;"	e	enum:DBG_LEVEL
 FClose	test/include/gtest/internal/gtest-port.h	/^inline int FClose(FILE* fp) { return fclose(fp); }$/;"	f	namespace:testing::internal::posix	signature:(FILE* fp)
 FDOpen	test/include/gtest/internal/gtest-port.h	/^inline FILE* FDOpen(int fd, const char* mode) { return fdopen(fd, mode); }$/;"	f	namespace:testing::internal::posix	signature:(int fd, const char* mode)
@@ -2090,7 +2091,7 @@ FLOOD_TERMINATED	lsd/lsd_flood.h	/^	FLOOD_READY, FLOOD_BUSY, FLOOD_ACK_WAITING, 
 FOREGUARD	db/sqlite3.c	16344;"	d	file:
 FOpen	test/include/gtest/internal/gtest-port.h	/^inline FILE* FOpen(const char* path, const char* mode) {$/;"	f	namespace:testing::internal::posix	signature:(const char* path, const char* mode)
 FREE_CLEANER	snmp/includes/snmpget.h	19;"	d
-FREE_LINK_LIST	utils/utils.h	119;"	d
+FREE_LINK_LIST	utils/utils.h	121;"	d
 FRESH_STATUS	netlink/route.h	5;"	d
 FRIEND_TEST	test/include/gtest/gtest_prod.h	55;"	d
 FRR	policy/policy.h	4;"	d
@@ -2441,7 +2442,7 @@ GETRUSAGE	lib/thread.h	30;"	d
 GETSESSION	snmp/includes/snmpcore.h	9;"	d
 GETVARINT_INIT	db/sqlite3.c	124385;"	d	file:
 GETVARINT_STEP	db/sqlite3.c	124382;"	d	file:
-GET_MOD_CONFIG	conf/conf.c	45;"	d	file:
+GET_MOD_CONFIG	conf/conf.c	46;"	d	file:
 GLOBAL	db/sqlite3.c	8578;"	d	file:
 GLOBAL	db/sqlite3.c	8584;"	d	file:
 GREP	Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
@@ -3067,6 +3068,7 @@ INET_ADDRSTRLEN	lib/prefix.h	81;"	d
 INFO	utils/utils.h	/^	INFO,$/;"	e	enum:DBG_LEVEL
 INIT_CLEANER	snmp/includes/snmpget.h	18;"	d
 INIT_VARS	policy/policy_parse.c	22;"	d	file:
+INI_H	utils/ini.h	3;"	d
 INSTALL	Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
 INSTALL	comm/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
 INSTALL	command/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
@@ -3232,6 +3234,7 @@ IPADDRTABLE	snmp/includes/oids.h	31;"	d
 IPFORWARDTABLE	snmp/includes/oids.h	33;"	d
 IPROUTETABLE	snmp/includes/huawei_mibs.h	18;"	d
 IPROUTETABLE	snmp/includes/oids.h	32;"	d
+IPTABLES_H	command/iptables.h	3;"	d
 IPTOMEDIAABLE	snmp/includes/huawei_mibs.h	20;"	d
 IPTOMEDIAABLE	snmp/includes/oids.h	35;"	d
 IPV4_ADDR_CMP	lib/prefix.h	96;"	d
@@ -3252,6 +3255,7 @@ ISAUTOVACUUM	db/sqlite3.c	50365;"	d	file:
 ISAUTOVACUUM	db/sqlite3.c	50367;"	d	file:
 IS_BIG_INT	db/sqlite3.c	7931;"	d	file:
 IS_LOCK_ERROR	db/sqlite3.c	23532;"	d	file:
+IS_VAL	server/icm.c	193;"	d	file:
 IcuCursor	db/sqlite3.c	/^struct IcuCursor {$/;"	s	file:
 IcuCursor	db/sqlite3.c	/^typedef struct IcuCursor IcuCursor;$/;"	t	typeref:struct:IcuCursor	file:
 IcuCursor::aChar	db/sqlite3.c	/^  UChar *aChar;               \/* Copy of input using utf-16 encoding *\/$/;"	m	struct:IcuCursor	file:	access:public
@@ -3785,6 +3789,7 @@ LN_S	timer/Makefile	/^LN_S = ln -s$/;"	m
 LN_S	utils/Makefile	/^LN_S = ln -s$/;"	m
 LN_S	vty/Makefile	/^LN_S = ln -s$/;"	m
 LOCAL_IP	conf/conf.c	41;"	d	file:
+LOCAL_TEST	config.h	68;"	d
 LOCKFILE_EXCLUSIVE_LOCK	db/sqlite3.c	33986;"	d	file:
 LOCKFILE_FAIL_IMMEDIATELY	db/sqlite3.c	33982;"	d	file:
 LOGGER_H_	logger/logger.h	2;"	d
@@ -4040,6 +4045,7 @@ MODREG	server/srvconf.h	28;"	d
 MODULE	conf/conf.c	34;"	d	file:
 MODULE_MANAGER_H	mmanager/module_manager.h	2;"	d
 MODULE_PEM_H	server/pem.h	2;"	d
+MPLS_H	command/mpls.h	3;"	d
 MTYPE_ACCESS_FILTER	lib/memory.h	/^  MTYPE_ACCESS_FILTER,$/;"	e	enum:__anon33
 MTYPE_ACCESS_LIST	lib/memory.h	/^  MTYPE_ACCESS_LIST,$/;"	e	enum:__anon33
 MTYPE_ACCESS_LIST_STR	lib/memory.h	/^  MTYPE_ACCESS_LIST_STR,$/;"	e	enum:__anon33
@@ -5219,6 +5225,14 @@ PCacheGlobal::pEnd	db/sqlite3.c	/^  void *pStart, *pEnd;           \/* Bounds of
 PCacheGlobal::pFree	db/sqlite3.c	/^  PgFreeslot *pFree;             \/* Free page blocks *\/$/;"	m	struct:PCacheGlobal	file:	access:public
 PCacheGlobal::pStart	db/sqlite3.c	/^  void *pStart, *pEnd;           \/* Bounds of pagecache malloc range *\/$/;"	m	struct:PCacheGlobal	file:	access:public
 PCacheGlobal::szSlot	db/sqlite3.c	/^  int szSlot;                    \/* Size of each free slot *\/$/;"	m	struct:PCacheGlobal	file:	access:public
+PDaemon	utils/thread_daemon.h	/^typedef struct PDaemon{$/;"	s
+PDaemon	utils/thread_daemon.h	/^} PDaemon;$/;"	t	typeref:struct:PDaemon
+PDaemon::args	utils/thread_daemon.h	/^	void* args;$/;"	m	struct:PDaemon	access:public
+PDaemon::daemon	utils/thread_daemon.h	/^	daemon_ptr daemon; $/;"	m	struct:PDaemon	access:public
+PDaemon::max_interval	utils/thread_daemon.h	/^	int max_interval;\/\/ the max  time interval between two detections$/;"	m	struct:PDaemon	access:public
+PDaemon::min_interval	utils/thread_daemon.h	/^	int min_interval;\/\/the min time interval between two detections$/;"	m	struct:PDaemon	access:public
+PDaemon::pid	utils/thread_daemon.h	/^	pthread_t pid;$/;"	m	struct:PDaemon	access:public
+PDaemon::run_count	utils/thread_daemon.h	/^	int run_count;$/;"	m	struct:PDaemon	access:public
 PEA_S	conf/conf.c	37;"	d	file:
 PEM	server/srvconf.h	21;"	d
 PEM_CONF	server/srvconf.h	62;"	d
@@ -6130,7 +6144,7 @@ SHELL	timer/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	utils/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	vty/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHMEM_H_	lib/shmem.h	2;"	d
-SLEEP	utils/utils.h	150;"	d
+SLEEP	utils/utils.h	152;"	d
 SLEEPTIME	snmp/includes/pma_api.h	9;"	d
 SLOT_2_0	db/sqlite3.c	22296;"	d	file:
 SLOT_4_2_0	db/sqlite3.c	22297;"	d	file:
@@ -7518,6 +7532,7 @@ TF_Readonly	db/sqlite3.c	10757;"	d	file:
 TF_Virtual	db/sqlite3.c	10761;"	d	file:
 TF_WithoutRowid	db/sqlite3.c	10762;"	d	file:
 THREAD_ARG	lib/thread.h	85;"	d
+THREAD_DAEMON_H	utils/thread_daemon.h	3;"	d
 THREAD_EVENT	lib/thread.h	77;"	d
 THREAD_FD	lib/thread.h	86;"	d
 THREAD_OFF	lib/thread.h	107;"	d
@@ -8212,7 +8227,7 @@ UP_TRAFFICE_INFO	server/srvconf.h	41;"	d
 USEFETCH	db/sqlite3.c	40179;"	d	file:
 USEFETCH	db/sqlite3.c	40181;"	d	file:
 USING	ddc/ddc.h	9;"	d
-USING	utils/utils.h	10;"	d
+USING	utils/utils.h	12;"	d
 UnitTest	test/include/gtest/gtest.h	/^  UnitTest();$/;"	p	class:testing::UnitTest	access:private	signature:()
 UnitTest	test/include/gtest/gtest.h	/^class GTEST_API_ UnitTest {$/;"	c	namespace:testing
 UniversalPrint	test/include/gtest/gtest-printers.h	/^void UniversalPrint(const T& value, ::std::ostream* os) {$/;"	f	namespace:testing::internal	signature:(const T& value, ::std::ostream* os)
@@ -9214,10 +9229,12 @@ __anon7::pzErrMsg	db/sqlite3.c	/^  char **pzErrMsg;    \/* Error message stored 
 __anon7::rc	db/sqlite3.c	/^  int rc;             \/* Result code stored here *\/$/;"	m	struct:__anon7	file:	access:public
 __declspec	db/sqlite3.c	/^  __declspec(naked) __inline sqlite_uint64 __cdecl sqlite3Hwtime(void){$/;"	f
 __declspec	db/sqlite3.c	/^__declspec(dllexport)$/;"	f
+__u32	command/mpls.h	/^typedef unsigned int __u32;$/;"	t
 _fts3ht	db/sqlite3.c	/^  struct _fts3ht {        \/* the hash table *\/$/;"	s	struct:Fts3Hash	file:	access:public
 _ht	db/sqlite3.c	/^  struct _ht {              \/* the hash table *\/$/;"	s	struct:Hash	file:	access:public
 _ifid	lsd/lsd_if.h	30;"	d
 _ifid	lsd/lsd_if.h	46;"	d
+_parse_ini	utils/ini.c	/^static int _parse_ini(const char *file, ini_parser_fn cb, void *data,$/;"	f	file:	signature:(const char *file, ini_parser_fn cb, void *data, char **section_name, char *line, int depth)
 _policy_element	policy/policy_table.h	/^struct _policy_element$/;"	s
 _policy_element::lower_limit	policy/policy_table.h	/^	unsigned int lower_limit;$/;"	m	struct:_policy_element	access:public
 _policy_element::operation	policy/policy_table.h	/^	int operation;$/;"	m	struct:_policy_element	access:public
@@ -9608,7 +9625,11 @@ add_exchange_handler	lsd/lsd_event.c	/^void add_exchange_handler(exchange_handle
 add_exchange_handler	lsd/lsd_event.h	/^void add_exchange_handler(exchange_handler h);$/;"	p	signature:(exchange_handler h)
 add_hello_detection_handler	lsd/lsd_event.c	/^void add_hello_detection_handler(hello_detection_handler handler)$/;"	f	signature:(hello_detection_handler handler)
 add_hello_detection_handler	lsd/lsd_event.h	/^void add_hello_detection_handler(hello_detection_handler handler);$/;"	p	signature:(hello_detection_handler handler)
+add_iptables	command/iptables.h	/^int add_iptables( char *src, char *dst, __u32 key);$/;"	p	signature:( char *src, char *dst, __u32 key)
 add_link_state_into_list	lsdb/lsdb_traverse.c	/^int add_link_state_into_list(struct cr_lsdb_router* rt, struct cr_lsdb_link_state* state, void* args)$/;"	f	signature:(struct cr_lsdb_router* rt, struct cr_lsdb_link_state* state, void* args)
+add_mpls_end	command/mpls.h	/^void add_mpls_end(__u32 label);$/;"	p	signature:(__u32 label)
+add_mpls_in	command/mpls.h	/^void add_mpls_in(__u32 label, char * ifname, char *ipaddress, __u32 *rkey);$/;"	p	signature:(__u32 label, char * ifname, char *ipaddress, __u32 *rkey)
+add_mpls_mid	command/mpls.h	/^void add_mpls_mid(__u32 label, __u32 key);$/;"	p	signature:(__u32 label, __u32 key)
 add_path_of_link	ddc/ddc.c	/^int add_path_of_link( int link_index, struct Netpath* path, struct area_info * az)$/;"	f	signature:( int link_index, struct Netpath* path, struct area_info * az)
 add_path_to_area_short_path	ddc/ddc.c	/^struct Netpath* add_path_to_area_short_path(struct area_info *az)$/;"	f	signature:(struct area_info *az)
 add_pkt_rcv_handler	lsd/lsd_event.c	/^void add_pkt_rcv_handler(pkt_rcv_handler h)$/;"	f	signature:(pkt_rcv_handler h)
@@ -9645,6 +9666,8 @@ adjustStats	db/sqlite3.c	/^static void adjustStats(int iSize, int increment){$/;
 adjust_time	lsd/lsd_if.h	/^    struct timeval adjust_time; \/\/$/;"	m	struct:backbone_eth	typeref:struct:backbone_eth::timeval	access:public
 adminstatus	snmp/includes/snmpcore.h	/^	char* adminstatus;$/;"	m	struct:bgpPeerTable	access:public
 adminstatus	snmp/includes/snmpcore.h	/^	char* adminstatus;$/;"	m	struct:ospfIfTable	access:public
+adv_atoi	utils/utils.c	/^int adv_atoi(char* str, int base)$/;"	f	signature:(char* str, int base)
+adv_atoi	utils/utils.h	/^int adv_atoi(char* str, int base);$/;"	p	signature:(char* str, int base)
 adv_router	lib/prefix.h	/^      struct in_addr adv_router;$/;"	m	struct:prefix::__anon27::__anon28	typeref:struct:prefix::__anon27::__anon28::in_addr	access:public
 adv_router	lib/prefix.h	/^  struct in_addr adv_router;$/;"	m	struct:prefix_ls	typeref:struct:prefix_ls::in_addr	access:public
 affSdst	db/sqlite3.c	/^  char affSdst;        \/* Affinity used when eDest==SRT_Set *\/$/;"	m	struct:SelectDest	file:	access:public
@@ -10626,7 +10649,7 @@ am_libpmatimer_a_OBJECTS	timer/Makefile	/^am_libpmatimer_a_OBJECTS = timer.$(OBJ
 am_libpmautils_a_OBJECTS	utils/Makefile	/^am_libpmautils_a_OBJECTS = libpmautils_a-utils.$(OBJEXT) \\$/;"	m
 am_libpmavty_a_OBJECTS	vty/Makefile	/^am_libpmavty_a_OBJECTS = vty.$(OBJEXT)$/;"	m
 am_libsnmpapi_a_OBJECTS	snmp/Makefile	/^am_libsnmpapi_a_OBJECTS = libsnmpapi_a-getBgpRouterTable.$(OBJEXT) \\$/;"	m
-am_pem_OBJECTS	Makefile	/^am_pem_OBJECTS = pma_pem.$(OBJEXT)$/;"	m
+am_pem_OBJECTS	Makefile	/^am_pem_OBJECTS = pem-pma_pem.$(OBJEXT)$/;"	m
 am_qconf_OBJECTS	Makefile	/^am_qconf_OBJECTS = qconf.$(OBJEXT)$/;"	m
 am_test_bm_OBJECTS	test/Makefile	/^am_test_bm_OBJECTS = test_bm-test_bm.$(OBJEXT)$/;"	m
 am_test_bm_conf_OBJECTS	test/Makefile	/^am_test_bm_conf_OBJECTS = test_bm_conf-test_bm_conf.$(OBJEXT)$/;"	m
@@ -10702,6 +10725,7 @@ arealist	ddc/ddc.h	/^	int * arealist;$/;"	m	struct:global_info	access:public
 arg	lib/thread.h	/^  void *arg;			\/* event argument *\/$/;"	m	struct:thread	access:public
 args	lib/thread_pool.h	/^	void *args;$/;"	m	struct:Task	access:public
 args	timer/timer.c	/^	void *args;	\/*!<回调函数的参数指针，可自定义参数的结构*\/$/;"	m	struct:pma_timer	file:	access:public
+args	utils/thread_daemon.h	/^	void* args;$/;"	m	struct:PDaemon	access:public
 argvIndex	db/sqlite3.c	/^    int argvIndex;           \/* if >0, constraint is part of argv to xFilter *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint_usage	file:	access:public
 argvIndex	db/sqlite3.h	/^    int argvIndex;           \/* if >0, constraint is part of argv to xFilter *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_constraint_usage	access:public
 array_	test/include/gtest/gtest-test-part.h	/^  std::vector<TestPartResult> array_;$/;"	m	class:testing::TestPartResultArray	access:private
@@ -11056,8 +11080,8 @@ bgp_interface::neighbor_ip	server/pem.h	/^    char neighbor_ip[24];$/;"	m	struct
 bgp_interface::next	server/pem.h	/^    struct bgp_interface* next;$/;"	m	struct:bgp_interface	typeref:struct:bgp_interface::bgp_interface	access:public
 bgp_interface::remote_as	server/pem.h	/^    int remote_as;$/;"	m	struct:bgp_interface	access:public
 bgp_interface_info_to_xml	router/interface.c	/^int bgp_interface_info_to_xml()$/;"	f
-bgp_path_attr_table_detect_daemon	server/icm.c	/^void bgp_path_attr_table_detect_daemon()$/;"	f
-bgp_path_attr_table_detect_thread	router/interface.c	/^int bgp_path_attr_table_detect_thread()$/;"	f
+bgp_path_attr_table_detect	router/interface.c	/^int bgp_path_attr_table_detect(void* args, int type)$/;"	f	signature:(void* args, int type)
+bgp_path_attr_table_detect	router/interface.h	/^int bgp_path_attr_table_detect(void* args, int type);$/;"	p	signature:(void* args, int type)
 bgp_path_attr_table_last_len	router/interface.c	/^int bgp_path_attr_table_last_len = 0;$/;"	v
 bgp_path_attr_to_xml	router/interface.c	/^char* bgp_path_attr_to_xml(char* data)$/;"	f	signature:(char* data)
 bgp_path_attr_to_xml	router/interface.c	/^char* bgp_path_attr_to_xml(char* data);$/;"	p	file:	signature:(char* data)
@@ -11065,9 +11089,14 @@ bgp_type	router/interface.h	/^	u32 bgp_type;\/\/ ebgp :1   ibgp:2$/;"	m	struct:p
 bgpd	snmp/includes/huawei_mibs.h	53;"	d
 bgpd	snmp/includes/oids.h	81;"	d
 bgpidentifier	snmp/snmp/snmpcore.c	/^itemopt bgpidentifier = {$/;"	v
+bgpifinfo_daemon	server/icm.c	/^PDaemon bgpifinfo_daemon; \/\/bgp ifinfo detection$/;"	v
+bgpifinfo_detect	router/interface.c	/^int bgpifinfo_detect(void* args, int type)$/;"	f	signature:(void* args, int type)
+bgpifinfo_detect	router/interface.h	/^int bgpifinfo_detect(void* args, int type);$/;"	p	signature:(void* args, int type)
 bgplocalas	snmp/snmp/snmpcore.c	/^itemopt bgplocalas = {$/;"	v
+bgppath_daemon	server/icm.c	/^PDaemon bgppath_daemon;		\/\/bgp path table detection$/;"	v
+bgppath_diff_and_send	router/interface.c	/^int bgppath_diff_and_send(struct bgpPathAttrTable* table)$/;"	f	signature:(struct bgpPathAttrTable* table)
+bgppath_get_and_send	router/interface.c	/^int bgppath_get_and_send(struct bgpPathAttrTable* table)$/;"	f	signature:(struct bgpPathAttrTable* table)
 bgppath_mapper	snmp/includes/typemapper.h	/^const int bgppath_mapper[] = {$/;"	v
-bgppath_thread	server/icm.c	/^pthread_t bgppath_thread;$/;"	v
 bgppathtable	snmp/snmp/snmpcore.c	/^tableopt bgppathtable = {$/;"	v
 bgppeer_mapper	snmp/includes/typemapper.h	/^const int bgppeer_mapper[] = $/;"	v
 bgppeertable	snmp/snmp/snmpcore.c	/^tableopt bgppeertable = {$/;"	v
@@ -11601,6 +11630,7 @@ conf::alca_port	conf/conf.h	/^	int alca_port;$/;"	m	struct:conf	access:public
 conf::as_num	conf/conf.h	/^	int as_num;\/\/as id$/;"	m	struct:conf	access:public
 conf::comm_type	conf/conf.h	/^	int comm_type;  \/\/  0,no alca , 1,two method, 2,only alca $/;"	m	struct:conf	access:public
 conf::dbm_config	conf/conf.h	/^	struct dbm_conf dbm_config;$/;"	m	struct:conf	typeref:struct:conf::dbm_conf	access:public
+conf::device_type	conf/conf.h	/^	int device_type; \/\/ 11: Quagga+ospf 12: Quagga+bgp 13: Quagga+ospf+bgp 21: Huawei+ospf 22: Huawei+bgp  23: Huawei+ospf+bgp$/;"	m	struct:conf	access:public
 conf::ic_config	conf/conf.h	/^	struct ic_conf ic_config;$/;"	m	struct:conf	typeref:struct:conf::ic_conf	access:public
 conf::listen_port	conf/conf.h	/^	int listen_port;$/;"	m	struct:conf	access:public
 conf::logsrv_ip	conf/conf.h	/^	char logsrv_ip[46];$/;"	m	struct:conf	access:public
@@ -11782,6 +11812,8 @@ create_connect	comm/comm_lite.c	/^int create_connect(const char* ip, int port)$/
 create_connect	comm/comm_lite.h	/^int create_connect(const char* ip, int port);$/;"	p	signature:(const char* ip, int port)
 create_ctl	control/control.c	/^struct ctl* create_ctl(int size)$/;"	f	signature:(int size)
 create_ctl	control/control.h	/^struct ctl *create_ctl(int size);$/;"	p	signature:(int size)
+create_daemon	utils/thread_daemon.c	/^int create_daemon(PDaemon * p)$/;"	f	signature:(PDaemon * p)
+create_daemon	utils/thread_daemon.h	/^int create_daemon(PDaemon * p);$/;"	p	signature:(PDaemon * p)
 create_ddc_matrix	ddc/ddc.c	/^struct  Netnode* create_ddc_matrix(int router_count)$/;"	f	signature:(int router_count)
 create_function	db/sqlite3.c	/^  int  (*create_function)(sqlite3*,const char*,int,int,void*,$/;"	m	struct:sqlite3_api_routines	file:	access:public
 create_function	db/sqlite3ext.h	/^  int  (*create_function)(sqlite3*,const char*,int,int,void*,$/;"	m	struct:sqlite3_api_routines	access:public
@@ -11890,6 +11922,9 @@ current_value_	test/include/gtest/internal/gtest-param-util-generated.h	/^    Pa
 current_value_	test/include/gtest/internal/gtest-param-util-generated.h	/^    ParamType current_value_;$/;"	m	class:testing::internal::CartesianProductGenerator9::Iterator	access:private
 cursorHoldsMutex	db/sqlite3.c	/^static int cursorHoldsMutex(BtCursor *p){$/;"	f	file:	signature:(BtCursor *p)
 cycles	db/sqlite3.c	/^  u64 cycles;              \/* Total time spent executing this instruction *\/$/;"	m	struct:VdbeOp	file:	access:public
+daemon	utils/thread_daemon.h	/^	daemon_ptr daemon; $/;"	m	struct:PDaemon	access:public
+daemon_loop	utils/thread_daemon.c	/^void daemon_loop(PDaemon *p)$/;"	f	signature:(PDaemon *p)
+daemon_ptr	utils/thread_daemon.h	/^typedef int (*daemon_ptr)(void* args, int type);$/;"	t
 data	comm/comm.h	/^	char data[0];$/;"	m	struct:req_args	access:public
 data	comm/comm_lite.h	/^	char	*data;$/;"	m	struct:packet	access:public
 data	comm/comm_utils.h	/^	char	*data;$/;"	m	struct:packet	access:public
@@ -12067,7 +12102,9 @@ define_event_queue_list	lib/event.h	15;"	d
 defined_test_names_	test/include/gtest/internal/gtest-internal.h	/^  ::std::set<const char*> defined_test_names_;$/;"	m	class:testing::internal::TypedTestCasePState	access:private
 defragmentPage	db/sqlite3.c	/^static int defragmentPage(MemPage *pPage){$/;"	f	file:	signature:(MemPage *pPage)
 del	lib/linklist.h	/^  void (*del) (void *val);$/;"	m	struct:list	access:public
-delay_time	server/icm.c	/^int delay_time(int n)\/\/ms$/;"	f	signature:(int n)
+del_iptables	command/iptables.h	/^int del_iptables(__u32 num);$/;"	p	signature:(__u32 num)
+del_mpls	command/mpls.h	/^void del_mpls(__u32 key);$/;"	p	signature:(__u32 key)
+delay_time	utils/thread_daemon.c	/^int delay_time(int n)\/\/ms$/;"	f	signature:(int n)
 deleteCell	db/sqlite3.c	/^static int deleteCell(Rtree *, RtreeNode *, int, int);$/;"	p	file:	signature:(Rtree *, RtreeNode *, int, int)
 deleteCell	db/sqlite3.c	/^static int deleteCell(Rtree *pRtree, RtreeNode *pNode, int iCell, int iHeight){$/;"	f	file:	signature:(Rtree *pRtree, RtreeNode *pNode, int iCell, int iHeight)
 delete_policy_table	policy/policy_table.c	/^delete_policy_table( struct _policy_table * p )$/;"	f	signature:( struct _policy_table * p )
@@ -12111,6 +12148,8 @@ destroyTable	db/sqlite3.c	/^static void destroyTable(Parse *pParse, Table *pTab)
 detachFunc	db/sqlite3.c	/^static void detachFunc($/;"	f	file:	signature:( sqlite3_context *context, int NotUsed, sqlite3_value **argv )
 details	router/interface.h	/^    struct interface* details;$/;"	m	struct:rinterface	typeref:struct:rinterface::interface	access:public
 detect_config	qconf.c	/^int detect_config(const char* filepath, long int *lastmtime){$/;"	f	signature:(const char* filepath, long int *lastmtime)
+detect_daemon_init	server/icm.c	/^int detect_daemon_init()$/;"	f
+detect_daemon_init	server/icm.h	/^int detect_daemon_init();$/;"	p	signature:()
 detection_queue	lsd/lsd_event.c	/^define_event_queue(detection_queue);$/;"	v
 detection_queue	lsd/lsd_hello.c	/^declare_event_queue(detection_queue);$/;"	v
 dev	db/sqlite3.c	/^  dev_t dev;                  \/* Device number *\/$/;"	m	struct:unixFileId	file:	access:public
@@ -12118,18 +12157,23 @@ deviceCharacteristics	db/sqlite3.c	/^  int deviceCharacteristics;          \/* P
 device_id	lsd/lsd_if.h	/^	 u32 device_id ; \/\/agent id $/;"	m	struct:autonomous_zone	access:public
 device_id	lsd/lsd_if.h	/^	u32 device_id;$/;"	m	struct:neighbor_pma	access:public
 device_id	server/icm.h	/^	int device_id;$/;"	m	struct:pma_list	access:public
+device_info_detect	router/interface.c	/^int device_info_detect(void* args, int type)$/;"	f	signature:(void* args, int type)
+device_info_detect	router/interface.h	/^int device_info_detect(void* args, int type);$/;"	p	signature:(void* args, int type)
 device_info_run_first	router/interface.c	/^int device_info_run_first = 0;$/;"	v
 device_info_to_xml	router/interface.c	/^char* device_info_to_xml(struct list* iflist);$/;"	p	file:	signature:(struct list* iflist)
 device_info_to_xml	router/interface.c	/^char* device_info_to_xml(struct list* iflist){$/;"	f	signature:(struct list* iflist)
-device_info_update_thread	router/interface.c	/^void device_info_update_thread()$/;"	f
-device_info_update_thread	router/interface.h	/^void device_info_update_thread();$/;"	p	signature:()
 device_type	comm/comm_lite.h	/^	u16 device_type;$/;"	m	struct:common_header	access:public
 device_type	comm/comm_utils.h	/^	u16 device_type;$/;"	m	struct:common_header	access:public
-device_type	conf/conf.h	/^	int device_type;$/;"	m	struct:ic_conf	access:public
+device_type	conf/conf.h	/^	int device_type; \/\/ 11: Quagga+ospf 12: Quagga+bgp 13: Quagga+ospf+bgp 21: Huawei+ospf 22: Huawei+bgp  23: Huawei+ospf+bgp$/;"	m	struct:conf	access:public
+device_type	conf/conf.h	/^	int device_type; \/\/ 11: Quagga+ospf 12: Quagga+bgp 13: Quagga+ospf+bgp 21: Huawei+ospf 22: Huawei+bgp  23: Huawei+ospf+bgp$/;"	m	struct:ic_conf	access:public
+device_type	conf/conf.h	/^	int device_type; \/\/ 11: Quagga+ospf 12: Quagga+bgp 13: Quagga+ospf+bgp 21: Huawei+ospf 22: Huawei+bgp  23: Huawei+ospf+bgp$/;"	m	struct:pea_conf	access:public
 device_type	server/icm.h	/^	int device_type;$/;"	m	struct:icm_conf	access:public
+device_type	server/pem.h	/^	int device_type;$/;"	m	struct:pem_conf	access:public
+deviceinfo_diff_and_send	router/interface.c	/^int deviceinfo_diff_and_send(struct InterfaceTable* table)$/;"	f	signature:(struct InterfaceTable* table)
+deviceinfo_get_and_send	router/interface.c	/^int deviceinfo_get_and_send(struct InterfaceTable* table)$/;"	f	signature:(struct InterfaceTable* table)
 devid	comm/handler.h	/^	int devid;$/;"	m	struct:router_list	access:public
 devid	router/interface.h	/^	u32 devid;$/;"	m	struct:neighbor	access:public
-devinfo_thread	server/icm.c	/^pthread_t devinfo_thread;$/;"	v
+devinfo_daemon	server/icm.c	/^PDaemon devinfo_daemon;		\/\/device_info detection$/;"	v
 dfltLockMode	db/sqlite3.c	/^  u8 dfltLockMode;              \/* Default locking-mode for attached dbs *\/$/;"	m	struct:sqlite3	file:	access:public
 difference_type	test/include/gtest/internal/gtest-param-util.h	/^  typedef ptrdiff_t difference_type;$/;"	t	class:testing::internal::ParamIterator	access:public
 dijkstra	ddc/ddc.c	/^int dijkstra(int s, struct area_info* az)$/;"	f	signature:(int s, struct area_info* az)
@@ -12199,6 +12243,7 @@ drouter	snmp/includes/snmpcore.h	/^	char* drouter;$/;"	m	struct:ospfIfTable	acce
 dst_addr	comm/comm_lite.h	/^	struct in_addr dst_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
 dst_addr	comm/comm_utils.h	/^	struct in_addr dst_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
 dst_ip	comm/comm_utils.h	/^	u32 dst_ip; \/*!< 目地IP *\/$/;"	m	struct:alca_header	access:public
+dst_ip	command/routercmd.h	/^	char dst_ip[50];$/;"	m	struct:tunnelcmd	access:public
 dummy_	test/include/gtest/internal/gtest-internal.h	/^  static bool dummy_;$/;"	m	class:testing::internal::TypeIdHelper	access:public
 dummy_	test/include/gtest/internal/gtest-internal.h	/^bool TypeIdHelper<T>::dummy_ = false;$/;"	m	class:testing::internal::TypeIdHelper
 dup8bytes	db/sqlite3.c	/^static char *dup8bytes(Vdbe *v, const char *in){$/;"	f	file:	signature:(Vdbe *v, const char *in)
@@ -12594,6 +12639,8 @@ family	lib/prefix.h	/^  u_char family;$/;"	m	struct:prefix_rd	access:public
 family	netlink/route.h	/^  u8 family;$/;"	m	struct:prefix_ipv4	access:public
 family2afi	lib/prefix.c	/^family2afi (int family)$/;"	f	signature:(int family)
 family2afi	lib/prefix.h	/^int family2afi (int);$/;"	p	signature:(int)
+fast_mpls	conf/conf.h	/^	int fast_mpls;$/;"	m	struct:pea_conf	access:public
+fast_mpls	server/pem.h	/^	int fast_mpls;$/;"	m	struct:pem_conf	access:public
 fatally_failed	test/include/gtest/gtest-test-part.h	/^  bool fatally_failed() const { return type_ == kFatalFailure; }$/;"	f	class:testing::TestPartResult	access:public	signature:() const
 fcntlSizeHint	db/sqlite3.c	/^static int fcntlSizeHint(unixFile *pFile, i64 nByte){$/;"	f	file:	signature:(unixFile *pFile, i64 nByte)
 fd	comm/interior_daemon.h	/^	int fd;$/;"	m	struct:pkt	access:public
@@ -13507,6 +13554,7 @@ get_ipaddr_table	snmp/includes/snmpcore.h	/^int get_ipaddr_table(callbackptr cal
 get_ipaddr_table	snmp/snmp/snmpcore.c	/^int get_ipaddr_table(callbackptr callback)$/;"	f	signature:(callbackptr callback)
 get_iproute_table	snmp/includes/snmpcore.h	/^int get_iproute_table(callbackptr callback);$/;"	p	signature:(callbackptr callback)
 get_iproute_table	snmp/snmp/snmpcore.c	/^int get_iproute_table(callbackptr callback)$/;"	f	signature:(callbackptr callback)
+get_iptables	command/iptables.h	/^int get_iptables(char *src, char *dst,  __u32 *num,__u32 *key);$/;"	p	signature:(char *src, char *dst, __u32 *num,__u32 *key)
 get_link_states	db/dbm_lsdb.c	/^struct link_info* get_link_states(u32 areaid, int *count)$/;"	f	signature:(u32 areaid, int *count)
 get_link_states	db/dbm_lsdb.h	/^struct link_info* get_link_states(u32 areaid, int *count);$/;"	p	signature:(u32 areaid, int *count)
 get_link_states_of_router	db/dbm_lsdb.c	/^struct link_info* get_link_states_of_router(u32 areaid,u32 routerid , int *count)$/;"	f	signature:(u32 areaid,u32 routerid , int *count)
@@ -14159,7 +14207,7 @@ iWriteOff	db/sqlite3.c	/^  i64 iWriteOff;                  \/* Offset of start o
 iZero	db/sqlite3.c	/^    int iZero;                    \/* Frame number associated with aPgno[0] *\/$/;"	m	struct:WalIterator::WalSegment	file:	access:public
 ibgp_list	server/pem.c	/^struct bgp_interface * ibgp_list;$/;"	v	typeref:struct:bgp_interface
 ic_conf	conf/conf.h	/^struct ic_conf{$/;"	s
-ic_conf::device_type	conf/conf.h	/^	int device_type;$/;"	m	struct:ic_conf	access:public
+ic_conf::device_type	conf/conf.h	/^	int device_type; \/\/ 11: Quagga+ospf 12: Quagga+bgp 13: Quagga+ospf+bgp 21: Huawei+ospf 22: Huawei+bgp  23: Huawei+ospf+bgp$/;"	m	struct:ic_conf	access:public
 ic_conf::h_dead_val	conf/conf.h	/^	unsigned int h_dead_val;$/;"	m	struct:ic_conf	access:public
 ic_conf::h_hello_val	conf/conf.h	/^	unsigned int h_hello_val;$/;"	m	struct:ic_conf	access:public
 ic_conf::if_id	conf/conf.h	/^	int if_id;$/;"	m	struct:ic_conf	access:public
@@ -14363,10 +14411,7 @@ ifindex	snmp/includes/snmpcore.h	/^	char* ifindex;$/;"	m	struct:IpAddrTable	acce
 ifindex	snmp/includes/snmpcore.h	/^	char* ifindex;$/;"	m	struct:IpRouteTable	access:public
 ifindex2ifname	lib/if.c	/^ifindex2ifname (unsigned int index)$/;"	f	signature:(unsigned int index)
 ifindex2ifname	lib/if.h	/^char *ifindex2ifname (unsigned int);$/;"	p	signature:(unsigned int)
-ifinfo_daemon	server/icm.c	/^int ifinfo_daemon()$/;"	f
-ifinfo_daemon	server/icm.h	/^int ifinfo_daemon();$/;"	p	signature:()
-ifinfo_thread	server/icm.c	/^pthread_t ifinfo_thread;$/;"	v
-ifinfo_thread_function	server/icm.c	/^void ifinfo_thread_function(void *args)$/;"	f	signature:(void *args)
+ifinfo_daemon	server/icm.c	/^PDaemon ifinfo_daemon;		\/\/interface info detection$/;"	v
 ifinoctets	snmp/includes/snmpcore.h	/^	char* ifinoctets;$/;"	m	struct:InterfaceTable	access:public
 iflist	lib/if.c	/^struct list *iflist;$/;"	v	typeref:struct:list
 iflist	router/router.h	/^    struct list* iflist;$/;"	m	struct:router	typeref:struct:router::list	access:public
@@ -14376,9 +14421,10 @@ ifoperstatus	snmp/includes/snmpcore.h	/^	char* ifoperstatus;$/;"	m	struct:Interf
 ifoutoctets	snmp/includes/snmpcore.h	/^	char* ifoutoctets;$/;"	m	struct:InterfaceTable	access:public
 ifp	lib/if.h	/^  struct interface *ifp;$/;"	m	struct:connected	typeref:struct:connected::interface	access:public
 ifphysaddress	snmp/includes/snmpcore.h	/^	char* ifphysaddress;$/;"	m	struct:InterfaceTable	access:public
+ifrate_detect	router/interface.c	/^int ifrate_detect(void *args,int type)$/;"	f	signature:(void *args,int type)
+ifrate_detect	router/interface.h	/^int ifrate_detect(void *args,int type);$/;"	p	signature:(void *args,int type)
+ifrate_diff_and_send	router/interface.c	/^int ifrate_diff_and_send(struct InterfaceTable* table)$/;"	f	signature:(struct InterfaceTable* table)
 ifrate_first_run	router/interface.c	/^int ifrate_first_run = 0;$/;"	v
-ifrate_info_detect_daemon	router/interface.c	/^void ifrate_info_detect_daemon()$/;"	f
-ifrate_info_detect_daemon	router/interface.h	/^void ifrate_info_detect_daemon();$/;"	p	signature:()
 ifrate_info_to_xml	router/interface.c	/^char* ifrate_info_to_xml(struct list* iflist);$/;"	p	file:	signature:(struct list* iflist)
 ifrate_info_to_xml	router/interface.c	/^char* ifrate_info_to_xml(struct list* iflist){$/;"	f	signature:(struct list* iflist)
 ifspeed	snmp/includes/snmpcore.h	/^	char* ifspeed;$/;"	m	struct:InterfaceTable	access:public
@@ -14398,6 +14444,7 @@ inTrans	db/sqlite3.c	/^  u8 inTrans;        \/* TRANS_NONE, TRANS_READ or TRANS_
 inTransaction	db/sqlite3.c	/^  int inTransaction;     \/* True after xBegin but before xCommit\/xRollback *\/$/;"	m	struct:Fts3Table	file:	access:public
 inTransaction	db/sqlite3.c	/^  u8 inTransaction;     \/* Transaction state *\/$/;"	m	struct:BtShared	file:	access:public
 inVtabMethod	db/sqlite3.c	/^  bft inVtabMethod:2;     \/* See comments above *\/$/;"	m	struct:Vdbe	file:	access:public
+in_label	command/routercmd.h	/^	__u32 in_label;$/;"	m	struct:tunnelcmd	access:public
 in_pktinfo	lib/zebra.h	/^struct in_pktinfo$/;"	s
 in_pktinfo::ipi_addr	lib/zebra.h	/^  struct in_addr ipi_addr;$/;"	m	struct:in_pktinfo	typeref:struct:in_pktinfo::in_addr	access:public
 in_pktinfo::ipi_ifindex	lib/zebra.h	/^  int ipi_ifindex;$/;"	m	struct:in_pktinfo	access:public
@@ -14478,6 +14525,10 @@ infodir	test/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	timer/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	utils/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	vty/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
+ini_max_recursion	utils/ini.c	/^static const int ini_max_recursion = 10;$/;"	v	file:
+ini_parser	server/icm.c	/^int ini_parser(const char* file, int line, const char* section, char *key, char* value, void* data)$/;"	f	signature:(const char* file, int line, const char* section, char *key, char* value, void* data)
+ini_parser	server/icm.h	/^int ini_parser(const char* file, int line, const char* section, char *key, char* value, void* data);$/;"	p	signature:(const char* file, int line, const char* section, char *key, char* value, void* data)
+ini_parser_fn	utils/ini.h	/^typedef int (ini_parser_fn)(const char *file, int line, const char *section,$/;"	t
 init	db/sqlite3.c	/^  } init;$/;"	m	struct:sqlite3	typeref:struct:sqlite3::sqlite3InitInfo	file:	access:public
 initAvgEq	db/sqlite3.c	/^static void initAvgEq(Index *pIdx){$/;"	f	file:	signature:(Index *pIdx)
 initMaskSet	db/sqlite3.c	109132;"	d	file:
@@ -14635,7 +14686,6 @@ interface_addr	comm/comm.h	/^struct interface_addr{$/;"	s
 interface_addr::addr	comm/comm.h	/^	struct sockaddr_in addr;$/;"	m	struct:interface_addr	typeref:struct:interface_addr::sockaddr_in	access:public
 interface_addr::next	comm/comm.h	/^	struct interface_addr *next;$/;"	m	struct:interface_addr	typeref:struct:interface_addr::interface_addr	access:public
 interface_delete	router/interface.c	/^void interface_delete(struct list *iflist, struct rinterface *iface)$/;"	f	signature:(struct list *iflist, struct rinterface *iface)
-interface_detect_daemon	server/icm.c	/^void interface_detect_daemon()$/;"	f
 interface_down	lsd/lsd_if.c	/^int interface_down (struct thread* thread){$/;"	f	signature:(struct thread* thread)
 interface_down	lsd/lsd_if.h	/^int interface_down(struct thread *thread);$/;"	p	signature:(struct thread *thread)
 interface_id	netlink/route.h	/^	int interface_id;$/;"	m	struct:route	access:public
@@ -14786,6 +14836,8 @@ isWriteLock	db/sqlite3.c	/^  u8 isWriteLock;      \/* True for write lock.  Fals
 is_computed	ddc/ddc.c	/^int is_computed()$/;"	f
 is_computed	ddc/ddc.h	/^int is_computed();$/;"	p	signature:()
 is_disabled_	test/include/gtest/gtest.h	/^  bool is_disabled_;                \/\/ True iff this test is disabled$/;"	m	class:testing::TestInfo	access:private
+is_fastmpls	server/pem.c	/^int is_fastmpls()$/;"	f
+is_fastmpls	server/pem.h	/^int is_fastmpls();$/;"	p	signature:()
 is_inited	snmp/snmp/snmpcore.c	/^int is_inited(){$/;"	f
 is_keys_equals	lsd/lsd_utils.c	/^int is_keys_equals(const struct link_state_key* key1, const struct link_state_key* key2)$/;"	f	signature:(const struct link_state_key* key1, const struct link_state_key* key2)
 is_nan	test/include/gtest/internal/gtest-internal.h	/^  bool is_nan() const {$/;"	f	class:testing::internal::FloatingPoint	access:public	signature:() const
@@ -14977,7 +15029,7 @@ libpmacommand_a_AR	command/Makefile	/^libpmacommand_a_AR = $(AR) $(ARFLAGS)$/;"	
 libpmacommand_a_CFLAGS	command/Makefile	/^libpmacommand_a_CFLAGS = -I$(LIB_XML_INCLUDE)$/;"	m
 libpmacommand_a_LIBADD	command/Makefile	/^libpmacommand_a_LIBADD =$/;"	m
 libpmacommand_a_OBJECTS	command/Makefile	/^libpmacommand_a_OBJECTS = $(am_libpmacommand_a_OBJECTS)$/;"	m
-libpmacommand_a_SOURCES	command/Makefile	/^libpmacommand_a_SOURCES = routercmd.c routercmd.h$/;"	m
+libpmacommand_a_SOURCES	command/Makefile	/^libpmacommand_a_SOURCES = routercmd.c routercmd.h mpls.h$/;"	m
 libpmacommlite_a_AR	comm/Makefile	/^libpmacommlite_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmacommlite_a_LIBADD	comm/Makefile	/^libpmacommlite_a_LIBADD =$/;"	m
 libpmacommlite_a_OBJECTS	comm/Makefile	/^libpmacommlite_a_OBJECTS = $(am_libpmacommlite_a_OBJECTS)$/;"	m
@@ -15167,9 +15219,9 @@ list_add_node_next	lib/linklist.c	/^list_add_node_next (list list, listnode curr
 list_add_node_next	lib/linklist.h	/^void list_add_node_next (list, listnode, void *);$/;"	p	signature:(list, listnode, void *)
 list_add_node_prev	lib/linklist.c	/^list_add_node_prev (list list, listnode current, void *val)$/;"	f	signature:(list list, listnode current, void *val)
 list_add_node_prev	lib/linklist.h	/^void list_add_node_prev (list, listnode, void *);$/;"	p	signature:(list, listnode, void *)
-list_add_rcu	utils/utils.h	91;"	d
-list_add_tail_rcu	utils/utils.h	104;"	d
-list_del_rcu	utils/utils.h	99;"	d
+list_add_rcu	utils/utils.h	93;"	d
+list_add_tail_rcu	utils/utils.h	106;"	d
+list_del_rcu	utils/utils.h	101;"	d
 list_delete	lib/linklist.c	/^list_delete (struct list *list)$/;"	f	signature:(struct list *list)
 list_delete	lib/linklist.h	/^void list_delete (struct list *);$/;"	p	signature:(struct list *)
 list_delete_all_node	lib/linklist.c	/^list_delete_all_node (struct list *list)$/;"	f	signature:(struct list *list)
@@ -15381,7 +15433,7 @@ lsd_serv_sock	lsd/lsd_socket.h	/^int lsd_serv_sock();$/;"	p	signature:()
 lsd_start	lsd/lsdsrv.c	/^int lsd_start()$/;"	f
 lsd_start	lsd/lsdsrv.h	/^int lsd_start();$/;"	p	signature:()
 lsd_status	lsd/lsd_hello.h	/^enum lsd_status$/;"	g
-lsd_thread	server/icm.c	/^pthread_t lsd_thread;$/;"	v
+lsd_thread	server/icm.c	/^pthread_t lsd_thread; \/\/link detection thread$/;"	v
 lsdb	lsd/lsd_if.h	/^     id_t lsdb; \/\/ lsdb of the area$/;"	m	struct:autonomous_zone	access:public
 lsdb	lsdb/private/lsdb_inner.h	/^struct lsdb$/;"	s
 lsdb::links_state_count	lsdb/private/lsdb_inner.h	/^	u32 links_state_count;$/;"	m	struct:lsdb	access:public
@@ -15481,7 +15533,7 @@ malloc	db/sqlite3ext.h	/^  void *(*malloc)(int);$/;"	m	struct:sqlite3_api_routin
 mallocFailed	db/sqlite3.c	/^  int mallocFailed; \/* A memory allocation error has occurred *\/$/;"	m	struct:IntegrityCk	file:	access:public
 mallocFailed	db/sqlite3.c	/^  u8 mallocFailed;              \/* True if we have seen a malloc failure *\/$/;"	m	struct:sqlite3	file:	access:public
 mallocWithAlarm	db/sqlite3.c	/^static int mallocWithAlarm(int n, void **pp){$/;"	f	file:	signature:(int n, void **pp)
-malloc_z	utils/utils.h	112;"	d
+malloc_z	utils/utils.h	114;"	d
 mandir	Makefile	/^mandir = ${datarootdir}\/man$/;"	m
 mandir	comm/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
 mandir	command/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
@@ -15537,6 +15589,7 @@ maxOut	db/sqlite3.c	/^  u32 maxOut;         \/* Maximum instantaneous currentOut
 maxRequest	db/sqlite3.c	/^  u32 maxRequest;     \/* Largest allocation (exclusive of internal frag) *\/$/;"	m	struct:Mem5Global	file:	access:public
 max_delay	comm/comm_utils.h	/^	u32 max_delay; \/\/最大延迟$/;"	m	struct:alca_header	access:public
 max_getbulk	snmp/snmp/snmptable2.c	/^static int      max_getbulk = 10;$/;"	v	file:
+max_interval	utils/thread_daemon.h	/^	int max_interval;\/\/ the max  time interval between two detections$/;"	m	struct:PDaemon	access:public
 max_size	lib/shmem.h	/^	unsigned int max_size;$/;"	m	struct:shmqueue_ctl	access:public
 max_timer_id	timer/timer.c	/^static u32 max_timer_id = 0;\/*!<下次设置定时器时，定时器的ID*\/$/;"	v	file:
 max_width	snmp/snmp/snmptable2.c	/^static int      max_width = 0;$/;"	v	file:
@@ -15638,6 +15691,7 @@ minMaxFinalize	db/sqlite3.c	/^static void minMaxFinalize(sqlite3_context *contex
 minMaxQuery	db/sqlite3.c	/^static u8 minMaxQuery(AggInfo *pAggInfo, ExprList **ppMinMax){$/;"	f	file:	signature:(AggInfo *pAggInfo, ExprList **ppMinMax)
 minWriteFileFormat	db/sqlite3.c	/^  u8 minWriteFileFormat;  \/* Minimum file format for writable database files *\/$/;"	m	struct:Vdbe	file:	access:public
 min_cost	ddc/ddc.c	/^int min_cost(int *v, int *d,int total_node,int sid, struct area_info* azinfo)$/;"	f	signature:(int *v, int *d,int total_node,int sid, struct area_info* azinfo)
+min_interval	utils/thread_daemon.h	/^	int min_interval;\/\/the min time interval between two detections$/;"	m	struct:PDaemon	access:public
 minasorigination	snmp/includes/snmpcore.h	/^	char* minasorigination;$/;"	m	struct:bgpPeerTable	access:public
 minmaxFunc	db/sqlite3.c	/^static void minmaxFunc($/;"	f	file:	signature:( sqlite3_context *context, int argc, sqlite3_value **argv )
 minmaxStep	db/sqlite3.c	/^static void minmaxStep($/;"	f	file:	signature:( sqlite3_context *context, int NotUsed, sqlite3_value **argv )
@@ -15697,7 +15751,7 @@ mnMaster	db/sqlite3.c	/^  u32 mnMaster;$/;"	m	struct:Mem3Global	file:	access:pub
 mnPmaSize	db/sqlite3.c	/^  int mnPmaSize;                  \/* Minimum PMA size, in bytes *\/$/;"	m	struct:VdbeSorter	file:	access:public
 mnReg	db/sqlite3.c	/^  int mnReg, mxReg;       \/* Range of registers allocated for aCol and aFunc *\/$/;"	m	struct:AggInfo	file:	access:public
 mnReq	db/sqlite3.c	/^  int mnReq, mxReq;                 \/* Min and max heap requests sizes *\/$/;"	m	struct:Sqlite3Config	file:	access:public
-mod_using	utils/utils.h	19;"	d
+mod_using	utils/utils.h	21;"	d
 modifyPagePointer	db/sqlite3.c	/^static int modifyPagePointer(MemPage *pPage, Pgno iFrom, Pgno iTo, u8 eType){$/;"	f	file:	signature:(MemPage *pPage, Pgno iFrom, Pgno iTo, u8 eType)
 modify_timer	timer/timer.c	/^u32 modify_timer(u32 t_id, u32 timeout)$/;"	f	signature:(u32 t_id, u32 timeout)
 modify_timer	timer/timer.h	/^extern u32 modify_timer(u32 t_id, u32 timeout);$/;"	p	signature:(u32 t_id, u32 timeout)
@@ -16237,6 +16291,7 @@ nextPagesize	db/sqlite3.c	/^  int nextPagesize;             \/* Pagesize after V
 nextShmId	db/sqlite3.c	/^  u8 nextShmId;              \/* Next available unixShm.id value *\/$/;"	m	struct:unixShmNode	file:	access:public
 nextShmId	db/sqlite3.c	/^  u8 nextShmId;              \/* Next available winShm.id value *\/$/;"	m	struct:winShmNode	file:	access:public
 next_	test/include/gtest/internal/gtest-linked_ptr.h	/^  mutable linked_ptr_internal const* next_;$/;"	m	class:testing::internal::linked_ptr_internal	access:private
+next_ip	command/routercmd.h	/^	char next_ip[50];$/;"	m	struct:tunnelcmd	access:public
 next_stmt	db/sqlite3.c	/^  sqlite3_stmt *(*next_stmt)(sqlite3*,sqlite3_stmt*);$/;"	m	struct:sqlite3_api_routines	file:	access:public
 next_stmt	db/sqlite3ext.h	/^  sqlite3_stmt *(*next_stmt)(sqlite3*,sqlite3_stmt*);$/;"	m	struct:sqlite3_api_routines	access:public
 nextas	snmp/includes/snmpcore.h	/^	char* nextas;$/;"	m	struct:IpRouteTable	access:public
@@ -16307,7 +16362,7 @@ noinst_HEADERS	router/Makefile	/^noinst_HEADERS = interface.h router.h routertab
 noinst_HEADERS	server/Makefile	/^noinst_HEADERS = dbm.h icm.h pem.h server.h socket.h srvconf.h $/;"	m
 noinst_HEADERS	snmp/Makefile	/^noinst_HEADERS = includes\/bgp_snmp.h\\$/;"	m
 noinst_HEADERS	timer/Makefile	/^noinst_HEADERS = timer.h$/;"	m
-noinst_HEADERS	utils/Makefile	/^noinst_HEADERS = common.h list.h pma_err.h utils.h xml.h$/;"	m
+noinst_HEADERS	utils/Makefile	/^noinst_HEADERS = common.h list.h pma_err.h utils.h xml.h thread_daemon.h ini.h$/;"	m
 noinst_LIBRARIES	comm/Makefile	/^noinst_LIBRARIES = libpmacomm.a  libpmacommlite.a$/;"	m
 noinst_LIBRARIES	command/Makefile	/^noinst_LIBRARIES = libpmacommand.a$/;"	m
 noinst_LIBRARIES	conf/Makefile	/^noinst_LIBRARIES = libpmaconf.a$/;"	m
@@ -16784,11 +16839,10 @@ ospfNeighborTable::nbrip	snmp/includes/snmpcore.h	/^	char* nbrip;$/;"	m	struct:o
 ospfNeighborTable::next	snmp/includes/snmpcore.h	/^	struct ospfNeighborTable * next;$/;"	m	struct:ospfNeighborTable	typeref:struct:ospfNeighborTable::ospfNeighborTable	access:public
 ospfNeighborTable::state	snmp/includes/snmpcore.h	/^	char* state;$/;"	m	struct:ospfNeighborTable	access:public
 ospfNeighborTable::status	snmp/includes/snmpcore.h	/^	char* status;$/;"	m	struct:ospfNeighborTable	access:public
-ospf_interface_detect_daemon	server/icm.c	/^void ospf_interface_detect_daemon()$/;"	f
+ospf_interface_info_detect	router/interface.c	/^int ospf_interface_info_detect(void* args, int type)$/;"	f	signature:(void* args, int type)
+ospf_interface_info_detect	router/interface.h	/^int ospf_interface_info_detect(void* args, int type);$/;"	p	signature:(void* args, int type)
 ospf_interface_info_to_xml	router/interface.c	/^char* ospf_interface_info_to_xml(struct list* iflist);$/;"	p	file:	signature:(struct list* iflist)
 ospf_interface_info_to_xml	router/interface.c	/^char* ospf_interface_info_to_xml(struct list* iflist){$/;"	f	signature:(struct list* iflist)
-ospf_interface_info_update_thread	router/interface.c	/^void ospf_interface_info_update_thread()$/;"	f
-ospf_interface_info_update_thread	router/interface.h	/^void ospf_interface_info_update_thread();$/;"	p	signature:()
 ospf_interface_run_first	router/interface.c	/^int ospf_interface_run_first = 0;$/;"	v
 ospf_proto_info	router/interface.h	/^struct ospf_proto_info {$/;"	s
 ospf_proto_info::dead_interval	router/interface.h	/^	u32 dead_interval;$/;"	m	struct:ospf_proto_info	access:public
@@ -16798,16 +16852,21 @@ ospfareatable	snmp/snmp/snmpcore.c	/^tableopt ospfareatable = { $/;"	v
 ospfd	snmp/includes/huawei_mibs.h	55;"	d
 ospfd	snmp/includes/oids.h	83;"	d
 ospfif_mapper	snmp/includes/typemapper.h	/^const int ospfif_mapper[] = $/;"	v
+ospfifinfo_daemon	server/icm.c	/^PDaemon ospfifinfo_daemon; \/\/ospf ifinfo detection$/;"	v
+ospfifinfo_diff_and_send	router/interface.c	/^int ospfifinfo_diff_and_send(struct ospfIfTable* table)$/;"	f	signature:(struct ospfIfTable* table)
+ospfifinfo_get_and_send	router/interface.c	/^int ospfifinfo_get_and_send(struct ospfIfTable* table)$/;"	f	signature:(struct ospfIfTable* table)
 ospfifmetric_mapper	snmp/includes/typemapper.h	/^const int ospfifmetric_mapper[] = $/;"	v
 ospfifmetrictable	snmp/snmp/snmpcore.c	/^tableopt ospfifmetrictable = {$/;"	v
 ospfiftable	snmp/snmp/snmpcore.c	/^tableopt ospfiftable = { $/;"	v
-ospfinfo_thread	server/icm.c	/^pthread_t ospfinfo_thread;$/;"	v
 ospfneighbor_mapper	snmp/includes/typemapper.h	/^const int ospfneighbor_mapper[] = $/;"	v
 ospfneighbortable	snmp/snmp/snmpcore.c	/^tableopt ospfneighbortable = {$/;"	v
 ospfrouterid	snmp/snmp/snmpcore.c	/^itemopt ospfrouterid = {$/;"	v
 ospfversion	snmp/snmp/snmpcore.c	/^itemopt ospfversion = {$/;"	v
+out_if	command/routercmd.h	/^	char out_if[50];$/;"	m	struct:tunnelcmd	access:public
+out_label	command/routercmd.h	/^	__u32 out_label;$/;"	m	struct:tunnelcmd	access:public
 outmessages	snmp/includes/snmpcore.h	/^	char* outmessages;$/;"	m	struct:bgpPeerTable	access:public
 outoctets	snmp/includes/pma_api.h	/^	long long outoctets;$/;"	m	struct:ifTable	access:public
+outport	command/routercmd.h	/^	__u32 outport;$/;"	m	struct:tunnelcmd	access:public
 outrate	snmp/includes/pma_api.h	/^	int outrate;$/;"	m	struct:ifRate	access:public
 outrate	snmp/includes/pma_api.h	/^	long long outrate;$/;"	m	struct:ifTable	access:public
 outside	conf/conf.h	/^	int outside;$/;"	m	struct:ic_conf	access:public
@@ -17379,6 +17438,8 @@ parse_conf	conf/conf.c	/^static int parse_conf(xmlDocPtr doc, xmlNodePtr node)$/
 parse_conf	logger/logger.c	/^extern int parse_conf();$/;"	p	file:
 parse_conf	logger/logger.c	/^int parse_conf(FILE* fp)$/;"	f	signature:(FILE* fp)
 parse_conf_old	conf/conf.c	/^static int parse_conf_old(xmlDocPtr doc, xmlNodePtr node)$/;"	f	file:	signature:(xmlDocPtr doc, xmlNodePtr node)
+parse_ini	utils/ini.c	/^int parse_ini(const char *file, ini_parser_fn cb, void *data)$/;"	f	signature:(const char *file, ini_parser_fn cb, void *data)
+parse_ini	utils/ini.h	/^int parse_ini(const char *file, ini_parser_fn cb, void *data);$/;"	p	signature:(const char *file, ini_parser_fn cb, void *data)
 parse_policy	policy/policy_parse.c	/^static int parse_policy( xmlDocPtr doc, xmlNodePtr node)$/;"	f	file:	signature:( xmlDocPtr doc, xmlNodePtr node)
 partial_regex_	test/include/gtest/internal/gtest-port.h	/^  regex_t partial_regex_;  \/\/ For PartialMatch().$/;"	m	class:testing::internal::RE	access:private
 passed	test/include/gtest/gtest-test-part.h	/^  bool passed() const { return type_ == kSuccess; }$/;"	f	class:testing::TestPartResult	access:public	signature:() const
@@ -17455,6 +17516,8 @@ pdfdir	timer/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	utils/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	vty/Makefile	/^pdfdir = ${docdir}$/;"	m
 pea_conf	conf/conf.h	/^struct pea_conf{$/;"	s
+pea_conf::device_type	conf/conf.h	/^	int device_type; \/\/ 11: Quagga+ospf 12: Quagga+bgp 13: Quagga+ospf+bgp 21: Huawei+ospf 22: Huawei+bgp  23: Huawei+ospf+bgp$/;"	m	struct:pea_conf	access:public
+pea_conf::fast_mpls	conf/conf.h	/^	int fast_mpls;$/;"	m	struct:pea_conf	access:public
 pea_conf::pma_id	conf/conf.h	/^	int pma_id;$/;"	m	struct:pea_conf	access:public
 pea_conf::router_ip	conf/conf.h	/^	struct in_addr router_ip;$/;"	m	struct:pea_conf	typeref:struct:pea_conf::in_addr	access:public
 pea_config	conf/conf.h	/^	struct pea_conf pea_config;$/;"	m	struct:conf	typeref:struct:conf::pea_conf	access:public
@@ -17463,11 +17526,15 @@ peer	snmp/includes/snmpcore.h	/^	char* peer;$/;"	m	struct:bgpRecvPathAttrTable	a
 peeraddr	snmp/includes/snmpcore.h	/^	char* peeraddr;$/;"	m	struct:bgpPeerTable	access:public
 peerport	snmp/includes/snmpcore.h	/^	char* peerport;$/;"	m	struct:bgpPeerTable	access:public
 peerstate	snmp/includes/snmpcore.h	/^	char* peerstate;$/;"	m	struct:bgpPeerTable	access:public
+pem_CFLAGS	Makefile	/^pem_CFLAGS = -D PEMODULE -L.\/command\/ -lmpls -liptables$/;"	m
 pem_DEPENDENCIES	Makefile	/^pem_DEPENDENCIES = .\/server\/libpmapem.a .\/server\/libpmasocket.a \\$/;"	m
 pem_LDADD	Makefile	/^pem_LDADD = .\/server\/libpmapem.a\\$/;"	m
+pem_LINK	Makefile	/^pem_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 pem_OBJECTS	Makefile	/^pem_OBJECTS = $(am_pem_OBJECTS)$/;"	m
 pem_SOURCES	Makefile	/^pem_SOURCES = pma_pem.c$/;"	m
 pem_conf	server/pem.h	/^struct pem_conf{$/;"	s
+pem_conf::device_type	server/pem.h	/^	int device_type;$/;"	m	struct:pem_conf	access:public
+pem_conf::fast_mpls	server/pem.h	/^	int fast_mpls;$/;"	m	struct:pem_conf	access:public
 pem_conf::pma_id	server/pem.h	/^	int pma_id;$/;"	m	struct:pem_conf	access:public
 pem_conf::router_ip	server/pem.h	/^	struct in_addr router_ip;$/;"	m	struct:pem_conf	typeref:struct:pem_conf::in_addr	access:public
 pem_init	server/pem.c	/^int pem_init()$/;"	f
@@ -17480,6 +17547,7 @@ pgno	db/sqlite3.c	/^  Pgno pgno;                     \/* Page number for this pa
 pgno	db/sqlite3.c	/^  Pgno pgno;           \/* Page number for this page *\/$/;"	m	struct:MemPage	file:	access:public
 pgnoRoot	db/sqlite3.c	/^  Pgno pgnoRoot;            \/* The root page of this tree *\/$/;"	m	struct:BtCursor	file:	access:public
 physAddress	snmp/includes/pma_api.h	/^	char physAddress[18];$/;"	m	struct:ifTable	access:public
+pid	utils/thread_daemon.h	/^	pthread_t pid;$/;"	m	struct:PDaemon	access:public
 pkg_len	comm/comm_lite.h	/^	u32 pkg_len;$/;"	m	struct:common_header	access:public
 pkg_len	comm/comm_utils.h	/^	u32 pkg_len;$/;"	m	struct:common_header	access:public
 pkg_no	lsd/lsd_exchange.h	/^	u32 pkg_no;$/;"	m	struct:exchange_master	access:public
@@ -17606,11 +17674,11 @@ plog_notice	lib/log.h	/^void plog_notice (struct zlog *, const char *format, ...
 plog_warn	lib/log.c	/^plog_warn (struct zlog *zl, const char *format, ...)$/;"	f	signature:(struct zlog *zl, const char *format, ...)
 plog_warn	lib/log.h	/^void plog_warn (struct zlog *, const char *format, ...);$/;"	p	signature:(struct zlog *, const char *format, ...)
 pma_addr	comm/comm.c	/^int pma_addr;$/;"	v
-pma_bswap64	utils/utils.h	140;"	d
+pma_bswap64	utils/utils.h	142;"	d
 pma_conf	conf/conf.c	/^struct conf pma_conf =$/;"	v	typeref:struct:conf
 pma_ctl_addr	lsd/lsd_if.h	/^    struct in_addr pma_ctl_addr;$/;"	m	struct:neighbor_pma	typeref:struct:neighbor_pma::in_addr	access:public
-pma_hton64	utils/utils.h	134;"	d
-pma_hton64	utils/utils.h	137;"	d
+pma_hton64	utils/utils.h	136;"	d
+pma_hton64	utils/utils.h	139;"	d
 pma_id	conf/conf.h	/^	int pma_id;$/;"	m	struct:conf	access:public
 pma_id	conf/conf.h	/^	int pma_id;$/;"	m	struct:dbm_conf	access:public
 pma_id	conf/conf.h	/^	int pma_id;$/;"	m	struct:ic_conf	access:public
@@ -17627,8 +17695,8 @@ pma_list::ip	server/icm.h	/^	struct in_addr ip;$/;"	m	struct:pma_list	typeref:st
 pma_list::router_id	server/icm.h	/^	int router_id;$/;"	m	struct:pma_list	access:public
 pma_list_handle	server/icm.c	/^pma_list_handle( struct Packet_header *pkt )$/;"	f	signature:( struct Packet_header *pkt )
 pma_list_handle	server/icm.h	/^int pma_list_handle(struct Packet_header *pkt);$/;"	p	signature:(struct Packet_header *pkt)
-pma_ntoh64	utils/utils.h	133;"	d
-pma_ntoh64	utils/utils.h	136;"	d
+pma_ntoh64	utils/utils.h	135;"	d
+pma_ntoh64	utils/utils.h	138;"	d
 pma_pms_header	comm/comm_lite.h	/^struct pma_pms_header{$/;"	s
 pma_pms_header	comm/comm_utils.h	/^struct pma_pms_header{$/;"	s
 pma_pms_header::com_h	comm/comm_lite.h	/^	struct common_header com_h;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::common_header	access:public
@@ -18045,7 +18113,7 @@ random_seed	test/include/gtest/gtest.h	/^  int random_seed() const;$/;"	p	class:
 randomness	db/sqlite3.c	/^  void (*randomness)(int,void*);$/;"	m	struct:sqlite3_api_routines	file:	access:public
 randomness	db/sqlite3ext.h	/^  void (*randomness)(int,void*);$/;"	m	struct:sqlite3_api_routines	access:public
 randomnessPid	db/sqlite3.c	/^static int randomnessPid = 0;$/;"	v	file:
-rate_refresh_timeval	router/interface.c	/^int rate_refresh_timeval = 2;\/\/1 second $/;"	v
+rate_refresh_timeval	router/interface.c	/^int  rate_refresh_timeval = 2;$/;"	v
 rc	db/sqlite3.c	/^  int rc;                  \/* Backup process error code *\/$/;"	m	struct:sqlite3_backup	file:	access:public
 rc	db/sqlite3.c	/^  int rc;                 \/* Value to return *\/$/;"	m	struct:Vdbe	file:	access:public
 rc	db/sqlite3.c	/^  int rc;              \/* Return code from execution *\/$/;"	m	struct:Parse	file:	access:public
@@ -18310,8 +18378,7 @@ route_table::route_table_len	router/routertable.h	/^	int route_table_len;$/;"	m	
 route_table::routerip	router/routertable.h	/^	char routerip[24];$/;"	m	struct:route_table	access:public
 route_table::routes	router/routertable.h	/^	struct route* routes;$/;"	m	struct:route_table	typeref:struct:route_table::route	access:public
 route_table::top	lib/table.h	/^  struct route_node *top;$/;"	m	struct:route_table	typeref:struct:route_table::route_node	access:public
-route_table_daemon	server/icm.c	/^int route_table_daemon()$/;"	f
-route_table_daemon	server/icm.h	/^int route_table_daemon();$/;"	p	signature:()
+route_table_detect	server/icm.c	/^int route_table_detect(void* args, int type)$/;"	f	signature:(void* args, int type)
 route_table_finish	lib/table.c	/^route_table_finish (struct route_table *rt)$/;"	f	signature:(struct route_table *rt)
 route_table_finish	lib/table.h	/^void route_table_finish (struct route_table *);$/;"	p	signature:(struct route_table *)
 route_table_free	lib/table.c	/^route_table_free (struct route_table *rt)$/;"	f	signature:(struct route_table *rt)
@@ -18321,7 +18388,6 @@ route_table_get	router/routertable.h	/^int route_table_get(struct route_table * 
 route_table_init	lib/table.c	/^route_table_init (void)$/;"	f	signature:(void)
 route_table_init	lib/table.h	/^struct route_table *route_table_init (void);$/;"	p	signature:(void)
 route_table_len	router/routertable.h	/^	int route_table_len;$/;"	m	struct:route_table	access:public
-route_table_thread	server/icm.c	/^void route_table_thread(void* args)$/;"	f	signature:(void* args)
 route_top	lib/table.c	/^route_top (struct route_table *table)$/;"	f	signature:(struct route_table *table)
 route_top	lib/table.h	/^struct route_node *route_top (struct route_table *);$/;"	p	signature:(struct route_table *)
 route_unlock_node	lib/table.c	/^route_unlock_node (struct route_node *node)$/;"	f	signature:(struct route_node *node)
@@ -18369,6 +18435,7 @@ routers_count	lsdb/private/lsdb_inner.h	/^	u32 routers_count;$/;"	m	struct:lsdb	
 routers_head	lsdb/private/lsdb_inner.h	/^	struct cr_list_head routers_head;$/;"	m	struct:lsdb	typeref:struct:lsdb::cr_list_head	access:public
 routers_visitor	lsdb/lsdb.h	/^typedef int (*routers_visitor)(struct cr_lsdb_router* rt, void* args);$/;"	t
 routes	router/routertable.h	/^	struct route* routes;$/;"	m	struct:route_table	typeref:struct:route_table::route	access:public
+routetable_daemon	server/icm.c	/^PDaemon routetable_daemon; \/\/route table detection $/;"	v
 rowSetEntryAlloc	db/sqlite3.c	/^static struct RowSetEntry *rowSetEntryAlloc(RowSet *p){$/;"	f	file:	signature:(RowSet *p)
 rowSetEntryMerge	db/sqlite3.c	/^static struct RowSetEntry *rowSetEntryMerge($/;"	f	file:	signature:( struct RowSetEntry *pA, struct RowSetEntry *pB )
 rowSetEntrySort	db/sqlite3.c	/^static struct RowSetEntry *rowSetEntrySort(struct RowSetEntry *pIn){$/;"	f	file:	signature:(struct RowSetEntry *pIn)
@@ -18383,7 +18450,6 @@ rt	lsdb/private/lsdb_inner.h	/^	struct router_node* rt;$/;"	m	struct:link_state	
 rt_id	lsd/lsd_hello.h	/^	u32 rt_id;$/;"	m	struct:lsd_neighbor_info	access:public
 rt_id	lsdb/lsdb.h	/^	u32 rt_id;$/;"	m	struct:link_state_key	access:public
 rt_ptrs	lsdb/private/lsdb_inner.h	/^	struct cr_list_head rt_ptrs;$/;"	m	struct:link_state	typeref:struct:link_state::cr_list_head	access:public
-rt_thread	server/icm.c	/^pthread_t rt_thread;$/;"	v
 rtreeBestIndex	db/sqlite3.c	/^static int rtreeBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo){$/;"	f	file:	signature:(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo)
 rtreeClose	db/sqlite3.c	/^static int rtreeClose(sqlite3_vtab_cursor *cur){$/;"	f	file:	signature:(sqlite3_vtab_cursor *cur)
 rtreeColumn	db/sqlite3.c	/^static int rtreeColumn(sqlite3_vtab_cursor *cur, sqlite3_context *ctx, int i){$/;"	f	file:	signature:(sqlite3_vtab_cursor *cur, sqlite3_context *ctx, int i)
@@ -18414,7 +18480,8 @@ rtreedepth	db/sqlite3.c	/^static void rtreedepth(sqlite3_context *ctx, int nArg,
 rtreenode	db/sqlite3.c	/^static void rtreenode(sqlite3_context *ctx, int nArg, sqlite3_value **apArg){$/;"	f	file:	signature:(sqlite3_context *ctx, int nArg, sqlite3_value **apArg)
 ru	lib/thread.h	/^  RUSAGE_T ru;			\/* Indepth usage info.  *\/$/;"	m	struct:thread	access:public
 runOnlyOnce	db/sqlite3.c	/^  bft runOnlyOnce:1;      \/* Automatically expire on reset *\/$/;"	m	struct:Vdbe	file:	access:public
-runRouterCmd	command/routercmd.c	/^int runRouterCmd(char *cmd, int type) {$/;"	f	signature:(char *cmd, int type)
+runRouterCmd	command/routercmd.c	/^int runRouterCmd(struct tunnelcmd *cmd, int type) {$/;"	f	signature:(struct tunnelcmd *cmd, int type)
+run_count	utils/thread_daemon.h	/^	int run_count;$/;"	m	struct:PDaemon	access:public
 run_ctl	control/control.c	/^int run_ctl(struct ctl* ctlid, int i, void *args )$/;"	f	signature:(struct ctl* ctlid, int i, void *args )
 run_ctl	control/control.h	/^int run_ctl(struct ctl* ctlid, int i, void *args );$/;"	p	signature:(struct ctl* ctlid, int i, void *args )
 runner	lib/thread_pool.h	/^	func runner;$/;"	m	struct:Task	access:public
@@ -18820,14 +18887,12 @@ spanExpr	db/sqlite3.c	/^  static void spanExpr(ExprSpan *pOut, Parse *pParse, in
 spanSet	db/sqlite3.c	/^  static void spanSet(ExprSpan *pOut, Token *pStart, Token *pEnd){$/;"	f	file:	signature:(ExprSpan *pOut, Token *pStart, Token *pEnd)
 spanUnaryPostfix	db/sqlite3.c	/^  static void spanUnaryPostfix($/;"	f	file:	signature:( ExprSpan *pOut, Parse *pParse, int op, ExprSpan *pOperand, Token *pPostOp )
 spanUnaryPrefix	db/sqlite3.c	/^  static void spanUnaryPrefix($/;"	f	file:	signature:( ExprSpan *pOut, Parse *pParse, int op, ExprSpan *pOperand, Token *pPreOp )
-spf_count_daemon	server/icm.c	/^int spf_count_daemon()$/;"	f
-spf_count_daemon	server/icm.h	/^int spf_count_daemon();$/;"	p	signature:()
-spf_count_thread	server/icm.c	/^void spf_count_thread(void *args)$/;"	f	signature:(void *args)
 spf_cpt_timer	server/dbm.c	/^int spf_cpt_timer = -1;$/;"	v
 spf_cpt_timer_cancel	server/dbm.c	/^int spf_cpt_timer_cancel()$/;"	f
+spf_daemon	server/icm.c	/^PDaemon spf_daemon;			\/\/spf signal detection$/;"	v
+spf_detect	server/icm.c	/^int spf_detect(void *args, int type)$/;"	f	signature:(void *args, int type)
 spf_signal_handler	server/dbm.c	/^int spf_signal_handler(struct Packet_header *pkt)$/;"	f	signature:(struct Packet_header *pkt)
 spf_signal_handler	server/dbm.h	/^int spf_signal_handler(struct Packet_header *pkt);$/;"	p	signature:(struct Packet_header *pkt)
-spf_thread	server/icm.c	/^pthread_t spf_thread;$/;"	v
 spfruns	snmp/includes/snmpcore.h	/^	char* spfruns;$/;"	m	struct:ospfAreaTable	access:public
 splitNodeGuttman	db/sqlite3.c	/^static int splitNodeGuttman($/;"	f	file:	signature:( Rtree *pRtree, RtreeCell *aCell, int nCell, RtreeNode *pLeft, RtreeNode *pRight, RtreeCell *pBboxLeft, RtreeCell *pBboxRight )
 splitNodeStartree	db/sqlite3.c	/^static int splitNodeStartree($/;"	f	file:	signature:( Rtree *pRtree, RtreeCell *aCell, int nCell, RtreeNode *pLeft, RtreeNode *pRight, RtreeCell *pBboxLeft, RtreeCell *pBboxRight )
@@ -22817,6 +22882,7 @@ sqlresult::data	db/dbutils.h	/^	char **data;$/;"	m	struct:sqlresult	access:publi
 sqlresult::next	db/dbutils.h	/^	struct sqlresult * next;$/;"	m	struct:sqlresult	typeref:struct:sqlresult::sqlresult	access:public
 src_addr	comm/comm_lite.h	/^	struct in_addr src_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
 src_addr	comm/comm_utils.h	/^	struct in_addr src_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
+src_ip	command/routercmd.h	/^	char src_ip[50];$/;"	m	struct:tunnelcmd	access:public
 srcdir	Makefile	/^srcdir = .$/;"	m
 srcdir	comm/Makefile	/^srcdir = .$/;"	m
 srcdir	command/Makefile	/^srcdir = .$/;"	m
@@ -23052,6 +23118,8 @@ stringTollInt	snmp/snmp/routerget.c	/^long long int stringTollInt(char *string);
 stringTollInt	snmp/snmp/routerget.c	/^long long stringTollInt(char *string) {$/;"	f	signature:(char *string)
 strnicmp	db/sqlite3.c	/^  int (*strnicmp)(const char*,const char*,int);$/;"	m	struct:sqlite3_api_routines	file:	access:public
 strnicmp	db/sqlite3ext.h	/^  int (*strnicmp)(const char*,const char*,int);$/;"	m	struct:sqlite3_api_routines	access:public
+strtrim	utils/utils.c	/^size_t strtrim(char *str)$/;"	f	signature:(char *str)
+strtrim	utils/utils.h	/^size_t strtrim(char *str);$/;"	p	signature:(char *str)
 subdir	Makefile	/^subdir = .$/;"	m
 subdir	comm/Makefile	/^subdir = comm$/;"	m
 subdir	command/Makefile	/^subdir = command$/;"	m
@@ -27156,6 +27224,15 @@ truncateOnCommit	db/sqlite3.c	/^  u8 truncateOnCommit;       \/* True to truncat
 truthProb	db/sqlite3.c	/^  LogEst truthProb;       \/* Probability of truth for this expression *\/$/;"	m	struct:WhereTerm	file:	access:public
 tunnel_command_handle	server/pem.c	/^int tunnel_command_handle(struct Packet_header* pkt)$/;"	f	signature:(struct Packet_header* pkt)
 tunnel_command_handle	server/pem.h	/^int tunnel_command_handle(struct Packet_header* pkt);$/;"	p	signature:(struct Packet_header* pkt)
+tunnelcmd	command/routercmd.h	/^struct tunnelcmd {$/;"	s
+tunnelcmd::dst_ip	command/routercmd.h	/^	char dst_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::in_label	command/routercmd.h	/^	__u32 in_label;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::next_ip	command/routercmd.h	/^	char next_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::out_if	command/routercmd.h	/^	char out_if[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::out_label	command/routercmd.h	/^	__u32 out_label;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::outport	command/routercmd.h	/^	__u32 outport;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::src_ip	command/routercmd.h	/^	char src_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::type	command/routercmd.h	/^	__u32 type;$/;"	m	struct:tunnelcmd	access:public
 tuple	test/include/gtest/internal/gtest-tuple.h	/^  tuple() : f0_(), f1_(), f2_(), f3_(), f4_(), f5_(), f6_(), f7_(), f8_(),$/;"	f	class:std::tr1::tuple	access:public	signature:()
 tuple	test/include/gtest/internal/gtest-tuple.h	/^  tuple() {}$/;"	f	class:std::tr1::tuple	access:public	signature:()
 tuple	test/include/gtest/internal/gtest-tuple.h	/^  tuple(const tuple& \/* t *\/)  {}$/;"	f	class:std::tr1::tuple	access:public	signature:(const tuple& )
@@ -27184,6 +27261,7 @@ tx_fifo_errors	lib/if.h	/^  unsigned long tx_fifo_errors;$/;"	m	struct:if_stats	
 tx_heartbeat_errors	lib/if.h	/^  unsigned long tx_heartbeat_errors;$/;"	m	struct:if_stats	access:public
 tx_packets	lib/if.h	/^  unsigned long tx_packets;   \/* total packets transmitted    *\/$/;"	m	struct:if_stats	access:public
 tx_window_errors	lib/if.h	/^  unsigned long tx_window_errors;$/;"	m	struct:if_stats	access:public
+type	command/routercmd.h	/^	__u32 type;$/;"	m	struct:tunnelcmd	access:public
 type	db/sqlite3.c	/^  etByte type;             \/* Conversion paradigm *\/$/;"	m	struct:et_info	file:	access:public
 type	db/sqlite3.c	/^  u8  type;           \/* One of SQLITE_NULL, SQLITE_TEXT, SQLITE_INTEGER, etc *\/$/;"	m	struct:Mem	file:	access:public
 type	db/sqlite3.c	/^struct AttachKey { int type;  Token key; };$/;"	m	struct:AttachKey	file:	access:public
@@ -27550,17 +27628,13 @@ updateMapping	db/sqlite3.c	/^static int updateMapping($/;"	f	file:	signature:( R
 updateMaxBlobsize	db/sqlite3.c	/^static void updateMaxBlobsize(Mem *p){$/;"	f	file:	signature:(Mem *p)
 updateVirtualTable	db/sqlite3.c	/^static void updateVirtualTable($/;"	f	file:	signature:( Parse *pParse, SrcList *pSrc, Table *pTab, ExprList *pChanges, Expr *pRowid, int *aXRef, Expr *pWhere, int onError )
 updateVirtualTable	db/sqlite3.c	/^static void updateVirtualTable($/;"	p	file:	signature:( Parse *pParse, SrcList *pSrc, Table *pTab, ExprList *pChanges, Expr *pRowidExpr, int *aXRef, Expr *pWhere, int onError )
-update_bgp_path_attr_table	router/interface.c	/^int update_bgp_path_attr_table(struct bgpPathAttrTable* table)$/;"	f	signature:(struct bgpPathAttrTable* table)
-update_device_info	router/interface.c	/^int update_device_info(struct InterfaceTable* table)$/;"	f	signature:(struct InterfaceTable* table)
 update_hook	db/sqlite3.c	/^  void * (*update_hook)(sqlite3*,void(*)(void*,int ,char const*,char const*,$/;"	m	struct:sqlite3_api_routines	file:	access:public
 update_hook	db/sqlite3ext.h	/^  void * (*update_hook)(sqlite3*,void(*)(void*,int ,char const*,char const*,$/;"	m	struct:sqlite3_api_routines	access:public
-update_ifrate_info	router/interface.c	/^int update_ifrate_info(struct InterfaceTable* table)$/;"	f	signature:(struct InterfaceTable* table)
 update_interface_from_snmp	router/interface.c	/^int update_interface_from_snmp(char *routerip)$/;"	f	signature:(char *routerip)
 update_interface_from_snmp	router/interface.h	/^int update_interface_from_snmp(char *routerip);$/;"	p	signature:(char *routerip)
 update_item	snmp/snmp/snmpcore.c	/^int update_item(session_id_t s, itemopt* item)$/;"	f	signature:(session_id_t s, itemopt* item)
 update_link_state	db/dbm_lsdb.c	/^int update_link_state( struct link_info * link)$/;"	f	signature:( struct link_info * link)
 update_link_state	db/dbm_lsdb.h	/^int update_link_state( struct link_info * link);$/;"	p	signature:( struct link_info * link)
-update_ospf_interface_info	router/interface.c	/^int update_ospf_interface_info(struct ospfIfTable* table)$/;"	f	signature:(struct ospfIfTable* table)
 update_pma_addr	comm/comm.c	/^int update_pma_addr(int sockfd){$/;"	f	signature:(int sockfd)
 update_pma_addr	comm/comm.h	/^int update_pma_addr(int sockfd);$/;"	p	signature:(int sockfd)
 update_pma_addr	comm/comm_lite.c	/^int update_pma_addr(int sockfd){$/;"	f	signature:(int sockfd)

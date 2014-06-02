@@ -1,198 +1,139 @@
-#include "routercmd.h"
 #include <utils/common.h>
 #include <utils/utils.h>
 #include <utils/xml.h>
+#include <server/pem.h>
+#include <mpls.h>
+#include "routercmd.h"
 
+extern struct pem_conf conf;
 /**
  * 执行cmd命令
  */
-int runRouterCmd(char *cmd, int type) {
-	int ret = 0;
-	//	if (type == 4) {
-	//		ret = system(cmd);
-	//	} else {
-	//		int pid = vfork();
-	//		if (pid < 0) {
-	//			perror("vfork failed!");
-	//		} else if (pid == 0) {
-	//			ret = execl("/bin/sh", "sh", "-c", cmd, (char *) 0);
-	//
-	//		} else {
-	//			addpid(pid);
-	//		}
-	//	}
-	ret = system(cmd);
-	printf("cmd seq =%d\n", ret);
-	if (ret != 0) {
-		DEBUG(INFO,"cmd run error");
-	}
+int runRouterCmd(struct tunnelcmd *cmd, int type) {
 
+	if ( is_fastmpls() )
+	{
+		__u32 rkey;
+		__u32 key;
+		__u32 num;
+		switch( type ){
+			case 0x01:
+				add_mpls_in(cmd->out_label, cmd->out_if, cmd->next_ip ,
+					&rkey);
+				get_iptables( strcmp( cmd->src_ip, "") ? cmd->src_ip : NULL, 
+						cmd->dst_ip, &num, &key);
+				if( num != 0){
+					del_iptables(num);
+				}
+				add_iptables( strcmp(cmd->src_ip, "") ? cmd->src_ip : NULL, 
+						cmd->dst_ip, rkey);
+				break;
+			case 0x02:
+				add_mpls_end(cmd->in_label);
+				add_mpls_in(cmd->out_label, cmd->out_if, cmd->next_ip,
+						&rkey);
+				add_mpls_mid(cmd->in_label, rkey);
+				break;
+			case 0x03:
+				add_mpls_end(cmd->in_label);
+				break;
+			case 0x04:
+
+			case 0x05:
+			default:break;;
+		}
+
+	}
+	else{//System()
+		char command[1024];
+		memset(command, 0x0, 1024);
+		int len = 0;
+		sprintf(command, ROUTER_CMD_PATH);
+		len = strlen(command);
+		if( conf.device_type/10 == 1 )//Quagga
+		{
+		sprintf(command+len,"%.2x %s %s %d %d %s %s %d",type,
+				cmd->src_ip, cmd->dst_ip,
+				cmd->out_label, cmd->in_label,
+				cmd->out_if,  cmd->next_ip,
+				cmd->outport);
+		}
+		else if ( conf.device_type/10 == 2) //Huawei
+		{
+		sprintf(command+len,"%.2x.tcl %s %s %d %d %s %s %d",type,
+				cmd->src_ip, cmd->dst_ip,
+				cmd->out_label, cmd->in_label,
+				cmd->out_if,  cmd->next_ip,
+				cmd->outport);
+		}
+		int ret = system(command);
+		printf("cmd seq = %d\n", ret);
+		if( ret !=0 ){
+			DEBUG(ERROR, "cmd run error");
+			return -1;
+		}
+	}
 	return 0;
 }
+
 int ExecuteRouterCMD(const char* xml, int len)
 {
 	if (xml == NULL || len <= 0) {
 		return -1;
 	}
-	struct {
-		char src_ip[50];
-		char dst_ip[50];
-		char next_ip[50];
-		char out_if[50];
-		__u32 in_label;
-		__u32 out_label;
-		int outport;
-	} cmd_arg;
 	xmlDocPtr doc;
 	xmlNodePtr node;
 	xmlNodePtr contextnode;
 	xmlNodePtr flownode;
-	char *data = NULL;
-	char routerCmd[200];
-	char checkCmd[200];
-	char ip[50];
-	int cmd_type;
-	int ret = 1;
-	//	int cmd_len = 0;
 	DEBUG(INFO,"recive cmd");
-	memset(&cmd_arg, 0, sizeof(cmd_arg));
+
 	doc = xmlParseMemory(xml, len);
 	if (doc == NULL) {
 		perror("config doc is null!");
 		return (-1);
 	}
-	memset(routerCmd, '\0', sizeof(routerCmd));
-	memset(ip, '\0', sizeof(ip));
-	//添加脚本路径
-	sprintf(routerCmd, "%s\0", ROUTER_CMD_PATH);
-	len = strlen(routerCmd);
-//	addr_to_str(get_router_addr(), ip, sizeof(ip) - 1);
-	//get node info
+	
+	struct tunnelcmd command;
+	memset(&command, 0x0, sizeof(command));
+
 	node = xmlDocGetRootElement(doc);
-	for (node = node->children; node != NULL; node = node->next) {
-		/* skip entity refs */
-		data = (char *) xmlNodeGetContent(node);
-		if (strcmp((char *) node->name, "type") == 0) {
-			sscanf(data, "%x", &cmd_type);
-			//添加脚本名
-			sprintf(routerCmd + len, "%.2x", cmd_type);
-			len = strlen(routerCmd);
-			printf("type = %s\n", data);
-		}
-		if (strcmp((char *) node->name, "content") == 0) {
-			contextnode = node->children;
-			for (; contextnode != NULL; contextnode = contextnode->next) {
-				if (strcmp((char *) contextnode->name, "flow") == 0) {
-					flownode = contextnode;
-					for (flownode = flownode->children; flownode != NULL; flownode
-							= flownode->next) {
-						if (strcmp((char *) flownode->name, "text") == 0
-								|| strcmp((char *) flownode->name, "comment")
-										== 0) {
-							continue;
-						}
-						data = (char *) xmlNodeGetContent(flownode);
-						if (strcmp((char *) flownode->name, "src_ip") == 0) {
-							sprintf(routerCmd + len, " %s", data);
-							len = strlen(routerCmd);
-							sprintf(cmd_arg.src_ip, "%s", data);
-						} else if (strcmp((char *) flownode->name, "dst_ip")
-								== 0) {
-							sprintf(routerCmd + len, " %s", data);
-							len = strlen(routerCmd);
-							sprintf(cmd_arg.dst_ip, "%s", data);
-						} else if (strcmp((char *) flownode->name, "out_if")
-								== 0) {
-							sprintf(routerCmd + len, " %s", data);
-							len = strlen(routerCmd);
-							sprintf(cmd_arg.out_if, "%s", data);
-						} else if (strcmp((char *) flownode->name, "next_ip")
-								== 0) {
-							sprintf(routerCmd + len, " %s", data);
-							len = strlen(routerCmd);
-							sprintf(cmd_arg.next_ip, "%s", data);
-						} else if (strcmp((char *) flownode->name, "in_label")
-								== 0) {
-							sprintf(routerCmd + len, " %s", data);
-							len = strlen(routerCmd);
-							sscanf(data, "%d", &cmd_arg.in_label);
-						} else if (strcmp((char *) flownode->name, "out_label")
-								== 0) {
-							sprintf(routerCmd + len, " %s", data);
-							len = strlen(routerCmd);
-							sscanf(data, "%d", &cmd_arg.out_label);
-						}
-						//添加参数
 
-					}
-				} else if (strcmp((char *) contextnode->name, "outport") == 0) {
-					flownode = contextnode;
-					data = (char *) xmlNodeGetContent(flownode);
-					sprintf(routerCmd + len, " %s", data);
-					len = strlen(routerCmd);
-					sscanf(data, "%d", &cmd_arg.outport);
-				}
-			}
-			xmlFree(data);
-		}
-	}
+	xmlChar* cmd_type = get_value_by_name(doc, node, "type");
+	command.type = adv_atoi(cmd_type,16);
+	xmlFree(cmd_type);
 
-	//添加路由器ip
-	//	sprintf(routerCmd + len, " %s", ip);
-	//命令类型大于0x30为BGP相关命令，其他为IGP相关命令
-	if (cmd_type > 0x30) {
-		sprintf(routerCmd + len, " %s", ip);
-	}
-	len = strlen(routerCmd);
-	puts(routerCmd);
-	DEBUG(INFO,"%s",routerCmd);
+	contextnode = get_node_by_name(doc, node , "context");
 
-	u32 rkey;
-	u32 key;
-	u32 num;
-	//执行命令
-	/*
-	if (cmd_type >= 1 && cmd_type <= 3) {
-		switch (cmd_type) {
-		case 1:
-			DEBUG(INFO,"run cmd");
-			add_mpls_in(cmd_arg.out_label, cmd_arg.out_if, cmd_arg.next_ip,
-					&rkey);
-			get_iptables(strcmp(cmd_arg.src_ip, "") ? cmd_arg.src_ip : NULL,
-					cmd_arg.dst_ip, &num, &key);
-			if (num != 0) {
-				del_iptables(num);
-				//				del_mpls(key);
-			}
-			add_iptables(strcmp(cmd_arg.src_ip, "") ? cmd_arg.src_ip : NULL,
-					cmd_arg.dst_ip, rkey);
-			LOG("end cmd");
-			break;
-		case 2:
-			LOG("run cmd");
-			add_mpls_end(cmd_arg.in_label);
-			add_mpls_in(cmd_arg.out_label, cmd_arg.out_if, cmd_arg.next_ip,
-					&rkey);
-			add_mpls_mid(cmd_arg.in_label, rkey);
-			LOG("end cmd");
-			break;
-		case 3:
-			LOG("run cmd");
-			add_mpls_end(cmd_arg.in_label);
-			LOG("end cmd");
-			break;
-		}
-	} else {
-		LOG("run cmd");
-		runRouterCmd(routerCmd, cmd_type);
-		LOG("end cmd");
-	}
-	*/
+	flownode = get_node_by_name(doc, contextnode, "flow");
+
+	xmlChar* cmd_src_ip = get_value_by_name(doc, flownode, "src_ip");
+	xmlChar* cmd_dst_ip = get_value_by_name(doc, flownode, "dst_ip");
+	xmlChar* cmd_out_label = get_value_by_name(doc, flownode, "out_label");
+	xmlChar* cmd_in_label = get_value_by_name(doc, flownode, "in_label");
+	xmlChar* cmd_out_if = get_value_by_name(doc, flownode, "out_if");
+	xmlChar* cmd_next_ip = get_value_by_name(doc, flownode, "next_ip");
+	xmlChar* cmd_out_port = get_value_by_name(doc, flownode, "out_port");
+
+	sprintf(command.src_ip, "%s", cmd_src_ip);		
+	sprintf(command.dst_ip, "%s", cmd_dst_ip);		
+	command.out_label = adv_atoi(cmd_out_label, 10);
+	command.in_label = adv_atoi(cmd_in_label, 10);
+	sprintf(command.out_if, "%s", cmd_out_if);
+	sprintf(command.next_ip, "%s", cmd_next_ip);
+	command.outport = adv_atoi(cmd_out_port,10);
+
+	xmlFree(cmd_src_ip);
+	xmlFree(cmd_dst_ip);
+	xmlFree(cmd_out_label);
+	xmlFree(cmd_in_label);
+	xmlFree(cmd_out_if);
+	xmlFree(cmd_next_ip);
+	xmlFree(cmd_out_port);
+
 	DEBUG(INFO,"run cmd");
-	runRouterCmd(routerCmd, cmd_type);
+	runRouterCmd((struct tunnelcmd*)&command, cmd_type);
 	DEBUG(INFO,"end cmd");
 
-	xmlFree(data);
 	xmlFreeDoc(doc);
 	return 0;
 }

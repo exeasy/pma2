@@ -19,6 +19,12 @@ char as_id[24];
 
 struct pem_conf conf;
 
+
+int is_fastmpls()
+{
+	return conf.fast_mpls;
+}
+
 int pem_init()
 {
 	log_type_init();
@@ -46,6 +52,7 @@ int conf_handle(struct Packet_header* pkt)
 	inet_ntop(AF_INET,&conf.router_ip, tmp, 24);
 	DEBUG(INFO, "Config parse: %d %s\n",conf.pma_id, tmp);
 	init_interface_list();
+	if ( conf.device_type%10 == 2 )//bgp
 	init_bgp_interface();
 	return 1;
 }

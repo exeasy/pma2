@@ -41,7 +41,6 @@ int pma_list_handle(struct Packet_header *pkt);
 // Self Defination
 //
 
-int route_table_daemon();
-int ifinfo_daemon();
-int spf_count_daemon();
+int detect_daemon_init();
+int ini_parser(const char* file, int line, const char* section, char *key, char* value, void* data);
 #endif /* ICM_H_ */

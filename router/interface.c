@@ -246,9 +246,9 @@ int set_neighbor_agent_address(int devid, int rid, int addr)
     return 0;
 }
 
-int rate_refresh_timeval = 2;//1 second 
 int ifrate_first_run = 0;
-int update_ifrate_info(struct InterfaceTable* table)
+int  rate_refresh_timeval = 2;
+int ifrate_diff_and_send(struct InterfaceTable* table)
 {
 	struct list* iflist = localrouter.iflist;
 	if( iflist == NULL ){
@@ -291,18 +291,18 @@ int update_ifrate_info(struct InterfaceTable* table)
 	//send the packet
 	int len = strlen(buff);
 	module_send_data(buff, len , UP_TRAFFICE_INFO);
-//	printf("%s\n",buff);
 	free(buff);
 }
 
-void ifrate_info_detect_daemon()
+int ifrate_detect(void *args,int type)
 {
-	get_if_table(update_ifrate_info);
+	if( type == 1 )
+	get_if_table(ifrate_diff_and_send);
 }
 
 
 int bgp_path_attr_table_last_len = 0;
-int update_bgp_path_attr_table(struct bgpPathAttrTable* table)
+int bgppath_diff_and_send(struct bgpPathAttrTable* table)
 {
 	int is_changed = 0;
 	struct bgpPathAttrTable* attrnode = table->next;
@@ -338,13 +338,48 @@ bgp4PathAttrBest bgp4PathAttrUnknown\n");
 		free(newbuff);
 	}
 }
-int bgp_path_attr_table_detect_thread()
+int bgppath_get_and_send(struct bgpPathAttrTable* table)
 {
-	get_bgp_path_table(update_bgp_path_attr_table);
+	struct bgpPathAttrTable* attrnode = table->next;
+	char buff[10240];
+	int len = 0;
+	sprintf(buff,"bgp4PathAttrPeer bgp4PathAttrIpAddrPrefixLen bgp4PathAttrIpAddrPrefix bgp4PathAttrOrigin\
+bgp4PathAttrASPathSegment bgp4PathAttrNextHop bgp4PathAttrMultiExitDisc bgp4PathAttrLocalPref\
+bgp4PathAttrAtomicAggregate bgp4PathAttrAggregatorAS bgp4PathAttrAggregatorAddr bgp4PathAttrCalcLocalPref\
+bgp4PathAttrBest bgp4PathAttrUnknown\n");
+	len = strlen(buff);
+	while( attrnode ){
+		sprintf(buff+len,"%s %s %s %s %s %s %s %s %s %s %s %s %s ?\n",
+				attrnode->peer,
+				attrnode->addr_prefix_len,
+				attrnode->addr_prefix,
+				attrnode->origin,
+				attrnode->as_path_segment,
+				attrnode->nexthop,
+				attrnode->multi_exit_disc,
+				attrnode->local_pref,
+				attrnode->atomic_aggregate,
+				attrnode->aggregator_as,
+				attrnode->aggregator_addr,
+				attrnode->calc_localpref,
+				attrnode->best);
+		len = strlen(buff);
+		attrnode = attrnode->next;
+	}
+	char* newbuff = bgp_path_attr_to_xml(buff);
+	module_send_data(newbuff, len, UP_BGP_PATH_TABLE_INFO); 
+	free(newbuff);
+}
+int bgp_path_attr_table_detect(void* args, int type)
+{
+	if( type == 1)
+		get_bgp_path_table(bgppath_diff_and_send);
+	if( type == 2)
+		get_bgp_path_table(bgppath_get_and_send);
 }
 
 int ospf_interface_run_first = 0;
-int update_ospf_interface_info(struct ospfIfTable* table)
+int ospfifinfo_diff_and_send(struct ospfIfTable* table)
 {
 	int is_changed = 0;
 	struct list* iflist = localrouter.iflist;
@@ -352,7 +387,6 @@ int update_ospf_interface_info(struct ospfIfTable* table)
 		DEBUG(ERROR,"please run update_interface_from_snmp first");
 		return -1;
 	}
-	
 	struct ospfIfTable* ifnode = table->next;
 	while(ifnode)
 	{
@@ -404,16 +438,28 @@ int update_ospf_interface_info(struct ospfIfTable* table)
 		return 0;
 	}
 }
-// OSPF INTERFACE && UPDATE THREAD
-void ospf_interface_info_update_thread()
+int ospfifinfo_get_and_send(struct ospfIfTable* table)
 {
-	get_ospf_if_table(update_ospf_interface_info);
+	struct list* iflist = localrouter.iflist;
+	char* buff = ospf_interface_info_to_xml(iflist);
+	//send the packet
+	int len = strlen(buff);
+	module_send_data(buff,len, UP_OSPF_INTERFACE_INFO);
+	free(buff);
+}
+// OSPF INTERFACE && UPDATE THREAD
+int ospf_interface_info_detect(void* args, int type)
+{
+	if( type == 1)
+	get_ospf_if_table(ospfifinfo_diff_and_send);
+	if( type == 2)
+	get_ospf_if_table(ospfifinfo_get_and_send);
 }
 
 
 int device_info_run_first = 0;
 // Hw_STATE effects
-int update_device_info(struct InterfaceTable* table)
+int deviceinfo_diff_and_send(struct InterfaceTable* table)
 {
 	int is_changed = 0;
 	struct list* iflist = localrouter.iflist;
@@ -465,11 +511,29 @@ int update_device_info(struct InterfaceTable* table)
 		device_info_run_first = 1;
 	}
 }
+int deviceinfo_get_and_send(struct InterfaceTable* table)
+{
+	struct list* iflist = localrouter.iflist;
+	if( iflist == NULL ){
+		DEBUG(ERROR,"please run update_interface_from_snmp first");
+		return -1;
+	}
+	
+		char* buff = device_info_to_xml(iflist);
+		//send the packet
+		int len = strlen(buff);
+		module_send_data(buff,len, UP_DEVICE_INFO);
+		printf("%s\n",buff);
+		free(buff);
+}
 
 // device_info && update_thread
-void device_info_update_thread()
+int device_info_detect(void* args, int type)
 {
-	get_if_table(update_device_info);
+	if( type == 1)
+	get_if_table(deviceinfo_diff_and_send);
+	if( type == 2)
+		get_if_table(deviceinfo_get_and_send);
 }
 
 int update_interface_from_snmp(char *routerip)
@@ -955,4 +1019,10 @@ int send_bgp_interface_info()
 	char* buff = bgp_interface_info_to_xml();
 	int len = strlen(buff);
 	module_send_data( buff, len, UP_BGP_INTERFACE_INFO);
+}
+
+int bgpifinfo_detect(void* args, int type)
+{
+	if( type == 1 || type == 2) 
+		send_bgp_interface_info();
 }

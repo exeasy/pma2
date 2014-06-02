@@ -34,13 +34,14 @@
 #define MODULE			"module"
 #define IC_S				"ic"
 #define DBM_S				"dbm"
-#define PEA_S				"pea"
+#define PEA_S				"pem"
 #define OUTSIDE_ENABLE				"outside_enable"
 #define DEVICE_TYPE		"device_type"
 #define ROUTER_IP		"router_ip"
 #define LOCAL_IP        "local_ip"
 #define NETMASK         "netmask"
 #define COMM_TYPE          "comm_type"
+#define FAST_MPLS	"fast_mpls"
 
 #define GET_MOD_CONFIG(x) pma_conf.x##_config
 
@@ -116,6 +117,9 @@ static int parse_conf(xmlDocPtr doc, xmlNodePtr node)
 {
 	xmlNodePtr cur_node = NULL;
 	int ret = 0;
+	/** device_type(11,12,13,21,22,23) **/   
+	ret = parase_item(doc, node, (const xmlChar*)(DEVICE_TYPE), &pma_conf.device_type, sizeof(int), 0);
+	if(ret) return -1;
 	/* comm_type */
 	ret = parase_item(doc, node, (const xmlChar*)(COMM_TYPE), &pma_conf.comm_type, sizeof(int), 0);
 	if(ret) return -1;
@@ -167,9 +171,6 @@ static int parse_conf(xmlDocPtr doc, xmlNodePtr node)
 	cur_node = get_node_by_name(doc, node, (const xmlChar*)(MODULE));
 	/* ICModule */
 	xmlNodePtr m_node = get_node_by_name(doc, cur_node, (const xmlChar*)(IC_S));
-	/** device_type(1:ospf 2:bgp 3:both) **/   
-	ret = parase_item(doc, m_node, (const xmlChar*)(DEVICE_TYPE), &(GET_MOD_CONFIG(ic).device_type), sizeof(int), 0);
-	if(ret) return -1;
 	/** outside_enable **/
 	ret = parase_item(doc, m_node, (const xmlChar*)(OUTSIDE_ENABLE), &(GET_MOD_CONFIG(ic).outside), sizeof(int), 0);
 	if(ret) return -1;
@@ -190,7 +191,14 @@ static int parse_conf(xmlDocPtr doc, xmlNodePtr node)
 	/* policy type */
 	ret = parase_item(doc, m_node, (const xmlChar*)(POLICY_TYPE), &(GET_MOD_CONFIG(dbm).policy_type), sizeof(int), 0);
 	if(ret) return -1;
+	/* PEModule */
+	m_node = get_node_by_name(doc, cur_node, (const xmlChar*)(PEA_S));
+	/* fast_mpls */
+	ret = parase_item(doc, m_node, (const xmlChar*)(FAST_MPLS), &(GET_MOD_CONFIG(pea).fast_mpls), sizeof(int), 0);
+	if(ret) return -1;
 
+	GET_MOD_CONFIG(ic).device_type = pma_conf.device_type;
+	GET_MOD_CONFIG(pea).device_type = pma_conf.device_type;
 	GET_MOD_CONFIG(ic).pma_id = pma_conf.pma_id;
 	GET_MOD_CONFIG(dbm).pma_id = pma_conf.pma_id;
 	GET_MOD_CONFIG(pea).pma_id = pma_conf.pma_id;
@@ -454,9 +462,14 @@ int conf_init()
 	return 0;
 }
 
+int get_protocol_type()
+{
+	return pma_conf.device_type % 10;
+}
+
 int get_device_type()
 {
-	return pma_conf.ic_config.device_type;
+	return pma_conf.device_type/10;
 }
 
 int get_version(void)

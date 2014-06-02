@@ -415,14 +415,14 @@ char* format_all_area_lsdb_to_xml(int routerid)
     memset(buff, 0x00 , count*200*15+1024);
     int len = 0;
     pack_lsdb_xml_header(buff, &len, routerid);
-    sprintf(buff+len, "\t<router id=\"%d\">\n",routerid);
-    len = strlen(buff);
+ //   sprintf(buff+len, "\t<router id=\"%d\">\n",routerid);
+  //  len = strlen(buff);
     for( i ; i < count ;i ++)
     {
         pack_lsdb_xml_router_of_area(buff, &len, routerid, azs[i]);
     }
-    sprintf(buff+len ,"\t</router>\n");
-        len = strlen(buff);
+   // sprintf(buff+len ,"\t</router>\n");
+    //    len = strlen(buff);
         pack_lsdb_xml_footer(buff,&len);
         return buff;
 }

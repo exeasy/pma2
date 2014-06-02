@@ -2,6 +2,7 @@
 #include <libxml/parser.h>
 int xml_init();
 int xml_close();
+
 xmlChar* get_attr_by_name(xmlDocPtr doc, xmlNodePtr node, const xmlChar *name);
 
 xmlChar *get_value_by_name(xmlDocPtr doc, xmlNodePtr parent, const xmlChar *name);

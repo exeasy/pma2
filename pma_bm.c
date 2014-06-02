@@ -86,11 +86,11 @@ int main()
 	char routerid[24];
 	inet_ntop(AF_INET, &pma_conf.ic_config.router_ip, routerip,24);
 	snmp_init(routerip);
-	if( pma_conf.ic_config.device_type == OSPF_ROUTER )
+	if( get_protocol_type() == OSPF_ROUTER )
 	{
 		get_ospf_routerid(routerid);
 	}
-	else if ( pma_conf.ic_config.device_type == BGP_ROUTER )
+	else if ( get_protocol_type() == BGP_ROUTER )
 	{
 		get_bgp_routerid(routerid);
 	}

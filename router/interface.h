@@ -71,9 +71,14 @@ struct rinterface{
 #define CONFIGFILE "interface.cfg"
 void get_interface_info_from_snmp(char* routerip, char** buff, int* len);
 int update_interface_from_snmp(char *routerip);
-void device_info_update_thread();
-void ospf_interface_info_update_thread();
-void ifrate_info_detect_daemon();
+
+//detect 
+int ifrate_detect(void *args,int type);
+int bgp_path_attr_table_detect(void* args, int type);
+int ospf_interface_info_detect(void* args, int type);
+int device_info_detect(void* args, int type);
+int bgpifinfo_detect(void* args, int type);
+
 int send_bgp_interface_info();
 
 #endif /* __INTERFACE_H__ */

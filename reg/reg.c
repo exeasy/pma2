@@ -28,12 +28,12 @@ int agent_init_request(char* routerid)
 	sprintf(aid,"%d", get_pma_id());
 	add_xml_child_prop(devnode, "id",aid); 
 	char dev_type[10];
-	if( get_device_type() == OSPF_ROUTER )
+	if( get_protocol_type() == OSPF_ROUTER )
 	{
 		sprintf(dev_type, "ospf");
 		add_xml_child(devnode, "type", dev_type);
 	}
-	else if( get_device_type() == BGP_ROUTER )
+	else if( get_protocol_type() == BGP_ROUTER )
 	{
 		sprintf(dev_type, "bgp");
 		add_xml_child(devnode, "type", dev_type);
@@ -99,9 +99,9 @@ int agent_register(u32 agent_id, const char *seq)
 	sprintf(aid,"%d", get_pma_id());
 	add_xml_child_prop(devnode, "id",aid); 
 	char dev_type[10];
-	if( get_device_type() == OSPF_ROUTER )
+	if( get_protocol_type() == OSPF_ROUTER )
 		sprintf(dev_type, "ospf");
-	else if( get_device_type() == BGP_ROUTER )
+	else if( get_protocol_type() == BGP_ROUTER )
 		sprintf(dev_type, "bgp");
 	else {}
 	add_xml_child(devnode, "type", dev_type);

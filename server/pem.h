@@ -11,6 +11,8 @@
 struct pem_conf{
 	struct in_addr router_ip;
 	int pma_id;
+	int fast_mpls;
+	int device_type;
 };
 struct bgp_interface{
     int ifid;
@@ -52,5 +54,6 @@ int tunnel_command_handle(struct Packet_header* pkt);
 
 //Self Defination
 int init_interface_list();
+int is_fastmpls();
 
 #endif
