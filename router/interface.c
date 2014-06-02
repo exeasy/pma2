@@ -973,7 +973,7 @@ int bgp_interface_info_to_xml()
 	add_xml_child(rootnode, "timestamp",time); free(time);
 
 	devnode = add_xml_child(rootnode, "device", NULL);
-	char* aid[24];
+	char aid[24];
 	sprintf(aid,"%d", localrouter.agentid);
 	add_xml_child_prop(devnode, "id",aid); 
 

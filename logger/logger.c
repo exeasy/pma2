@@ -1,6 +1,7 @@
 #include <utils/common.h>
 #include "logger.h"
 #include <utils/utils.h>
+#include <utils/xml.h>
 #include <stdio.h>
 #include <sys/stat.h>
 #include <stdarg.h>
@@ -157,7 +158,8 @@ int log_writer(struct logmsg* msg)
 	}
 	else{
 		set_shmqueue_tail(memptr, (tail + 1)%size);
-		char * buff = log_package_json(msg);
+//		char * buff = log_package_json(msg);
+		char * buff = log_package_xml(msg);
 		//notice here 
 		//if the data len > BLOCK_SIZE 
 		//the left data will be lost
@@ -200,7 +202,31 @@ char* log_reader()
 
 char* log_package_xml(struct logmsg* msg)
 {
-	return NULL;
+	xmlDocPtr doc = create_xml_doc();
+	xmlNodePtr devnode;
+	xmlNodePtr childnode;
+	
+	xmlNodePtr rootnode = create_xml_root_node(doc, "event");
+	struct timeval now = msg->record_time;
+	char * time = PRINTTIME(now);
+	add_xml_child(rootnode, "timestamp",time); free(time);
+
+	char value[24];
+
+	add_xml_child(rootnode, "name",msg->name); 
+	memset(value, 0 , 24);
+	sprintf(value,"%d", msg->type);
+	add_xml_child(rootnode, "type", value);
+	add_xml_child(rootnode, "data", msg->data);
+	u8 *xmlbuff;
+	int len  = 0;
+	xmlDocDumpFormatMemoryEnc( doc, &xmlbuff, &len, "UTF-8", 0 );
+	char *buff = (char*)malloc(len+1+sizeof(int));
+	memcpy(buff+sizeof(int), xmlbuff, len);
+	*(int*)buff = len;
+	xmlFree(xmlbuff);
+	xmlFreeDoc(doc);
+	return buff;
 
 }
 char* log_package_json(struct logmsg* msg)
