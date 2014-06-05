@@ -546,6 +546,7 @@ int send_message_to_pms(char *ip, int port, int type, char *buf, int len)
 		close_connect(sockfd);
 		return -1;
 	}
+	free_buf(pkt.head);
 	close_connect(sockfd);
 
 	return 0;

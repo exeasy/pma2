@@ -220,6 +220,9 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
         }
 
         if (indices) {
+			for( int i = 0; i < entries ; i++){
+				free(indices[i]);
+			}
             free (indices);
             indices = NULL;
         }
@@ -236,6 +239,9 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
         printf("%s: No entries\n", table_name);
     if (extra_columns)
 	printf("%s: WARNING: More columns on agent than in MIB\n", table_name);
+
+	free(table_name);
+	table_name = NULL;
 	pthread_mutex_unlock(&snmp_lock);
 
     return 0;
@@ -839,6 +845,7 @@ getbulk_table_entries(netsnmp_session * ss,int* entryptr, int* fieldptr, char***
                     dp = data + row * fields;
                     *datastr = data + row * fields;
                     out_len = 0;
+					free(buf); buf = NULL;
                     sprint_realloc_value((u_char **)&buf, &buf_len, &out_len, 1,
                                          vars->name, vars->name_length,
                                          vars);

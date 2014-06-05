@@ -385,6 +385,7 @@ module_data_handle( char *buf, int bufflen, int sockfd )
 	info->fd = sockfd;
 	run_ctl( module_handle,header->pkt_type, info); 
 	free(buf);
+	free(info);
 	return;
 }
 

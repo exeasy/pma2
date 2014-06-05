@@ -16,12 +16,13 @@ void daemon_loop(PDaemon *p)
 {
 	int max_loop_count = p->max_interval/p->min_interval;
 	while(1){
-		p->daemon(p->args, 1);
 		p->run_count = (p->run_count+1)%max_loop_count;	
 		if(p->run_count == max_loop_count - 1)
 		{
 			p->daemon(p->args, 2);
 		}
+		else
+			p->daemon(p->args, 1);
 		delay_time(p->min_interval);
 	}
 }

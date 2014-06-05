@@ -489,8 +489,11 @@ int handle_route_table_ic_to_pms(void *args)
 	data[pkt_len] = 0;
 	char *buff = save_router_table_to_xml(data);
 	int len = strlen(buff);
-	return send_message_to_pms(get_server_address(), get_server_port(),
+	free(data);
+	int ret =  send_message_to_pms(get_server_address(), get_server_port(),
 		OPS_PMA_ROUTING_TABLE, buff, len);
+	free( buff );
+	return ret;
 	
 }
 //UP_INTERFACE_INFO

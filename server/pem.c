@@ -10,6 +10,8 @@
 #include <command/routercmd.h>
 #include "pem.h"
 
+#define CMD_FILE	"./command/xml-cmd/"
+
 ifTable *ifList;
 int ifaceList[MAX_INTERFACE];
 struct bgp_interface * ebgp_list;
@@ -20,6 +22,7 @@ char as_id[24];
 struct pem_conf conf;
 
 
+int  read_cmd_from_file(int no);
 int is_fastmpls()
 {
 	return conf.fast_mpls;
@@ -27,6 +30,7 @@ int is_fastmpls()
 
 int pem_init()
 {
+	read_cmd_from_file(2);
 	log_type_init();
 	log_init();
 	module_init(PEM);
@@ -288,3 +292,25 @@ int init_interface_list()
 	}
 	DEBUG(INFO,"Get interface List success");
 };
+
+int  read_cmd_from_file(int no)
+{
+	char filepath[100];
+	sprintf(filepath, CMD_FILE);
+	int k = strlen(filepath);
+	sprintf(filepath+k, "%02d.xml", no);
+	printf("%s\n" , filepath);
+
+	FILE*fp = fopen(filepath,"r");
+	int len = 0;
+	fseek(fp, 0, SEEK_END);
+	len = ftell(fp);
+	printf("%d\n", len);
+	fseek(fp, 0, SEEK_SET);
+	char* xmlbuff = (char*)malloc(len+1);
+	fread(xmlbuff, 1, len, fp);
+	printf("%s\n", xmlbuff);
+	int ret = ExecuteRouterCMD( xmlbuff, len);
+	free(xmlbuff);
+	return ret;
+}

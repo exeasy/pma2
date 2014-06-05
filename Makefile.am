@@ -64,6 +64,11 @@ pem_LDADD=./server/libpmapem.a\
 		  ./utils/libpmautils.a
 pem_CFLAGS=-D PEMODULE -L./command/ -L$(LIB_SNMP_LIB) -lxtables -liptc -lmpls -liptables -lnetsnmp 
 
+cmd_test_SOURCES=cmd_test.c
+cmd_test_LDADD=./command/libpmacommand.a\
+		  ./utils/libpmautils.a
+cmd_test_CFLAGS=-D PEMODULE -L./command/ -L$(LIB_SNMP_LIB) -lxtables -liptc -lmpls -liptables -lnetsnmp 
+
 threadtest_SOURCES=threadtest.c
 threadtest_LDADD=./lib/libpma.a\
 				 ./utils/libpmautils.a
@@ -126,6 +131,8 @@ testxml_LDADD=./comm/libpmacomm.a\
 EXTRA_DIST=config/* \
 		   command/libiptables.so\
 		   command/libmpls.so\
+		   command/sh-cmd/*\
+		   command/xml-cmd/*\
 		   pma.conf\
 		   interface.cfg\
 		   pmalog.conf\

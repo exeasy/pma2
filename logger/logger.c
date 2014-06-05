@@ -137,10 +137,14 @@ int logger(const char* name, const char* format, ...)
 		msg->length = length;
 		memcpy(msg->data, buff, length);
 
+		free(buff);
+		buff = NULL;
 		p_sem(EMPTY);
 		log_writer(msg);
 		v_sem(FULL);
 	}
+	free(msg);
+	msg = NULL;
 }
 
 int log_writer(struct logmsg* msg)

@@ -9,13 +9,14 @@ extern struct pem_conf conf;
 /**
  * 执行cmd命令
  */
-int runRouterCmd(struct tunnelcmd *cmd, int type) {
+int runRouterCmd(struct tunnelcmd *cmd) {
 
 	if ( is_fastmpls() )
 	{
 		__u32 rkey;
 		__u32 key;
 		__u32 num;
+		int type = cmd->type;
 		switch( type ){
 			case 0x01:
 				add_mpls_in(cmd->out_label, cmd->out_if, cmd->next_ip ,
@@ -52,20 +53,59 @@ int runRouterCmd(struct tunnelcmd *cmd, int type) {
 		len = strlen(command);
 		if( conf.device_type/10 == 1 )//Quagga
 		{
-		sprintf(command+len,"%.2x %s %s %d %d %s %s %d",type,
-				cmd->src_ip, cmd->dst_ip,
-				cmd->out_label, cmd->in_label,
-				cmd->out_if,  cmd->next_ip,
-				cmd->outport);
+			sprintf(command+len, "%02x ", cmd->type);
 		}
 		else if ( conf.device_type/10 == 2) //Huawei
 		{
-		sprintf(command+len,"%.2x.tcl %s %s %d %d %s %s %d",type,
-				cmd->src_ip, cmd->dst_ip,
-				cmd->out_label, cmd->in_label,
-				cmd->out_if,  cmd->next_ip,
-				cmd->outport);
+			sprintf(command+len, "%02x.tcl ", cmd->type);
 		}
+		else {
+			sprintf(command+len, "%02x ", cmd->type);
+		}
+		len = strlen(command);
+
+		if( strcmp(cmd->src_ip,"") != 0 ) 
+		{
+			sprintf(command+len, "%s ", cmd->src_ip);
+			len = strlen(command);
+		}
+
+		if( strcmp(cmd->dst_ip,"") != 0 ) 
+		{
+			sprintf(command+len, "%s ", cmd->src_ip);
+			len = strlen(command);
+		}
+
+		if( cmd->out_label != 0 ) 
+		{
+			sprintf(command+len, "%d ", cmd->out_label);
+			len = strlen(command);
+		}
+
+		if( cmd->in_label != 0 ) 
+		{
+			sprintf(command+len, "%d ", cmd->in_label);
+			len = strlen(command);
+		}
+
+		if( strcmp(cmd->out_if,"") != 0 ) 
+		{
+			sprintf(command+len, "%s ", cmd->out_if);
+			len = strlen(command);
+		}
+
+		if( strcmp(cmd->next_ip,"") != 0 ) 
+		{
+			sprintf(command+len, "%s ", cmd->next_ip);
+			len = strlen(command);
+		}
+
+		if( cmd->outport!= 0 ) 
+		{
+			sprintf(command+len, "%d ", cmd->outport);
+			len = strlen(command);
+		}
+		printf("%s\n", command);
 		int ret = system(command);
 		printf("cmd seq = %d\n", ret);
 		if( ret !=0 ){
@@ -100,9 +140,10 @@ int ExecuteRouterCMD(const char* xml, int len)
 
 	xmlChar* cmd_type = get_value_by_name(doc, node, "type");
 	command.type = adv_atoi(cmd_type,16);
+	printf("%s %d\n", cmd_type, command.type);
 	xmlFree(cmd_type);
 
-	contextnode = get_node_by_name(doc, node , "context");
+	contextnode = get_node_by_name(doc, node , "content");
 
 	flownode = get_node_by_name(doc, contextnode, "flow");
 
@@ -114,12 +155,19 @@ int ExecuteRouterCMD(const char* xml, int len)
 	xmlChar* cmd_next_ip = get_value_by_name(doc, flownode, "next_ip");
 	xmlChar* cmd_out_port = get_value_by_name(doc, flownode, "out_port");
 
+	if( cmd_src_ip != NULL)
 	sprintf(command.src_ip, "%s", cmd_src_ip);		
+	if( cmd_dst_ip != NULL)
 	sprintf(command.dst_ip, "%s", cmd_dst_ip);		
+	if( cmd_out_label != NULL)
 	command.out_label = adv_atoi(cmd_out_label, 10);
+	if( cmd_in_label != NULL)
 	command.in_label = adv_atoi(cmd_in_label, 10);
+	if( cmd_out_if != NULL)
 	sprintf(command.out_if, "%s", cmd_out_if);
+	if( cmd_next_ip != NULL)
 	sprintf(command.next_ip, "%s", cmd_next_ip);
+	if( cmd_out_port != NULL)
 	command.outport = adv_atoi(cmd_out_port,10);
 
 	xmlFree(cmd_src_ip);
@@ -131,7 +179,7 @@ int ExecuteRouterCMD(const char* xml, int len)
 	xmlFree(cmd_out_port);
 
 	DEBUG(INFO,"run cmd");
-	runRouterCmd((struct tunnelcmd*)&command, cmd_type);
+	runRouterCmd((struct tunnelcmd*)&command);
 	DEBUG(INFO,"end cmd");
 
 	xmlFreeDoc(doc);
