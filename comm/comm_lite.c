@@ -130,16 +130,15 @@ int send_message_to_agent(char* ip, int port, int type,  const char* buff, int l
 	}
 	printf("connect successfully!\n");
 	int localip = update_pma_addr(ret);
-	int pkt_len = sizeof( struct pma_pms_header) + len;
+	int pkt_len = sizeof( struct common_header) + len;
 	void * newbuff = malloc(pkt_len);
-	struct pma_pms_header* header = (struct pma_pms_header*)newbuff;
-	header->pph_pkg_type = type;
-	header->pph_pkg_version = 0x00;
-	header->pph_pkg_dev_type = 0x00;
-	header->pph_pkg_len = htonl(pkt_len);
-	header->pph_agent_id = 0x00;
+	struct common_header* header = (struct common_header*)newbuff;
+	header->pkg_type = type;
+	header->pkg_version = 0x00;
+	header->device_type = 0x00;
+	header->pkg_len = htonl(pkt_len);
 
-	memcpy(newbuff+ sizeof(struct pma_pms_header), buff, len);
+	memcpy(newbuff+ sizeof(struct common_header), buff, len);
 	int status = send( ret, newbuff, pkt_len, 0);
 	if( status == -1 )
 	{

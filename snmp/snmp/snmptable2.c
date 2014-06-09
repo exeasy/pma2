@@ -845,7 +845,6 @@ getbulk_table_entries(netsnmp_session * ss,int* entryptr, int* fieldptr, char***
                     dp = data + row * fields;
                     *datastr = data + row * fields;
                     out_len = 0;
-					free(buf); buf = NULL;
                     sprint_realloc_value((u_char **)&buf, &buf_len, &out_len, 1,
                                          vars->name, vars->name_length,
                                          vars);

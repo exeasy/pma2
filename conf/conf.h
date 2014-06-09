@@ -4,6 +4,7 @@
 struct ic_conf{
 	struct in_addr router_ip;
 	struct in_addr local_ip;
+	struct in_addr hello_ip;
 	struct in_addr netmask;
 	int outside;
 	int device_type; // 11: Quagga+ospf 12: Quagga+bgp 13: Quagga+ospf+bgp 21: Huawei+ospf 22: Huawei+bgp  23: Huawei+ospf+bgp
@@ -44,6 +45,7 @@ struct conf{
 	char server_ip[46];
 	char rltm_ip[46];
 	char logsrv_ip[46];
+	struct in_addr local_ip;
 	struct ic_conf ic_config;
 	struct dbm_conf dbm_config;
 	struct pea_conf pea_config;

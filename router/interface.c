@@ -965,6 +965,7 @@ int bgp_interface_info_to_xml()
 	xmlNodePtr devnode;
 	xmlNodePtr childnode;
 	ifTable* node = ifList->next;
+	struct list* iflist = localrouter.iflist;
 	
 	xmlNodePtr rootnode = create_xml_root_node(doc, "BGP_INTERFACE");
 	struct timeval now;

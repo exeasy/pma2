@@ -30,7 +30,7 @@ int is_fastmpls()
 
 int pem_init()
 {
-	read_cmd_from_file(2);
+//	read_cmd_from_file(2);
 	log_type_init();
 	log_init();
 	module_init(PEM);

@@ -8,6 +8,9 @@ int get_bm_sock(){return global_bm_sock;}
 int con_status;
 int module_status;
 
+char bm_addr[24];// store the bm address
+int bm_flag = 0;// 1 present the self define address
+
 int srv_connect()
 {
 	int ret;
@@ -22,7 +25,13 @@ int srv_connect()
 	}
 	bzero(&srv_addr, sizeof(srv_addr));
 	srv_addr.sin_family = AF_INET;
-	srv_addr.sin_addr.s_addr = inet_addr(PMA_BM_ADDR);
+	if ( bm_flag == 0 )
+	{
+		srv_addr.sin_addr.s_addr = inet_addr(PMA_BM_ADDR);
+	}
+	else{
+		srv_addr.sin_addr.s_addr = inet_addr(bm_addr);
+	}
 	srv_addr.sin_port = htons(PMA_BM_PORT);
 	int srv_len = sizeof( struct sockaddr_in );
 

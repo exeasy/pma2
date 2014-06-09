@@ -39,6 +39,7 @@
 #define DEVICE_TYPE		"device_type"
 #define ROUTER_IP		"router_ip"
 #define LOCAL_IP        "local_ip"
+#define HELLO_IP		"hello_ip"
 #define NETMASK         "netmask"
 #define COMM_TYPE          "comm_type"
 #define FAST_MPLS	"fast_mpls"
@@ -179,6 +180,10 @@ static int parse_conf(xmlDocPtr doc, xmlNodePtr node)
 	if(ret) return -1;
 	/** local ip **/
 	ret = parase_item(doc, m_node, (const xmlChar*)(LOCAL_IP), &(GET_MOD_CONFIG(ic).local_ip), sizeof(int), 3);
+	if(ret) return -1;
+	pma_conf.local_ip = GET_MOD_CONFIG(ic).local_ip;
+	/** hello ip **/
+	ret = parase_item(doc, m_node, (const xmlChar*)(HELLO_IP), &(GET_MOD_CONFIG(ic).hello_ip), sizeof(int), 3);
 	if(ret) return -1;
 	/** netmask **/
 	ret = parase_item(doc, m_node, (const xmlChar*)(NETMASK), &(GET_MOD_CONFIG(ic).netmask), sizeof(int), 3);

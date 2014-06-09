@@ -8,6 +8,7 @@
 struct icm_conf{
 	struct in_addr router_ip;
 	struct in_addr local_ip;
+	struct in_addr hello_ip;
 	struct in_addr netmask;
 	int outside;
 	int device_type;

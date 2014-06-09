@@ -8,8 +8,7 @@
 
 u8 agent_login_status = AGENT_LOGOUT;
 
-static void *login(void *args);
-
+static void *login(void *args); 
 int agent_init_request(char* routerid)
 {
 	//pack the login xml
@@ -45,7 +44,7 @@ int agent_init_request(char* routerid)
 	add_xml_child(devnode, "as_id", asid);
 	add_xml_child(devnode, "router_id", routerid);
 	char ctlip[24];
-	inet_ntop(AF_INET, &pma_conf.ic_config.local_ip, ctlip,24);
+	inet_ntop(AF_INET, &pma_conf.ic_config.hello_ip, ctlip,24);
 	add_xml_child(devnode, "agent_control_ip", ctlip);
 	
 	char* xmlbuff;

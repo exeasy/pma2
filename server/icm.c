@@ -54,9 +54,9 @@ int icm_init()
     add_ctl(packet_handler, PMA_LIST, pma_list_handle,1 );
     add_ctl(packet_handler, ACK,      ack_handle, 1);
     add_ctl(packet_handler, ICM_CONF, conf_handle, 1);
-	pool = malloc_z(Pool);
-	init_pthread_pool(pool);
-	start_pthread_pool(pool);
+//	pool = malloc_z(Pool);
+//	init_pthread_pool(pool);
+//	start_pthread_pool(pool);
 	detect_daemon_init();
 }
 
@@ -100,18 +100,19 @@ conf_handle( struct Packet_header *pkt )
 	char routerid[24];
 	//local ip
     char local_ip[24];
-	//local address mask
-    char local_mask[24];
+	//hello ip
+	char hello_ip[24];
+	//hello address mask
+    char hello_mask[24];
 	//router ip
 	static char routerip[24];
 
 	inet_ntop(AF_INET,&conf.local_ip,local_ip,24);
-	inet_ntop(AF_INET,&conf.netmask,local_mask,24);
+	inet_ntop(AF_INET,&conf.hello_ip,hello_ip,24);
+	inet_ntop(AF_INET,&conf.netmask,hello_mask,24);
 	inet_ntop(AF_INET,&conf.router_ip,routerip,24);	
-	DEBUG(INFO,"Receive Config:\nRouterID[%d]\nRouterIP:[%s]\nPMAIP[%s]\nPMANETMASK[%s]\n",\
-		self_id,routerip,local_ip,local_mask);
-	struct in_addr pma_addr;
-	inet_pton(AF_INET,local_ip,&pma_addr);//local_ip come from the config recv by the basemodule.
+	DEBUG(INFO,"Receive Config:\nRouterID[%d]\nRouterIP:[%s]\nHelloIP[%s]\nHelloMASK[%s]\n",\
+		self_id,routerip,hello_ip,hello_mask);
 
 	snmp_init(routerip);
 
