@@ -334,6 +334,7 @@ bgp4PathAttrBest bgp4PathAttrUnknown\n");
 	if( bgp_path_attr_table_last_len != len ){
 		bgp_path_attr_table_last_len = len;
 		char* newbuff = bgp_path_attr_to_xml(buff);
+		len = strlen(newbuff);
 		module_send_data(newbuff, len, UP_BGP_PATH_TABLE_INFO); 
 		free(newbuff);
 	}
