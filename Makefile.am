@@ -1,8 +1,8 @@
 SUBDIRS=lib utils comm conf reg server  control  timer  mmanager vty logger snmp router lsd lsdb netlink db ddc policy command
 #bin_PROGRAMS=bm logsrv logcli pem threadtest snmptest icm  nltest dbtest dbm
 bin_PROGRAMS=bm pem icm dbm qconf conf_detect
-AM_CFLAGS=-O2 -ggdb3 -std=c99 -I$(LIB_XML_INCLUDE) -I$(LIB_SNMP_INCLUDE) -lnetsnmp 
-AM_LDFLAGS=-L$(LIB_SNMP_LIB)
+AM_CFLAGS=-O2 -ggdb3 -std=c99 -I$(LIB_XML_INCLUDE) -I$(LIB_SNMP_INCLUDE)  
+AM_LDFLAGS= -L$(LIB_SNMP_LIB) -lnetsnmp
 bm_SOURCES=pma_bm.c
 bm_LDADD=./comm/libpmacomm.a\
 		 ./conf/libpmaconf.a\
@@ -65,7 +65,7 @@ pem_LDADD=./server/libpmapem.a\
 		 ./command/libpmacommand.a\
 		 ./snmp/libsnmpapi.a\
 		  ./utils/libpmautils.a
-pem_CFLAGS=-D PEMODULE -L./command/ -L$(LIB_SNMP_LIB) -liptc -lmpls -liptables -lnetsnmp 
+pem_CFLAGS=-D PEMODULE -static -L./command/ -L$(LIB_SNMP_LIB) -liptc -lmpls -liptables -lnetsnmp  -static
 
 cmd_test_SOURCES=cmd_test.c
 cmd_test_LDADD=./command/libpmacommand.a\
@@ -132,14 +132,19 @@ testxml_LDADD=./comm/libpmacomm.a\
 			 ./utils/libpmautils.a
 
 EXTRA_DIST=config/* \
+		   tcl/* \
 		   command/libiptables.so\
 		   command/libmpls.so\
 		   command/sh-cmd/*\
 		   command/xml-cmd/*\
 		   pma.conf\
 		   interface.cfg\
+		   agent.conf\
 		   pmalog.conf\
 		   pma.db\
 		   test\
 		   icm.ini\
-			pma.sh
+			pma.sh\
+			pmainstall.sh\
+			pma-router.sh\
+			pma-agent.sh

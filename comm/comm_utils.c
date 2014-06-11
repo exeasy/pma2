@@ -1,3 +1,10 @@
+/**
+ * @file comm_utils.c
+ * @Brief  comm_utils contains some common function address related
+ * @author Zhang Hong
+ * @version 2.1
+ * @date 2014-06-10
+ */
 #include "utils/common.h"
 #include "utils/utils.h"
 #include "comm_utils.h"

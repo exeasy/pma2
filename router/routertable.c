@@ -43,15 +43,22 @@ int get_route_table_by_netlink(struct route_table *rt)
 
 int get_prefix_length(char* mask){
 	if(*mask=='\0')return 0;
+	int host_order = 0;
+	if(mask[0] == '0' ) // if the format is 0.255.255.255, then convert to the host order byte
+	{
+		host_order = 1;
+	}
 	struct in_addr n_mask;
 	inet_aton(mask,&n_mask);
 	u32 b_mask = (u32)n_mask.s_addr;
+	if( host_order )
+		b_mask = ntohl(b_mask);
 	b_mask = ~b_mask;
 	int count = 0;
 	while(b_mask){
 		b_mask = b_mask<<1;
 		count++;
-		}
+	}
 	return 32-count;
 }
 

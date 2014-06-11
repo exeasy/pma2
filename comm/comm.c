@@ -1,3 +1,10 @@
+/**
+ * @file comm.c
+ * @Brief  tcp server related function, like send recv	
+ * @author Zhang Hong
+ * @version 2.1
+ * @date 2014-06-10
+ */
 #include <utils/common.h>
 #include <header.h>
 #include "comm_utils.h"
@@ -7,8 +14,13 @@
 #include "utils/utils.h"
 #include "control/control.h"
 
+/*tcp socket state blocked or unblocked*/
 #define NO_BLOCKED 0
 #define BLOCKED 1
+
+/*ctl handle pointer */
+/*data_handle for recived packet*/
+/*capsu_handle for capsulate packet*/
 struct ctl *data_handle;
 struct ctl *capsu_handle;
 
@@ -30,6 +42,13 @@ int get_pma_pms_ip(){
 /* store the pma's every interface's ipaddress */
 struct interface_addr *iplist;
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  init the exterior communication recv packet daemon
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int comm_init(void) //no snapshoot version 
 {
 	int ret = 0;
@@ -68,6 +87,15 @@ int comm_init(void) //no snapshoot version
 	return 0;
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  update the global pma_addr use the current sockfd 
+ *
+ * @Param sockfd
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int update_pma_addr(int sockfd){
 	struct sockaddr_in client_addr;
 	int len = sizeof(client_addr);
@@ -78,6 +106,17 @@ int update_pma_addr(int sockfd){
 	DEBUG(INFO,"Client Used IP[%s] to PMS",pmaip);
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  create a tcp connect with ip and port ( this is a unblocked version )
+ *			only if the connection is ok, the socket will be turn blocked
+ *
+ * @Param ip
+ * @Param port
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int create_connect(char *ip, int port)
 {
 	struct sockaddr_in server_addr;
@@ -162,11 +201,29 @@ int create_connect(char *ip, int port)
 	}
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  close the tcp connection
+ *
+ * @Param sockfd
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int close_connect(int sockfd)
 {
 	return (close(sockfd));
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  encapsulate the content of pkt to buff 
+ *
+ * @Param pkt
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int encapsulate_trans_packet(struct packet *pkt)
 {
 	struct pma_pms_header header;
@@ -189,6 +246,15 @@ int encapsulate_trans_packet(struct packet *pkt)
 	memcpy(pkt->data, (void *)&header, len);
 	return 0;
 }
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  encapsulate the normal packet ( only pass the data to the new header )
+ *
+ * @Param pkt
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int encapsulate_normal_packet(struct packet *pkt)
 {
 	struct pma_pms_header header;
@@ -208,6 +274,16 @@ int encapsulate_normal_packet(struct packet *pkt)
 	memcpy(pkt->data, (void *)&header, len);
 	return 0;
 }
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  encapsulate the buff to the pkt ( current used version )
+ *
+ * @Param pkt
+ * @Param buf
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int encapsulate_packet(struct packet *pkt, void* buf)
 {
 	DEBUG(INFO, "%s %d %d %u encapsulate_packet handle",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
@@ -288,6 +364,15 @@ int encapsulate_packet(struct packet *pkt, void* buf)
 //			}
 //	}
 }
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  blocked send data 
+ *
+ * @Param pkt
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int send_packet(struct packet *pkt)
 {
 	DEBUG(INFO, "%s %d %d %u send_packet handle",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
@@ -301,6 +386,15 @@ int send_packet(struct packet *pkt)
 	return ret;
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  send pkt by alca way
+ *
+ * @Param pkt
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int send_packet_by_alca(struct packet*pkt)
 {
 	DEBUG(INFO, "%s %d %d %u ALCA send_packet handle",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
@@ -329,6 +423,16 @@ int send_packet_by_alca(struct packet*pkt)
 }
 
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  receive the packet to pkt 
+ *
+ * @Param pkt
+ * @Param old_type
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int recv_packet(struct packet *pkt,int old_type)
 {
 	DEBUG(INFO, "%s %d %d %u recv_packet handle",pkt->ip, pkt->sockfd, pkt->ops_type, 0);
@@ -431,6 +535,19 @@ int recv_packet(struct packet *pkt,int old_type)
 	return 0;
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  send the message to pms ( pmsip, pmsport, pkt_type, pkt_buf, len )
+ *
+ * @Param ip
+ * @Param port
+ * @Param type
+ * @Param buf
+ * @Param len
+ *
+ * @Returns  0:success -1:failed 
+ */
+/* ----------------------------------------------------------------------------*/
 int send_message_to_pms(char *ip, int port, int type, char *buf, int len)
 {
 	int ret = 0,sockfd;
@@ -553,6 +670,15 @@ int send_message_to_pms(char *ip, int port, int type, char *buf, int len)
 }
 
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  pms reply handle 
+ *
+ * @Param pkt
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int pms_reply_handle(struct packet *pkt)
 {
 	DEBUG(INFO, "%s %d %d %u pms reply handle",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
@@ -561,6 +687,13 @@ int pms_reply_handle(struct packet *pkt)
 
 	return run_ctl( data_handle, pkt->ops_type , pkt);
 }
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  show the local interface ip
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int show_interface()
 {
 	struct interface_addr *tmp = iplist->next;
@@ -576,6 +709,13 @@ int show_interface()
 }	
 
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  get the local interface ip address
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int get_interface_ip()
 {
 	iplist = (struct interface_addr*)malloc(sizeof(struct interface_addr));
@@ -608,6 +748,16 @@ int get_interface_ip()
 	}
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Brief  make socket blocked or unblocked
+ *
+ * @Param sfd
+ * @Param block
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 int make_socket_status( int sfd, int block)
 {
 	int flags, s;

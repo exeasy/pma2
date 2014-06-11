@@ -1,3 +1,10 @@
+/**
+ * @file comm_lite.c
+ * @Brief  comm_lite is a lite version of comm.c for some self-defined module like 'netstream' or conf_detect
+ * @author Zhang Hong
+ * @version 2.1
+ * @date 2014-06-10
+ */
 #include <utils/common.h>
 #include <utils/utils.h>
 #include "comm_lite.h"
