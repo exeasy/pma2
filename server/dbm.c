@@ -63,7 +63,9 @@ int link_state_handler(struct Packet_header *pkt)
 	{
 		case ADDLSA:
 			insert_link_state(lsa);
+#ifndef SPF_DISABLE
 			spf_signal_handler(NULL);
+#endif
             snapshoot_sender();
 			break;
 		case UPDATELSA:
@@ -80,6 +82,7 @@ int link_state_handler(struct Packet_header *pkt)
                         free(buff);
 					}
 				}
+#ifndef SPF_DISABLE
 				if ( origin_status == 3 && lsa->status != 3 )//link broken
 				{
 					fah_protect_link(conf.router_id , lsa);
@@ -88,6 +91,7 @@ int link_state_handler(struct Packet_header *pkt)
 				{
 					fah_set_default_timer(conf.router_id, lsa);
 				}
+#endif
 				break;
 			}
 		default:

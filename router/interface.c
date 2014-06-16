@@ -306,7 +306,7 @@ int bgppath_diff_and_send(struct bgpPathAttrTable* table)
 {
 	int is_changed = 0;
 	struct bgpPathAttrTable* attrnode = table->next;
-	char buff[10240];
+	char buff[40240];
 	int len = 0;
 	sprintf(buff,"bgp4PathAttrPeer bgp4PathAttrIpAddrPrefixLen bgp4PathAttrIpAddrPrefix bgp4PathAttrOrigin\
 bgp4PathAttrASPathSegment bgp4PathAttrNextHop bgp4PathAttrMultiExitDisc bgp4PathAttrLocalPref\

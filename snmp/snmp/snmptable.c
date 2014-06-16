@@ -112,7 +112,7 @@ int snmptable(char *ip, char * comm, char *oidstr, int *entryptr,
 	for(li = 0 ; li<MAX_OID_LEN ; li++){
 			root[li] = 0;
 			name[li] = 0;
-		}
+	}
 	//****************************
 	netsnmp_session session, *ss;
 	int total_entries = 0;
@@ -168,7 +168,8 @@ int snmptable(char *ip, char * comm, char *oidstr, int *entryptr,
 		table_name = buf;
 		buf = NULL;
 		buf_len = out_len = 0;
-	} else {
+	} 
+	else {
 		table_name = strdup("[TRUNCATED]");
 		out_len = 0;
 	}
@@ -177,27 +178,16 @@ int snmptable(char *ip, char * comm, char *oidstr, int *entryptr,
 	while (going) {
 		fields++;
 		printf("XXXXXXXXXXXXXX\n");
-#ifndef DISABLE_MIB_LOADING
 		if (tbl) {
-	//		if (tbl->access == MIB_ACCESS_NOACCESS) {
-	//			printf("MIB_ACCESS_NOACCESS\n");
-	//			fields--;
-	//			tbl = tbl->next_peer;
-	//			if (!tbl) {
-	//				going = 0;
-	//			}
-	//			continue;
-			}
-			root[rootlen] = tbl->subid;
-			tbl = tbl->next_peer;
-			if (!tbl)
-				going = 0;
-		} else {
-#endif /* DISABLE_MIB_LOADING */
-			root[rootlen] = fields;
-#ifndef DISABLE_MIB_LOADING
 		}
-#endif /* DISABLE_MIB_LOADING */
+		root[rootlen] = tbl->subid;
+		tbl = tbl->next_peer;
+		if (!tbl)
+		{
+			going = 0;
+		} else {
+			root[rootlen] = fields;
+		}
 		out_len = 0;
 		if (sprint_realloc_objid((u_char **) &buf, &buf_len, &out_len, 1, root,
 				rootlen + 1)) {
@@ -246,7 +236,7 @@ int snmptable(char *ip, char * comm, char *oidstr, int *entryptr,
 		if (name_p != NULL) {
 			*name_p = 0;
 		}
-	}3
+	}
 	if (brief && fields > 1) {
 		char *f1, *f2;
 		int common = strlen(column[0].label);

@@ -58,9 +58,13 @@ void hello_changed_handler(struct backbone_eth* eth,
 	//				struct link_state_key* key = (struct link_state_key*)malloc(sizeof(struct link_state_key));
 	//				memcpy(key,&state.key,sizeof(state.key));
 	//				RUN_EVENT(LINK_UP,key);
+#ifndef EXCHANGE_DISABLE
 					exchange_send_start(eth);
+#endif
+#ifndef FLOOD_DISABLE
 					flood_start(eth);
 					flood_spread_backbone_link_state(eth, state.state);
+#endif
     //                #endif
 
 				}
@@ -70,9 +74,13 @@ void hello_changed_handler(struct backbone_eth* eth,
 	//				struct link_state_key* key = (struct link_state_key*)malloc(sizeof(struct link_state_key));
 	//				memcpy(key,&state.key,sizeof(state.key));
 	//				RUN_EVENT(LINK_DOWN,key);
-					flood_spread_backbone_link_state(eth, state.state);
+#ifndef EXCHANGE_DISABLE
 					exchange_terminate(eth);
+#endif
+#ifndef FLOOD_DISABLE
+					flood_spread_backbone_link_state(eth, state.state);
 					flood_terminate(eth);
+#endif
     //                #endif
 				}
 
@@ -103,9 +111,13 @@ void hello_changed_handler(struct backbone_eth* eth,
 	//				memcpy(key,&state.key,sizeof(state.key));
 	//				RUN_EVENT(LINK_UP,key);
 	//				//fah_set_default_timer(eth);
+#ifndef EXCHANGE_DISABLE
 					exchange_send_start(eth);
+#endif
+#ifndef FLOOD_DISABLE
 					flood_start(eth);
 					flood_spread_backbone_link_state(eth, state.state);
+#endif
     //                #endif
 				}
 				else
@@ -114,9 +126,13 @@ void hello_changed_handler(struct backbone_eth* eth,
 	//				struct link_state_key* key = (struct link_state_key*)malloc(sizeof(struct link_state_key));
 	//				memcpy(key,&state.key,sizeof(state.key));
 	//				RUN_EVENT(LINK_DOWN,key);
-					flood_spread_backbone_link_state(eth, state.state);
+#ifndef EXCHANGE_DISABLE
 					exchange_terminate(eth);
+#endif
+#ifndef FLOOD_DISABLE
+					flood_spread_backbone_link_state(eth, state.state);
 					flood_terminate(eth);
+#endif
     //                #endif
 					//cpi_policy_get(eth);
 	#ifdef ONIXCLIENT
@@ -142,22 +158,33 @@ void hello_changed_handler(struct backbone_eth* eth,
 
 			if (NOT_FOUND_ERR == cr_lsdb_link_state_find(&state.key, &l_result, lsdb))
 			{
-				assert(cr_lsdb_link_state_add(&state, lsdb) == NO_ERR);
-
 				state.seq = 0;
 				if (status == 1)
 				{
 					state.state = 0x01;
-                  //  #ifdef OSPF_VERSION
-					flood_spread_backbone_link_state(eth, state.state);
-                   // #endif OSPF_VERSION
 				}
 				else
 				{
 					state.state = 0x00;
+				}
+				assert(cr_lsdb_link_state_add(&state, lsdb) == NO_ERR);
+				if (status == 1)
+				{
+//					state.state = 0x01;
+                  //  #ifdef OSPF_VERSION
+#ifndef FLOOD_DISABLE
+					flood_spread_backbone_link_state(eth, state.state);
+                   // #endif OSPF_VERSION
+#endif
+				}
+				else
+				{
+//					state.state = 0x00;
                 //    #ifdef OSPF_VERSION
+#ifndef FLOOD_DISABLE
 					flood_spread_backbone_link_state(eth, state.state);
                  //   #endif
+#endif
 				}
 			}
 			else
@@ -170,7 +197,9 @@ void hello_changed_handler(struct backbone_eth* eth,
 					state_info.field.hello_low = 1;
 					state.state = state_info.data;
                     // #ifdef OSPF_VERSION
+#ifndef FLOOD_DISABLE
 					flood_spread_backbone_link_state(eth, state.state);
+#endif
                     // #endif
 				}
 				else
@@ -179,7 +208,9 @@ void hello_changed_handler(struct backbone_eth* eth,
 					state_info.field.hello_low = 0;
 					state.state = state_info.data;
                     // #ifdef OSPF_VERSION
+#ifndef FLOOD_DISABLE
 					flood_spread_backbone_link_state(eth, state.state);
+#endif
                      //#endif
 				}
 

@@ -89,7 +89,7 @@ int handle_ops_pms_tun_command(void *args)
 	DEBUG(INFO, "%s %d %d %u handle",pkt->ip, pkt->sockfd, pkt->ops_type, pkt->len);
 	pkt->data += sizeof(struct pma_pms_header);
 	pkt->len -= sizeof(struct pma_pms_header);
-	send_message_to_module(PEM, OPS_TUNNEL_COMMAND, pkt->data, pkt->len);
+	send_message_to_module(PEM,TC_TUNNEL_COMMAND , pkt->data, pkt->len);
 	int ret = send_ack_to_pms(pkt);
 	if(ret)
 		return 0;

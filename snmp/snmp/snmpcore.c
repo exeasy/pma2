@@ -113,7 +113,10 @@ int is_inited(){
 int get_ospf_routerid(char* routerid)
 {
 	if( routerid == NULL && is_inited() == 0) return -1;
-	update_item(global_snmp_session, &ospfrouterid);
+	if ( 0 != update_item(global_snmp_session, &ospfrouterid) ){
+		clear_item(&ospfrouterid);
+		return -1;
+	}
 	strcpy(routerid, ospfrouterid.itemhead);
 	clear_item(&ospfrouterid);
 	return 0;
@@ -121,7 +124,10 @@ int get_ospf_routerid(char* routerid)
 int get_bgp_routerid(char* routerid)
 {
 	if( routerid == NULL && is_inited() == 0) return -1;
-	update_item(global_snmp_session, &bgpidentifier);
+	if (0 != update_item(global_snmp_session, &bgpidentifier)){
+		clear_item(&bgpidentifier);
+		return -1;
+	}
 	strcpy(routerid, bgpidentifier.itemhead);
 	clear_item(&bgpidentifier);
 	return 0;
@@ -129,7 +135,10 @@ int get_bgp_routerid(char* routerid)
 int get_bgp_asid(char* asid)
 {
 	if( asid == NULL && is_inited() == 0) return -1;
-	update_item(global_snmp_session, &bgplocalas);
+	if( 0 != update_item(global_snmp_session, &bgplocalas) ){
+		clear_item(&bgplocalas);
+		return -1;
+	}
 	strcpy(asid, bgplocalas.itemhead);
 	clear_item(&bgplocalas);
 	return 0;
@@ -138,7 +147,10 @@ int get_bgp_asid(char* asid)
 int get_bgp_peer_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &bgppeertable);
+	if( 0 != update_table(global_snmp_session, &bgppeertable) ){
+		clear_table(&bgppeertable);
+		return -1;
+	}
 	int ret =callback((void*)bgppeertable.tablehead);
 	clear_table(&bgppeertable);
 	return ret;
@@ -146,7 +158,10 @@ int get_bgp_peer_table(callbackptr callback)
 int get_bgp_path_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &bgppathtable);
+	if( 0 != update_table(global_snmp_session, &bgppathtable)){
+		clear_table(&bgppathtable);
+		return -1;
+	}
 	int ret =callback((void*)bgppathtable.tablehead);
 	clear_table(&bgppathtable);
 	return ret;
@@ -154,7 +169,10 @@ int get_bgp_path_table(callbackptr callback)
 int get_if_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &iftable);
+	if ( 0 != update_table(global_snmp_session, &iftable) ){
+		clear_table(&iftable);
+		return -1;
+	}
 	int ret =callback((void*)iftable.tablehead);
 	clear_table(&iftable);
 	return ret;
@@ -162,7 +180,10 @@ int get_if_table(callbackptr callback)
 int get_ipaddr_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &ipaddrtable);
+	if( 0 != update_table(global_snmp_session, &ipaddrtable)){
+		clear_table(&ipaddrtable);
+		return -1;
+	}
 	int ret =callback((void*)ipaddrtable.tablehead);
 	clear_table(&ipaddrtable);
 	return ret;
@@ -170,7 +191,10 @@ int get_ipaddr_table(callbackptr callback)
 int get_iproute_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &iproutetable);
+	if ( 0 != update_table(global_snmp_session, &iproutetable)){
+		clear_table(&iproutetable);
+		return -1;
+	}
 	int ret =callback((void*)iproutetable.tablehead);
 	clear_table(&iproutetable);
 	return ret;
@@ -178,7 +202,10 @@ int get_iproute_table(callbackptr callback)
 int get_ospf_area_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &ospfareatable);
+	if( 0 != update_table(global_snmp_session, &ospfareatable)){
+		clear_table(&ospfareatable);
+		return -1;
+	}
 	int ret =callback((void*)ospfareatable.tablehead);
 	clear_table(&ospfareatable);
 	return ret;
@@ -186,7 +213,10 @@ int get_ospf_area_table(callbackptr callback)
 int get_ospf_ifmetric_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &ospfifmetrictable);
+	if (0 != update_table(global_snmp_session, &ospfifmetrictable)){
+		clear_table(&ospfifmetrictable);
+		return -1;
+	}
 	int ret =callback((void*)ospfifmetrictable.tablehead);
 	clear_table(&ospfifmetrictable);
 	return ret;
@@ -194,7 +224,10 @@ int get_ospf_ifmetric_table(callbackptr callback)
 int get_ospf_if_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &ospfiftable);
+	if ( 0 != update_table(global_snmp_session, &ospfiftable)){
+		clear_table(&ospfiftable);
+		return -1;
+	}
 	int ret =callback((void*)ospfiftable.tablehead);
 	clear_table(&ospfiftable);
 	return ret;
@@ -202,7 +235,10 @@ int get_ospf_if_table(callbackptr callback)
 int get_ospf_neighbor_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	update_table(global_snmp_session, &ospfneighbortable);
+	if ( 0 != update_table(global_snmp_session, &ospfneighbortable)){
+		clear_table(&ospfneighbortable);
+		return -1;
+	}
 	int ret =callback((void*)ospfneighbortable.tablehead);
 	clear_table(&ospfneighbortable);
 	return ret;
@@ -410,9 +446,12 @@ int clear_table(tableopt* table)
 				*p = NULL;
 			}
 		}
+		free(handle);
 		nextptr = GETNEXTPTR(handle, table->column);
 		handle = *nextptr;
 	}
+	free(table->tablehead);
+	table->tablehead = NULL;
 	return 0;
 }
 
@@ -454,12 +493,22 @@ int update_table(session_id_t s, tableopt* table)
 			for(int j= 0; j< table->column; j++){
 				char** element = (char**)GETELEMENT(handle,j);
 				int k = table->mapper[j];
-				int len = strlen(dp[k]);
-				*element = (char*)malloc(len+1);
-				strcpy(*element,dp[k]);
+				if ( dp[k] == NULL ) {//the snmpd's response is not correct
+					ret = -1;// error orrcur
+					*element = (char*)malloc(10);
+					strcpy(*element, "(null)");
+				}
+				else
+				{
+					int len = strlen(dp[k]);
+					*element = (char*)malloc(len+1);
+					strcpy(*element,dp[k]);
+				}
 			}
 			dp = dp + fields;
 		}
 	}
 	free_data(data, entries, fields);
+	if( ret == -1) return -1;
+	return 0;
 }

@@ -171,7 +171,7 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
     if (!snmp_parse_oid(oid, root, &rootlen)) {
         snmp_perror(oid);
 		pthread_mutex_unlock(&snmp_lock);
-        exit(1);
+        return -1;
     }
     localdebug = netsnmp_ds_get_boolean(NETSNMP_DS_LIBRARY_ID,
                                         NETSNMP_DS_LIB_DUMP_PACKET);
@@ -192,7 +192,7 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
 		pthread_mutex_unlock(&snmp_lock);
         SOCK_CLEANUP;
 		FREE_CLEANER
-        exit(1);
+        return -1;
     }
 
 #ifndef NETSNMP_DISABLE_SNMPV1
@@ -214,6 +214,7 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
 
         if (exitval) {
             snmp_close(ss);
+			pthread_mutex_unlock(&snmp_lock);
             SOCK_CLEANUP;
 			FREE_CLEANER
             return exitval;
@@ -246,7 +247,7 @@ snmptable(char *ip ,char *comm, char *oid, int* entryptr,
 
     return 0;
 }
-
+/*
 void
 print_table(void)
 {
@@ -344,7 +345,7 @@ print_table(void)
     first_pass = 0;
 	FREE_CLEANER
 }
-
+*/
 void
 get_field_names(void)
 {
@@ -438,7 +439,7 @@ get_field_names(void)
     }
     if (fields == 0) {
         fprintf(stderr, "Was that a table? %s\n", table_name);
-        exit(1);
+        return -1;
     }
     if (name_p) {
         *name_p = 0;
@@ -616,7 +617,7 @@ get_table_entries(netsnmp_session * ss)
 				    fprintf(stderr, "Unrecognized -O option: %d\n",
 					    netsnmp_ds_get_int(NETSNMP_DS_LIBRARY_ID,
 							      NETSNMP_DS_LIB_OID_OUTPUT_FORMAT));
-				    exit(1);
+				    return -1;
                                 }
                                 name_p = strchr(name_p, '.') + 1;
                             }
@@ -793,7 +794,7 @@ getbulk_table_entries(netsnmp_session * ss,int* entryptr, int* fieldptr, char***
 							fprintf(stderr, "Unrecognized -O option: %d\n",
 							netsnmp_ds_get_int(NETSNMP_DS_LIBRARY_ID,
 					              NETSNMP_DS_LIB_OID_OUTPUT_FORMAT));
-							exit(1);
+							return -1;
                         }
 						 name_p = strchr(name_p, '.');
 						if ( name_p == NULL ) {

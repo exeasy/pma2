@@ -28,7 +28,7 @@ for as in $ASLIST; do
 		if( NR == 3 ) print "<device_type>12</device_type>";
 		else if ( NR == 6 ) print "<as_num>'$as'</as_num>";
 		else if ( NR == 7 ) print "<pma_id>'$PMAID'</pma_id>";
-		else if ( NR == 10 ) print "<ip>192.168.2.248</ip>";
+		else if ( NR == 10 ) print "<ip>192.168.4.1</ip>";
 		else if ( NR == 27 ) print "<outside_enable>1</outside_enable>";
 		else if ( NR == 28 ) print "<router_ip>'$RIP'</router_ip>";
 		else if ( NR == 29 ) print "<local_ip>'$PMAIP'</local_ip>";

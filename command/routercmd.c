@@ -57,7 +57,7 @@ int runRouterCmd(struct tunnelcmd *cmd) {
 		}
 		else if ( conf.device_type/10 == 2) //Huawei
 		{
-			sprintf(command+len, "%02x.tcl ", cmd->type);
+			sprintf(command+len, "%02x ", cmd->type);
 		}
 		else {
 			sprintf(command+len, "%02x ", cmd->type);
@@ -72,7 +72,7 @@ int runRouterCmd(struct tunnelcmd *cmd) {
 
 		if( strcmp(cmd->dst_ip,"") != 0 ) 
 		{
-			sprintf(command+len, "%s ", cmd->src_ip);
+			sprintf(command+len, "%s ", cmd->dst_ip);
 			len = strlen(command);
 		}
 

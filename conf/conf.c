@@ -310,7 +310,7 @@ static int parse_conf_old(xmlDocPtr doc, xmlNodePtr node)
 							  pma_conf.alca_port = strtol((char *)value, &endptr, base);
 							  if ((errno == ERANGE )
 									  || (errno != 0 && pma_conf.alca_port == 0)) {
-								  DBUG(ERROR, "get value ALCA_port");
+								  DEBUG(ERROR, "get value ALCA_port");
 								  return -1;
 							  }
 							  xmlFree(value);
