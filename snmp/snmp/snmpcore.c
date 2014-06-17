@@ -435,6 +435,7 @@ int clear_table(tableopt* table)
 {
 	char* handle = table->tablehead;
 	char** nextptr = GETNEXTPTR(handle,table->column);
+	char* temp = NULL;
 	handle = *nextptr;
 	while(handle != NULL){
 		char** p = NULL;
@@ -446,9 +447,10 @@ int clear_table(tableopt* table)
 				*p = NULL;
 			}
 		}
-		free(handle);
 		nextptr = GETNEXTPTR(handle, table->column);
+		temp = handle;
 		handle = *nextptr;
+		free(temp);
 	}
 	free(table->tablehead);
 	table->tablehead = NULL;

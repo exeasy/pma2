@@ -342,7 +342,7 @@ bgp4PathAttrBest bgp4PathAttrUnknown\n");
 int bgppath_get_and_send(struct bgpPathAttrTable* table)
 {
 	struct bgpPathAttrTable* attrnode = table->next;
-	char buff[10240];
+	char buff[40240];
 	int len = 0;
 	sprintf(buff,"bgp4PathAttrPeer bgp4PathAttrIpAddrPrefixLen bgp4PathAttrIpAddrPrefix bgp4PathAttrOrigin\
 bgp4PathAttrASPathSegment bgp4PathAttrNextHop bgp4PathAttrMultiExitDisc bgp4PathAttrLocalPref\
@@ -368,6 +368,7 @@ bgp4PathAttrBest bgp4PathAttrUnknown\n");
 		attrnode = attrnode->next;
 	}
 	char* newbuff = bgp_path_attr_to_xml(buff);
+	len = strlen(newbuff);
 	module_send_data(newbuff, len, UP_BGP_PATH_TABLE_INFO); 
 	free(newbuff);
 }
