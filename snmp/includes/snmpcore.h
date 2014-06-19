@@ -22,6 +22,7 @@ typedef struct snmpsession{
 typedef	struct itemopt{
 	char* itemhead;
 	const char* oids;
+	pthread_mutex_t lock;
 }itemopt;
 
 typedef struct tableopt{
@@ -30,6 +31,7 @@ typedef struct tableopt{
 	size_t type_size;
 	size_t column;
 	const int* mapper;
+	pthread_mutex_t lock;
 }tableopt;
 
 struct InterfaceTable {

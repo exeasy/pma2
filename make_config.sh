@@ -7,6 +7,10 @@ RLIST="1 2 3 4 5 6 7 8 111 112 113 114 121 122 123 124 131 132 133 134 135 136 1
 
 for i in $RLIST; do
 	cat $TEMPLATE | awk '{ if (NR == 7) print "<pma_id>0.0.0.'$i'</pma_id>";
+	else if ( NR == 3 ) print "<device_type>11</device_type>";
+	else if ( NR == 6 ) print "<as_num>0</as_num>";
+	else if ( NR == 10 ) print "<ip>192.168.69.9</ip>";
+	else if ( NR == 27 ) print "<outside_enable>0</outside_enable>";
 	else if (NR==28) print "<router_ip>127.0.0.1</router_ip>"; 
 	else if (NR==29) print "<local_ip>192.168.3.'$i'</local_ip>"; 
 	else if (NR==30) print "<hello_ip>10.10.'$i.$i'</hello_ip>"; 

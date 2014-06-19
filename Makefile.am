@@ -1,8 +1,8 @@
 SUBDIRS=lib utils comm conf reg server  control  timer  mmanager vty logger snmp router lsd lsdb netlink db ddc policy command
 #bin_PROGRAMS=bm logsrv logcli pem threadtest snmptest icm  nltest dbtest dbm
 bin_PROGRAMS=bm pem icm dbm qconf conf_detect pfmtest
-AM_CFLAGS=-ggdb3 -std=c99 -I$(LIB_XML_INCLUDE) 
-AM_LDFLAGS= -lnetsnmp
+AM_CFLAGS=-ggdb3 -std=c99 -I$(LIB_XML_INCLUDE)  -I$(LIB_SNMP_INCLUDE)
+AM_LDFLAGS= -lnetsnmp -L$(LIB_SNMP_LIB)
 bm_SOURCES=pma_bm.c
 bm_LDADD=./comm/libpmacomm.a\
 		 ./conf/libpmaconf.a\

@@ -11,6 +11,7 @@ bin_start(){
 	for bin in $RUN_BIN ; do
 		echo "starting $bin"
 		./$bin 2&>1 > $bin.log &
+		sleep 8
 	done
 }
 

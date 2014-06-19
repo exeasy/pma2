@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <pthread.h>
 #include "includes/snmpcore.h"
 #include "includes/oids.h"
 #include "includes/typemapper.h"
@@ -9,7 +10,8 @@ tableopt iftable = {
 	.mapper = iftable_mapper, 
 	.oids = IFTABLE, 
 	.tablehead = NULL, 
-	.type_size = sizeof(struct InterfaceTable) 
+	.type_size = sizeof(struct InterfaceTable) ,
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 
 tableopt ipaddrtable = { 
@@ -17,7 +19,8 @@ tableopt ipaddrtable = {
 	.mapper = ipaddr_mapper, 
 	.oids = IPADDRTABLE, 
 	.tablehead = NULL, 
-	.type_size = sizeof(struct IpAddrTable) 
+	.type_size = sizeof(struct IpAddrTable), 
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 
 tableopt iproutetable = { 
@@ -25,76 +28,89 @@ tableopt iproutetable = {
 	.mapper = iproute_mapper, 
 	.oids = IPFORWARDTABLE, 
 	.tablehead = NULL, 
-	.type_size = sizeof(struct IpRouteTable) 
+	.type_size = sizeof(struct IpRouteTable),
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 tableopt ospfareatable = { 
 	.column = 4, 
 	.mapper = ospfarea_mapper, 
 	.oids = OSPFAREATABLE, 
 	.tablehead = NULL, 
-	.type_size = sizeof(struct ospfAreaTable) 
+	.type_size = sizeof(struct ospfAreaTable), 
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 tableopt ospfiftable = { 
 	.column = 14, 
 	.mapper = ospfif_mapper, 
 	.oids = OSPFIFTABLE, 
 	.tablehead = NULL, 
-	.type_size = sizeof(struct ospfIfTable) 
+	.type_size = sizeof(struct ospfIfTable) ,
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 tableopt ospfifmetrictable = {
 	.column = 3,
 	.mapper = ospfifmetric_mapper,
 	.oids = OSPFIFMETRICTABLE,
 	.tablehead = NULL,
-	.type_size = sizeof(struct ospfIfMetricTable)
+	.type_size = sizeof(struct ospfIfMetricTable),
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 tableopt ospfneighbortable = {
 	.column = 5,
 	.mapper = ospfneighbor_mapper,
 	.oids = OSPFNBRTABLE,
 	.tablehead = NULL,
-	.type_size = sizeof(struct ospfNeighborTable)
+	.type_size = sizeof(struct ospfNeighborTable),
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 tableopt bgppeertable = {
 	.column = 21,
 	.mapper = bgppeer_mapper,
 	.oids = BGPPEERTABLE,
 	.tablehead = NULL,
-	.type_size = sizeof(struct bgpPeerTable)
+	.type_size = sizeof(struct bgpPeerTable),
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 tableopt bgprecvpathtable = {
 	.column = 6,
 	.mapper = bgprecvpath_mapper,
 	.oids = BGPRCVDPATHATTRTABLE,
 	.tablehead = NULL,
-	.type_size = sizeof(struct bgpRecvPathAttrTable)
+	.type_size = sizeof(struct bgpRecvPathAttrTable),
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 tableopt bgppathtable = {
 	.column = 13,
 	.mapper = bgppath_mapper,
 	.oids = BGP4PATHATTRTABLE,
 	.tablehead = NULL,
-	.type_size = sizeof(struct bgpPathAttrTable)
+	.type_size = sizeof(struct bgpPathAttrTable),
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 itemopt ospfrouterid = {
 	.oids = OSPFROUTERID,
-	.itemhead = NULL
+	.itemhead = NULL,
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 itemopt ospfversion = {
 	.oids = OSPFVERSION,
-	.itemhead = NULL
+	.itemhead = NULL,
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 itemopt bgpversion = {
 	.oids = BGPVERSION,
-	.itemhead = NULL
+	.itemhead = NULL,
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 itemopt bgplocalas = {
 	.oids = BGPLOCALAS,
-	.itemhead = NULL
+	.itemhead = NULL,
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 itemopt bgpidentifier = {
 	.oids = BGPIDENTIFIER,
-	.itemhead = NULL
+	.itemhead = NULL,
+	.lock = PTHREAD_MUTEX_INITIALIZER
 };
 
 session_id_t global_snmp_session;
@@ -113,135 +129,255 @@ int is_inited(){
 int get_ospf_routerid(char* routerid)
 {
 	if( routerid == NULL && is_inited() == 0) return -1;
-	if ( 0 != update_item(global_snmp_session, &ospfrouterid) ){
+	pthread_mutex_lock(&ospfrouterid.lock);
+	int ret = update_item(global_snmp_session, &ospfrouterid);
+	if ( 0 == ret ){//no error
+		strcpy(routerid, ospfrouterid.itemhead);
 		clear_item(&ospfrouterid);
+		pthread_mutex_unlock(&ospfrouterid.lock);
+		return 0;
+	}
+	else if ( -1 == ret ) {//data format error
+		clear_item(&ospfrouterid);
+		pthread_mutex_unlock(&ospfrouterid.lock);
 		return -1;
 	}
-	strcpy(routerid, ospfrouterid.itemhead);
-	clear_item(&ospfrouterid);
-	return 0;
+	else {//no data acquired
+		pthread_mutex_unlock(&ospfrouterid.lock);
+		return -1;
+	}
 }
 int get_bgp_routerid(char* routerid)
 {
 	if( routerid == NULL && is_inited() == 0) return -1;
-	if (0 != update_item(global_snmp_session, &bgpidentifier)){
+	pthread_mutex_lock(&bgpidentifier.lock);
+	int ret = update_item(global_snmp_session, &bgpidentifier);
+	if ( 0 == ret ) {
+		strcpy(routerid, bgpidentifier.itemhead);
 		clear_item(&bgpidentifier);
+		pthread_mutex_unlock(&bgpidentifier.lock);
+		return 0;
+	}
+	else if ( -1 == ret ) {
+		clear_item(&bgpidentifier);
+		pthread_mutex_unlock(&bgpidentifier.lock);
 		return -1;
 	}
-	strcpy(routerid, bgpidentifier.itemhead);
-	clear_item(&bgpidentifier);
-	return 0;
+	else {
+		pthread_mutex_unlock(&bgpidentifier.lock);
+		return -1;
+	}
 }
 int get_bgp_asid(char* asid)
 {
 	if( asid == NULL && is_inited() == 0) return -1;
-	if( 0 != update_item(global_snmp_session, &bgplocalas) ){
+	pthread_mutex_lock(&bgplocalas.lock);
+	int ret = update_item(global_snmp_session, &bgplocalas);
+	if ( 0 == ret ){
+		strcpy(asid, bgplocalas.itemhead);
 		clear_item(&bgplocalas);
+		pthread_mutex_unlock(&bgplocalas.lock);
+		return 0;
+	}
+	else if ( -1 == ret ) {
+		clear_item(&bgplocalas);
+		pthread_mutex_unlock(&bgplocalas.lock);
 		return -1;
 	}
-	strcpy(asid, bgplocalas.itemhead);
-	clear_item(&bgplocalas);
-	return 0;
+	else {
+		pthread_mutex_unlock(&bgplocalas.lock);
+		return -1;
+	}
 }
 
 int get_bgp_peer_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if( 0 != update_table(global_snmp_session, &bgppeertable) ){
+	pthread_mutex_lock(&bgppeertable.lock);
+	int ret = update_table(global_snmp_session, &bgppeertable);
+	if ( 0 == ret ){
+		ret =callback((void*)bgppeertable.tablehead);
 		clear_table(&bgppeertable);
+		pthread_mutex_unlock(&bgppeertable.lock);
+		return ret;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&bgppeertable);
+		pthread_mutex_unlock(&bgppeertable.lock);
 		return -1;
 	}
-	int ret =callback((void*)bgppeertable.tablehead);
-	clear_table(&bgppeertable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&bgppeertable.lock);
+		return -1;
+	}
 }
 int get_bgp_path_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if( 0 != update_table(global_snmp_session, &bgppathtable)){
+	pthread_mutex_lock(&bgppathtable.lock);
+	int ret = update_table(global_snmp_session, &bgppathtable);
+	if ( 0 == ret ){
+		ret =callback((void*)bgppathtable.tablehead);
 		clear_table(&bgppathtable);
+		pthread_mutex_unlock(&bgppathtable.lock);
+		return 0;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&bgppathtable);
+		pthread_mutex_unlock(&bgppathtable.lock);
 		return -1;
 	}
-	int ret =callback((void*)bgppathtable.tablehead);
-	clear_table(&bgppathtable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&bgppathtable.lock);
+		return -1;
+	}
 }
 int get_if_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if ( 0 != update_table(global_snmp_session, &iftable) ){
+	pthread_mutex_lock(&iftable.lock);
+	int ret = update_table(global_snmp_session, &iftable);
+	if ( 0 == ret ){
+		ret =callback((void*)iftable.tablehead);
 		clear_table(&iftable);
+		pthread_mutex_unlock(&iftable.lock);
+		return 0;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&iftable);
+		pthread_mutex_unlock(&iftable.lock);
 		return -1;
 	}
-	int ret =callback((void*)iftable.tablehead);
-	clear_table(&iftable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&iftable.lock);
+		return -1;
+	}
 }
 int get_ipaddr_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if( 0 != update_table(global_snmp_session, &ipaddrtable)){
+	pthread_mutex_lock(&ipaddrtable.lock);
+	int ret = update_table(global_snmp_session, &ipaddrtable);
+	if ( 0 == ret ){
+		ret =callback((void*)ipaddrtable.tablehead);
 		clear_table(&ipaddrtable);
+		pthread_mutex_unlock(&ipaddrtable.lock);
+		return 0;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&ipaddrtable);
+		pthread_mutex_unlock(&ipaddrtable.lock);
 		return -1;
 	}
-	int ret =callback((void*)ipaddrtable.tablehead);
-	clear_table(&ipaddrtable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&ipaddrtable.lock);
+		return -1;
+	}
 }
 int get_iproute_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if ( 0 != update_table(global_snmp_session, &iproutetable)){
+	pthread_mutex_lock(&iproutetable.lock);
+	int ret = update_table(global_snmp_session, &iproutetable);
+	if ( 0 == ret ){
+		ret =callback((void*)iproutetable.tablehead);
 		clear_table(&iproutetable);
+		pthread_mutex_unlock(&iproutetable.lock);
+		return ret;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&iproutetable);
+		pthread_mutex_unlock(&iproutetable.lock);
 		return -1;
 	}
-	int ret =callback((void*)iproutetable.tablehead);
-	clear_table(&iproutetable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&iproutetable.lock);
+		return -1;
+	}
 }
 int get_ospf_area_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if( 0 != update_table(global_snmp_session, &ospfareatable)){
+	pthread_mutex_lock(&ospfareatable.lock);
+	int ret = update_table(global_snmp_session, &ospfareatable);
+	if ( 0 == ret ){
+		ret =callback((void*)ospfareatable.tablehead);
 		clear_table(&ospfareatable);
+		pthread_mutex_unlock(&ospfareatable.lock);
+		return ret;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&ospfareatable);
+		pthread_mutex_unlock(&ospfareatable.lock);
 		return -1;
 	}
-	int ret =callback((void*)ospfareatable.tablehead);
-	clear_table(&ospfareatable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&ospfareatable.lock);
+		return -1;
+	}
 }
 int get_ospf_ifmetric_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if (0 != update_table(global_snmp_session, &ospfifmetrictable)){
+	pthread_mutex_lock(&ospfifmetrictable.lock);
+	int ret = update_table(global_snmp_session, &ospfifmetrictable);
+	if ( 0 == ret ){
+		ret =callback((void*)ospfifmetrictable.tablehead);
 		clear_table(&ospfifmetrictable);
+		pthread_mutex_unlock(&ospfifmetrictable.lock);
+		return ret;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&ospfifmetrictable);
+		pthread_mutex_unlock(&ospfifmetrictable.lock);
 		return -1;
 	}
-	int ret =callback((void*)ospfifmetrictable.tablehead);
-	clear_table(&ospfifmetrictable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&ospfifmetrictable.lock);
+		return -1;
+	}
 }
 int get_ospf_if_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if ( 0 != update_table(global_snmp_session, &ospfiftable)){
+	pthread_mutex_lock(&ospfiftable.lock);
+	int ret = update_table(global_snmp_session, &ospfiftable);
+	if ( 0 == ret ){
+		ret =callback((void*)ospfiftable.tablehead);
 		clear_table(&ospfiftable);
+		pthread_mutex_unlock(&ospfiftable.lock);
+		return ret;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&ospfiftable);
+		pthread_mutex_unlock(&ospfiftable.lock);
 		return -1;
 	}
-	int ret =callback((void*)ospfiftable.tablehead);
-	clear_table(&ospfiftable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&ospfiftable.lock);
+		return -1;
+	}
 }
 int get_ospf_neighbor_table(callbackptr callback)
 {
 	if( is_inited() == 0) return -1;
-	if ( 0 != update_table(global_snmp_session, &ospfneighbortable)){
+	pthread_mutex_lock(&ospfneighbortable.lock);
+	int ret = update_table(global_snmp_session, &ospfneighbortable);
+	if ( 0 == ret ){
+		ret =callback((void*)ospfneighbortable.tablehead);
 		clear_table(&ospfneighbortable);
+		pthread_mutex_unlock(&ospfneighbortable.lock);
+		return ret;
+	}
+	else if ( -1 == ret ) {
+		clear_table(&ospfneighbortable);
+		pthread_mutex_unlock(&ospfneighbortable.lock);
 		return -1;
 	}
-	int ret =callback((void*)ospfneighbortable.tablehead);
-	clear_table(&ospfneighbortable);
-	return ret;
+	else {
+		pthread_mutex_unlock(&ospfneighbortable.lock);
+		return -1;
+	}
 }
 
 session_id_t create_session(char* ip, char* community){
@@ -465,8 +601,8 @@ int update_table(session_id_t s, tableopt* table)
 	int ret= 0;
 	ret = snmptable(sess->ip, sess->community, table->oids ,&entries, &fields, &data);
 	if( ret != 0){
-		//table->tablehead = NULL;
-		return -1;
+		table->tablehead = NULL;
+		return -2;
 	}
 	else{
 		int inited = 0;
