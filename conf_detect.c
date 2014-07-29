@@ -2,26 +2,16 @@
 #include <utils/utils.h>
 #include <comm/comm_lite.h>
 #include <stdio.h>
+#include <sys/select.h>
+#include <sys/inotify.h>
 #include <sys/stat.h>
-#include <stdlib.h>
+
+#define FILE_MODIFY IN_MODIFY
 
 
-int detect_config(const char* filepath, long int *lastmtime){
-	 long int mtime;
-     struct stat files_info;
-     stat(filepath, &files_info);
-     mtime=files_info.st_mtime;//the motified time
-	 if( *lastmtime != mtime )
-	 {
-		 *lastmtime = mtime;
-		  return 0;
-	 }
-	 else return 1;
-}
 
-int send_config_to_pma(const char* filename, const char* ip, int port, int type )
-{
-	FILE* fp = fopen(filename, "r");
+
+int send_config_to_pma(const char* filename, const char* ip, int port, int type ) { FILE* fp = fopen(filename, "r");
 	if ( fp == NULL )
 	{
 		printf("File no exist!\n");
@@ -38,6 +28,10 @@ int send_config_to_pma(const char* filename, const char* ip, int port, int type 
 
 }
 
+
+long int mtime;
+
+
 int main(int argc, const char *argv[])
 {
 	if( argc < 5)
@@ -53,14 +47,40 @@ int main(int argc, const char *argv[])
 	}
 	fclose(fp);
 
-	long int mtime;
-	while(1){
-		if ( detect_config(argv[1], &mtime) == 0 ){
-			send_config_to_pma(argv[1], argv[2], atoi(argv[3]), atoi(argv[4]));
+	int ir = inotify_init();
+	while(1)
+	{
+	int ret = inotify_add_watch(ir, argv[1], IN_ATTRIB|IN_DELETE_SELF|IN_ONESHOT);
+	fd_set rset;
+	FD_ZERO(&rset);
+	FD_SET(ir, &rset);
+	int res = select(ir+1, &rset, NULL, NULL, NULL);
+	if( res < 0 ){
+		printf("select error\n");
+	}
+	else if( res == 0){
+		printf("select time out'n");
+	}
+	else {
+		char buff[2048];
+		read(ir, buff, 2024);
+
+		FILE* fp = fopen( argv[1] , "r");
+		if( fp == NULL ){
+		printf("File not existed\n");
+			continue;;
+		}
+		fclose(fp);
+
+		struct stat files_info;
+		stat(argv[1], &files_info);
+		if( mtime != files_info.st_mtime )
+		{
+		mtime=files_info.st_mtime;//the motified time
+
+		send_config_to_pma(argv[1], argv[2], atoi(argv[3]), atoi(argv[4]));
 		}
 	}
-
-
-
+	}
 	return 0;
 }

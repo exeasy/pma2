@@ -25,6 +25,8 @@ ACLOCAL	lsd/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missin
 ACLOCAL	lsdb/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missing aclocal-1.14$/;"	m
 ACLOCAL	mmanager/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missing aclocal-1.14$/;"	m
 ACLOCAL	netlink/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missing aclocal-1.14$/;"	m
+ACLOCAL	pma2-agent/command/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missing aclocal-1.14$/;"	m
+ACLOCAL	pma2-router/command/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missing aclocal-1.14$/;"	m
 ACLOCAL	policy/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missing aclocal-1.14$/;"	m
 ACLOCAL	reg/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missing aclocal-1.14$/;"	m
 ACLOCAL	router/Makefile	/^ACLOCAL = ${SHELL} \/home\/macro\/workspace\/pma2\/missing aclocal-1.14$/;"	m
@@ -47,6 +49,8 @@ ACLOCAL_M4	lsd/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
 ACLOCAL_M4	lsdb/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
 ACLOCAL_M4	mmanager/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
 ACLOCAL_M4	netlink/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
+ACLOCAL_M4	pma2-agent/command/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
+ACLOCAL_M4	pma2-router/command/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
 ACLOCAL_M4	policy/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
 ACLOCAL_M4	reg/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
 ACLOCAL_M4	router/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
@@ -90,6 +94,8 @@ AMTAR	lsd/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	lsdb/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	mmanager/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	netlink/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
+AMTAR	pma2-agent/command/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
+AMTAR	pma2-router/command/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	policy/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	reg/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	router/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
@@ -99,7 +105,7 @@ AMTAR	test/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	timer/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	utils/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
 AMTAR	vty/Makefile	/^AMTAR = $${TAR-tar}$/;"	m
-AM_CFLAGS	Makefile	/^AM_CFLAGS = -O2 -ggdb3 -std=c99 -I$(LIB_XML_INCLUDE) -I$(LIB_SNMP_INCLUDE) -lnetsnmp $/;"	m
+AM_CFLAGS	Makefile	/^AM_CFLAGS = -ggdb3 -std=c99 -I$(LIB_XML_INCLUDE)  -I$(LIB_SNMP_INCLUDE)$/;"	m
 AM_CXXFLAGS	test/Makefile	/^AM_CXXFLAGS = $(CXXFLAGS) -I.\/include\/$/;"	m
 AM_DEFAULT_VERBOSITY	Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	comm/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
@@ -114,6 +120,8 @@ AM_DEFAULT_VERBOSITY	lsd/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	lsdb/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	mmanager/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	netlink/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
+AM_DEFAULT_VERBOSITY	pma2-agent/command/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
+AM_DEFAULT_VERBOSITY	pma2-router/command/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	policy/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	reg/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	router/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
@@ -123,7 +131,7 @@ AM_DEFAULT_VERBOSITY	test/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	timer/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	utils/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
 AM_DEFAULT_VERBOSITY	vty/Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
-AM_LDFLAGS	Makefile	/^AM_LDFLAGS = -L$(LIB_SNMP_LIB)$/;"	m
+AM_LDFLAGS	Makefile	/^AM_LDFLAGS = -lnetsnmp -L$(LIB_SNMP_LIB)$/;"	m
 AM_RECURSIVE_TARGETS	Makefile	/^AM_RECURSIVE_TARGETS = $(am__recursive_targets:-recursive=) TAGS CTAGS \\$/;"	m
 AM_V_AR	comm/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
 AM_V_AR	command/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
@@ -137,6 +145,8 @@ AM_V_AR	lsd/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
 AM_V_AR	lsdb/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
 AM_V_AR	mmanager/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
 AM_V_AR	netlink/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
+AM_V_AR	pma2-agent/command/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
+AM_V_AR	pma2-router/command/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
 AM_V_AR	policy/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
 AM_V_AR	reg/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
 AM_V_AR	router/Makefile	/^AM_V_AR = $(am__v_AR_$(V))$/;"	m
@@ -158,6 +168,8 @@ AM_V_CC	lsd/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
 AM_V_CC	lsdb/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
 AM_V_CC	mmanager/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
 AM_V_CC	netlink/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
+AM_V_CC	pma2-agent/command/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
+AM_V_CC	pma2-router/command/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
 AM_V_CC	policy/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
 AM_V_CC	reg/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
 AM_V_CC	router/Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
@@ -180,6 +192,8 @@ AM_V_CCLD	lsd/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
 AM_V_CCLD	lsdb/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
 AM_V_CCLD	mmanager/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
 AM_V_CCLD	netlink/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
+AM_V_CCLD	pma2-agent/command/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
+AM_V_CCLD	pma2-router/command/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
 AM_V_CCLD	policy/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
 AM_V_CCLD	reg/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
 AM_V_CCLD	router/Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
@@ -204,6 +218,8 @@ AM_V_GEN	lsd/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
 AM_V_GEN	lsdb/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
 AM_V_GEN	mmanager/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
 AM_V_GEN	netlink/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
+AM_V_GEN	pma2-agent/command/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
+AM_V_GEN	pma2-router/command/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
 AM_V_GEN	policy/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
 AM_V_GEN	reg/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
 AM_V_GEN	router/Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
@@ -226,6 +242,8 @@ AM_V_P	lsd/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
 AM_V_P	lsdb/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
 AM_V_P	mmanager/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
 AM_V_P	netlink/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
+AM_V_P	pma2-agent/command/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
+AM_V_P	pma2-router/command/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
 AM_V_P	policy/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
 AM_V_P	reg/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
 AM_V_P	router/Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
@@ -248,6 +266,8 @@ AM_V_at	lsd/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
 AM_V_at	lsdb/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
 AM_V_at	mmanager/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
 AM_V_at	netlink/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
+AM_V_at	pma2-agent/command/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
+AM_V_at	pma2-router/command/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
 AM_V_at	policy/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
 AM_V_at	reg/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
 AM_V_at	router/Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
@@ -270,6 +290,8 @@ AM_V_lt	lsd/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
 AM_V_lt	lsdb/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
 AM_V_lt	mmanager/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
 AM_V_lt	netlink/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
+AM_V_lt	pma2-agent/command/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
+AM_V_lt	pma2-router/command/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
 AM_V_lt	policy/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
 AM_V_lt	reg/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
 AM_V_lt	router/Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
@@ -292,6 +314,8 @@ AR	lsd/Makefile	/^AR = ar$/;"	m
 AR	lsdb/Makefile	/^AR = ar$/;"	m
 AR	mmanager/Makefile	/^AR = ar$/;"	m
 AR	netlink/Makefile	/^AR = ar$/;"	m
+AR	pma2-agent/command/Makefile	/^AR = ar$/;"	m
+AR	pma2-router/command/Makefile	/^AR = ar$/;"	m
 AR	policy/Makefile	/^AR = ar$/;"	m
 AR	reg/Makefile	/^AR = ar$/;"	m
 AR	router/Makefile	/^AR = ar$/;"	m
@@ -313,6 +337,8 @@ ARFLAGS	lsd/Makefile	/^ARFLAGS = cru$/;"	m
 ARFLAGS	lsdb/Makefile	/^ARFLAGS = cru$/;"	m
 ARFLAGS	mmanager/Makefile	/^ARFLAGS = cru$/;"	m
 ARFLAGS	netlink/Makefile	/^ARFLAGS = cru$/;"	m
+ARFLAGS	pma2-agent/command/Makefile	/^ARFLAGS = cru$/;"	m
+ARFLAGS	pma2-router/command/Makefile	/^ARFLAGS = cru$/;"	m
 ARFLAGS	policy/Makefile	/^ARFLAGS = cru$/;"	m
 ARFLAGS	reg/Makefile	/^ARFLAGS = cru$/;"	m
 ARFLAGS	router/Makefile	/^ARFLAGS = cru$/;"	m
@@ -376,6 +402,8 @@ AUTOCONF	lsd/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/miss
 AUTOCONF	lsdb/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoconf$/;"	m
 AUTOCONF	mmanager/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoconf$/;"	m
 AUTOCONF	netlink/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoconf$/;"	m
+AUTOCONF	pma2-agent/command/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoconf$/;"	m
+AUTOCONF	pma2-router/command/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoconf$/;"	m
 AUTOCONF	policy/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoconf$/;"	m
 AUTOCONF	reg/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoconf$/;"	m
 AUTOCONF	router/Makefile	/^AUTOCONF = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoconf$/;"	m
@@ -398,6 +426,8 @@ AUTOHEADER	lsd/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/
 AUTOHEADER	lsdb/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoheader$/;"	m
 AUTOHEADER	mmanager/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoheader$/;"	m
 AUTOHEADER	netlink/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoheader$/;"	m
+AUTOHEADER	pma2-agent/command/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoheader$/;"	m
+AUTOHEADER	pma2-router/command/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoheader$/;"	m
 AUTOHEADER	policy/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoheader$/;"	m
 AUTOHEADER	reg/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoheader$/;"	m
 AUTOHEADER	router/Makefile	/^AUTOHEADER = ${SHELL} \/home\/macro\/workspace\/pma2\/missing autoheader$/;"	m
@@ -420,6 +450,8 @@ AUTOMAKE	lsd/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/miss
 AUTOMAKE	lsdb/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/missing automake-1.14$/;"	m
 AUTOMAKE	mmanager/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/missing automake-1.14$/;"	m
 AUTOMAKE	netlink/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/missing automake-1.14$/;"	m
+AUTOMAKE	pma2-agent/command/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/missing automake-1.14$/;"	m
+AUTOMAKE	pma2-router/command/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/missing automake-1.14$/;"	m
 AUTOMAKE	policy/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/missing automake-1.14$/;"	m
 AUTOMAKE	reg/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/missing automake-1.14$/;"	m
 AUTOMAKE	router/Makefile	/^AUTOMAKE = ${SHELL} \/home\/macro\/workspace\/pma2\/missing automake-1.14$/;"	m
@@ -442,6 +474,8 @@ AWK	lsd/Makefile	/^AWK = gawk$/;"	m
 AWK	lsdb/Makefile	/^AWK = gawk$/;"	m
 AWK	mmanager/Makefile	/^AWK = gawk$/;"	m
 AWK	netlink/Makefile	/^AWK = gawk$/;"	m
+AWK	pma2-agent/command/Makefile	/^AWK = gawk$/;"	m
+AWK	pma2-router/command/Makefile	/^AWK = gawk$/;"	m
 AWK	policy/Makefile	/^AWK = gawk$/;"	m
 AWK	reg/Makefile	/^AWK = gawk$/;"	m
 AWK	router/Makefile	/^AWK = gawk$/;"	m
@@ -607,7 +641,7 @@ BITVEC_SZ	db/sqlite3.c	36720;"	d	file:
 BITVEC_SZELEM	db/sqlite3.c	36732;"	d	file:
 BITVEC_TELEM	db/sqlite3.c	36730;"	d	file:
 BITVEC_USIZE	db/sqlite3.c	36724;"	d	file:
-BLOCKED	comm/comm.c	11;"	d	file:
+BLOCKED	comm/comm.c	19;"	d	file:
 BLOCKED	comm/comm_lite.h	8;"	d
 BLOCK_SIZE	logger/logger.h	9;"	d
 BM	server/srvconf.h	22;"	d
@@ -794,6 +828,8 @@ CC	lsd/Makefile	/^CC = gcc$/;"	m
 CC	lsdb/Makefile	/^CC = gcc$/;"	m
 CC	mmanager/Makefile	/^CC = gcc$/;"	m
 CC	netlink/Makefile	/^CC = gcc$/;"	m
+CC	pma2-agent/command/Makefile	/^CC = gcc$/;"	m
+CC	pma2-router/command/Makefile	/^CC = gcc$/;"	m
 CC	policy/Makefile	/^CC = gcc$/;"	m
 CC	reg/Makefile	/^CC = gcc$/;"	m
 CC	router/Makefile	/^CC = gcc$/;"	m
@@ -816,6 +852,8 @@ CCDEPMODE	lsd/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
 CCDEPMODE	lsdb/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
 CCDEPMODE	mmanager/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
 CCDEPMODE	netlink/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
+CCDEPMODE	pma2-agent/command/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
+CCDEPMODE	pma2-router/command/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
 CCDEPMODE	policy/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
 CCDEPMODE	reg/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
 CCDEPMODE	router/Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
@@ -838,6 +876,8 @@ CCLD	lsd/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	lsdb/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	mmanager/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	netlink/Makefile	/^CCLD = $(CC)$/;"	m
+CCLD	pma2-agent/command/Makefile	/^CCLD = $(CC)$/;"	m
+CCLD	pma2-router/command/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	policy/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	reg/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	router/Makefile	/^CCLD = $(CC)$/;"	m
@@ -847,28 +887,30 @@ CCLD	test/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	timer/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	utils/Makefile	/^CCLD = $(CC)$/;"	m
 CCLD	vty/Makefile	/^CCLD = $(CC)$/;"	m
-CFLAGS	Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	comm/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	command/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	conf/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	control/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	db/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	ddc/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	lib/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	logger/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	lsd/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	lsdb/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	mmanager/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	netlink/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	policy/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	reg/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	router/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	server/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	snmp/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	test/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	timer/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	utils/Makefile	/^CFLAGS = -g -O2$/;"	m
-CFLAGS	vty/Makefile	/^CFLAGS = -g -O2$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	comm/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	command/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	conf/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	control/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	db/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	ddc/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	lib/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	logger/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	lsd/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	lsdb/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	mmanager/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	netlink/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	pma2-agent/command/Makefile	/^CFLAGS = -g -O2$/;"	m
+CFLAGS	pma2-router/command/Makefile	/^CFLAGS = -g -O2$/;"	m
+CFLAGS	policy/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	reg/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	router/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	server/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	snmp/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	test/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	timer/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	utils/Makefile	/^CFLAGS = -g -O0$/;"	m
+CFLAGS	vty/Makefile	/^CFLAGS = -g -O0$/;"	m
 CHECK_BIT	lib/table.c	169;"	d	file:
 CHECK_FLAG	lib/zebra.h	319;"	d
 CHECK_FOR_INTERRUPT	db/sqlite3.c	66926;"	d	file:
@@ -944,6 +986,8 @@ COMPILE	lsd/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $
 COMPILE	lsdb/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
 COMPILE	mmanager/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
 COMPILE	netlink/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
+COMPILE	pma2-agent/command/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
+COMPILE	pma2-router/command/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
 COMPILE	policy/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
 COMPILE	reg/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
 COMPILE	router/Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
@@ -969,6 +1013,8 @@ CONFIG_CLEAN_FILES	lsd/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
 CONFIG_CLEAN_FILES	lsdb/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
 CONFIG_CLEAN_FILES	mmanager/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
 CONFIG_CLEAN_FILES	netlink/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
+CONFIG_CLEAN_FILES	pma2-agent/command/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
+CONFIG_CLEAN_FILES	pma2-router/command/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
 CONFIG_CLEAN_FILES	policy/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
 CONFIG_CLEAN_FILES	reg/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
 CONFIG_CLEAN_FILES	router/Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
@@ -991,6 +1037,8 @@ CONFIG_CLEAN_VPATH_FILES	lsd/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
 CONFIG_CLEAN_VPATH_FILES	lsdb/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
 CONFIG_CLEAN_VPATH_FILES	mmanager/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
 CONFIG_CLEAN_VPATH_FILES	netlink/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
+CONFIG_CLEAN_VPATH_FILES	pma2-agent/command/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
+CONFIG_CLEAN_VPATH_FILES	pma2-router/command/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
 CONFIG_CLEAN_VPATH_FILES	policy/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
 CONFIG_CLEAN_VPATH_FILES	reg/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
 CONFIG_CLEAN_VPATH_FILES	router/Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
@@ -1013,6 +1061,8 @@ CONFIG_HEADER	lsd/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
 CONFIG_HEADER	lsdb/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
 CONFIG_HEADER	mmanager/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
 CONFIG_HEADER	netlink/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
+CONFIG_HEADER	pma2-agent/command/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
+CONFIG_HEADER	pma2-router/command/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
 CONFIG_HEADER	policy/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
 CONFIG_HEADER	reg/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
 CONFIG_HEADER	router/Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
@@ -1043,6 +1093,8 @@ CPP	lsd/Makefile	/^CPP = gcc -E$/;"	m
 CPP	lsdb/Makefile	/^CPP = gcc -E$/;"	m
 CPP	mmanager/Makefile	/^CPP = gcc -E$/;"	m
 CPP	netlink/Makefile	/^CPP = gcc -E$/;"	m
+CPP	pma2-agent/command/Makefile	/^CPP = gcc -E$/;"	m
+CPP	pma2-router/command/Makefile	/^CPP = gcc -E$/;"	m
 CPP	policy/Makefile	/^CPP = gcc -E$/;"	m
 CPP	reg/Makefile	/^CPP = gcc -E$/;"	m
 CPP	router/Makefile	/^CPP = gcc -E$/;"	m
@@ -1065,6 +1117,8 @@ CPPFLAGS	lsd/Makefile	/^CPPFLAGS = $/;"	m
 CPPFLAGS	lsdb/Makefile	/^CPPFLAGS = $/;"	m
 CPPFLAGS	mmanager/Makefile	/^CPPFLAGS = $/;"	m
 CPPFLAGS	netlink/Makefile	/^CPPFLAGS = $/;"	m
+CPPFLAGS	pma2-agent/command/Makefile	/^CPPFLAGS = $/;"	m
+CPPFLAGS	pma2-router/command/Makefile	/^CPPFLAGS = $/;"	m
 CPPFLAGS	policy/Makefile	/^CPPFLAGS = $/;"	m
 CPPFLAGS	reg/Makefile	/^CPPFLAGS = $/;"	m
 CPPFLAGS	router/Makefile	/^CPPFLAGS = $/;"	m
@@ -1091,6 +1145,8 @@ CTAGS	lsd/Makefile	/^CTAGS = ctags$/;"	m
 CTAGS	lsdb/Makefile	/^CTAGS = ctags$/;"	m
 CTAGS	mmanager/Makefile	/^CTAGS = ctags$/;"	m
 CTAGS	netlink/Makefile	/^CTAGS = ctags$/;"	m
+CTAGS	pma2-agent/command/Makefile	/^CTAGS = ctags$/;"	m
+CTAGS	pma2-router/command/Makefile	/^CTAGS = ctags$/;"	m
 CTAGS	policy/Makefile	/^CTAGS = ctags$/;"	m
 CTAGS	reg/Makefile	/^CTAGS = ctags$/;"	m
 CTAGS	router/Makefile	/^CTAGS = ctags$/;"	m
@@ -1122,6 +1178,8 @@ CXX	lsd/Makefile	/^CXX = g++$/;"	m
 CXX	lsdb/Makefile	/^CXX = g++$/;"	m
 CXX	mmanager/Makefile	/^CXX = g++$/;"	m
 CXX	netlink/Makefile	/^CXX = g++$/;"	m
+CXX	pma2-agent/command/Makefile	/^CXX = g++$/;"	m
+CXX	pma2-router/command/Makefile	/^CXX = g++$/;"	m
 CXX	policy/Makefile	/^CXX = g++$/;"	m
 CXX	reg/Makefile	/^CXX = g++$/;"	m
 CXX	router/Makefile	/^CXX = g++$/;"	m
@@ -1145,6 +1203,8 @@ CXXCPP	lsd/Makefile	/^CXXCPP = g++ -E$/;"	m
 CXXCPP	lsdb/Makefile	/^CXXCPP = g++ -E$/;"	m
 CXXCPP	mmanager/Makefile	/^CXXCPP = g++ -E$/;"	m
 CXXCPP	netlink/Makefile	/^CXXCPP = g++ -E$/;"	m
+CXXCPP	pma2-agent/command/Makefile	/^CXXCPP = g++ -E$/;"	m
+CXXCPP	pma2-router/command/Makefile	/^CXXCPP = g++ -E$/;"	m
 CXXCPP	policy/Makefile	/^CXXCPP = g++ -E$/;"	m
 CXXCPP	reg/Makefile	/^CXXCPP = g++ -E$/;"	m
 CXXCPP	router/Makefile	/^CXXCPP = g++ -E$/;"	m
@@ -1167,6 +1227,8 @@ CXXDEPMODE	lsd/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
 CXXDEPMODE	lsdb/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
 CXXDEPMODE	mmanager/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
 CXXDEPMODE	netlink/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
+CXXDEPMODE	pma2-agent/command/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
+CXXDEPMODE	pma2-router/command/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
 CXXDEPMODE	policy/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
 CXXDEPMODE	reg/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
 CXXDEPMODE	router/Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
@@ -1189,6 +1251,8 @@ CXXFLAGS	lsd/Makefile	/^CXXFLAGS = -g -O2$/;"	m
 CXXFLAGS	lsdb/Makefile	/^CXXFLAGS = -g -O2$/;"	m
 CXXFLAGS	mmanager/Makefile	/^CXXFLAGS = -g -O2$/;"	m
 CXXFLAGS	netlink/Makefile	/^CXXFLAGS = -g -O2$/;"	m
+CXXFLAGS	pma2-agent/command/Makefile	/^CXXFLAGS = -g -O2$/;"	m
+CXXFLAGS	pma2-router/command/Makefile	/^CXXFLAGS = -g -O2$/;"	m
 CXXFLAGS	policy/Makefile	/^CXXFLAGS = -g -O2$/;"	m
 CXXFLAGS	reg/Makefile	/^CXXFLAGS = -g -O2$/;"	m
 CXXFLAGS	router/Makefile	/^CXXFLAGS = -g -O2$/;"	m
@@ -1213,6 +1277,8 @@ CYGPATH_W	lsd/Makefile	/^CYGPATH_W = echo$/;"	m
 CYGPATH_W	lsdb/Makefile	/^CYGPATH_W = echo$/;"	m
 CYGPATH_W	mmanager/Makefile	/^CYGPATH_W = echo$/;"	m
 CYGPATH_W	netlink/Makefile	/^CYGPATH_W = echo$/;"	m
+CYGPATH_W	pma2-agent/command/Makefile	/^CYGPATH_W = echo$/;"	m
+CYGPATH_W	pma2-router/command/Makefile	/^CYGPATH_W = echo$/;"	m
 CYGPATH_W	policy/Makefile	/^CYGPATH_W = echo$/;"	m
 CYGPATH_W	reg/Makefile	/^CYGPATH_W = echo$/;"	m
 CYGPATH_W	router/Makefile	/^CYGPATH_W = echo$/;"	m
@@ -1421,6 +1487,8 @@ DEFAULT_INCLUDES	lsd/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
 DEFAULT_INCLUDES	lsdb/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
 DEFAULT_INCLUDES	mmanager/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
 DEFAULT_INCLUDES	netlink/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
+DEFAULT_INCLUDES	pma2-agent/command/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
+DEFAULT_INCLUDES	pma2-router/command/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
 DEFAULT_INCLUDES	policy/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
 DEFAULT_INCLUDES	reg/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
 DEFAULT_INCLUDES	router/Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
@@ -1445,6 +1513,8 @@ DEFS	lsd/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
 DEFS	lsdb/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
 DEFS	mmanager/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
 DEFS	netlink/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
+DEFS	pma2-agent/command/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
+DEFS	pma2-router/command/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
 DEFS	policy/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
 DEFS	reg/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
 DEFS	router/Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
@@ -1467,6 +1537,8 @@ DEPDIR	lsd/Makefile	/^DEPDIR = .deps$/;"	m
 DEPDIR	lsdb/Makefile	/^DEPDIR = .deps$/;"	m
 DEPDIR	mmanager/Makefile	/^DEPDIR = .deps$/;"	m
 DEPDIR	netlink/Makefile	/^DEPDIR = .deps$/;"	m
+DEPDIR	pma2-agent/command/Makefile	/^DEPDIR = .deps$/;"	m
+DEPDIR	pma2-router/command/Makefile	/^DEPDIR = .deps$/;"	m
 DEPDIR	policy/Makefile	/^DEPDIR = .deps$/;"	m
 DEPDIR	reg/Makefile	/^DEPDIR = .deps$/;"	m
 DEPDIR	router/Makefile	/^DEPDIR = .deps$/;"	m
@@ -1497,6 +1569,8 @@ DISTFILES	lsd/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) 
 DISTFILES	lsdb/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
 DISTFILES	mmanager/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
 DISTFILES	netlink/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
+DISTFILES	pma2-agent/command/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
+DISTFILES	pma2-router/command/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
 DISTFILES	policy/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
 DISTFILES	reg/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
 DISTFILES	router/Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
@@ -1520,6 +1594,8 @@ DIST_COMMON	lsd/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makef
 DIST_COMMON	lsdb/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
 DIST_COMMON	mmanager/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
 DIST_COMMON	netlink/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
+DIST_COMMON	pma2-agent/command/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
+DIST_COMMON	pma2-router/command/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
 DIST_COMMON	policy/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
 DIST_COMMON	reg/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
 DIST_COMMON	router/Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
@@ -1542,6 +1618,8 @@ DIST_SOURCES	lsd/Makefile	/^DIST_SOURCES = $(libpmalsd_a_SOURCES)$/;"	m
 DIST_SOURCES	lsdb/Makefile	/^DIST_SOURCES = $(libpmalsdb_a_SOURCES)$/;"	m
 DIST_SOURCES	mmanager/Makefile	/^DIST_SOURCES = $(libmodulemanager_a_SOURCES)$/;"	m
 DIST_SOURCES	netlink/Makefile	/^DIST_SOURCES = $(libpmanetlink_a_SOURCES)$/;"	m
+DIST_SOURCES	pma2-agent/command/Makefile	/^DIST_SOURCES = $(libpmacommand_a_SOURCES)$/;"	m
+DIST_SOURCES	pma2-router/command/Makefile	/^DIST_SOURCES = $(libpmacommand_a_SOURCES)$/;"	m
 DIST_SOURCES	policy/Makefile	/^DIST_SOURCES = $(libpmapolicy_a_SOURCES)$/;"	m
 DIST_SOURCES	reg/Makefile	/^DIST_SOURCES = $(libpmareg_a_SOURCES)$/;"	m
 DIST_SOURCES	router/Makefile	/^DIST_SOURCES = $(libpmarouter_a_SOURCES)$/;"	m
@@ -1566,6 +1644,8 @@ DLLTOOL	lsd/Makefile	/^DLLTOOL = false$/;"	m
 DLLTOOL	lsdb/Makefile	/^DLLTOOL = false$/;"	m
 DLLTOOL	mmanager/Makefile	/^DLLTOOL = false$/;"	m
 DLLTOOL	netlink/Makefile	/^DLLTOOL = false$/;"	m
+DLLTOOL	pma2-agent/command/Makefile	/^DLLTOOL = false$/;"	m
+DLLTOOL	pma2-router/command/Makefile	/^DLLTOOL = false$/;"	m
 DLLTOOL	policy/Makefile	/^DLLTOOL = false$/;"	m
 DLLTOOL	reg/Makefile	/^DLLTOOL = false$/;"	m
 DLLTOOL	router/Makefile	/^DLLTOOL = false$/;"	m
@@ -1593,6 +1673,8 @@ DSYMUTIL	lsd/Makefile	/^DSYMUTIL = $/;"	m
 DSYMUTIL	lsdb/Makefile	/^DSYMUTIL = $/;"	m
 DSYMUTIL	mmanager/Makefile	/^DSYMUTIL = $/;"	m
 DSYMUTIL	netlink/Makefile	/^DSYMUTIL = $/;"	m
+DSYMUTIL	pma2-agent/command/Makefile	/^DSYMUTIL = $/;"	m
+DSYMUTIL	pma2-router/command/Makefile	/^DSYMUTIL = $/;"	m
 DSYMUTIL	policy/Makefile	/^DSYMUTIL = $/;"	m
 DSYMUTIL	reg/Makefile	/^DSYMUTIL = $/;"	m
 DSYMUTIL	router/Makefile	/^DSYMUTIL = $/;"	m
@@ -1615,6 +1697,8 @@ DUMPBIN	lsd/Makefile	/^DUMPBIN = $/;"	m
 DUMPBIN	lsdb/Makefile	/^DUMPBIN = $/;"	m
 DUMPBIN	mmanager/Makefile	/^DUMPBIN = $/;"	m
 DUMPBIN	netlink/Makefile	/^DUMPBIN = $/;"	m
+DUMPBIN	pma2-agent/command/Makefile	/^DUMPBIN = $/;"	m
+DUMPBIN	pma2-router/command/Makefile	/^DUMPBIN = $/;"	m
 DUMPBIN	policy/Makefile	/^DUMPBIN = $/;"	m
 DUMPBIN	reg/Makefile	/^DUMPBIN = $/;"	m
 DUMPBIN	router/Makefile	/^DUMPBIN = $/;"	m
@@ -1694,6 +1778,8 @@ ECHO_C	lsd/Makefile	/^ECHO_C = $/;"	m
 ECHO_C	lsdb/Makefile	/^ECHO_C = $/;"	m
 ECHO_C	mmanager/Makefile	/^ECHO_C = $/;"	m
 ECHO_C	netlink/Makefile	/^ECHO_C = $/;"	m
+ECHO_C	pma2-agent/command/Makefile	/^ECHO_C = $/;"	m
+ECHO_C	pma2-router/command/Makefile	/^ECHO_C = $/;"	m
 ECHO_C	policy/Makefile	/^ECHO_C = $/;"	m
 ECHO_C	reg/Makefile	/^ECHO_C = $/;"	m
 ECHO_C	router/Makefile	/^ECHO_C = $/;"	m
@@ -1716,6 +1802,8 @@ ECHO_N	lsd/Makefile	/^ECHO_N = -n$/;"	m
 ECHO_N	lsdb/Makefile	/^ECHO_N = -n$/;"	m
 ECHO_N	mmanager/Makefile	/^ECHO_N = -n$/;"	m
 ECHO_N	netlink/Makefile	/^ECHO_N = -n$/;"	m
+ECHO_N	pma2-agent/command/Makefile	/^ECHO_N = -n$/;"	m
+ECHO_N	pma2-router/command/Makefile	/^ECHO_N = -n$/;"	m
 ECHO_N	policy/Makefile	/^ECHO_N = -n$/;"	m
 ECHO_N	reg/Makefile	/^ECHO_N = -n$/;"	m
 ECHO_N	router/Makefile	/^ECHO_N = -n$/;"	m
@@ -1738,6 +1826,8 @@ ECHO_T	lsd/Makefile	/^ECHO_T = $/;"	m
 ECHO_T	lsdb/Makefile	/^ECHO_T = $/;"	m
 ECHO_T	mmanager/Makefile	/^ECHO_T = $/;"	m
 ECHO_T	netlink/Makefile	/^ECHO_T = $/;"	m
+ECHO_T	pma2-agent/command/Makefile	/^ECHO_T = $/;"	m
+ECHO_T	pma2-router/command/Makefile	/^ECHO_T = $/;"	m
 ECHO_T	policy/Makefile	/^ECHO_T = $/;"	m
 ECHO_T	reg/Makefile	/^ECHO_T = $/;"	m
 ECHO_T	router/Makefile	/^ECHO_T = $/;"	m
@@ -1762,6 +1852,8 @@ EGREP	lsd/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
 EGREP	lsdb/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
 EGREP	mmanager/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
 EGREP	netlink/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
+EGREP	pma2-agent/command/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
+EGREP	pma2-router/command/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
 EGREP	policy/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
 EGREP	reg/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
 EGREP	router/Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
@@ -1815,6 +1907,8 @@ ETAGS	lsd/Makefile	/^ETAGS = etags$/;"	m
 ETAGS	lsdb/Makefile	/^ETAGS = etags$/;"	m
 ETAGS	mmanager/Makefile	/^ETAGS = etags$/;"	m
 ETAGS	netlink/Makefile	/^ETAGS = etags$/;"	m
+ETAGS	pma2-agent/command/Makefile	/^ETAGS = etags$/;"	m
+ETAGS	pma2-router/command/Makefile	/^ETAGS = etags$/;"	m
 ETAGS	policy/Makefile	/^ETAGS = etags$/;"	m
 ETAGS	reg/Makefile	/^ETAGS = etags$/;"	m
 ETAGS	router/Makefile	/^ETAGS = etags$/;"	m
@@ -1852,6 +1946,8 @@ EXEEXT	lsd/Makefile	/^EXEEXT = $/;"	m
 EXEEXT	lsdb/Makefile	/^EXEEXT = $/;"	m
 EXEEXT	mmanager/Makefile	/^EXEEXT = $/;"	m
 EXEEXT	netlink/Makefile	/^EXEEXT = $/;"	m
+EXEEXT	pma2-agent/command/Makefile	/^EXEEXT = $/;"	m
+EXEEXT	pma2-router/command/Makefile	/^EXEEXT = $/;"	m
 EXEEXT	policy/Makefile	/^EXEEXT = $/;"	m
 EXEEXT	reg/Makefile	/^EXEEXT = $/;"	m
 EXEEXT	router/Makefile	/^EXEEXT = $/;"	m
@@ -1943,6 +2039,10 @@ Equals	test/include/gtest/internal/gtest-param-util.h	/^  virtual bool Equals(co
 EventForwardingEnabled	test/include/gtest/gtest.h	/^  bool EventForwardingEnabled() const;$/;"	p	class:testing::TestEventListeners	access:private	signature:() const
 ExecuteRouterCMD	command/routercmd.c	/^int ExecuteRouterCMD(const char* xml, int len)$/;"	f	signature:(const char* xml, int len)
 ExecuteRouterCMD	command/routercmd.h	/^int ExecuteRouterCMD(const char* xml, int len);$/;"	p	signature:(const char* xml, int len)
+ExecuteRouterCMD	pma2-agent/command/routercmd.c	/^int ExecuteRouterCMD(const char* xml, int len)$/;"	f	signature:(const char* xml, int len)
+ExecuteRouterCMD	pma2-agent/command/routercmd.h	/^int ExecuteRouterCMD(const char* xml, int len);$/;"	p	signature:(const char* xml, int len)
+ExecuteRouterCMD	pma2-router/command/routercmd.c	/^int ExecuteRouterCMD(const char* xml, int len)$/;"	f	signature:(const char* xml, int len)
+ExecuteRouterCMD	pma2-router/command/routercmd.h	/^int ExecuteRouterCMD(const char* xml, int len);$/;"	p	signature:(const char* xml, int len)
 ExitedUnsuccessfully	test/include/gtest/internal/gtest-death-test-internal.h	/^GTEST_API_ bool ExitedUnsuccessfully(int exit_status);$/;"	p	namespace:testing::internal	signature:(int exit_status)
 ExitedWithCode	test/include/gtest/gtest-death-test.h	/^  explicit ExitedWithCode(int exit_code);$/;"	p	class:testing::ExitedWithCode	access:public	signature:(int exit_code)
 ExitedWithCode	test/include/gtest/gtest-death-test.h	/^class GTEST_API_ ExitedWithCode {$/;"	c	namespace:testing
@@ -2028,6 +2128,8 @@ FGREP	lsd/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
 FGREP	lsdb/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
 FGREP	mmanager/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
 FGREP	netlink/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
+FGREP	pma2-agent/command/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
+FGREP	pma2-router/command/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
 FGREP	policy/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
 FGREP	reg/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
 FGREP	router/Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
@@ -2460,6 +2562,8 @@ GREP	lsd/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
 GREP	lsdb/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
 GREP	mmanager/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
 GREP	netlink/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
+GREP	pma2-agent/command/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
+GREP	pma2-router/command/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
 GREP	policy/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
 GREP	reg/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
 GREP	router/Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
@@ -2848,22 +2952,22 @@ HASHTABLE_NPAGE_ONE	db/sqlite3.c	47118;"	d	file:
 HASHTABLE_NSLOT	db/sqlite3.c	47111;"	d	file:
 HASH_TABLE_UNUSED	policy/policy_table.h	10;"	d
 HASH_TABLE_USED	policy/policy_table.h	9;"	d
-HAVE_DLFCN_H	config.h	5;"	d
+HAVE_DLFCN_H	config.h	11;"	d
 HAVE_FULLFSYNC	db/sqlite3.c	26957;"	d	file:
 HAVE_FULLFSYNC	db/sqlite3.c	26959;"	d	file:
-HAVE_INTTYPES_H	config.h	8;"	d
+HAVE_INTTYPES_H	config.h	14;"	d
 HAVE_IPV6	lib/prefix.h	24;"	d
 HAVE_LOCALTIME_S	db/sqlite3.c	14715;"	d	file:
-HAVE_MEMORY_H	config.h	11;"	d
+HAVE_MEMORY_H	config.h	17;"	d
 HAVE_MREMAP	db/sqlite3.c	23880;"	d	file:
 HAVE_MREMAP	db/sqlite3.c	23882;"	d	file:
-HAVE_STDINT_H	config.h	14;"	d
-HAVE_STDLIB_H	config.h	17;"	d
-HAVE_STRINGS_H	config.h	20;"	d
-HAVE_STRING_H	config.h	23;"	d
-HAVE_SYS_STAT_H	config.h	26;"	d
-HAVE_SYS_TYPES_H	config.h	29;"	d
-HAVE_UNISTD_H	config.h	32;"	d
+HAVE_STDINT_H	config.h	20;"	d
+HAVE_STDLIB_H	config.h	23;"	d
+HAVE_STRINGS_H	config.h	26;"	d
+HAVE_STRING_H	config.h	29;"	d
+HAVE_SYS_STAT_H	config.h	32;"	d
+HAVE_SYS_TYPES_H	config.h	35;"	d
+HAVE_UNISTD_H	config.h	38;"	d
 HEADERS	comm/Makefile	/^HEADERS = $(noinst_HEADERS)$/;"	m
 HEADERS	conf/Makefile	/^HEADERS = $(noinst_HEADERS)$/;"	m
 HEADERS	control/Makefile	/^HEADERS = $(noinst_HEADERS)$/;"	m
@@ -3085,6 +3189,8 @@ INSTALL	lsd/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
 INSTALL	lsdb/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
 INSTALL	mmanager/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
 INSTALL	netlink/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
+INSTALL	pma2-agent/command/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
+INSTALL	pma2-router/command/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
 INSTALL	policy/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
 INSTALL	reg/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
 INSTALL	router/Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
@@ -3107,6 +3213,8 @@ INSTALL_DATA	lsd/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
 INSTALL_DATA	lsdb/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
 INSTALL_DATA	mmanager/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
 INSTALL_DATA	netlink/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
+INSTALL_DATA	pma2-agent/command/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
+INSTALL_DATA	pma2-router/command/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
 INSTALL_DATA	policy/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
 INSTALL_DATA	reg/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
 INSTALL_DATA	router/Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
@@ -3129,6 +3237,8 @@ INSTALL_HEADER	lsd/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
 INSTALL_HEADER	lsdb/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
 INSTALL_HEADER	mmanager/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
 INSTALL_HEADER	netlink/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
+INSTALL_HEADER	pma2-agent/command/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
+INSTALL_HEADER	pma2-router/command/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
 INSTALL_HEADER	policy/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
 INSTALL_HEADER	reg/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
 INSTALL_HEADER	router/Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
@@ -3151,6 +3261,8 @@ INSTALL_PROGRAM	lsd/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
 INSTALL_PROGRAM	lsdb/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
 INSTALL_PROGRAM	mmanager/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
 INSTALL_PROGRAM	netlink/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
+INSTALL_PROGRAM	pma2-agent/command/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
+INSTALL_PROGRAM	pma2-router/command/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
 INSTALL_PROGRAM	policy/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
 INSTALL_PROGRAM	reg/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
 INSTALL_PROGRAM	router/Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
@@ -3173,6 +3285,8 @@ INSTALL_SCRIPT	lsd/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
 INSTALL_SCRIPT	lsdb/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
 INSTALL_SCRIPT	mmanager/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
 INSTALL_SCRIPT	netlink/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
+INSTALL_SCRIPT	pma2-agent/command/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
+INSTALL_SCRIPT	pma2-router/command/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
 INSTALL_SCRIPT	policy/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
 INSTALL_SCRIPT	reg/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
 INSTALL_SCRIPT	router/Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
@@ -3195,6 +3309,8 @@ INSTALL_STRIP_PROGRAM	lsd/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 INSTALL_STRIP_PROGRAM	lsdb/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
 INSTALL_STRIP_PROGRAM	mmanager/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
 INSTALL_STRIP_PROGRAM	netlink/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
+INSTALL_STRIP_PROGRAM	pma2-agent/command/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
+INSTALL_STRIP_PROGRAM	pma2-router/command/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
 INSTALL_STRIP_PROGRAM	policy/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
 INSTALL_STRIP_PROGRAM	reg/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
 INSTALL_STRIP_PROGRAM	router/Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
@@ -3238,6 +3354,8 @@ IPFORWARDTABLE	snmp/includes/oids.h	33;"	d
 IPROUTETABLE	snmp/includes/huawei_mibs.h	18;"	d
 IPROUTETABLE	snmp/includes/oids.h	32;"	d
 IPTABLES_H	command/iptables.h	3;"	d
+IPTABLES_H	pma2-agent/command/iptables.h	3;"	d
+IPTABLES_H	pma2-router/command/iptables.h	3;"	d
 IPTOMEDIAABLE	snmp/includes/huawei_mibs.h	20;"	d
 IPTOMEDIAABLE	snmp/includes/oids.h	35;"	d
 IPV4_ADDR_CMP	lib/prefix.h	96;"	d
@@ -3531,6 +3649,8 @@ LD	lsd/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
 LD	lsdb/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
 LD	mmanager/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
 LD	netlink/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
+LD	pma2-agent/command/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
+LD	pma2-router/command/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
 LD	policy/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
 LD	reg/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
 LD	router/Makefile	/^LD = \/usr\/bin\/ld$/;"	m
@@ -3553,6 +3673,8 @@ LDFLAGS	lsd/Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	lsdb/Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	mmanager/Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	netlink/Makefile	/^LDFLAGS = $/;"	m
+LDFLAGS	pma2-agent/command/Makefile	/^LDFLAGS = $/;"	m
+LDFLAGS	pma2-router/command/Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	policy/Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	reg/Makefile	/^LDFLAGS = $/;"	m
 LDFLAGS	router/Makefile	/^LDFLAGS = $/;"	m
@@ -3578,6 +3700,8 @@ LIBOBJS	lsd/Makefile	/^LIBOBJS = $/;"	m
 LIBOBJS	lsdb/Makefile	/^LIBOBJS = $/;"	m
 LIBOBJS	mmanager/Makefile	/^LIBOBJS = $/;"	m
 LIBOBJS	netlink/Makefile	/^LIBOBJS = $/;"	m
+LIBOBJS	pma2-agent/command/Makefile	/^LIBOBJS = $/;"	m
+LIBOBJS	pma2-router/command/Makefile	/^LIBOBJS = $/;"	m
 LIBOBJS	policy/Makefile	/^LIBOBJS = $/;"	m
 LIBOBJS	reg/Makefile	/^LIBOBJS = $/;"	m
 LIBOBJS	router/Makefile	/^LIBOBJS = $/;"	m
@@ -3599,6 +3723,8 @@ LIBRARIES	lsd/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
 LIBRARIES	lsdb/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
 LIBRARIES	mmanager/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
 LIBRARIES	netlink/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
+LIBRARIES	pma2-agent/command/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
+LIBRARIES	pma2-router/command/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
 LIBRARIES	policy/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
 LIBRARIES	reg/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
 LIBRARIES	router/Makefile	/^LIBRARIES = $(noinst_LIBRARIES)$/;"	m
@@ -3620,6 +3746,8 @@ LIBS	lsd/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
 LIBS	lsdb/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
 LIBS	mmanager/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
 LIBS	netlink/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
+LIBS	pma2-agent/command/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
+LIBS	pma2-router/command/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
 LIBS	policy/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
 LIBS	reg/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
 LIBS	router/Makefile	/^LIBS = -lxml2 -lnetsnmp -ldl -lpthread $/;"	m
@@ -3642,6 +3770,8 @@ LIBTOOL	lsd/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	lsdb/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	mmanager/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	netlink/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
+LIBTOOL	pma2-agent/command/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
+LIBTOOL	pma2-router/command/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	policy/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	reg/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	router/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
@@ -3651,50 +3781,54 @@ LIBTOOL	test/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	timer/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	utils/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
 LIBTOOL	vty/Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
-LIB_SNMP_INCLUDE	Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	comm/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	command/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	conf/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	control/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	db/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	ddc/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	lib/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	logger/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	lsd/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	lsdb/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	mmanager/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	netlink/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	policy/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	reg/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	router/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	server/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	snmp/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	test/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	timer/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	utils/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_INCLUDE	vty/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
-LIB_SNMP_LIB	Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	comm/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	command/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	conf/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	control/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	db/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	ddc/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	lib/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	logger/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	lsd/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	lsdb/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	mmanager/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	netlink/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	policy/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	reg/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	router/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	server/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	snmp/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	test/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	timer/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	utils/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
-LIB_SNMP_LIB	vty/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
+LIB_SNMP_INCLUDE	Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	comm/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	command/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	conf/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	control/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	db/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	ddc/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	lib/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	logger/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	lsd/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	lsdb/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	mmanager/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	netlink/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	pma2-agent/command/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
+LIB_SNMP_INCLUDE	pma2-router/command/Makefile	/^LIB_SNMP_INCLUDE = \/usr\/local\/snmp\/include\/$/;"	m
+LIB_SNMP_INCLUDE	policy/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	reg/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	router/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	server/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	snmp/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	test/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	timer/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	utils/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_INCLUDE	vty/Makefile	/^LIB_SNMP_INCLUDE = .\/$/;"	m
+LIB_SNMP_LIB	Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	comm/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	command/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	conf/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	control/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	db/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	ddc/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	lib/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	logger/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	lsd/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	lsdb/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	mmanager/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	netlink/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	pma2-agent/command/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
+LIB_SNMP_LIB	pma2-router/command/Makefile	/^LIB_SNMP_LIB = \/usr\/local\/snmp\/lib\/$/;"	m
+LIB_SNMP_LIB	policy/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	reg/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	router/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	server/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	snmp/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	test/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	timer/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	utils/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
+LIB_SNMP_LIB	vty/Makefile	/^LIB_SNMP_LIB = .\/$/;"	m
 LIB_XML_INCLUDE	Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
 LIB_XML_INCLUDE	comm/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
 LIB_XML_INCLUDE	command/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
@@ -3708,6 +3842,8 @@ LIB_XML_INCLUDE	lsd/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
 LIB_XML_INCLUDE	lsdb/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
 LIB_XML_INCLUDE	mmanager/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
 LIB_XML_INCLUDE	netlink/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
+LIB_XML_INCLUDE	pma2-agent/command/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
+LIB_XML_INCLUDE	pma2-router/command/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
 LIB_XML_INCLUDE	policy/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
 LIB_XML_INCLUDE	reg/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
 LIB_XML_INCLUDE	router/Makefile	/^LIB_XML_INCLUDE = \/usr\/include\/libxml2\/$/;"	m
@@ -3731,6 +3867,8 @@ LINK	lsd/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$
 LINK	lsdb/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LINK	mmanager/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LINK	netlink/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+LINK	pma2-agent/command/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+LINK	pma2-router/command/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LINK	policy/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LINK	reg/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LINK	router/Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
@@ -3755,6 +3893,8 @@ LIPO	lsd/Makefile	/^LIPO = $/;"	m
 LIPO	lsdb/Makefile	/^LIPO = $/;"	m
 LIPO	mmanager/Makefile	/^LIPO = $/;"	m
 LIPO	netlink/Makefile	/^LIPO = $/;"	m
+LIPO	pma2-agent/command/Makefile	/^LIPO = $/;"	m
+LIPO	pma2-router/command/Makefile	/^LIPO = $/;"	m
 LIPO	policy/Makefile	/^LIPO = $/;"	m
 LIPO	reg/Makefile	/^LIPO = $/;"	m
 LIPO	router/Makefile	/^LIPO = $/;"	m
@@ -3782,6 +3922,8 @@ LN_S	lsd/Makefile	/^LN_S = ln -s$/;"	m
 LN_S	lsdb/Makefile	/^LN_S = ln -s$/;"	m
 LN_S	mmanager/Makefile	/^LN_S = ln -s$/;"	m
 LN_S	netlink/Makefile	/^LN_S = ln -s$/;"	m
+LN_S	pma2-agent/command/Makefile	/^LN_S = ln -s$/;"	m
+LN_S	pma2-router/command/Makefile	/^LN_S = ln -s$/;"	m
 LN_S	policy/Makefile	/^LN_S = ln -s$/;"	m
 LN_S	reg/Makefile	/^LN_S = ln -s$/;"	m
 LN_S	router/Makefile	/^LN_S = ln -s$/;"	m
@@ -3828,6 +3970,8 @@ LTCOMPILE	lsd/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOL
 LTCOMPILE	lsdb/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LTCOMPILE	mmanager/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LTCOMPILE	netlink/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+LTCOMPILE	pma2-agent/command/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+LTCOMPILE	pma2-router/command/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LTCOMPILE	policy/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LTCOMPILE	reg/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
 LTCOMPILE	router/Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
@@ -3851,6 +3995,8 @@ LTLIBOBJS	lsd/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	lsdb/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	mmanager/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	netlink/Makefile	/^LTLIBOBJS = $/;"	m
+LTLIBOBJS	pma2-agent/command/Makefile	/^LTLIBOBJS = $/;"	m
+LTLIBOBJS	pma2-router/command/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	policy/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	reg/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	router/Makefile	/^LTLIBOBJS = $/;"	m
@@ -3860,7 +4006,7 @@ LTLIBOBJS	test/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	timer/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	utils/Makefile	/^LTLIBOBJS = $/;"	m
 LTLIBOBJS	vty/Makefile	/^LTLIBOBJS = $/;"	m
-LT_OBJDIR	config.h	36;"	d
+LT_OBJDIR	config.h	42;"	d
 L_DEAD_VAL	lsd/lsd_hello.h	12;"	d
 L_HELLO_VAL	lsd/lsd_hello.h	10;"	d
 LastMessage	test/include/gtest/internal/gtest-death-test-internal.h	/^  static const char* LastMessage();$/;"	p	class:testing::internal::DeathTest	access:public	signature:()
@@ -3915,6 +4061,8 @@ MAKEINFO	lsd/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/miss
 MAKEINFO	lsdb/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/missing makeinfo$/;"	m
 MAKEINFO	mmanager/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/missing makeinfo$/;"	m
 MAKEINFO	netlink/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/missing makeinfo$/;"	m
+MAKEINFO	pma2-agent/command/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/missing makeinfo$/;"	m
+MAKEINFO	pma2-router/command/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/missing makeinfo$/;"	m
 MAKEINFO	policy/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/missing makeinfo$/;"	m
 MAKEINFO	reg/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/missing makeinfo$/;"	m
 MAKEINFO	router/Makefile	/^MAKEINFO = ${SHELL} \/home\/macro\/workspace\/pma2\/missing makeinfo$/;"	m
@@ -3937,6 +4085,8 @@ MANIFEST_TOOL	lsd/Makefile	/^MANIFEST_TOOL = :$/;"	m
 MANIFEST_TOOL	lsdb/Makefile	/^MANIFEST_TOOL = :$/;"	m
 MANIFEST_TOOL	mmanager/Makefile	/^MANIFEST_TOOL = :$/;"	m
 MANIFEST_TOOL	netlink/Makefile	/^MANIFEST_TOOL = :$/;"	m
+MANIFEST_TOOL	pma2-agent/command/Makefile	/^MANIFEST_TOOL = :$/;"	m
+MANIFEST_TOOL	pma2-router/command/Makefile	/^MANIFEST_TOOL = :$/;"	m
 MANIFEST_TOOL	policy/Makefile	/^MANIFEST_TOOL = :$/;"	m
 MANIFEST_TOOL	reg/Makefile	/^MANIFEST_TOOL = :$/;"	m
 MANIFEST_TOOL	router/Makefile	/^MANIFEST_TOOL = :$/;"	m
@@ -4034,6 +4184,8 @@ MKDIR_P	lsd/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
 MKDIR_P	lsdb/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
 MKDIR_P	mmanager/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
 MKDIR_P	netlink/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
+MKDIR_P	pma2-agent/command/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
+MKDIR_P	pma2-router/command/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
 MKDIR_P	policy/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
 MKDIR_P	reg/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
 MKDIR_P	router/Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
@@ -4048,6 +4200,8 @@ MODULE	conf/conf.c	34;"	d	file:
 MODULE_MANAGER_H	mmanager/module_manager.h	2;"	d
 MODULE_PEM_H	server/pem.h	2;"	d
 MPLS_H	command/mpls.h	3;"	d
+MPLS_H	pma2-agent/command/mpls.h	3;"	d
+MPLS_H	pma2-router/command/mpls.h	3;"	d
 MTYPE_ACCESS_FILTER	lib/memory.h	/^  MTYPE_ACCESS_FILTER,$/;"	e	enum:__anon33
 MTYPE_ACCESS_LIST	lib/memory.h	/^  MTYPE_ACCESS_LIST,$/;"	e	enum:__anon33
 MTYPE_ACCESS_LIST_STR	lib/memory.h	/^  MTYPE_ACCESS_LIST_STR,$/;"	e	enum:__anon33
@@ -4395,6 +4549,8 @@ NM	lsd/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
 NM	lsdb/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
 NM	mmanager/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
 NM	netlink/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
+NM	pma2-agent/command/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
+NM	pma2-router/command/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
 NM	policy/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
 NM	reg/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
 NM	router/Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
@@ -4417,6 +4573,8 @@ NMEDIT	lsd/Makefile	/^NMEDIT = $/;"	m
 NMEDIT	lsdb/Makefile	/^NMEDIT = $/;"	m
 NMEDIT	mmanager/Makefile	/^NMEDIT = $/;"	m
 NMEDIT	netlink/Makefile	/^NMEDIT = $/;"	m
+NMEDIT	pma2-agent/command/Makefile	/^NMEDIT = $/;"	m
+NMEDIT	pma2-router/command/Makefile	/^NMEDIT = $/;"	m
 NMEDIT	policy/Makefile	/^NMEDIT = $/;"	m
 NMEDIT	reg/Makefile	/^NMEDIT = $/;"	m
 NMEDIT	router/Makefile	/^NMEDIT = $/;"	m
@@ -4441,6 +4599,8 @@ NORMAL_INSTALL	lsd/Makefile	/^NORMAL_INSTALL = :$/;"	m
 NORMAL_INSTALL	lsdb/Makefile	/^NORMAL_INSTALL = :$/;"	m
 NORMAL_INSTALL	mmanager/Makefile	/^NORMAL_INSTALL = :$/;"	m
 NORMAL_INSTALL	netlink/Makefile	/^NORMAL_INSTALL = :$/;"	m
+NORMAL_INSTALL	pma2-agent/command/Makefile	/^NORMAL_INSTALL = :$/;"	m
+NORMAL_INSTALL	pma2-router/command/Makefile	/^NORMAL_INSTALL = :$/;"	m
 NORMAL_INSTALL	policy/Makefile	/^NORMAL_INSTALL = :$/;"	m
 NORMAL_INSTALL	reg/Makefile	/^NORMAL_INSTALL = :$/;"	m
 NORMAL_INSTALL	router/Makefile	/^NORMAL_INSTALL = :$/;"	m
@@ -4463,6 +4623,8 @@ NORMAL_UNINSTALL	lsd/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
 NORMAL_UNINSTALL	lsdb/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
 NORMAL_UNINSTALL	mmanager/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
 NORMAL_UNINSTALL	netlink/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
+NORMAL_UNINSTALL	pma2-agent/command/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
+NORMAL_UNINSTALL	pma2-router/command/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
 NORMAL_UNINSTALL	policy/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
 NORMAL_UNINSTALL	reg/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
 NORMAL_UNINSTALL	router/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
@@ -4475,7 +4637,7 @@ NORMAL_UNINSTALL	vty/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
 NOTUSING	ddc/ddc.h	10;"	d
 NOT_FOUND_ERR	lsd/lsd_cmn.h	8;"	d
 NOT_FOUND_ERR	utils/pma_err.h	27;"	d
-NO_BLOCKED	comm/comm.c	10;"	d	file:
+NO_BLOCKED	comm/comm.c	18;"	d	file:
 NO_BLOCKED	comm/comm_lite.h	7;"	d
 NO_ERR	lsd/lsd_cmn.h	6;"	d
 NO_ERR	utils/pma_err.h	25;"	d
@@ -4550,6 +4712,8 @@ OBJDUMP	lsd/Makefile	/^OBJDUMP = objdump$/;"	m
 OBJDUMP	lsdb/Makefile	/^OBJDUMP = objdump$/;"	m
 OBJDUMP	mmanager/Makefile	/^OBJDUMP = objdump$/;"	m
 OBJDUMP	netlink/Makefile	/^OBJDUMP = objdump$/;"	m
+OBJDUMP	pma2-agent/command/Makefile	/^OBJDUMP = objdump$/;"	m
+OBJDUMP	pma2-router/command/Makefile	/^OBJDUMP = objdump$/;"	m
 OBJDUMP	policy/Makefile	/^OBJDUMP = objdump$/;"	m
 OBJDUMP	reg/Makefile	/^OBJDUMP = objdump$/;"	m
 OBJDUMP	router/Makefile	/^OBJDUMP = objdump$/;"	m
@@ -4572,6 +4736,8 @@ OBJEXT	lsd/Makefile	/^OBJEXT = o$/;"	m
 OBJEXT	lsdb/Makefile	/^OBJEXT = o$/;"	m
 OBJEXT	mmanager/Makefile	/^OBJEXT = o$/;"	m
 OBJEXT	netlink/Makefile	/^OBJEXT = o$/;"	m
+OBJEXT	pma2-agent/command/Makefile	/^OBJEXT = o$/;"	m
+OBJEXT	pma2-router/command/Makefile	/^OBJEXT = o$/;"	m
 OBJEXT	policy/Makefile	/^OBJEXT = o$/;"	m
 OBJEXT	reg/Makefile	/^OBJEXT = o$/;"	m
 OBJEXT	router/Makefile	/^OBJEXT = o$/;"	m
@@ -4850,7 +5016,6 @@ OSPF_ROUTER	reg/reg.h	12;"	d
 OSPF_ROUTER	router/router.h	4;"	d
 OSPF_SPF	server/srvconf.h	52;"	d
 OSPF_SPF_SIGNAL	comm/header.h	85;"	d
-OSPF_VERSION	config.h	39;"	d
 OSTRACE	db/sqlite3.c	23676;"	d	file:
 OSTRACE	db/sqlite3.c	23678;"	d	file:
 OSTRACE	db/sqlite3.c	31101;"	d	file:
@@ -4870,6 +5035,8 @@ OTOOL	lsd/Makefile	/^OTOOL = $/;"	m
 OTOOL	lsdb/Makefile	/^OTOOL = $/;"	m
 OTOOL	mmanager/Makefile	/^OTOOL = $/;"	m
 OTOOL	netlink/Makefile	/^OTOOL = $/;"	m
+OTOOL	pma2-agent/command/Makefile	/^OTOOL = $/;"	m
+OTOOL	pma2-router/command/Makefile	/^OTOOL = $/;"	m
 OTOOL	policy/Makefile	/^OTOOL = $/;"	m
 OTOOL	reg/Makefile	/^OTOOL = $/;"	m
 OTOOL	router/Makefile	/^OTOOL = $/;"	m
@@ -4892,6 +5059,8 @@ OTOOL64	lsd/Makefile	/^OTOOL64 = $/;"	m
 OTOOL64	lsdb/Makefile	/^OTOOL64 = $/;"	m
 OTOOL64	mmanager/Makefile	/^OTOOL64 = $/;"	m
 OTOOL64	netlink/Makefile	/^OTOOL64 = $/;"	m
+OTOOL64	pma2-agent/command/Makefile	/^OTOOL64 = $/;"	m
+OTOOL64	pma2-router/command/Makefile	/^OTOOL64 = $/;"	m
 OTOOL64	policy/Makefile	/^OTOOL64 = $/;"	m
 OTOOL64	reg/Makefile	/^OTOOL64 = $/;"	m
 OTOOL64	router/Makefile	/^OTOOL64 = $/;"	m
@@ -4970,7 +5139,7 @@ PACKAGE	Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	comm/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	command/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	conf/Makefile	/^PACKAGE = pma$/;"	m
-PACKAGE	config.h	42;"	d
+PACKAGE	config.h	45;"	d
 PACKAGE	control/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	db/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	ddc/Makefile	/^PACKAGE = pma$/;"	m
@@ -4980,6 +5149,8 @@ PACKAGE	lsd/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	lsdb/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	mmanager/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	netlink/Makefile	/^PACKAGE = pma$/;"	m
+PACKAGE	pma2-agent/command/Makefile	/^PACKAGE = pma$/;"	m
+PACKAGE	pma2-router/command/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	policy/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	reg/Makefile	/^PACKAGE = pma$/;"	m
 PACKAGE	router/Makefile	/^PACKAGE = pma$/;"	m
@@ -4993,7 +5164,7 @@ PACKAGE_BUGREPORT	Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	comm/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	command/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	conf/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
-PACKAGE_BUGREPORT	config.h	45;"	d
+PACKAGE_BUGREPORT	config.h	48;"	d
 PACKAGE_BUGREPORT	control/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	db/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	ddc/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
@@ -5003,6 +5174,8 @@ PACKAGE_BUGREPORT	lsd/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	lsdb/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	mmanager/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	netlink/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
+PACKAGE_BUGREPORT	pma2-agent/command/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
+PACKAGE_BUGREPORT	pma2-router/command/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	policy/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	reg/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
 PACKAGE_BUGREPORT	router/Makefile	/^PACKAGE_BUGREPORT = catchgreen@163.com$/;"	m
@@ -5016,7 +5189,7 @@ PACKAGE_NAME	Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	comm/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	command/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	conf/Makefile	/^PACKAGE_NAME = pma$/;"	m
-PACKAGE_NAME	config.h	48;"	d
+PACKAGE_NAME	config.h	51;"	d
 PACKAGE_NAME	control/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	db/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	ddc/Makefile	/^PACKAGE_NAME = pma$/;"	m
@@ -5026,6 +5199,8 @@ PACKAGE_NAME	lsd/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	lsdb/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	mmanager/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	netlink/Makefile	/^PACKAGE_NAME = pma$/;"	m
+PACKAGE_NAME	pma2-agent/command/Makefile	/^PACKAGE_NAME = pma$/;"	m
+PACKAGE_NAME	pma2-router/command/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	policy/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	reg/Makefile	/^PACKAGE_NAME = pma$/;"	m
 PACKAGE_NAME	router/Makefile	/^PACKAGE_NAME = pma$/;"	m
@@ -5039,7 +5214,7 @@ PACKAGE_STRING	Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	comm/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	command/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	conf/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
-PACKAGE_STRING	config.h	51;"	d
+PACKAGE_STRING	config.h	54;"	d
 PACKAGE_STRING	control/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	db/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	ddc/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
@@ -5049,6 +5224,8 @@ PACKAGE_STRING	lsd/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	lsdb/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	mmanager/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	netlink/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
+PACKAGE_STRING	pma2-agent/command/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
+PACKAGE_STRING	pma2-router/command/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	policy/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	reg/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
 PACKAGE_STRING	router/Makefile	/^PACKAGE_STRING = pma 2.1$/;"	m
@@ -5062,7 +5239,7 @@ PACKAGE_TARNAME	Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	comm/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	command/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	conf/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
-PACKAGE_TARNAME	config.h	54;"	d
+PACKAGE_TARNAME	config.h	57;"	d
 PACKAGE_TARNAME	control/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	db/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	ddc/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
@@ -5072,6 +5249,8 @@ PACKAGE_TARNAME	lsd/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	lsdb/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	mmanager/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	netlink/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
+PACKAGE_TARNAME	pma2-agent/command/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
+PACKAGE_TARNAME	pma2-router/command/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	policy/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	reg/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
 PACKAGE_TARNAME	router/Makefile	/^PACKAGE_TARNAME = pma$/;"	m
@@ -5085,7 +5264,7 @@ PACKAGE_URL	Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	comm/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	command/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	conf/Makefile	/^PACKAGE_URL = $/;"	m
-PACKAGE_URL	config.h	57;"	d
+PACKAGE_URL	config.h	60;"	d
 PACKAGE_URL	control/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	db/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	ddc/Makefile	/^PACKAGE_URL = $/;"	m
@@ -5095,6 +5274,8 @@ PACKAGE_URL	lsd/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	lsdb/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	mmanager/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	netlink/Makefile	/^PACKAGE_URL = $/;"	m
+PACKAGE_URL	pma2-agent/command/Makefile	/^PACKAGE_URL = $/;"	m
+PACKAGE_URL	pma2-router/command/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	policy/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	reg/Makefile	/^PACKAGE_URL = $/;"	m
 PACKAGE_URL	router/Makefile	/^PACKAGE_URL = $/;"	m
@@ -5108,7 +5289,7 @@ PACKAGE_VERSION	Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	comm/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	command/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	conf/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
-PACKAGE_VERSION	config.h	60;"	d
+PACKAGE_VERSION	config.h	63;"	d
 PACKAGE_VERSION	control/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	db/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	ddc/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
@@ -5118,6 +5299,8 @@ PACKAGE_VERSION	lsd/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	lsdb/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	mmanager/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	netlink/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
+PACKAGE_VERSION	pma2-agent/command/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
+PACKAGE_VERSION	pma2-router/command/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	policy/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	reg/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
 PACKAGE_VERSION	router/Makefile	/^PACKAGE_VERSION = 2.1$/;"	m
@@ -5178,6 +5361,8 @@ PATH_SEPARATOR	lsd/Makefile	/^PATH_SEPARATOR = :$/;"	m
 PATH_SEPARATOR	lsdb/Makefile	/^PATH_SEPARATOR = :$/;"	m
 PATH_SEPARATOR	mmanager/Makefile	/^PATH_SEPARATOR = :$/;"	m
 PATH_SEPARATOR	netlink/Makefile	/^PATH_SEPARATOR = :$/;"	m
+PATH_SEPARATOR	pma2-agent/command/Makefile	/^PATH_SEPARATOR = :$/;"	m
+PATH_SEPARATOR	pma2-router/command/Makefile	/^PATH_SEPARATOR = :$/;"	m
 PATH_SEPARATOR	policy/Makefile	/^PATH_SEPARATOR = :$/;"	m
 PATH_SEPARATOR	reg/Makefile	/^PATH_SEPARATOR = :$/;"	m
 PATH_SEPARATOR	router/Makefile	/^PATH_SEPARATOR = :$/;"	m
@@ -5316,6 +5501,8 @@ POST_INSTALL	lsd/Makefile	/^POST_INSTALL = :$/;"	m
 POST_INSTALL	lsdb/Makefile	/^POST_INSTALL = :$/;"	m
 POST_INSTALL	mmanager/Makefile	/^POST_INSTALL = :$/;"	m
 POST_INSTALL	netlink/Makefile	/^POST_INSTALL = :$/;"	m
+POST_INSTALL	pma2-agent/command/Makefile	/^POST_INSTALL = :$/;"	m
+POST_INSTALL	pma2-router/command/Makefile	/^POST_INSTALL = :$/;"	m
 POST_INSTALL	policy/Makefile	/^POST_INSTALL = :$/;"	m
 POST_INSTALL	reg/Makefile	/^POST_INSTALL = :$/;"	m
 POST_INSTALL	router/Makefile	/^POST_INSTALL = :$/;"	m
@@ -5338,6 +5525,8 @@ POST_UNINSTALL	lsd/Makefile	/^POST_UNINSTALL = :$/;"	m
 POST_UNINSTALL	lsdb/Makefile	/^POST_UNINSTALL = :$/;"	m
 POST_UNINSTALL	mmanager/Makefile	/^POST_UNINSTALL = :$/;"	m
 POST_UNINSTALL	netlink/Makefile	/^POST_UNINSTALL = :$/;"	m
+POST_UNINSTALL	pma2-agent/command/Makefile	/^POST_UNINSTALL = :$/;"	m
+POST_UNINSTALL	pma2-router/command/Makefile	/^POST_UNINSTALL = :$/;"	m
 POST_UNINSTALL	policy/Makefile	/^POST_UNINSTALL = :$/;"	m
 POST_UNINSTALL	reg/Makefile	/^POST_UNINSTALL = :$/;"	m
 POST_UNINSTALL	router/Makefile	/^POST_UNINSTALL = :$/;"	m
@@ -5363,6 +5552,8 @@ PRE_INSTALL	lsd/Makefile	/^PRE_INSTALL = :$/;"	m
 PRE_INSTALL	lsdb/Makefile	/^PRE_INSTALL = :$/;"	m
 PRE_INSTALL	mmanager/Makefile	/^PRE_INSTALL = :$/;"	m
 PRE_INSTALL	netlink/Makefile	/^PRE_INSTALL = :$/;"	m
+PRE_INSTALL	pma2-agent/command/Makefile	/^PRE_INSTALL = :$/;"	m
+PRE_INSTALL	pma2-router/command/Makefile	/^PRE_INSTALL = :$/;"	m
 PRE_INSTALL	policy/Makefile	/^PRE_INSTALL = :$/;"	m
 PRE_INSTALL	reg/Makefile	/^PRE_INSTALL = :$/;"	m
 PRE_INSTALL	router/Makefile	/^PRE_INSTALL = :$/;"	m
@@ -5385,6 +5576,8 @@ PRE_UNINSTALL	lsd/Makefile	/^PRE_UNINSTALL = :$/;"	m
 PRE_UNINSTALL	lsdb/Makefile	/^PRE_UNINSTALL = :$/;"	m
 PRE_UNINSTALL	mmanager/Makefile	/^PRE_UNINSTALL = :$/;"	m
 PRE_UNINSTALL	netlink/Makefile	/^PRE_UNINSTALL = :$/;"	m
+PRE_UNINSTALL	pma2-agent/command/Makefile	/^PRE_UNINSTALL = :$/;"	m
+PRE_UNINSTALL	pma2-router/command/Makefile	/^PRE_UNINSTALL = :$/;"	m
 PRE_UNINSTALL	policy/Makefile	/^PRE_UNINSTALL = :$/;"	m
 PRE_UNINSTALL	reg/Makefile	/^PRE_UNINSTALL = :$/;"	m
 PRE_UNINSTALL	router/Makefile	/^PRE_UNINSTALL = :$/;"	m
@@ -5812,6 +6005,8 @@ RANLIB	lsd/Makefile	/^RANLIB = ranlib$/;"	m
 RANLIB	lsdb/Makefile	/^RANLIB = ranlib$/;"	m
 RANLIB	mmanager/Makefile	/^RANLIB = ranlib$/;"	m
 RANLIB	netlink/Makefile	/^RANLIB = ranlib$/;"	m
+RANLIB	pma2-agent/command/Makefile	/^RANLIB = ranlib$/;"	m
+RANLIB	pma2-router/command/Makefile	/^RANLIB = ranlib$/;"	m
 RANLIB	policy/Makefile	/^RANLIB = ranlib$/;"	m
 RANLIB	reg/Makefile	/^RANLIB = ranlib$/;"	m
 RANLIB	router/Makefile	/^RANLIB = ranlib$/;"	m
@@ -5848,9 +6043,13 @@ RNDTOWARDS	db/sqlite3.c	144357;"	d	file:
 ROUND8	db/sqlite3.c	8427;"	d	file:
 ROUNDDOWN8	db/sqlite3.c	8432;"	d	file:
 ROUTERCMD_H	command/routercmd.h	3;"	d
+ROUTERCMD_H	pma2-agent/command/routercmd.h	3;"	d
+ROUTERCMD_H	pma2-router/command/routercmd.h	3;"	d
 ROUTERTABLE_H	router/routertable.h	3;"	d
 ROUTER_BGP	router/interface.h	33;"	d
 ROUTER_CMD_PATH	command/routercmd.h	5;"	d
+ROUTER_CMD_PATH	pma2-agent/command/routercmd.h	5;"	d
+ROUTER_CMD_PATH	pma2-router/command/routercmd.h	5;"	d
 ROUTER_IP	conf/conf.c	40;"	d	file:
 ROUTER_OSPF	router/interface.h	32;"	d
 ROUTE_H	netlink/route.h	3;"	d
@@ -6042,6 +6241,8 @@ SED	lsd/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
 SED	lsdb/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
 SED	mmanager/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
 SED	netlink/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
+SED	pma2-agent/command/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
+SED	pma2-router/command/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
 SED	policy/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
 SED	reg/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
 SED	router/Makefile	/^SED = \/usr\/bin\/sed$/;"	m
@@ -6095,6 +6296,8 @@ SET_MAKE	lsd/Makefile	/^SET_MAKE = $/;"	m
 SET_MAKE	lsdb/Makefile	/^SET_MAKE = $/;"	m
 SET_MAKE	mmanager/Makefile	/^SET_MAKE = $/;"	m
 SET_MAKE	netlink/Makefile	/^SET_MAKE = $/;"	m
+SET_MAKE	pma2-agent/command/Makefile	/^SET_MAKE = $/;"	m
+SET_MAKE	pma2-router/command/Makefile	/^SET_MAKE = $/;"	m
 SET_MAKE	policy/Makefile	/^SET_MAKE = $/;"	m
 SET_MAKE	reg/Makefile	/^SET_MAKE = $/;"	m
 SET_MAKE	router/Makefile	/^SET_MAKE = $/;"	m
@@ -6136,6 +6339,8 @@ SHELL	lsd/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	lsdb/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	mmanager/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	netlink/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	pma2-agent/command/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	pma2-router/command/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	policy/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	reg/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SHELL	router/Makefile	/^SHELL = \/bin\/sh$/;"	m
@@ -6173,6 +6378,8 @@ SOURCES	lsd/Makefile	/^SOURCES = $(libpmalsd_a_SOURCES)$/;"	m
 SOURCES	lsdb/Makefile	/^SOURCES = $(libpmalsdb_a_SOURCES)$/;"	m
 SOURCES	mmanager/Makefile	/^SOURCES = $(libmodulemanager_a_SOURCES)$/;"	m
 SOURCES	netlink/Makefile	/^SOURCES = $(libpmanetlink_a_SOURCES)$/;"	m
+SOURCES	pma2-agent/command/Makefile	/^SOURCES = $(libpmacommand_a_SOURCES)$/;"	m
+SOURCES	pma2-router/command/Makefile	/^SOURCES = $(libpmacommand_a_SOURCES)$/;"	m
 SOURCES	policy/Makefile	/^SOURCES = $(libpmapolicy_a_SOURCES)$/;"	m
 SOURCES	reg/Makefile	/^SOURCES = $(libpmareg_a_SOURCES)$/;"	m
 SOURCES	router/Makefile	/^SOURCES = $(libpmarouter_a_SOURCES)$/;"	m
@@ -7144,7 +7351,7 @@ STAT_GET_NEQ	db/sqlite3.c	82304;"	d	file:
 STAT_GET_NLT	db/sqlite3.c	82305;"	d	file:
 STAT_GET_ROWID	db/sqlite3.c	82303;"	d	file:
 STAT_GET_STAT1	db/sqlite3.c	82302;"	d	file:
-STDC_HEADERS	config.h	63;"	d
+STDC_HEADERS	config.h	69;"	d
 STRACCUM_NOMEM	db/sqlite3.c	11913;"	d	file:
 STRACCUM_TOOBIG	db/sqlite3.c	11914;"	d	file:
 STRICMP	db/sqlite3.c	85135;"	d	file:
@@ -7161,6 +7368,8 @@ STRIP	lsd/Makefile	/^STRIP = strip$/;"	m
 STRIP	lsdb/Makefile	/^STRIP = strip$/;"	m
 STRIP	mmanager/Makefile	/^STRIP = strip$/;"	m
 STRIP	netlink/Makefile	/^STRIP = strip$/;"	m
+STRIP	pma2-agent/command/Makefile	/^STRIP = strip$/;"	m
+STRIP	pma2-router/command/Makefile	/^STRIP = strip$/;"	m
 STRIP	policy/Makefile	/^STRIP = strip$/;"	m
 STRIP	reg/Makefile	/^STRIP = strip$/;"	m
 STRIP	router/Makefile	/^STRIP = strip$/;"	m
@@ -8285,7 +8494,7 @@ VERSION	comm/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	command/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	conf/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	conf/conf.c	22;"	d	file:
-VERSION	config.h	66;"	d
+VERSION	config.h	72;"	d
 VERSION	control/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	db/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	ddc/Makefile	/^VERSION = 2.1$/;"	m
@@ -8295,6 +8504,8 @@ VERSION	lsd/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	lsdb/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	mmanager/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	netlink/Makefile	/^VERSION = 2.1$/;"	m
+VERSION	pma2-agent/command/Makefile	/^VERSION = 2.1$/;"	m
+VERSION	pma2-router/command/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	policy/Makefile	/^VERSION = 2.1$/;"	m
 VERSION	policy/policy_parse.h	5;"	d
 VERSION	reg/Makefile	/^VERSION = 2.1$/;"	m
@@ -9008,6 +9219,7 @@ XFREE	lib/memory.h	199;"	d
 XFREE	lib/memory.h	207;"	d
 XMALLOC	lib/memory.h	193;"	d
 XMALLOC	lib/memory.h	204;"	d
+XMLPATH	pfmtest.c	7;"	d	file:
 XREALLOC	lib/memory.h	197;"	d
 XREALLOC	lib/memory.h	206;"	d
 XSTRDUP	lib/memory.h	201;"	d
@@ -9232,6 +9444,8 @@ __anon7::rc	db/sqlite3.c	/^  int rc;             \/* Result code stored here *\/
 __declspec	db/sqlite3.c	/^  __declspec(naked) __inline sqlite_uint64 __cdecl sqlite3Hwtime(void){$/;"	f
 __declspec	db/sqlite3.c	/^__declspec(dllexport)$/;"	f
 __u32	command/mpls.h	/^typedef unsigned int __u32;$/;"	t
+__u32	pma2-agent/command/mpls.h	/^typedef unsigned int __u32;$/;"	t
+__u32	pma2-router/command/mpls.h	/^typedef unsigned int __u32;$/;"	t
 _fts3ht	db/sqlite3.c	/^  struct _fts3ht {        \/* the hash table *\/$/;"	s	struct:Fts3Hash	file:	access:public
 _ht	db/sqlite3.c	/^  struct _ht {              \/* the hash table *\/$/;"	s	struct:Hash	file:	access:public
 _ifid	lsd/lsd_if.h	30;"	d
@@ -9404,6 +9618,8 @@ abs_builddir	lsd/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/lsd$/
 abs_builddir	lsdb/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/lsdb$/;"	m
 abs_builddir	mmanager/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/mmanager$/;"	m
 abs_builddir	netlink/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/netlink$/;"	m
+abs_builddir	pma2-agent/command/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/command$/;"	m
+abs_builddir	pma2-router/command/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/command$/;"	m
 abs_builddir	policy/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/policy$/;"	m
 abs_builddir	reg/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/reg$/;"	m
 abs_builddir	router/Makefile	/^abs_builddir = \/home\/macro\/workspace\/pma2\/router$/;"	m
@@ -9426,6 +9642,8 @@ abs_srcdir	lsd/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/lsd$/;"	m
 abs_srcdir	lsdb/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/lsdb$/;"	m
 abs_srcdir	mmanager/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/mmanager$/;"	m
 abs_srcdir	netlink/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/netlink$/;"	m
+abs_srcdir	pma2-agent/command/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/command$/;"	m
+abs_srcdir	pma2-router/command/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/command$/;"	m
 abs_srcdir	policy/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/policy$/;"	m
 abs_srcdir	reg/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/reg$/;"	m
 abs_srcdir	router/Makefile	/^abs_srcdir = \/home\/macro\/workspace\/pma2\/router$/;"	m
@@ -9448,6 +9666,8 @@ abs_top_builddir	lsd/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma
 abs_top_builddir	lsdb/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_builddir	mmanager/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_builddir	netlink/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma2$/;"	m
+abs_top_builddir	pma2-agent/command/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma2$/;"	m
+abs_top_builddir	pma2-router/command/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_builddir	policy/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_builddir	reg/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_builddir	router/Makefile	/^abs_top_builddir = \/home\/macro\/workspace\/pma2$/;"	m
@@ -9470,6 +9690,8 @@ abs_top_srcdir	lsd/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;
 abs_top_srcdir	lsdb/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_srcdir	mmanager/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_srcdir	netlink/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;"	m
+abs_top_srcdir	pma2-agent/command/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;"	m
+abs_top_srcdir	pma2-router/command/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_srcdir	policy/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_srcdir	reg/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;"	m
 abs_top_srcdir	router/Makefile	/^abs_top_srcdir = \/home\/macro\/workspace\/pma2$/;"	m
@@ -9492,6 +9714,8 @@ ac_ct_AR	lsd/Makefile	/^ac_ct_AR = ar$/;"	m
 ac_ct_AR	lsdb/Makefile	/^ac_ct_AR = ar$/;"	m
 ac_ct_AR	mmanager/Makefile	/^ac_ct_AR = ar$/;"	m
 ac_ct_AR	netlink/Makefile	/^ac_ct_AR = ar$/;"	m
+ac_ct_AR	pma2-agent/command/Makefile	/^ac_ct_AR = ar$/;"	m
+ac_ct_AR	pma2-router/command/Makefile	/^ac_ct_AR = ar$/;"	m
 ac_ct_AR	policy/Makefile	/^ac_ct_AR = ar$/;"	m
 ac_ct_AR	reg/Makefile	/^ac_ct_AR = ar$/;"	m
 ac_ct_AR	router/Makefile	/^ac_ct_AR = ar$/;"	m
@@ -9514,6 +9738,8 @@ ac_ct_CC	lsd/Makefile	/^ac_ct_CC = gcc$/;"	m
 ac_ct_CC	lsdb/Makefile	/^ac_ct_CC = gcc$/;"	m
 ac_ct_CC	mmanager/Makefile	/^ac_ct_CC = gcc$/;"	m
 ac_ct_CC	netlink/Makefile	/^ac_ct_CC = gcc$/;"	m
+ac_ct_CC	pma2-agent/command/Makefile	/^ac_ct_CC = gcc$/;"	m
+ac_ct_CC	pma2-router/command/Makefile	/^ac_ct_CC = gcc$/;"	m
 ac_ct_CC	policy/Makefile	/^ac_ct_CC = gcc$/;"	m
 ac_ct_CC	reg/Makefile	/^ac_ct_CC = gcc$/;"	m
 ac_ct_CC	router/Makefile	/^ac_ct_CC = gcc$/;"	m
@@ -9536,6 +9762,8 @@ ac_ct_CXX	lsd/Makefile	/^ac_ct_CXX = g++$/;"	m
 ac_ct_CXX	lsdb/Makefile	/^ac_ct_CXX = g++$/;"	m
 ac_ct_CXX	mmanager/Makefile	/^ac_ct_CXX = g++$/;"	m
 ac_ct_CXX	netlink/Makefile	/^ac_ct_CXX = g++$/;"	m
+ac_ct_CXX	pma2-agent/command/Makefile	/^ac_ct_CXX = g++$/;"	m
+ac_ct_CXX	pma2-router/command/Makefile	/^ac_ct_CXX = g++$/;"	m
 ac_ct_CXX	policy/Makefile	/^ac_ct_CXX = g++$/;"	m
 ac_ct_CXX	reg/Makefile	/^ac_ct_CXX = g++$/;"	m
 ac_ct_CXX	router/Makefile	/^ac_ct_CXX = g++$/;"	m
@@ -9558,6 +9786,8 @@ ac_ct_DUMPBIN	lsd/Makefile	/^ac_ct_DUMPBIN = $/;"	m
 ac_ct_DUMPBIN	lsdb/Makefile	/^ac_ct_DUMPBIN = $/;"	m
 ac_ct_DUMPBIN	mmanager/Makefile	/^ac_ct_DUMPBIN = $/;"	m
 ac_ct_DUMPBIN	netlink/Makefile	/^ac_ct_DUMPBIN = $/;"	m
+ac_ct_DUMPBIN	pma2-agent/command/Makefile	/^ac_ct_DUMPBIN = $/;"	m
+ac_ct_DUMPBIN	pma2-router/command/Makefile	/^ac_ct_DUMPBIN = $/;"	m
 ac_ct_DUMPBIN	policy/Makefile	/^ac_ct_DUMPBIN = $/;"	m
 ac_ct_DUMPBIN	reg/Makefile	/^ac_ct_DUMPBIN = $/;"	m
 ac_ct_DUMPBIN	router/Makefile	/^ac_ct_DUMPBIN = $/;"	m
@@ -9628,10 +9858,18 @@ add_exchange_handler	lsd/lsd_event.h	/^void add_exchange_handler(exchange_handle
 add_hello_detection_handler	lsd/lsd_event.c	/^void add_hello_detection_handler(hello_detection_handler handler)$/;"	f	signature:(hello_detection_handler handler)
 add_hello_detection_handler	lsd/lsd_event.h	/^void add_hello_detection_handler(hello_detection_handler handler);$/;"	p	signature:(hello_detection_handler handler)
 add_iptables	command/iptables.h	/^int add_iptables( char *src, char *dst, __u32 key);$/;"	p	signature:( char *src, char *dst, __u32 key)
+add_iptables	pma2-agent/command/iptables.h	/^int add_iptables( char *src, char *dst, __u32 key);$/;"	p	signature:( char *src, char *dst, __u32 key)
+add_iptables	pma2-router/command/iptables.h	/^int add_iptables( char *src, char *dst, __u32 key);$/;"	p	signature:( char *src, char *dst, __u32 key)
 add_link_state_into_list	lsdb/lsdb_traverse.c	/^int add_link_state_into_list(struct cr_lsdb_router* rt, struct cr_lsdb_link_state* state, void* args)$/;"	f	signature:(struct cr_lsdb_router* rt, struct cr_lsdb_link_state* state, void* args)
 add_mpls_end	command/mpls.h	/^void add_mpls_end(__u32 label);$/;"	p	signature:(__u32 label)
+add_mpls_end	pma2-agent/command/mpls.h	/^void add_mpls_end(__u32 label);$/;"	p	signature:(__u32 label)
+add_mpls_end	pma2-router/command/mpls.h	/^void add_mpls_end(__u32 label);$/;"	p	signature:(__u32 label)
 add_mpls_in	command/mpls.h	/^void add_mpls_in(__u32 label, char * ifname, char *ipaddress, __u32 *rkey);$/;"	p	signature:(__u32 label, char * ifname, char *ipaddress, __u32 *rkey)
+add_mpls_in	pma2-agent/command/mpls.h	/^void add_mpls_in(__u32 label, char * ifname, char *ipaddress, __u32 *rkey);$/;"	p	signature:(__u32 label, char * ifname, char *ipaddress, __u32 *rkey)
+add_mpls_in	pma2-router/command/mpls.h	/^void add_mpls_in(__u32 label, char * ifname, char *ipaddress, __u32 *rkey);$/;"	p	signature:(__u32 label, char * ifname, char *ipaddress, __u32 *rkey)
 add_mpls_mid	command/mpls.h	/^void add_mpls_mid(__u32 label, __u32 key);$/;"	p	signature:(__u32 label, __u32 key)
+add_mpls_mid	pma2-agent/command/mpls.h	/^void add_mpls_mid(__u32 label, __u32 key);$/;"	p	signature:(__u32 label, __u32 key)
+add_mpls_mid	pma2-router/command/mpls.h	/^void add_mpls_mid(__u32 label, __u32 key);$/;"	p	signature:(__u32 label, __u32 key)
 add_path_of_link	ddc/ddc.c	/^int add_path_of_link( int link_index, struct Netpath* path, struct area_info * az)$/;"	f	signature:( int link_index, struct Netpath* path, struct area_info * az)
 add_path_to_area_short_path	ddc/ddc.c	/^struct Netpath* add_path_to_area_short_path(struct area_info *az)$/;"	f	signature:(struct area_info *az)
 add_pkt_rcv_handler	lsd/lsd_event.c	/^void add_pkt_rcv_handler(pkt_rcv_handler h)$/;"	f	signature:(pkt_rcv_handler h)
@@ -9639,6 +9877,7 @@ add_pkt_rcv_handler	lsd/lsd_event.h	/^void add_pkt_rcv_handler(pkt_rcv_handler h
 add_policy	policy/policy_table.c	/^int add_policy( struct _policy_table *policy_table, struct _policy_element *p_elem )$/;"	f	signature:( struct _policy_table *policy_table, struct _policy_element *p_elem )
 add_policy	policy/policy_table.h	/^int add_policy(struct _policy_table *policy_table, struct _policy_element *p_elem);$/;"	p	signature:(struct _policy_table *policy_table, struct _policy_element *p_elem)
 add_route	netlink/route.c	/^int add_route(struct route* rlist, struct route *r)$/;"	f	signature:(struct route* rlist, struct route *r)
+add_route	route_test.c	/^int add_route(__u32 destination,__u32 gateway,unsigned int netmask){$/;"	f	signature:(__u32 destination,__u32 gateway,unsigned int netmask)
 add_router_into_list	lsdb/lsdb_traverse.c	/^int add_router_into_list(struct cr_lsdb_router* rt, void* args)$/;"	f	signature:(struct cr_lsdb_router* rt, void* args)
 add_task_to_pool	lib/thread_pool.c	/^int add_task_to_pool(Pool *pool, func ptr, void *args)$/;"	f	signature:(Pool *pool, func ptr, void *args)
 add_task_to_pool	lib/thread_pool.h	/^int add_task_to_pool(Pool *pool, func ptr, void *args);$/;"	p	signature:(Pool *pool, func ptr, void *args)
@@ -9771,6 +10010,8 @@ am__aclocal_m4_deps	lsd/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configur
 am__aclocal_m4_deps	lsdb/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
 am__aclocal_m4_deps	mmanager/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
 am__aclocal_m4_deps	netlink/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
+am__aclocal_m4_deps	pma2-agent/command/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
+am__aclocal_m4_deps	pma2-router/command/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
 am__aclocal_m4_deps	policy/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
 am__aclocal_m4_deps	reg/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
 am__aclocal_m4_deps	router/Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
@@ -9793,6 +10034,8 @@ am__can_run_installinfo	lsd/Makefile	/^am__can_run_installinfo = \\$/;"	m
 am__can_run_installinfo	lsdb/Makefile	/^am__can_run_installinfo = \\$/;"	m
 am__can_run_installinfo	mmanager/Makefile	/^am__can_run_installinfo = \\$/;"	m
 am__can_run_installinfo	netlink/Makefile	/^am__can_run_installinfo = \\$/;"	m
+am__can_run_installinfo	pma2-agent/command/Makefile	/^am__can_run_installinfo = \\$/;"	m
+am__can_run_installinfo	pma2-router/command/Makefile	/^am__can_run_installinfo = \\$/;"	m
 am__can_run_installinfo	policy/Makefile	/^am__can_run_installinfo = \\$/;"	m
 am__can_run_installinfo	reg/Makefile	/^am__can_run_installinfo = \\$/;"	m
 am__can_run_installinfo	router/Makefile	/^am__can_run_installinfo = \\$/;"	m
@@ -9815,6 +10058,8 @@ am__cd	lsd/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd
 am__cd	lsdb/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
 am__cd	mmanager/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
 am__cd	netlink/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
+am__cd	pma2-agent/command/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
+am__cd	pma2-router/command/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
 am__cd	policy/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
 am__cd	reg/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
 am__cd	router/Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
@@ -9837,6 +10082,8 @@ am__configure_deps	lsd/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(
 am__configure_deps	lsdb/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
 am__configure_deps	mmanager/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
 am__configure_deps	netlink/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
+am__configure_deps	pma2-agent/command/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
+am__configure_deps	pma2-router/command/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
 am__configure_deps	policy/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
 am__configure_deps	reg/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
 am__configure_deps	router/Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
@@ -9859,6 +10106,8 @@ am__define_uniq_tagged_files	lsd/Makefile	/^am__define_uniq_tagged_files = \\$/;
 am__define_uniq_tagged_files	lsdb/Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
 am__define_uniq_tagged_files	mmanager/Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
 am__define_uniq_tagged_files	netlink/Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
+am__define_uniq_tagged_files	pma2-agent/command/Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
+am__define_uniq_tagged_files	pma2-router/command/Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
 am__define_uniq_tagged_files	policy/Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
 am__define_uniq_tagged_files	reg/Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
 am__define_uniq_tagged_files	router/Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
@@ -9881,6 +10130,8 @@ am__depfiles_maybe	lsd/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
 am__depfiles_maybe	lsdb/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
 am__depfiles_maybe	mmanager/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
 am__depfiles_maybe	netlink/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
+am__depfiles_maybe	pma2-agent/command/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
+am__depfiles_maybe	pma2-router/command/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
 am__depfiles_maybe	policy/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
 am__depfiles_maybe	reg/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
 am__depfiles_maybe	router/Makefile	/^am__depfiles_maybe = depfiles$/;"	m
@@ -9904,6 +10155,8 @@ am__include	lsd/Makefile	/^am__include = include$/;"	m
 am__include	lsdb/Makefile	/^am__include = include$/;"	m
 am__include	mmanager/Makefile	/^am__include = include$/;"	m
 am__include	netlink/Makefile	/^am__include = include$/;"	m
+am__include	pma2-agent/command/Makefile	/^am__include = include$/;"	m
+am__include	pma2-router/command/Makefile	/^am__include = include$/;"	m
 am__include	policy/Makefile	/^am__include = include$/;"	m
 am__include	reg/Makefile	/^am__include = include$/;"	m
 am__include	router/Makefile	/^am__include = include$/;"	m
@@ -9928,6 +10181,8 @@ am__is_gnu_make	lsd/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && t
 am__is_gnu_make	lsdb/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
 am__is_gnu_make	mmanager/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
 am__is_gnu_make	netlink/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
+am__is_gnu_make	pma2-agent/command/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
+am__is_gnu_make	pma2-router/command/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
 am__is_gnu_make	policy/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
 am__is_gnu_make	reg/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
 am__is_gnu_make	router/Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
@@ -9950,6 +10205,8 @@ am__leading_dot	lsd/Makefile	/^am__leading_dot = .$/;"	m
 am__leading_dot	lsdb/Makefile	/^am__leading_dot = .$/;"	m
 am__leading_dot	mmanager/Makefile	/^am__leading_dot = .$/;"	m
 am__leading_dot	netlink/Makefile	/^am__leading_dot = .$/;"	m
+am__leading_dot	pma2-agent/command/Makefile	/^am__leading_dot = .$/;"	m
+am__leading_dot	pma2-router/command/Makefile	/^am__leading_dot = .$/;"	m
 am__leading_dot	policy/Makefile	/^am__leading_dot = .$/;"	m
 am__leading_dot	reg/Makefile	/^am__leading_dot = .$/;"	m
 am__leading_dot	router/Makefile	/^am__leading_dot = .$/;"	m
@@ -9972,6 +10229,8 @@ am__make_dryrun	lsd/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_ru
 am__make_dryrun	lsdb/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
 am__make_dryrun	mmanager/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
 am__make_dryrun	netlink/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
+am__make_dryrun	pma2-agent/command/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
+am__make_dryrun	pma2-router/command/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
 am__make_dryrun	policy/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
 am__make_dryrun	reg/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
 am__make_dryrun	router/Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
@@ -9994,6 +10253,8 @@ am__make_keepgoing	lsd/Makefile	/^am__make_keepgoing = (target_option=k; $(am__m
 am__make_keepgoing	lsdb/Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
 am__make_keepgoing	mmanager/Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
 am__make_keepgoing	netlink/Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
+am__make_keepgoing	pma2-agent/command/Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
+am__make_keepgoing	pma2-router/command/Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
 am__make_keepgoing	policy/Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
 am__make_keepgoing	reg/Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
 am__make_keepgoing	router/Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
@@ -10016,6 +10277,8 @@ am__make_running_with_option	lsd/Makefile	/^am__make_running_with_option = \\$/;
 am__make_running_with_option	lsdb/Makefile	/^am__make_running_with_option = \\$/;"	m
 am__make_running_with_option	mmanager/Makefile	/^am__make_running_with_option = \\$/;"	m
 am__make_running_with_option	netlink/Makefile	/^am__make_running_with_option = \\$/;"	m
+am__make_running_with_option	pma2-agent/command/Makefile	/^am__make_running_with_option = \\$/;"	m
+am__make_running_with_option	pma2-router/command/Makefile	/^am__make_running_with_option = \\$/;"	m
 am__make_running_with_option	policy/Makefile	/^am__make_running_with_option = \\$/;"	m
 am__make_running_with_option	reg/Makefile	/^am__make_running_with_option = \\$/;"	m
 am__make_running_with_option	router/Makefile	/^am__make_running_with_option = \\$/;"	m
@@ -10038,6 +10301,8 @@ am__mv	lsd/Makefile	/^am__mv = mv -f$/;"	m
 am__mv	lsdb/Makefile	/^am__mv = mv -f$/;"	m
 am__mv	mmanager/Makefile	/^am__mv = mv -f$/;"	m
 am__mv	netlink/Makefile	/^am__mv = mv -f$/;"	m
+am__mv	pma2-agent/command/Makefile	/^am__mv = mv -f$/;"	m
+am__mv	pma2-router/command/Makefile	/^am__mv = mv -f$/;"	m
 am__mv	policy/Makefile	/^am__mv = mv -f$/;"	m
 am__mv	reg/Makefile	/^am__mv = mv -f$/;"	m
 am__mv	router/Makefile	/^am__mv = mv -f$/;"	m
@@ -10061,6 +10326,8 @@ am__quote	lsd/Makefile	/^am__quote = $/;"	m
 am__quote	lsdb/Makefile	/^am__quote = $/;"	m
 am__quote	mmanager/Makefile	/^am__quote = $/;"	m
 am__quote	netlink/Makefile	/^am__quote = $/;"	m
+am__quote	pma2-agent/command/Makefile	/^am__quote = $/;"	m
+am__quote	pma2-router/command/Makefile	/^am__quote = $/;"	m
 am__quote	policy/Makefile	/^am__quote = $/;"	m
 am__quote	reg/Makefile	/^am__quote = $/;"	m
 am__quote	router/Makefile	/^am__quote = $/;"	m
@@ -10086,6 +10353,8 @@ am__tagged_files	lsd/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_
 am__tagged_files	lsdb/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
 am__tagged_files	mmanager/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
 am__tagged_files	netlink/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
+am__tagged_files	pma2-agent/command/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
+am__tagged_files	pma2-router/command/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
 am__tagged_files	policy/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
 am__tagged_files	reg/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
 am__tagged_files	router/Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)$/;"	m
@@ -10108,6 +10377,8 @@ am__tar	lsd/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
 am__tar	lsdb/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
 am__tar	mmanager/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
 am__tar	netlink/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
+am__tar	pma2-agent/command/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
+am__tar	pma2-router/command/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
 am__tar	policy/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
 am__tar	reg/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
 am__tar	router/Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
@@ -10130,6 +10401,8 @@ am__uniquify_input	lsd/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
 am__uniquify_input	lsdb/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
 am__uniquify_input	mmanager/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
 am__uniquify_input	netlink/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
+am__uniquify_input	pma2-agent/command/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
+am__uniquify_input	pma2-router/command/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
 am__uniquify_input	policy/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
 am__uniquify_input	reg/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
 am__uniquify_input	router/Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
@@ -10152,6 +10425,8 @@ am__untar	lsd/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
 am__untar	lsdb/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
 am__untar	mmanager/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
 am__untar	netlink/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
+am__untar	pma2-agent/command/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
+am__untar	pma2-router/command/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
 am__untar	policy/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
 am__untar	reg/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
 am__untar	router/Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
@@ -10173,6 +10448,8 @@ am__v_AR_	lsd/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_AR_	lsdb/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_AR_	mmanager/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_AR_	netlink/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_AR_	pma2-agent/command/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_AR_	pma2-router/command/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_AR_	policy/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_AR_	reg/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_AR_	router/Makefile	/^am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))$/;"	m
@@ -10193,6 +10470,8 @@ am__v_AR_0	lsd/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
 am__v_AR_0	lsdb/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
 am__v_AR_0	mmanager/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
 am__v_AR_0	netlink/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
+am__v_AR_0	pma2-agent/command/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
+am__v_AR_0	pma2-router/command/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
 am__v_AR_0	policy/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
 am__v_AR_0	reg/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
 am__v_AR_0	router/Makefile	/^am__v_AR_0 = @echo "  AR      " $@;$/;"	m
@@ -10213,6 +10492,8 @@ am__v_AR_1	lsd/Makefile	/^am__v_AR_1 = $/;"	m
 am__v_AR_1	lsdb/Makefile	/^am__v_AR_1 = $/;"	m
 am__v_AR_1	mmanager/Makefile	/^am__v_AR_1 = $/;"	m
 am__v_AR_1	netlink/Makefile	/^am__v_AR_1 = $/;"	m
+am__v_AR_1	pma2-agent/command/Makefile	/^am__v_AR_1 = $/;"	m
+am__v_AR_1	pma2-router/command/Makefile	/^am__v_AR_1 = $/;"	m
 am__v_AR_1	policy/Makefile	/^am__v_AR_1 = $/;"	m
 am__v_AR_1	reg/Makefile	/^am__v_AR_1 = $/;"	m
 am__v_AR_1	router/Makefile	/^am__v_AR_1 = $/;"	m
@@ -10234,6 +10515,8 @@ am__v_CCLD_	lsd/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/
 am__v_CCLD_	lsdb/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CCLD_	mmanager/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CCLD_	netlink/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CCLD_	pma2-agent/command/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CCLD_	pma2-router/command/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CCLD_	policy/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CCLD_	reg/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CCLD_	router/Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
@@ -10256,6 +10539,8 @@ am__v_CCLD_0	lsd/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
 am__v_CCLD_0	lsdb/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
 am__v_CCLD_0	mmanager/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
 am__v_CCLD_0	netlink/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
+am__v_CCLD_0	pma2-agent/command/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
+am__v_CCLD_0	pma2-router/command/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
 am__v_CCLD_0	policy/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
 am__v_CCLD_0	reg/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
 am__v_CCLD_0	router/Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
@@ -10278,6 +10563,8 @@ am__v_CCLD_1	lsd/Makefile	/^am__v_CCLD_1 = $/;"	m
 am__v_CCLD_1	lsdb/Makefile	/^am__v_CCLD_1 = $/;"	m
 am__v_CCLD_1	mmanager/Makefile	/^am__v_CCLD_1 = $/;"	m
 am__v_CCLD_1	netlink/Makefile	/^am__v_CCLD_1 = $/;"	m
+am__v_CCLD_1	pma2-agent/command/Makefile	/^am__v_CCLD_1 = $/;"	m
+am__v_CCLD_1	pma2-router/command/Makefile	/^am__v_CCLD_1 = $/;"	m
 am__v_CCLD_1	policy/Makefile	/^am__v_CCLD_1 = $/;"	m
 am__v_CCLD_1	reg/Makefile	/^am__v_CCLD_1 = $/;"	m
 am__v_CCLD_1	router/Makefile	/^am__v_CCLD_1 = $/;"	m
@@ -10300,6 +10587,8 @@ am__v_CC_	lsd/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CC_	lsdb/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CC_	mmanager/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CC_	netlink/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CC_	pma2-agent/command/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CC_	pma2-router/command/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CC_	policy/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CC_	reg/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_CC_	router/Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
@@ -10322,6 +10611,8 @@ am__v_CC_0	lsd/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
 am__v_CC_0	lsdb/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
 am__v_CC_0	mmanager/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
 am__v_CC_0	netlink/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
+am__v_CC_0	pma2-agent/command/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
+am__v_CC_0	pma2-router/command/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
 am__v_CC_0	policy/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
 am__v_CC_0	reg/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
 am__v_CC_0	router/Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
@@ -10344,6 +10635,8 @@ am__v_CC_1	lsd/Makefile	/^am__v_CC_1 = $/;"	m
 am__v_CC_1	lsdb/Makefile	/^am__v_CC_1 = $/;"	m
 am__v_CC_1	mmanager/Makefile	/^am__v_CC_1 = $/;"	m
 am__v_CC_1	netlink/Makefile	/^am__v_CC_1 = $/;"	m
+am__v_CC_1	pma2-agent/command/Makefile	/^am__v_CC_1 = $/;"	m
+am__v_CC_1	pma2-router/command/Makefile	/^am__v_CC_1 = $/;"	m
 am__v_CC_1	policy/Makefile	/^am__v_CC_1 = $/;"	m
 am__v_CC_1	reg/Makefile	/^am__v_CC_1 = $/;"	m
 am__v_CC_1	router/Makefile	/^am__v_CC_1 = $/;"	m
@@ -10372,6 +10665,8 @@ am__v_GEN_	lsd/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	
 am__v_GEN_	lsdb/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_GEN_	mmanager/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_GEN_	netlink/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_GEN_	pma2-agent/command/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_GEN_	pma2-router/command/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_GEN_	policy/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_GEN_	reg/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_GEN_	router/Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
@@ -10394,6 +10689,8 @@ am__v_GEN_0	lsd/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
 am__v_GEN_0	lsdb/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
 am__v_GEN_0	mmanager/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
 am__v_GEN_0	netlink/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
+am__v_GEN_0	pma2-agent/command/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
+am__v_GEN_0	pma2-router/command/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
 am__v_GEN_0	policy/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
 am__v_GEN_0	reg/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
 am__v_GEN_0	router/Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
@@ -10416,6 +10713,8 @@ am__v_GEN_1	lsd/Makefile	/^am__v_GEN_1 = $/;"	m
 am__v_GEN_1	lsdb/Makefile	/^am__v_GEN_1 = $/;"	m
 am__v_GEN_1	mmanager/Makefile	/^am__v_GEN_1 = $/;"	m
 am__v_GEN_1	netlink/Makefile	/^am__v_GEN_1 = $/;"	m
+am__v_GEN_1	pma2-agent/command/Makefile	/^am__v_GEN_1 = $/;"	m
+am__v_GEN_1	pma2-router/command/Makefile	/^am__v_GEN_1 = $/;"	m
 am__v_GEN_1	policy/Makefile	/^am__v_GEN_1 = $/;"	m
 am__v_GEN_1	reg/Makefile	/^am__v_GEN_1 = $/;"	m
 am__v_GEN_1	router/Makefile	/^am__v_GEN_1 = $/;"	m
@@ -10438,6 +10737,8 @@ am__v_P_	lsd/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_P_	lsdb/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_P_	mmanager/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_P_	netlink/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_P_	pma2-agent/command/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_P_	pma2-router/command/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_P_	policy/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_P_	reg/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_P_	router/Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
@@ -10460,6 +10761,8 @@ am__v_P_0	lsd/Makefile	/^am__v_P_0 = false$/;"	m
 am__v_P_0	lsdb/Makefile	/^am__v_P_0 = false$/;"	m
 am__v_P_0	mmanager/Makefile	/^am__v_P_0 = false$/;"	m
 am__v_P_0	netlink/Makefile	/^am__v_P_0 = false$/;"	m
+am__v_P_0	pma2-agent/command/Makefile	/^am__v_P_0 = false$/;"	m
+am__v_P_0	pma2-router/command/Makefile	/^am__v_P_0 = false$/;"	m
 am__v_P_0	policy/Makefile	/^am__v_P_0 = false$/;"	m
 am__v_P_0	reg/Makefile	/^am__v_P_0 = false$/;"	m
 am__v_P_0	router/Makefile	/^am__v_P_0 = false$/;"	m
@@ -10482,6 +10785,8 @@ am__v_P_1	lsd/Makefile	/^am__v_P_1 = :$/;"	m
 am__v_P_1	lsdb/Makefile	/^am__v_P_1 = :$/;"	m
 am__v_P_1	mmanager/Makefile	/^am__v_P_1 = :$/;"	m
 am__v_P_1	netlink/Makefile	/^am__v_P_1 = :$/;"	m
+am__v_P_1	pma2-agent/command/Makefile	/^am__v_P_1 = :$/;"	m
+am__v_P_1	pma2-router/command/Makefile	/^am__v_P_1 = :$/;"	m
 am__v_P_1	policy/Makefile	/^am__v_P_1 = :$/;"	m
 am__v_P_1	reg/Makefile	/^am__v_P_1 = :$/;"	m
 am__v_P_1	router/Makefile	/^am__v_P_1 = :$/;"	m
@@ -10504,6 +10809,8 @@ am__v_at_	lsd/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_at_	lsdb/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_at_	mmanager/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_at_	netlink/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_at_	pma2-agent/command/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_at_	pma2-router/command/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_at_	policy/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_at_	reg/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_at_	router/Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
@@ -10526,6 +10833,8 @@ am__v_at_0	lsd/Makefile	/^am__v_at_0 = @$/;"	m
 am__v_at_0	lsdb/Makefile	/^am__v_at_0 = @$/;"	m
 am__v_at_0	mmanager/Makefile	/^am__v_at_0 = @$/;"	m
 am__v_at_0	netlink/Makefile	/^am__v_at_0 = @$/;"	m
+am__v_at_0	pma2-agent/command/Makefile	/^am__v_at_0 = @$/;"	m
+am__v_at_0	pma2-router/command/Makefile	/^am__v_at_0 = @$/;"	m
 am__v_at_0	policy/Makefile	/^am__v_at_0 = @$/;"	m
 am__v_at_0	reg/Makefile	/^am__v_at_0 = @$/;"	m
 am__v_at_0	router/Makefile	/^am__v_at_0 = @$/;"	m
@@ -10548,6 +10857,8 @@ am__v_at_1	lsd/Makefile	/^am__v_at_1 = $/;"	m
 am__v_at_1	lsdb/Makefile	/^am__v_at_1 = $/;"	m
 am__v_at_1	mmanager/Makefile	/^am__v_at_1 = $/;"	m
 am__v_at_1	netlink/Makefile	/^am__v_at_1 = $/;"	m
+am__v_at_1	pma2-agent/command/Makefile	/^am__v_at_1 = $/;"	m
+am__v_at_1	pma2-router/command/Makefile	/^am__v_at_1 = $/;"	m
 am__v_at_1	policy/Makefile	/^am__v_at_1 = $/;"	m
 am__v_at_1	reg/Makefile	/^am__v_at_1 = $/;"	m
 am__v_at_1	router/Makefile	/^am__v_at_1 = $/;"	m
@@ -10570,6 +10881,8 @@ am__v_lt_	lsd/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_lt_	lsdb/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_lt_	mmanager/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_lt_	netlink/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_lt_	pma2-agent/command/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_lt_	pma2-router/command/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_lt_	policy/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_lt_	reg/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
 am__v_lt_	router/Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
@@ -10592,6 +10905,8 @@ am__v_lt_0	lsd/Makefile	/^am__v_lt_0 = --silent$/;"	m
 am__v_lt_0	lsdb/Makefile	/^am__v_lt_0 = --silent$/;"	m
 am__v_lt_0	mmanager/Makefile	/^am__v_lt_0 = --silent$/;"	m
 am__v_lt_0	netlink/Makefile	/^am__v_lt_0 = --silent$/;"	m
+am__v_lt_0	pma2-agent/command/Makefile	/^am__v_lt_0 = --silent$/;"	m
+am__v_lt_0	pma2-router/command/Makefile	/^am__v_lt_0 = --silent$/;"	m
 am__v_lt_0	policy/Makefile	/^am__v_lt_0 = --silent$/;"	m
 am__v_lt_0	reg/Makefile	/^am__v_lt_0 = --silent$/;"	m
 am__v_lt_0	router/Makefile	/^am__v_lt_0 = --silent$/;"	m
@@ -10614,6 +10929,8 @@ am__v_lt_1	lsd/Makefile	/^am__v_lt_1 = $/;"	m
 am__v_lt_1	lsdb/Makefile	/^am__v_lt_1 = $/;"	m
 am__v_lt_1	mmanager/Makefile	/^am__v_lt_1 = $/;"	m
 am__v_lt_1	netlink/Makefile	/^am__v_lt_1 = $/;"	m
+am__v_lt_1	pma2-agent/command/Makefile	/^am__v_lt_1 = $/;"	m
+am__v_lt_1	pma2-router/command/Makefile	/^am__v_lt_1 = $/;"	m
 am__v_lt_1	policy/Makefile	/^am__v_lt_1 = $/;"	m
 am__v_lt_1	reg/Makefile	/^am__v_lt_1 = $/;"	m
 am__v_lt_1	router/Makefile	/^am__v_lt_1 = $/;"	m
@@ -10626,6 +10943,7 @@ am__v_lt_1	vty/Makefile	/^am__v_lt_1 = $/;"	m
 am_bm_OBJECTS	Makefile	/^am_bm_OBJECTS = pma_bm.$(OBJEXT)$/;"	m
 am_conf_detect_OBJECTS	Makefile	/^am_conf_detect_OBJECTS = conf_detect.$(OBJEXT)$/;"	m
 am_dbm_OBJECTS	Makefile	/^am_dbm_OBJECTS = dbm-pma_dbm.$(OBJEXT)$/;"	m
+am_ffmtest_OBJECTS	Makefile	/^am_ffmtest_OBJECTS = ffmtest-ffmtest.$(OBJEXT)$/;"	m
 am_icm_OBJECTS	Makefile	/^am_icm_OBJECTS = pma_icm.$(OBJEXT)$/;"	m
 am_libmodulemanager_a_OBJECTS	mmanager/Makefile	/^am_libmodulemanager_a_OBJECTS = module_manager.$(OBJEXT)$/;"	m
 am_libplogger_a_OBJECTS	logger/Makefile	/^am_libplogger_a_OBJECTS = libplogger_a-logger.$(OBJEXT)$/;"	m
@@ -10633,17 +10951,19 @@ am_libploggersrv_a_OBJECTS	logger/Makefile	/^am_libploggersrv_a_OBJECTS = libplo
 am_libpma_a_OBJECTS	lib/Makefile	/^am_libpma_a_OBJECTS = libpma_a-thread_pool.$(OBJEXT) \\$/;"	m
 am_libpmacomm_a_OBJECTS	comm/Makefile	/^am_libpmacomm_a_OBJECTS = libpmacomm_a-comm_utils.$(OBJEXT) \\$/;"	m
 am_libpmacommand_a_OBJECTS	command/Makefile	/^am_libpmacommand_a_OBJECTS = libpmacommand_a-routercmd.$(OBJEXT)$/;"	m
+am_libpmacommand_a_OBJECTS	pma2-agent/command/Makefile	/^am_libpmacommand_a_OBJECTS = libpmacommand_a-routercmd.$(OBJEXT)$/;"	m
+am_libpmacommand_a_OBJECTS	pma2-router/command/Makefile	/^am_libpmacommand_a_OBJECTS = libpmacommand_a-routercmd.$(OBJEXT)$/;"	m
 am_libpmacommlite_a_OBJECTS	comm/Makefile	/^am_libpmacommlite_a_OBJECTS = comm_lite.$(OBJEXT)$/;"	m
 am_libpmaconf_a_OBJECTS	conf/Makefile	/^am_libpmaconf_a_OBJECTS = libpmaconf_a-conf.$(OBJEXT)$/;"	m
 am_libpmactl_a_OBJECTS	control/Makefile	/^am_libpmactl_a_OBJECTS = control.$(OBJEXT)$/;"	m
 am_libpmadb_a_OBJECTS	db/Makefile	/^am_libpmadb_a_OBJECTS = dbm_lsdb.$(OBJEXT) dbutils.$(OBJEXT) \\$/;"	m
-am_libpmadbm_a_OBJECTS	server/Makefile	/^am_libpmadbm_a_OBJECTS = dbm.$(OBJEXT) server.$(OBJEXT) \\$/;"	m
+am_libpmadbm_a_OBJECTS	server/Makefile	/^am_libpmadbm_a_OBJECTS = dbm.$(OBJEXT)$/;"	m
 am_libpmaddc_a_OBJECTS	ddc/Makefile	/^am_libpmaddc_a_OBJECTS = ddc.$(OBJEXT) fah.$(OBJEXT)$/;"	m
-am_libpmaicm_a_OBJECTS	server/Makefile	/^am_libpmaicm_a_OBJECTS = icm.$(OBJEXT) server.$(OBJEXT) \\$/;"	m
+am_libpmaicm_a_OBJECTS	server/Makefile	/^am_libpmaicm_a_OBJECTS = icm.$(OBJEXT)$/;"	m
 am_libpmalsd_a_OBJECTS	lsd/Makefile	/^am_libpmalsd_a_OBJECTS = lsdsrv.$(OBJEXT) lsd_hello.$(OBJEXT) \\$/;"	m
 am_libpmalsdb_a_OBJECTS	lsdb/Makefile	/^am_libpmalsdb_a_OBJECTS = libpmalsdb_a-lsdb_impl.$(OBJEXT) \\$/;"	m
 am_libpmanetlink_a_OBJECTS	netlink/Makefile	/^am_libpmanetlink_a_OBJECTS = netlink.$(OBJEXT) route.$(OBJEXT)$/;"	m
-am_libpmapem_a_OBJECTS	server/Makefile	/^am_libpmapem_a_OBJECTS = libpmapem_a-pem.$(OBJEXT) \\$/;"	m
+am_libpmapem_a_OBJECTS	server/Makefile	/^am_libpmapem_a_OBJECTS = libpmapem_a-pem.$(OBJEXT)$/;"	m
 am_libpmapolicy_a_OBJECTS	policy/Makefile	/^am_libpmapolicy_a_OBJECTS = libpmapolicy_a-policy_parse.$(OBJEXT) \\$/;"	m
 am_libpmareg_a_OBJECTS	reg/Makefile	/^am_libpmareg_a_OBJECTS = libpmareg_a-reg.$(OBJEXT)$/;"	m
 am_libpmarouter_a_OBJECTS	router/Makefile	/^am_libpmarouter_a_OBJECTS = libpmarouter_a-interface.$(OBJEXT) \\$/;"	m
@@ -10653,6 +10973,7 @@ am_libpmautils_a_OBJECTS	utils/Makefile	/^am_libpmautils_a_OBJECTS = libpmautils
 am_libpmavty_a_OBJECTS	vty/Makefile	/^am_libpmavty_a_OBJECTS = vty.$(OBJEXT)$/;"	m
 am_libsnmpapi_a_OBJECTS	snmp/Makefile	/^am_libsnmpapi_a_OBJECTS = libsnmpapi_a-getBgpRouterTable.$(OBJEXT) \\$/;"	m
 am_pem_OBJECTS	Makefile	/^am_pem_OBJECTS = pem-pma_pem.$(OBJEXT)$/;"	m
+am_pfmtest_OBJECTS	Makefile	/^am_pfmtest_OBJECTS = pfmtest.$(OBJEXT)$/;"	m
 am_qconf_OBJECTS	Makefile	/^am_qconf_OBJECTS = qconf.$(OBJEXT)$/;"	m
 am_test_bm_OBJECTS	test/Makefile	/^am_test_bm_OBJECTS = test_bm-test_bm.$(OBJEXT)$/;"	m
 am_test_bm_conf_OBJECTS	test/Makefile	/^am_test_bm_conf_OBJECTS = test_bm_conf-test_bm_conf.$(OBJEXT)$/;"	m
@@ -11075,6 +11396,7 @@ bgpRouteTable::bgp4PathAttrPeer	snmp/includes/bgp_snmp.h	/^	char bgp4PathAttrPee
 bgpRouteTable::bgp4PathAttrUnknown	snmp/includes/bgp_snmp.h	/^	char bgp4PathAttrUnknown[10];$/;"	m	struct:bgpRouteTable	access:public
 bgpRouteTable::next	snmp/includes/bgp_snmp.h	/^	struct bgpRouteTable *next;$/;"	m	struct:bgpRouteTable	typeref:struct:bgpRouteTable::bgpRouteTable	access:public
 bgpRouteToSring	snmp/snmp/getBgpRouterTable.c	/^int bgpRouteToSring(char *string, bgpRouteTable *head){$/;"	f	signature:(char *string, bgpRouteTable *head)
+bgp_control	pma.sh	/^bgp_control()$/;"	f
 bgp_interface	server/pem.h	/^struct bgp_interface{$/;"	s
 bgp_interface::ifid	server/pem.h	/^    int ifid;$/;"	m	struct:bgp_interface	access:public
 bgp_interface::local_ip	server/pem.h	/^    char local_ip[24];$/;"	m	struct:bgp_interface	access:public
@@ -11110,6 +11432,14 @@ bigEndCksum	db/sqlite3.c	/^  u8 bigEndCksum;                 \/* True if checksu
 binCollFunc	db/sqlite3.c	/^static int binCollFunc($/;"	f	file:	signature:( void *padFlag, int nKey1, const void *pKey1, int nKey2, const void *pKey2 )
 bin_PROGRAMS	Makefile	/^bin_PROGRAMS = bm$(EXEEXT) pem$(EXEEXT) icm$(EXEEXT) dbm$(EXEEXT) \\$/;"	m
 bin_PROGRAMS	test/Makefile	/^bin_PROGRAMS = test_bm_conf$(EXEEXT) test_bm_mmanager$(EXEEXT) \\$/;"	m
+bin_start	pma-agent.sh	/^bin_start(){$/;"	f
+bin_start	pma-router.sh	/^bin_start(){$/;"	f
+bin_start	pma2-agent/pma-agent.sh	/^bin_start(){$/;"	f
+bin_start	pma2-router/pma-router.sh	/^bin_start(){$/;"	f
+bin_stop	pma-agent.sh	/^bin_stop(){$/;"	f
+bin_stop	pma-router.sh	/^bin_stop(){$/;"	f
+bin_stop	pma2-agent/pma-agent.sh	/^bin_stop(){$/;"	f
+bin_stop	pma2-router/pma-router.sh	/^bin_stop(){$/;"	f
 binaryCompareP5	db/sqlite3.c	/^static u8 binaryCompareP5(Expr *pExpr1, Expr *pExpr2, int jumpIfNull){$/;"	f	file:	signature:(Expr *pExpr1, Expr *pExpr2, int jumpIfNull)
 binaryToUnaryIfNull	db/sqlite3.c	/^  static void binaryToUnaryIfNull(Parse *pParse, Expr *pY, Expr *pA, int op){$/;"	f	file:	signature:(Parse *pParse, Expr *pY, Expr *pA, int op)
 bindText	db/sqlite3.c	/^static int bindText($/;"	f	file:	signature:( sqlite3_stmt *pStmt, int i, const void *zData, int nData, void (*xDel)(void*), u8 encoding )
@@ -11150,6 +11480,8 @@ bindir	lsd/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
 bindir	lsdb/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
 bindir	mmanager/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
 bindir	netlink/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
+bindir	pma2-agent/command/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
+bindir	pma2-router/command/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
 bindir	policy/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
 bindir	reg/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
 bindir	router/Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
@@ -11225,6 +11557,8 @@ build	lsd/Makefile	/^build = i686-pc-linux-gnu$/;"	m
 build	lsdb/Makefile	/^build = i686-pc-linux-gnu$/;"	m
 build	mmanager/Makefile	/^build = i686-pc-linux-gnu$/;"	m
 build	netlink/Makefile	/^build = i686-pc-linux-gnu$/;"	m
+build	pma2-agent/command/Makefile	/^build = i686-pc-linux-gnu$/;"	m
+build	pma2-router/command/Makefile	/^build = i686-pc-linux-gnu$/;"	m
 build	policy/Makefile	/^build = i686-pc-linux-gnu$/;"	m
 build	reg/Makefile	/^build = i686-pc-linux-gnu$/;"	m
 build	router/Makefile	/^build = i686-pc-linux-gnu$/;"	m
@@ -11247,6 +11581,8 @@ build_alias	lsd/Makefile	/^build_alias = $/;"	m
 build_alias	lsdb/Makefile	/^build_alias = $/;"	m
 build_alias	mmanager/Makefile	/^build_alias = $/;"	m
 build_alias	netlink/Makefile	/^build_alias = $/;"	m
+build_alias	pma2-agent/command/Makefile	/^build_alias = $/;"	m
+build_alias	pma2-router/command/Makefile	/^build_alias = $/;"	m
 build_alias	policy/Makefile	/^build_alias = $/;"	m
 build_alias	reg/Makefile	/^build_alias = $/;"	m
 build_alias	router/Makefile	/^build_alias = $/;"	m
@@ -11269,6 +11605,8 @@ build_cpu	lsd/Makefile	/^build_cpu = i686$/;"	m
 build_cpu	lsdb/Makefile	/^build_cpu = i686$/;"	m
 build_cpu	mmanager/Makefile	/^build_cpu = i686$/;"	m
 build_cpu	netlink/Makefile	/^build_cpu = i686$/;"	m
+build_cpu	pma2-agent/command/Makefile	/^build_cpu = i686$/;"	m
+build_cpu	pma2-router/command/Makefile	/^build_cpu = i686$/;"	m
 build_cpu	policy/Makefile	/^build_cpu = i686$/;"	m
 build_cpu	reg/Makefile	/^build_cpu = i686$/;"	m
 build_cpu	router/Makefile	/^build_cpu = i686$/;"	m
@@ -11291,6 +11629,8 @@ build_os	lsd/Makefile	/^build_os = linux-gnu$/;"	m
 build_os	lsdb/Makefile	/^build_os = linux-gnu$/;"	m
 build_os	mmanager/Makefile	/^build_os = linux-gnu$/;"	m
 build_os	netlink/Makefile	/^build_os = linux-gnu$/;"	m
+build_os	pma2-agent/command/Makefile	/^build_os = linux-gnu$/;"	m
+build_os	pma2-router/command/Makefile	/^build_os = linux-gnu$/;"	m
 build_os	policy/Makefile	/^build_os = linux-gnu$/;"	m
 build_os	reg/Makefile	/^build_os = linux-gnu$/;"	m
 build_os	router/Makefile	/^build_os = linux-gnu$/;"	m
@@ -11313,6 +11653,8 @@ build_triplet	lsd/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
 build_triplet	lsdb/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
 build_triplet	mmanager/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
 build_triplet	netlink/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
+build_triplet	pma2-agent/command/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
+build_triplet	pma2-router/command/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
 build_triplet	policy/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
 build_triplet	reg/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
 build_triplet	router/Makefile	/^build_triplet = i686-pc-linux-gnu$/;"	m
@@ -11335,6 +11677,8 @@ build_vendor	lsd/Makefile	/^build_vendor = pc$/;"	m
 build_vendor	lsdb/Makefile	/^build_vendor = pc$/;"	m
 build_vendor	mmanager/Makefile	/^build_vendor = pc$/;"	m
 build_vendor	netlink/Makefile	/^build_vendor = pc$/;"	m
+build_vendor	pma2-agent/command/Makefile	/^build_vendor = pc$/;"	m
+build_vendor	pma2-router/command/Makefile	/^build_vendor = pc$/;"	m
 build_vendor	policy/Makefile	/^build_vendor = pc$/;"	m
 build_vendor	reg/Makefile	/^build_vendor = pc$/;"	m
 build_vendor	router/Makefile	/^build_vendor = pc$/;"	m
@@ -11357,6 +11701,8 @@ builddir	lsd/Makefile	/^builddir = .$/;"	m
 builddir	lsdb/Makefile	/^builddir = .$/;"	m
 builddir	mmanager/Makefile	/^builddir = .$/;"	m
 builddir	netlink/Makefile	/^builddir = .$/;"	m
+builddir	pma2-agent/command/Makefile	/^builddir = .$/;"	m
+builddir	pma2-router/command/Makefile	/^builddir = .$/;"	m
 builddir	policy/Makefile	/^builddir = .$/;"	m
 builddir	reg/Makefile	/^builddir = .$/;"	m
 builddir	router/Makefile	/^builddir = .$/;"	m
@@ -11484,7 +11830,7 @@ cmd_msg_list	vty/vty.c	/^CMsg cmd_msg_list[20] = $/;"	v
 cmd_string	vty/vty.h	/^typedef struct cmd_string{$/;"	s
 cmd_string::next	vty/vty.h	/^	char* next;$/;"	m	struct:cmd_string	access:public
 cmd_string::token	vty/vty.h	/^	char* token;$/;"	m	struct:cmd_string	access:public
-cmd_test_CFLAGS	Makefile	/^cmd_test_CFLAGS = -D PEMODULE -L.\/command\/ -L$(LIB_SNMP_LIB) -lxtables -liptc -lmpls -liptables -lnetsnmp $/;"	m
+cmd_test_CFLAGS	Makefile	/^cmd_test_CFLAGS = -D PEMODULE -L.\/command\/  -lxtables -liptc -lmpls -liptables -lnetsnmp $/;"	m
 cmd_test_LDADD	Makefile	/^cmd_test_LDADD = .\/command\/libpmacommand.a\\$/;"	m
 cmd_test_SOURCES	Makefile	/^cmd_test_SOURCES = cmd_test.c$/;"	m
 cmp	lib/linklist.h	/^  int (*cmp) (void *val1, void *val2);$/;"	m	struct:list	access:public
@@ -11970,6 +12316,8 @@ datadir	lsd/Makefile	/^datadir = ${datarootdir}$/;"	m
 datadir	lsdb/Makefile	/^datadir = ${datarootdir}$/;"	m
 datadir	mmanager/Makefile	/^datadir = ${datarootdir}$/;"	m
 datadir	netlink/Makefile	/^datadir = ${datarootdir}$/;"	m
+datadir	pma2-agent/command/Makefile	/^datadir = ${datarootdir}$/;"	m
+datadir	pma2-router/command/Makefile	/^datadir = ${datarootdir}$/;"	m
 datadir	policy/Makefile	/^datadir = ${datarootdir}$/;"	m
 datadir	reg/Makefile	/^datadir = ${datarootdir}$/;"	m
 datadir	router/Makefile	/^datadir = ${datarootdir}$/;"	m
@@ -11992,6 +12340,8 @@ datarootdir	lsd/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
 datarootdir	lsdb/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
 datarootdir	mmanager/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
 datarootdir	netlink/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
+datarootdir	pma2-agent/command/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
+datarootdir	pma2-router/command/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
 datarootdir	policy/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
 datarootdir	reg/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
 datarootdir	router/Makefile	/^datarootdir = ${prefix}\/share$/;"	m
@@ -12117,7 +12467,13 @@ defined_test_names_	test/include/gtest/internal/gtest-internal.h	/^  ::std::set<
 defragmentPage	db/sqlite3.c	/^static int defragmentPage(MemPage *pPage){$/;"	f	file:	signature:(MemPage *pPage)
 del	lib/linklist.h	/^  void (*del) (void *val);$/;"	m	struct:list	access:public
 del_iptables	command/iptables.h	/^int del_iptables(__u32 num);$/;"	p	signature:(__u32 num)
+del_iptables	pma2-agent/command/iptables.h	/^int del_iptables(__u32 num);$/;"	p	signature:(__u32 num)
+del_iptables	pma2-router/command/iptables.h	/^int del_iptables(__u32 num);$/;"	p	signature:(__u32 num)
 del_mpls	command/mpls.h	/^void del_mpls(__u32 key);$/;"	p	signature:(__u32 key)
+del_mpls	pma2-agent/command/mpls.h	/^void del_mpls(__u32 key);$/;"	p	signature:(__u32 key)
+del_mpls	pma2-router/command/mpls.h	/^void del_mpls(__u32 key);$/;"	p	signature:(__u32 key)
+del_route	route_test.c	/^int del_route(__u32 destination,__u32 gateway,unsigned int netmask){$/;"	f	signature:(__u32 destination,__u32 gateway,unsigned int netmask)
+delay_time	pfmtest.c	/^int delay_time(int n)\/\/ms$/;"	f	signature:(int n)
 delay_time	utils/thread_daemon.c	/^int delay_time(int n)\/\/ms$/;"	f	signature:(int n)
 deleteCell	db/sqlite3.c	/^static int deleteCell(Rtree *, RtreeNode *, int, int);$/;"	p	file:	signature:(Rtree *, RtreeNode *, int, int)
 deleteCell	db/sqlite3.c	/^static int deleteCell(Rtree *pRtree, RtreeNode *pNode, int iCell, int iHeight){$/;"	f	file:	signature:(Rtree *pRtree, RtreeNode *pNode, int iCell, int iHeight)
@@ -12138,6 +12494,8 @@ depcomp	lsd/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	lsdb/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	mmanager/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	netlink/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
+depcomp	pma2-agent/command/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
+depcomp	pma2-router/command/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	policy/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	reg/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	router/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
@@ -12147,6 +12505,10 @@ depcomp	test/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	timer/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	utils/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
 depcomp	vty/Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
+deploy	pma-agent.sh	/^deploy(){$/;"	f
+deploy	pma-router.sh	/^deploy(){$/;"	f
+deploy	pma2-agent/pma-agent.sh	/^deploy(){$/;"	f
+deploy	pma2-router/pma-router.sh	/^deploy(){$/;"	f
 des_mod	comm/interior_daemon.h	/^	int des_mod;$/;"	m	struct:response_message	access:public
 des_mod	server/socket.h	/^	int des_mod;$/;"	m	struct:response_message	access:public
 desc	db/sqlite3.c	/^     unsigned char desc;       \/* True for DESC.  False for ASC. *\/$/;"	m	struct:sqlite3_index_info::sqlite3_index_orderby	file:	access:public
@@ -12228,6 +12590,8 @@ docdir	lsd/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
 docdir	lsdb/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
 docdir	mmanager/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
 docdir	netlink/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
+docdir	pma2-agent/command/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
+docdir	pma2-router/command/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
 docdir	policy/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
 docdir	reg/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
 docdir	router/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
@@ -12259,6 +12623,8 @@ dst_addr	comm/comm_lite.h	/^	struct in_addr dst_addr;$/;"	m	struct:pma_pms_heade
 dst_addr	comm/comm_utils.h	/^	struct in_addr dst_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
 dst_ip	comm/comm_utils.h	/^	u32 dst_ip; \/*!< 目地IP *\/$/;"	m	struct:alca_header	access:public
 dst_ip	command/routercmd.h	/^	char dst_ip[50];$/;"	m	struct:tunnelcmd	access:public
+dst_ip	pma2-agent/command/routercmd.h	/^	char dst_ip[50];$/;"	m	struct:tunnelcmd	access:public
+dst_ip	pma2-router/command/routercmd.h	/^	char dst_ip[50];$/;"	m	struct:tunnelcmd	access:public
 dummy_	test/include/gtest/internal/gtest-internal.h	/^  static bool dummy_;$/;"	m	class:testing::internal::TypeIdHelper	access:public
 dummy_	test/include/gtest/internal/gtest-internal.h	/^bool TypeIdHelper<T>::dummy_ = false;$/;"	m	class:testing::internal::TypeIdHelper
 dup8bytes	db/sqlite3.c	/^static char *dup8bytes(Vdbe *v, const char *in){$/;"	f	file:	signature:(Vdbe *v, const char *in)
@@ -12278,6 +12644,8 @@ dvidir	lsd/Makefile	/^dvidir = ${docdir}$/;"	m
 dvidir	lsdb/Makefile	/^dvidir = ${docdir}$/;"	m
 dvidir	mmanager/Makefile	/^dvidir = ${docdir}$/;"	m
 dvidir	netlink/Makefile	/^dvidir = ${docdir}$/;"	m
+dvidir	pma2-agent/command/Makefile	/^dvidir = ${docdir}$/;"	m
+dvidir	pma2-router/command/Makefile	/^dvidir = ${docdir}$/;"	m
 dvidir	policy/Makefile	/^dvidir = ${docdir}$/;"	m
 dvidir	reg/Makefile	/^dvidir = ${docdir}$/;"	m
 dvidir	router/Makefile	/^dvidir = ${docdir}$/;"	m
@@ -12526,6 +12894,8 @@ exec_prefix	lsd/Makefile	/^exec_prefix = ${prefix}$/;"	m
 exec_prefix	lsdb/Makefile	/^exec_prefix = ${prefix}$/;"	m
 exec_prefix	mmanager/Makefile	/^exec_prefix = ${prefix}$/;"	m
 exec_prefix	netlink/Makefile	/^exec_prefix = ${prefix}$/;"	m
+exec_prefix	pma2-agent/command/Makefile	/^exec_prefix = ${prefix}$/;"	m
+exec_prefix	pma2-router/command/Makefile	/^exec_prefix = ${prefix}$/;"	m
 exec_prefix	policy/Makefile	/^exec_prefix = ${prefix}$/;"	m
 exec_prefix	reg/Makefile	/^exec_prefix = ${prefix}$/;"	m
 exec_prefix	router/Makefile	/^exec_prefix = ${prefix}$/;"	m
@@ -12668,6 +13038,12 @@ fd	test/test_bm_exterior_comm.cc	/^int fd = 0;$/;"	v
 fdatasync	db/sqlite3.c	26948;"	d	file:
 fetchPayload	db/sqlite3.c	/^static const void *fetchPayload($/;"	f	file:	signature:( BtCursor *pCur, u32 *pAmt )
 fetch_keyword	utils/list.h	/^typedef int (*fetch_keyword)(struct cr_list_head* ptr);$/;"	t
+ffmtest_CFLAGS	Makefile	/^ffmtest_CFLAGS = -L.\/command\/ -liptc -lmpls -liptables -lnetsnmp  --std=c99$/;"	m
+ffmtest_DEPENDENCIES	Makefile	/^ffmtest_DEPENDENCIES = .\/comm\/libpmacommlite.a .\/utils\/libpmautils.a$/;"	m
+ffmtest_LDADD	Makefile	/^ffmtest_LDADD = .\/comm\/libpmacommlite.a\\$/;"	m
+ffmtest_LINK	Makefile	/^ffmtest_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+ffmtest_OBJECTS	Makefile	/^ffmtest_OBJECTS = $(am_ffmtest_OBJECTS)$/;"	m
+ffmtest_SOURCES	Makefile	/^ffmtest_SOURCES = ffmtest.c$/;"	m
 field	lsd/lsd_handler.h	/^	}field;$/;"	m	union:state_changer	typeref:struct:state_changer::__anon26	access:public
 field_separator	snmp/snmp/snmptable2.c	/^static char    *field_separator = NULL;$/;"	v	file:
 fields	snmp/snmp/snmptable2.c	/^static int      fields;$/;"	v	file:
@@ -13570,6 +13946,8 @@ get_ipaddr_table	snmp/snmp/snmpcore.c	/^int get_ipaddr_table(callbackptr callbac
 get_iproute_table	snmp/includes/snmpcore.h	/^int get_iproute_table(callbackptr callback);$/;"	p	signature:(callbackptr callback)
 get_iproute_table	snmp/snmp/snmpcore.c	/^int get_iproute_table(callbackptr callback)$/;"	f	signature:(callbackptr callback)
 get_iptables	command/iptables.h	/^int get_iptables(char *src, char *dst,  __u32 *num,__u32 *key);$/;"	p	signature:(char *src, char *dst, __u32 *num,__u32 *key)
+get_iptables	pma2-agent/command/iptables.h	/^int get_iptables(char *src, char *dst,  __u32 *num,__u32 *key);$/;"	p	signature:(char *src, char *dst, __u32 *num,__u32 *key)
+get_iptables	pma2-router/command/iptables.h	/^int get_iptables(char *src, char *dst,  __u32 *num,__u32 *key);$/;"	p	signature:(char *src, char *dst, __u32 *num,__u32 *key)
 get_link_states	db/dbm_lsdb.c	/^struct link_info* get_link_states(u32 areaid, int *count)$/;"	f	signature:(u32 areaid, int *count)
 get_link_states	db/dbm_lsdb.h	/^struct link_info* get_link_states(u32 areaid, int *count);$/;"	p	signature:(u32 areaid, int *count)
 get_link_states_of_router	db/dbm_lsdb.c	/^struct link_info* get_link_states_of_router(u32 areaid,u32 routerid , int *count)$/;"	f	signature:(u32 areaid,u32 routerid , int *count)
@@ -13859,6 +14237,8 @@ host	lsd/Makefile	/^host = i686-pc-linux-gnu$/;"	m
 host	lsdb/Makefile	/^host = i686-pc-linux-gnu$/;"	m
 host	mmanager/Makefile	/^host = i686-pc-linux-gnu$/;"	m
 host	netlink/Makefile	/^host = i686-pc-linux-gnu$/;"	m
+host	pma2-agent/command/Makefile	/^host = i686-pc-linux-gnu$/;"	m
+host	pma2-router/command/Makefile	/^host = i686-pc-linux-gnu$/;"	m
 host	policy/Makefile	/^host = i686-pc-linux-gnu$/;"	m
 host	reg/Makefile	/^host = i686-pc-linux-gnu$/;"	m
 host	router/Makefile	/^host = i686-pc-linux-gnu$/;"	m
@@ -13881,6 +14261,8 @@ host_alias	lsd/Makefile	/^host_alias = $/;"	m
 host_alias	lsdb/Makefile	/^host_alias = $/;"	m
 host_alias	mmanager/Makefile	/^host_alias = $/;"	m
 host_alias	netlink/Makefile	/^host_alias = $/;"	m
+host_alias	pma2-agent/command/Makefile	/^host_alias = $/;"	m
+host_alias	pma2-router/command/Makefile	/^host_alias = $/;"	m
 host_alias	policy/Makefile	/^host_alias = $/;"	m
 host_alias	reg/Makefile	/^host_alias = $/;"	m
 host_alias	router/Makefile	/^host_alias = $/;"	m
@@ -13903,6 +14285,8 @@ host_cpu	lsd/Makefile	/^host_cpu = i686$/;"	m
 host_cpu	lsdb/Makefile	/^host_cpu = i686$/;"	m
 host_cpu	mmanager/Makefile	/^host_cpu = i686$/;"	m
 host_cpu	netlink/Makefile	/^host_cpu = i686$/;"	m
+host_cpu	pma2-agent/command/Makefile	/^host_cpu = i686$/;"	m
+host_cpu	pma2-router/command/Makefile	/^host_cpu = i686$/;"	m
 host_cpu	policy/Makefile	/^host_cpu = i686$/;"	m
 host_cpu	reg/Makefile	/^host_cpu = i686$/;"	m
 host_cpu	router/Makefile	/^host_cpu = i686$/;"	m
@@ -13925,6 +14309,8 @@ host_os	lsd/Makefile	/^host_os = linux-gnu$/;"	m
 host_os	lsdb/Makefile	/^host_os = linux-gnu$/;"	m
 host_os	mmanager/Makefile	/^host_os = linux-gnu$/;"	m
 host_os	netlink/Makefile	/^host_os = linux-gnu$/;"	m
+host_os	pma2-agent/command/Makefile	/^host_os = linux-gnu$/;"	m
+host_os	pma2-router/command/Makefile	/^host_os = linux-gnu$/;"	m
 host_os	policy/Makefile	/^host_os = linux-gnu$/;"	m
 host_os	reg/Makefile	/^host_os = linux-gnu$/;"	m
 host_os	router/Makefile	/^host_os = linux-gnu$/;"	m
@@ -13947,6 +14333,8 @@ host_triplet	lsd/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
 host_triplet	lsdb/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
 host_triplet	mmanager/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
 host_triplet	netlink/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
+host_triplet	pma2-agent/command/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
+host_triplet	pma2-router/command/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
 host_triplet	policy/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
 host_triplet	reg/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
 host_triplet	router/Makefile	/^host_triplet = i686-pc-linux-gnu$/;"	m
@@ -13969,6 +14357,8 @@ host_vendor	lsd/Makefile	/^host_vendor = pc$/;"	m
 host_vendor	lsdb/Makefile	/^host_vendor = pc$/;"	m
 host_vendor	mmanager/Makefile	/^host_vendor = pc$/;"	m
 host_vendor	netlink/Makefile	/^host_vendor = pc$/;"	m
+host_vendor	pma2-agent/command/Makefile	/^host_vendor = pc$/;"	m
+host_vendor	pma2-router/command/Makefile	/^host_vendor = pc$/;"	m
 host_vendor	policy/Makefile	/^host_vendor = pc$/;"	m
 host_vendor	reg/Makefile	/^host_vendor = pc$/;"	m
 host_vendor	router/Makefile	/^host_vendor = pc$/;"	m
@@ -13994,6 +14384,8 @@ htmldir	lsd/Makefile	/^htmldir = ${docdir}$/;"	m
 htmldir	lsdb/Makefile	/^htmldir = ${docdir}$/;"	m
 htmldir	mmanager/Makefile	/^htmldir = ${docdir}$/;"	m
 htmldir	netlink/Makefile	/^htmldir = ${docdir}$/;"	m
+htmldir	pma2-agent/command/Makefile	/^htmldir = ${docdir}$/;"	m
+htmldir	pma2-router/command/Makefile	/^htmldir = ${docdir}$/;"	m
 htmldir	policy/Makefile	/^htmldir = ${docdir}$/;"	m
 htmldir	reg/Makefile	/^htmldir = ${docdir}$/;"	m
 htmldir	router/Makefile	/^htmldir = ${docdir}$/;"	m
@@ -14452,6 +14844,7 @@ ifspeed	snmp/includes/snmpcore.h	/^	char* ifspeed;$/;"	m	struct:InterfaceTable	a
 iftable	snmp/snmp/snmpcore.c	/^tableopt iftable = { $/;"	v
 iftable_mapper	snmp/includes/typemapper.h	/^const int iftable_mapper[22] = $/;"	v
 iftype	snmp/includes/snmpcore.h	/^	char* iftype;$/;"	m	struct:InterfaceTable	access:public
+igp_control	pma.sh	/^igp_control()$/;"	f
 impl	test/include/gtest/gtest.h	/^  const internal::UnitTestImpl* impl() const { return impl_; }$/;"	f	class:testing::UnitTest	access:private	signature:() const
 impl	test/include/gtest/gtest.h	/^  internal::UnitTestImpl* impl() { return impl_; }$/;"	f	class:testing::UnitTest	access:private	signature:()
 impl_	test/include/gtest/gtest.h	/^  internal::UnitTestImpl* impl_;$/;"	m	class:testing::UnitTest	access:private
@@ -14466,6 +14859,8 @@ inTransaction	db/sqlite3.c	/^  int inTransaction;     \/* True after xBegin but 
 inTransaction	db/sqlite3.c	/^  u8 inTransaction;     \/* Transaction state *\/$/;"	m	struct:BtShared	file:	access:public
 inVtabMethod	db/sqlite3.c	/^  bft inVtabMethod:2;     \/* See comments above *\/$/;"	m	struct:Vdbe	file:	access:public
 in_label	command/routercmd.h	/^	__u32 in_label;$/;"	m	struct:tunnelcmd	access:public
+in_label	pma2-agent/command/routercmd.h	/^	__u32 in_label;$/;"	m	struct:tunnelcmd	access:public
+in_label	pma2-router/command/routercmd.h	/^	__u32 in_label;$/;"	m	struct:tunnelcmd	access:public
 in_pktinfo	lib/zebra.h	/^struct in_pktinfo$/;"	s
 in_pktinfo::ipi_addr	lib/zebra.h	/^  struct in_addr ipi_addr;$/;"	m	struct:in_pktinfo	typeref:struct:in_pktinfo::in_addr	access:public
 in_pktinfo::ipi_ifindex	lib/zebra.h	/^  int ipi_ifindex;$/;"	m	struct:in_pktinfo	access:public
@@ -14483,6 +14878,8 @@ includedir	lsd/Makefile	/^includedir = ${prefix}\/include$/;"	m
 includedir	lsdb/Makefile	/^includedir = ${prefix}\/include$/;"	m
 includedir	mmanager/Makefile	/^includedir = ${prefix}\/include$/;"	m
 includedir	netlink/Makefile	/^includedir = ${prefix}\/include$/;"	m
+includedir	pma2-agent/command/Makefile	/^includedir = ${prefix}\/include$/;"	m
+includedir	pma2-router/command/Makefile	/^includedir = ${prefix}\/include$/;"	m
 includedir	policy/Makefile	/^includedir = ${prefix}\/include$/;"	m
 includedir	reg/Makefile	/^includedir = ${prefix}\/include$/;"	m
 includedir	router/Makefile	/^includedir = ${prefix}\/include$/;"	m
@@ -14537,6 +14934,8 @@ infodir	lsd/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	lsdb/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	mmanager/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	netlink/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
+infodir	pma2-agent/command/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
+infodir	pma2-router/command/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	policy/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	reg/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
 infodir	router/Makefile	/^infodir = ${datarootdir}\/info$/;"	m
@@ -14598,6 +14997,8 @@ install_sh	lsd/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/
 install_sh	lsdb/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/install-sh$/;"	m
 install_sh	mmanager/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/install-sh$/;"	m
 install_sh	netlink/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/install-sh$/;"	m
+install_sh	pma2-agent/command/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/install-sh$/;"	m
+install_sh	pma2-router/command/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/install-sh$/;"	m
 install_sh	policy/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/install-sh$/;"	m
 install_sh	reg/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/install-sh$/;"	m
 install_sh	router/Makefile	/^install_sh = ${SHELL} \/home\/macro\/workspace\/pma2\/install-sh$/;"	m
@@ -14620,6 +15021,8 @@ install_sh_DATA	lsd/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
 install_sh_DATA	lsdb/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
 install_sh_DATA	mmanager/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
 install_sh_DATA	netlink/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
+install_sh_DATA	pma2-agent/command/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
+install_sh_DATA	pma2-router/command/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
 install_sh_DATA	policy/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
 install_sh_DATA	reg/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
 install_sh_DATA	router/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
@@ -14642,6 +15045,8 @@ install_sh_PROGRAM	lsd/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
 install_sh_PROGRAM	lsdb/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
 install_sh_PROGRAM	mmanager/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
 install_sh_PROGRAM	netlink/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
+install_sh_PROGRAM	pma2-agent/command/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
+install_sh_PROGRAM	pma2-router/command/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
 install_sh_PROGRAM	policy/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
 install_sh_PROGRAM	reg/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
 install_sh_PROGRAM	router/Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
@@ -14664,6 +15069,8 @@ install_sh_SCRIPT	lsd/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
 install_sh_SCRIPT	lsdb/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
 install_sh_SCRIPT	mmanager/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
 install_sh_SCRIPT	netlink/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
+install_sh_SCRIPT	pma2-agent/command/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
+install_sh_SCRIPT	pma2-router/command/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
 install_sh_SCRIPT	policy/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
 install_sh_SCRIPT	reg/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
 install_sh_SCRIPT	router/Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
@@ -14876,6 +15283,7 @@ itemhead	snmp/includes/snmpcore.h	/^	char* itemhead;$/;"	m	struct:itemopt	access
 itemopt	snmp/includes/snmpcore.h	/^typedef	struct itemopt{$/;"	s
 itemopt	snmp/includes/snmpcore.h	/^}itemopt;$/;"	t	typeref:struct:itemopt
 itemopt::itemhead	snmp/includes/snmpcore.h	/^	char* itemhead;$/;"	m	struct:itemopt	access:public
+itemopt::lock	snmp/includes/snmpcore.h	/^	pthread_mutex_t lock;$/;"	m	struct:itemopt	access:public
 itemopt::oids	snmp/includes/snmpcore.h	/^	const char* oids;$/;"	m	struct:itemopt	access:public
 iterator	test/include/gtest/internal/gtest-internal.h	/^  typedef Element* iterator;$/;"	t	class:testing::internal::NativeArray	access:public
 iterator	test/include/gtest/internal/gtest-param-util.h	/^  typedef ParamIterator<T> iterator;$/;"	t	class:testing::internal::ParamGenerator	access:public
@@ -14991,6 +15399,8 @@ libdir	lsd/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
 libdir	lsdb/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
 libdir	mmanager/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
 libdir	netlink/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
+libdir	pma2-agent/command/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
+libdir	pma2-router/command/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
 libdir	policy/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
 libdir	reg/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
 libdir	router/Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
@@ -15013,6 +15423,8 @@ libexecdir	lsd/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
 libexecdir	lsdb/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
 libexecdir	mmanager/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
 libexecdir	netlink/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
+libexecdir	pma2-agent/command/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
+libexecdir	pma2-router/command/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
 libexecdir	policy/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
 libexecdir	reg/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
 libexecdir	router/Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
@@ -15047,10 +15459,20 @@ libpmacomm_a_LIBADD	comm/Makefile	/^libpmacomm_a_LIBADD =$/;"	m
 libpmacomm_a_OBJECTS	comm/Makefile	/^libpmacomm_a_OBJECTS = $(am_libpmacomm_a_OBJECTS)$/;"	m
 libpmacomm_a_SOURCES	comm/Makefile	/^libpmacomm_a_SOURCES = comm_utils.c interior_daemon.c exterior_daemon.c  comm.c  handler.c$/;"	m
 libpmacommand_a_AR	command/Makefile	/^libpmacommand_a_AR = $(AR) $(ARFLAGS)$/;"	m
+libpmacommand_a_AR	pma2-agent/command/Makefile	/^libpmacommand_a_AR = $(AR) $(ARFLAGS)$/;"	m
+libpmacommand_a_AR	pma2-router/command/Makefile	/^libpmacommand_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmacommand_a_CFLAGS	command/Makefile	/^libpmacommand_a_CFLAGS = -I$(LIB_XML_INCLUDE)$/;"	m
+libpmacommand_a_CFLAGS	pma2-agent/command/Makefile	/^libpmacommand_a_CFLAGS = -I$(LIB_XML_INCLUDE)$/;"	m
+libpmacommand_a_CFLAGS	pma2-router/command/Makefile	/^libpmacommand_a_CFLAGS = -I$(LIB_XML_INCLUDE)$/;"	m
 libpmacommand_a_LIBADD	command/Makefile	/^libpmacommand_a_LIBADD =$/;"	m
+libpmacommand_a_LIBADD	pma2-agent/command/Makefile	/^libpmacommand_a_LIBADD =$/;"	m
+libpmacommand_a_LIBADD	pma2-router/command/Makefile	/^libpmacommand_a_LIBADD =$/;"	m
 libpmacommand_a_OBJECTS	command/Makefile	/^libpmacommand_a_OBJECTS = $(am_libpmacommand_a_OBJECTS)$/;"	m
+libpmacommand_a_OBJECTS	pma2-agent/command/Makefile	/^libpmacommand_a_OBJECTS = $(am_libpmacommand_a_OBJECTS)$/;"	m
+libpmacommand_a_OBJECTS	pma2-router/command/Makefile	/^libpmacommand_a_OBJECTS = $(am_libpmacommand_a_OBJECTS)$/;"	m
 libpmacommand_a_SOURCES	command/Makefile	/^libpmacommand_a_SOURCES = routercmd.c routercmd.h mpls.h iptables.h$/;"	m
+libpmacommand_a_SOURCES	pma2-agent/command/Makefile	/^libpmacommand_a_SOURCES = routercmd.c routercmd.h mpls.h iptables.h$/;"	m
+libpmacommand_a_SOURCES	pma2-router/command/Makefile	/^libpmacommand_a_SOURCES = routercmd.c routercmd.h mpls.h iptables.h$/;"	m
 libpmacommlite_a_AR	comm/Makefile	/^libpmacommlite_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmacommlite_a_LIBADD	comm/Makefile	/^libpmacommlite_a_LIBADD =$/;"	m
 libpmacommlite_a_OBJECTS	comm/Makefile	/^libpmacommlite_a_OBJECTS = $(am_libpmacommlite_a_OBJECTS)$/;"	m
@@ -15071,7 +15493,7 @@ libpmadb_a_SOURCES	db/Makefile	/^libpmadb_a_SOURCES = dbm_lsdb.c dbutils.c sqlit
 libpmadbm_a_AR	server/Makefile	/^libpmadbm_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmadbm_a_LIBADD	server/Makefile	/^libpmadbm_a_LIBADD =$/;"	m
 libpmadbm_a_OBJECTS	server/Makefile	/^libpmadbm_a_OBJECTS = $(am_libpmadbm_a_OBJECTS)$/;"	m
-libpmadbm_a_SOURCES	server/Makefile	/^libpmadbm_a_SOURCES = dbm.c\\$/;"	m
+libpmadbm_a_SOURCES	server/Makefile	/^libpmadbm_a_SOURCES = dbm.c$/;"	m
 libpmaddc_a_AR	ddc/Makefile	/^libpmaddc_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmaddc_a_LIBADD	ddc/Makefile	/^libpmaddc_a_LIBADD =$/;"	m
 libpmaddc_a_OBJECTS	ddc/Makefile	/^libpmaddc_a_OBJECTS = $(am_libpmaddc_a_OBJECTS)$/;"	m
@@ -15079,7 +15501,7 @@ libpmaddc_a_SOURCES	ddc/Makefile	/^libpmaddc_a_SOURCES = ddc.c fah.c $/;"	m
 libpmaicm_a_AR	server/Makefile	/^libpmaicm_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmaicm_a_LIBADD	server/Makefile	/^libpmaicm_a_LIBADD =$/;"	m
 libpmaicm_a_OBJECTS	server/Makefile	/^libpmaicm_a_OBJECTS = $(am_libpmaicm_a_OBJECTS)$/;"	m
-libpmaicm_a_SOURCES	server/Makefile	/^libpmaicm_a_SOURCES = icm.c\\$/;"	m
+libpmaicm_a_SOURCES	server/Makefile	/^libpmaicm_a_SOURCES = icm.c$/;"	m
 libpmalsd_a_AR	lsd/Makefile	/^libpmalsd_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmalsd_a_LIBADD	lsd/Makefile	/^libpmalsd_a_LIBADD =$/;"	m
 libpmalsd_a_OBJECTS	lsd/Makefile	/^libpmalsd_a_OBJECTS = $(am_libpmalsd_a_OBJECTS)$/;"	m
@@ -15097,7 +15519,7 @@ libpmapem_a_AR	server/Makefile	/^libpmapem_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmapem_a_CFLAGS	server/Makefile	/^libpmapem_a_CFLAGS = -I\/usr\/include\/libxml2$/;"	m
 libpmapem_a_LIBADD	server/Makefile	/^libpmapem_a_LIBADD =$/;"	m
 libpmapem_a_OBJECTS	server/Makefile	/^libpmapem_a_OBJECTS = $(am_libpmapem_a_OBJECTS)$/;"	m
-libpmapem_a_SOURCES	server/Makefile	/^libpmapem_a_SOURCES = pem.c\\$/;"	m
+libpmapem_a_SOURCES	server/Makefile	/^libpmapem_a_SOURCES = pem.c$/;"	m
 libpmapolicy_a_AR	policy/Makefile	/^libpmapolicy_a_AR = $(AR) $(ARFLAGS)$/;"	m
 libpmapolicy_a_CFLAGS	policy/Makefile	/^libpmapolicy_a_CFLAGS = -I..\/ -I\/usr\/include\/libxml2$/;"	m
 libpmapolicy_a_LIBADD	policy/Makefile	/^libpmapolicy_a_LIBADD =$/;"	m
@@ -15310,6 +15732,8 @@ localedir	lsd/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
 localedir	lsdb/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
 localedir	mmanager/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
 localedir	netlink/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
+localedir	pma2-agent/command/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
+localedir	pma2-router/command/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
 localedir	policy/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
 localedir	reg/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
 localedir	router/Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
@@ -15334,6 +15758,8 @@ localstatedir	lsd/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
 localstatedir	lsdb/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
 localstatedir	mmanager/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
 localstatedir	netlink/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
+localstatedir	pma2-agent/command/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
+localstatedir	pma2-router/command/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
 localstatedir	policy/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
 localstatedir	reg/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
 localstatedir	router/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
@@ -15347,6 +15773,8 @@ localtime	db/sqlite3.c	/^struct tm *__cdecl localtime(const time_t *t)$/;"	f	sig
 localtimeOffset	db/sqlite3.c	/^static sqlite3_int64 localtimeOffset($/;"	f	file:	signature:( DateTime *p, sqlite3_context *pCtx, int *pRc )
 lock	db/sqlite3.c	/^  BtLock lock;       \/* Object used to lock page 1 *\/$/;"	m	struct:Btree	file:	access:public
 lock	lib/table.h	/^  unsigned int lock;$/;"	m	struct:route_node	access:public
+lock	snmp/includes/snmpcore.h	/^	pthread_mutex_t lock;$/;"	m	struct:itemopt	access:public
+lock	snmp/includes/snmpcore.h	/^	pthread_mutex_t lock;$/;"	m	struct:tableopt	access:public
 lockBtree	db/sqlite3.c	/^static int lockBtree(BtShared *pBt){$/;"	f	file:	signature:(BtShared *pBt)
 lockBtreeMutex	db/sqlite3.c	/^static void lockBtreeMutex(Btree *p){$/;"	f	file:	signature:(Btree *p)
 lockError	db/sqlite3.c	/^  u8 lockError;              \/* True if a locking error has occurred *\/$/;"	m	struct:Wal	file:	access:public
@@ -15360,7 +15788,10 @@ locktype	db/sqlite3.c	/^  u8 locktype;            \/* Type of lock currently hel
 log	db/sqlite3.c	/^  void (*log)(int,const char*,...);$/;"	m	struct:sqlite3_api_routines	file:	access:public
 log	db/sqlite3ext.h	/^  void (*log)(int,const char*,...);$/;"	m	struct:sqlite3_api_routines	access:public
 logBadConnection	db/sqlite3.c	/^static void logBadConnection(const char *zType){$/;"	f	file:	signature:(const char *zType)
-log_clear	pma.sh	/^log_clear(){$/;"	f
+log_clean	pma-agent.sh	/^log_clean(){$/;"	f
+log_clean	pma-router.sh	/^log_clean(){$/;"	f
+log_clean	pma2-agent/pma-agent.sh	/^log_clean(){$/;"	f
+log_clean	pma2-router/pma-router.sh	/^log_clean(){$/;"	f
 log_close	logger/logger.c	/^int log_close()$/;"	f
 log_close	logger/logger.h	/^int log_close();$/;"	p	signature:()
 log_daemon	logger/logger.h	/^int log_daemon();$/;"	p	signature:()
@@ -15519,10 +15950,12 @@ main	config.guess	/^		main()$/;"	f
 main	config.guess	/^	main ()$/;"	f
 main	config.guess	/^main ()$/;"	f
 main	dbtest.c	/^int main(int argc, const char *argv[])$/;"	f	signature:(int argc, const char *argv[])
+main	ffmtest.c	/^int main(int argc, const char *argv[])$/;"	f	signature:(int argc, const char *argv[])
 main	logcli.c	/^int main()$/;"	f
 main	logsrv.c	/^int main()$/;"	f
 main	lsdbtest.c	/^int main(int argc, const char *argv[])$/;"	f	signature:(int argc, const char *argv[])
 main	nltest.c	/^int main()$/;"	f
+main	pfmtest.c	/^int main(int argc, const char *argv[])$/;"	f	signature:(int argc, const char *argv[])
 main	pma_bm.c	/^int main()$/;"	f
 main	pma_dbm.c	/^int main(int argc, const char *argv[])$/;"	f	signature:(int argc, const char *argv[])
 main	pma_icm.c	/^int main()$/;"	f
@@ -15571,6 +16004,8 @@ mandir	lsd/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
 mandir	lsdb/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
 mandir	mmanager/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
 mandir	netlink/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
+mandir	pma2-agent/command/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
+mandir	pma2-router/command/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
 mandir	policy/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
 mandir	reg/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
 mandir	router/Makefile	/^mandir = ${datarootdir}\/man$/;"	m
@@ -15734,6 +16169,8 @@ mkdir_p	lsd/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
 mkdir_p	lsdb/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
 mkdir_p	mmanager/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
 mkdir_p	netlink/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
+mkdir_p	pma2-agent/command/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
+mkdir_p	pma2-router/command/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
 mkdir_p	policy/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
 mkdir_p	reg/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
 mkdir_p	router/Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
@@ -15756,6 +16193,8 @@ mkinstalldirs	lsd/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
 mkinstalldirs	lsdb/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
 mkinstalldirs	mmanager/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
 mkinstalldirs	netlink/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
+mkinstalldirs	pma2-agent/command/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
+mkinstalldirs	pma2-router/command/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
 mkinstalldirs	policy/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
 mkinstalldirs	reg/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
 mkinstalldirs	router/Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
@@ -16316,6 +16755,8 @@ nextShmId	db/sqlite3.c	/^  u8 nextShmId;              \/* Next available unixShm
 nextShmId	db/sqlite3.c	/^  u8 nextShmId;              \/* Next available winShm.id value *\/$/;"	m	struct:winShmNode	file:	access:public
 next_	test/include/gtest/internal/gtest-linked_ptr.h	/^  mutable linked_ptr_internal const* next_;$/;"	m	class:testing::internal::linked_ptr_internal	access:private
 next_ip	command/routercmd.h	/^	char next_ip[50];$/;"	m	struct:tunnelcmd	access:public
+next_ip	pma2-agent/command/routercmd.h	/^	char next_ip[50];$/;"	m	struct:tunnelcmd	access:public
+next_ip	pma2-router/command/routercmd.h	/^	char next_ip[50];$/;"	m	struct:tunnelcmd	access:public
 next_stmt	db/sqlite3.c	/^  sqlite3_stmt *(*next_stmt)(sqlite3*,sqlite3_stmt*);$/;"	m	struct:sqlite3_api_routines	file:	access:public
 next_stmt	db/sqlite3ext.h	/^  sqlite3_stmt *(*next_stmt)(sqlite3*,sqlite3_stmt*);$/;"	m	struct:sqlite3_api_routines	access:public
 nextas	snmp/includes/snmpcore.h	/^	char* nextas;$/;"	m	struct:IpRouteTable	access:public
@@ -16399,6 +16840,8 @@ noinst_LIBRARIES	lsd/Makefile	/^noinst_LIBRARIES = libpmalsd.a$/;"	m
 noinst_LIBRARIES	lsdb/Makefile	/^noinst_LIBRARIES = libpmalsdb.a$/;"	m
 noinst_LIBRARIES	mmanager/Makefile	/^noinst_LIBRARIES = libmodulemanager.a$/;"	m
 noinst_LIBRARIES	netlink/Makefile	/^noinst_LIBRARIES = libpmanetlink.a$/;"	m
+noinst_LIBRARIES	pma2-agent/command/Makefile	/^noinst_LIBRARIES = libpmacommand.a$/;"	m
+noinst_LIBRARIES	pma2-router/command/Makefile	/^noinst_LIBRARIES = libpmacommand.a$/;"	m
 noinst_LIBRARIES	policy/Makefile	/^noinst_LIBRARIES = libpmapolicy.a$/;"	m
 noinst_LIBRARIES	reg/Makefile	/^noinst_LIBRARIES = libpmareg.a$/;"	m
 noinst_LIBRARIES	router/Makefile	/^noinst_LIBRARIES = libpmarouter.a$/;"	m
@@ -16464,6 +16907,8 @@ oldincludedir	lsd/Makefile	/^oldincludedir = \/usr\/include$/;"	m
 oldincludedir	lsdb/Makefile	/^oldincludedir = \/usr\/include$/;"	m
 oldincludedir	mmanager/Makefile	/^oldincludedir = \/usr\/include$/;"	m
 oldincludedir	netlink/Makefile	/^oldincludedir = \/usr\/include$/;"	m
+oldincludedir	pma2-agent/command/Makefile	/^oldincludedir = \/usr\/include$/;"	m
+oldincludedir	pma2-router/command/Makefile	/^oldincludedir = \/usr\/include$/;"	m
 oldincludedir	policy/Makefile	/^oldincludedir = \/usr\/include$/;"	m
 oldincludedir	reg/Makefile	/^oldincludedir = \/usr\/include$/;"	m
 oldincludedir	router/Makefile	/^oldincludedir = \/usr\/include$/;"	m
@@ -16887,10 +17332,16 @@ ospfneighbortable	snmp/snmp/snmpcore.c	/^tableopt ospfneighbortable = {$/;"	v
 ospfrouterid	snmp/snmp/snmpcore.c	/^itemopt ospfrouterid = {$/;"	v
 ospfversion	snmp/snmp/snmpcore.c	/^itemopt ospfversion = {$/;"	v
 out_if	command/routercmd.h	/^	char out_if[50];$/;"	m	struct:tunnelcmd	access:public
+out_if	pma2-agent/command/routercmd.h	/^	char out_if[50];$/;"	m	struct:tunnelcmd	access:public
+out_if	pma2-router/command/routercmd.h	/^	char out_if[50];$/;"	m	struct:tunnelcmd	access:public
 out_label	command/routercmd.h	/^	__u32 out_label;$/;"	m	struct:tunnelcmd	access:public
+out_label	pma2-agent/command/routercmd.h	/^	__u32 out_label;$/;"	m	struct:tunnelcmd	access:public
+out_label	pma2-router/command/routercmd.h	/^	__u32 out_label;$/;"	m	struct:tunnelcmd	access:public
 outmessages	snmp/includes/snmpcore.h	/^	char* outmessages;$/;"	m	struct:bgpPeerTable	access:public
 outoctets	snmp/includes/pma_api.h	/^	long long outoctets;$/;"	m	struct:ifTable	access:public
 outport	command/routercmd.h	/^	__u32 outport;$/;"	m	struct:tunnelcmd	access:public
+outport	pma2-agent/command/routercmd.h	/^	__u32 outport;$/;"	m	struct:tunnelcmd	access:public
+outport	pma2-router/command/routercmd.h	/^	__u32 outport;$/;"	m	struct:tunnelcmd	access:public
 outrate	snmp/includes/pma_api.h	/^	int outrate;$/;"	m	struct:ifRate	access:public
 outrate	snmp/includes/pma_api.h	/^	long long outrate;$/;"	m	struct:ifTable	access:public
 outside	conf/conf.h	/^	int outside;$/;"	m	struct:ic_conf	access:public
@@ -17530,6 +17981,8 @@ pdfdir	lsd/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	lsdb/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	mmanager/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	netlink/Makefile	/^pdfdir = ${docdir}$/;"	m
+pdfdir	pma2-agent/command/Makefile	/^pdfdir = ${docdir}$/;"	m
+pdfdir	pma2-router/command/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	policy/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	reg/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	router/Makefile	/^pdfdir = ${docdir}$/;"	m
@@ -17550,7 +18003,7 @@ peer	snmp/includes/snmpcore.h	/^	char* peer;$/;"	m	struct:bgpRecvPathAttrTable	a
 peeraddr	snmp/includes/snmpcore.h	/^	char* peeraddr;$/;"	m	struct:bgpPeerTable	access:public
 peerport	snmp/includes/snmpcore.h	/^	char* peerport;$/;"	m	struct:bgpPeerTable	access:public
 peerstate	snmp/includes/snmpcore.h	/^	char* peerstate;$/;"	m	struct:bgpPeerTable	access:public
-pem_CFLAGS	Makefile	/^pem_CFLAGS = -D PEMODULE -L.\/command\/ -L$(LIB_SNMP_LIB) -liptc -lmpls -liptables -lnetsnmp $/;"	m
+pem_CFLAGS	Makefile	/^pem_CFLAGS = -D PEMODULE -static -L.\/command\/ -liptc -lmpls -liptables -lnetsnmp  -static$/;"	m
 pem_DEPENDENCIES	Makefile	/^pem_DEPENDENCIES = .\/server\/libpmapem.a .\/server\/libpmasocket.a \\$/;"	m
 pem_LDADD	Makefile	/^pem_LDADD = .\/server\/libpmapem.a\\$/;"	m
 pem_LINK	Makefile	/^pem_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
@@ -17567,6 +18020,10 @@ pem_start	server/pem.c	/^int pem_start()$/;"	f
 pepversion	server/dbm.h	/^	char pepversion;$/;"	m	struct:policyMsgHeader	access:public
 pepversion	server/pem.h	/^	char pepversion;$/;"	m	struct:policyMsgHeader	access:public
 periodctrl	lsd/lsd_flood.c	/^struct thread* periodctrl = NULL;$/;"	v	typeref:struct:thread
+pfmtest_DEPENDENCIES	Makefile	/^pfmtest_DEPENDENCIES = .\/comm\/libpmacommlite.a .\/utils\/libpmautils.a$/;"	m
+pfmtest_LDADD	Makefile	/^pfmtest_LDADD = .\/comm\/libpmacommlite.a\\$/;"	m
+pfmtest_OBJECTS	Makefile	/^pfmtest_OBJECTS = $(am_pfmtest_OBJECTS)$/;"	m
+pfmtest_SOURCES	Makefile	/^pfmtest_SOURCES = pfmtest.c$/;"	m
 pgno	db/sqlite3.c	/^  Pgno pgno;                     \/* Page number for this page *\/$/;"	m	struct:PgHdr	file:	access:public
 pgno	db/sqlite3.c	/^  Pgno pgno;           \/* Page number for this page *\/$/;"	m	struct:MemPage	file:	access:public
 pgnoRoot	db/sqlite3.c	/^  Pgno pgnoRoot;            \/* The root page of this tree *\/$/;"	m	struct:BtCursor	file:	access:public
@@ -17595,6 +18052,8 @@ pkgdatadir	lsd/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
 pkgdatadir	lsdb/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
 pkgdatadir	mmanager/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
 pkgdatadir	netlink/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
+pkgdatadir	pma2-agent/command/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
+pkgdatadir	pma2-router/command/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
 pkgdatadir	policy/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
 pkgdatadir	reg/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
 pkgdatadir	router/Makefile	/^pkgdatadir = $(datadir)\/pma$/;"	m
@@ -17617,6 +18076,8 @@ pkgincludedir	lsd/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
 pkgincludedir	lsdb/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
 pkgincludedir	mmanager/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
 pkgincludedir	netlink/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
+pkgincludedir	pma2-agent/command/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
+pkgincludedir	pma2-router/command/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
 pkgincludedir	policy/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
 pkgincludedir	reg/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
 pkgincludedir	router/Makefile	/^pkgincludedir = $(includedir)\/pma$/;"	m
@@ -17639,6 +18100,8 @@ pkglibdir	lsd/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
 pkglibdir	lsdb/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
 pkglibdir	mmanager/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
 pkglibdir	netlink/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
+pkglibdir	pma2-agent/command/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
+pkglibdir	pma2-router/command/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
 pkglibdir	policy/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
 pkglibdir	reg/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
 pkglibdir	router/Makefile	/^pkglibdir = $(libdir)\/pma$/;"	m
@@ -17661,6 +18124,8 @@ pkglibexecdir	lsd/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
 pkglibexecdir	lsdb/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
 pkglibexecdir	mmanager/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
 pkglibexecdir	netlink/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
+pkglibexecdir	pma2-agent/command/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
+pkglibexecdir	pma2-router/command/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
 pkglibexecdir	policy/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
 pkglibexecdir	reg/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
 pkglibexecdir	router/Makefile	/^pkglibexecdir = $(libexecdir)\/pma$/;"	m
@@ -17731,10 +18196,8 @@ pma_pms_header::pph_agent_id	comm/comm_lite.h	/^	u32 pph_agent_id;$/;"	m	struct:
 pma_pms_header::pph_agent_id	comm/comm_utils.h	/^	u32 pph_agent_id;$/;"	m	struct:pma_pms_header	access:public
 pma_pms_header::src_addr	comm/comm_lite.h	/^	struct in_addr src_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
 pma_pms_header::src_addr	comm/comm_utils.h	/^	struct in_addr src_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
-pma_start	pma.sh	/^pma_start(){$/;"	f
 pma_start_time	utils/utils.c	/^long int pma_start_time = 0;$/;"	v
 pma_status	comm/comm.c	/^static int pma_status = NORMAL;$/;"	v	file:
-pma_stop	pma.sh	/^pma_stop(){$/;"	f
 pma_timer	timer/timer.c	/^struct pma_timer{$/;"	s	file:
 pma_timer::args	timer/timer.c	/^	void *args;	\/*!<回调函数的参数指针，可自定义参数的结构*\/$/;"	m	struct:pma_timer	file:	access:public
 pma_timer::callback	timer/timer.c	/^	timer_callback callback;	\/*!<定时器的回调函数*\/$/;"	m	struct:pma_timer	file:	access:public
@@ -17848,6 +18311,8 @@ prefix	mmanager/Makefile	/^prefix = \/usr\/local$/;"	m
 prefix	netlink/Makefile	/^prefix = \/usr\/local$/;"	m
 prefix	netlink/route.h	/^	struct prefix_ipv4 prefix;$/;"	m	struct:route	typeref:struct:route::prefix_ipv4	access:public
 prefix	netlink/route.h	/^  struct in_addr prefix __attribute__ ((aligned (8)));$/;"	m	struct:prefix_ipv4	typeref:struct:prefix_ipv4::in_addr	access:public
+prefix	pma2-agent/command/Makefile	/^prefix = \/usr\/local$/;"	m
+prefix	pma2-router/command/Makefile	/^prefix = \/usr\/local$/;"	m
 prefix	policy/Makefile	/^prefix = \/usr\/local$/;"	m
 prefix	reg/Makefile	/^prefix = \/usr\/local$/;"	m
 prefix	router/Makefile	/^prefix = \/usr\/local$/;"	m
@@ -17961,9 +18426,10 @@ print_policy_table	policy/policy_table.c	/^print_policy_table( struct _policy_ta
 print_policy_table	policy/policy_table.h	/^int print_policy_table( struct _policy_table *p );$/;"	p	signature:( struct _policy_table *p )
 print_table	snmp/includes/snmptable.h	/^print_table(char **data,int entries, int fields);$/;"	p	signature:(char **data,int entries, int fields)
 print_table	snmp/snmp/snmptable.c	/^void print_table(char **data, int entries, int fields) {$/;"	f	signature:(char **data, int entries, int fields)
-print_table	snmp/snmp/snmptable2.c	/^print_table(void)$/;"	f	signature:(void)
 print_table	snmp/snmp/snmptable2.c	/^void            print_table(void);$/;"	p	file:	signature:(void)
 print_time	command/sh-cmd/backup/exec_multi_cmd.sh	/^function print_time()$/;"	f
+print_time	pma2-agent/command/sh-cmd/backup/exec_multi_cmd.sh	/^function print_time()$/;"	f
+print_time	pma2-router/command/sh-cmd/backup/exec_multi_cmd.sh	/^function print_time()$/;"	f
 printfFunc	db/sqlite3.c	/^static void printfFunc($/;"	f	file:	signature:( sqlite3_context *context, int argc, sqlite3_value **argv )
 priority	lib/log.h	/^  int priority;		\/* as per syslog priority *\/$/;"	m	struct:zlog	access:public
 priority_type	lsd/lsd_hello.h	/^enum priority_type$/;"	g
@@ -17986,6 +18452,8 @@ program_transform_name	lsd/Makefile	/^program_transform_name = s,x,x,$/;"	m
 program_transform_name	lsdb/Makefile	/^program_transform_name = s,x,x,$/;"	m
 program_transform_name	mmanager/Makefile	/^program_transform_name = s,x,x,$/;"	m
 program_transform_name	netlink/Makefile	/^program_transform_name = s,x,x,$/;"	m
+program_transform_name	pma2-agent/command/Makefile	/^program_transform_name = s,x,x,$/;"	m
+program_transform_name	pma2-router/command/Makefile	/^program_transform_name = s,x,x,$/;"	m
 program_transform_name	policy/Makefile	/^program_transform_name = s,x,x,$/;"	m
 program_transform_name	reg/Makefile	/^program_transform_name = s,x,x,$/;"	m
 program_transform_name	router/Makefile	/^program_transform_name = s,x,x,$/;"	m
@@ -18058,6 +18526,8 @@ psdir	lsd/Makefile	/^psdir = ${docdir}$/;"	m
 psdir	lsdb/Makefile	/^psdir = ${docdir}$/;"	m
 psdir	mmanager/Makefile	/^psdir = ${docdir}$/;"	m
 psdir	netlink/Makefile	/^psdir = ${docdir}$/;"	m
+psdir	pma2-agent/command/Makefile	/^psdir = ${docdir}$/;"	m
+psdir	pma2-router/command/Makefile	/^psdir = ${docdir}$/;"	m
 psdir	policy/Makefile	/^psdir = ${docdir}$/;"	m
 psdir	reg/Makefile	/^psdir = ${docdir}$/;"	m
 psdir	router/Makefile	/^psdir = ${docdir}$/;"	m
@@ -18364,8 +18834,10 @@ route::metric	netlink/route.h	/^	int metric;$/;"	m	struct:route	access:public
 route::next	netlink/route.h	/^	struct route* next;$/;"	m	struct:route	typeref:struct:route::route	access:public
 route::prefix	netlink/route.h	/^	struct prefix_ipv4 prefix;$/;"	m	struct:route	typeref:struct:route::prefix_ipv4	access:public
 route::type	netlink/route.h	/^	int type;$/;"	m	struct:route	access:public
+route_add	route_test.c	/^int route_add(__u32* destination,__u32* gateway,unsigned int netmask)$/;"	f	signature:(__u32* destination,__u32* gateway,unsigned int netmask)
 route_add_ipv4	netlink/route.c	/^int route_add_ipv4(int type, int flags, struct prefix_ipv4 *p,$/;"	f	signature:(int type, int flags, struct prefix_ipv4 *p, struct in_addr *gate, struct in_addr *src, unsigned int ifindex, u_int32_t vrf_id, u_int32_t metric, u_char distance,int safi)
 route_common	lib/table.c	/^route_common (struct prefix *n, struct prefix *p, struct prefix *new)$/;"	f	file:	signature:(struct prefix *n, struct prefix *p, struct prefix *new)
+route_del	route_test.c	/^int route_del(__u32* destination,__u32* gateway,unsigned int netmask)$/;"	f	signature:(__u32* destination,__u32* gateway,unsigned int netmask)
 route_dump_node	lib/table.c	/^route_dump_node (struct route_table *t)$/;"	f	signature:(struct route_table *t)
 route_list	netlink/route.c	/^struct route* route_list;$/;"	v	typeref:struct:route
 route_lock_node	lib/table.c	/^route_lock_node (struct route_node *node)$/;"	f	signature:(struct route_node *node)
@@ -18477,6 +18949,7 @@ rt	lsdb/private/lsdb_inner.h	/^	struct router_node* rt;$/;"	m	struct:link_state	
 rt_id	lsd/lsd_hello.h	/^	u32 rt_id;$/;"	m	struct:lsd_neighbor_info	access:public
 rt_id	lsdb/lsdb.h	/^	u32 rt_id;$/;"	m	struct:link_state_key	access:public
 rt_ptrs	lsdb/private/lsdb_inner.h	/^	struct cr_list_head rt_ptrs;$/;"	m	struct:link_state	typeref:struct:link_state::cr_list_head	access:public
+rth	route_test.c	/^struct rtnl_handle rth = { .fd = -1 };$/;"	v	typeref:struct:rtnl_handle
 rtreeBestIndex	db/sqlite3.c	/^static int rtreeBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo){$/;"	f	file:	signature:(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo)
 rtreeClose	db/sqlite3.c	/^static int rtreeClose(sqlite3_vtab_cursor *cur){$/;"	f	file:	signature:(sqlite3_vtab_cursor *cur)
 rtreeColumn	db/sqlite3.c	/^static int rtreeColumn(sqlite3_vtab_cursor *cur, sqlite3_context *ctx, int i){$/;"	f	file:	signature:(sqlite3_vtab_cursor *cur, sqlite3_context *ctx, int i)
@@ -18508,6 +18981,8 @@ rtreenode	db/sqlite3.c	/^static void rtreenode(sqlite3_context *ctx, int nArg, s
 ru	lib/thread.h	/^  RUSAGE_T ru;			\/* Indepth usage info.  *\/$/;"	m	struct:thread	access:public
 runOnlyOnce	db/sqlite3.c	/^  bft runOnlyOnce:1;      \/* Automatically expire on reset *\/$/;"	m	struct:Vdbe	file:	access:public
 runRouterCmd	command/routercmd.c	/^int runRouterCmd(struct tunnelcmd *cmd) {$/;"	f	signature:(struct tunnelcmd *cmd)
+runRouterCmd	pma2-agent/command/routercmd.c	/^int runRouterCmd(struct tunnelcmd *cmd) {$/;"	f	signature:(struct tunnelcmd *cmd)
+runRouterCmd	pma2-router/command/routercmd.c	/^int runRouterCmd(struct tunnelcmd *cmd) {$/;"	f	signature:(struct tunnelcmd *cmd)
 run_count	utils/thread_daemon.h	/^	int run_count;$/;"	m	struct:PDaemon	access:public
 run_ctl	control/control.c	/^int run_ctl(struct ctl* ctlid, int i, void *args )$/;"	f	signature:(struct ctl* ctlid, int i, void *args )
 run_ctl	control/control.h	/^int run_ctl(struct ctl* ctlid, int i, void *args );$/;"	p	signature:(struct ctl* ctlid, int i, void *args )
@@ -18569,6 +19044,8 @@ sbindir	lsd/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
 sbindir	lsdb/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
 sbindir	mmanager/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
 sbindir	netlink/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
+sbindir	pma2-agent/command/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
+sbindir	pma2-router/command/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
 sbindir	policy/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
 sbindir	reg/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
 sbindir	router/Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
@@ -18612,6 +19089,7 @@ send_ack_to_pms	comm/exterior_daemon.c	/^int send_ack_to_pms(struct packet* pkt)
 send_all_snapshoot	server/dbm.c	/^int send_all_snapshoot(void* args)$/;"	f	signature:(void* args)
 send_bgp_interface_info	router/interface.c	/^int send_bgp_interface_info()$/;"	f
 send_bgp_interface_info	router/interface.h	/^int send_bgp_interface_info();$/;"	p	signature:()
+send_command	pfmtest.c	/^int send_command(int id, int n, u64 s)$/;"	f	signature:(int id, int n, u64 s)
 send_config_to_module	comm/interior_daemon.c	/^int send_config_to_module(int module)$/;"	f	signature:(int module)
 send_config_to_pma	conf_detect.c	/^int send_config_to_pma(const char* filename, const char* ip, int port, int type )$/;"	f	signature:(const char* filename, const char* ip, int port, int type )
 send_config_to_pma	qconf.c	/^int send_config_to_pma(const char* filepath, int type)$/;"	f	signature:(const char* filepath, int type)
@@ -18635,6 +19113,7 @@ send_route_table	server/icm.c	/^int send_route_table(struct route_table * rt)$/;
 send_router_list_to_ic	comm/handler.c	/^int send_router_list_to_ic()$/;"	f
 send_router_list_to_ic	comm/handler.h	/^int send_router_list_to_ic();$/;"	p	signature:()
 send_state	lsd/lsd_exchange.h	/^	enum exchange_send_state send_state;$/;"	m	struct:exchange_master	typeref:enum:exchange_master::exchange_send_state	access:public
+send_test	pfmtest.c	/^int  send_test(int n, u64 s)$/;"	f	signature:(int n, u64 s)
 sendbuf	lsd/lsd_exchange.h	/^	char sendbuf[MAX_EXCHANGE_BUF_LEN];$/;"	m	struct:exchange_master	access:public
 sendbuf	lsd/lsd_flood.h	/^	char sendbuf[MAX_FLOOD_BUF_LEN];$/;"	m	struct:flood_master	access:public
 sendbuf	lsd/lsd_hello.c	/^char sendbuf[MAX_MESSAGE_LEN];$/;"	v
@@ -18765,6 +19244,8 @@ sharedstatedir	lsd/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
 sharedstatedir	lsdb/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
 sharedstatedir	mmanager/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
 sharedstatedir	netlink/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
+sharedstatedir	pma2-agent/command/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
+sharedstatedir	pma2-router/command/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
 sharedstatedir	policy/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
 sharedstatedir	reg/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
 sharedstatedir	router/Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
@@ -22911,6 +23392,8 @@ sqlresult::next	db/dbutils.h	/^	struct sqlresult * next;$/;"	m	struct:sqlresult	
 src_addr	comm/comm_lite.h	/^	struct in_addr src_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
 src_addr	comm/comm_utils.h	/^	struct in_addr src_addr;$/;"	m	struct:pma_pms_header	typeref:struct:pma_pms_header::in_addr	access:public
 src_ip	command/routercmd.h	/^	char src_ip[50];$/;"	m	struct:tunnelcmd	access:public
+src_ip	pma2-agent/command/routercmd.h	/^	char src_ip[50];$/;"	m	struct:tunnelcmd	access:public
+src_ip	pma2-router/command/routercmd.h	/^	char src_ip[50];$/;"	m	struct:tunnelcmd	access:public
 srcdir	Makefile	/^srcdir = .$/;"	m
 srcdir	comm/Makefile	/^srcdir = .$/;"	m
 srcdir	command/Makefile	/^srcdir = .$/;"	m
@@ -22924,6 +23407,8 @@ srcdir	lsd/Makefile	/^srcdir = .$/;"	m
 srcdir	lsdb/Makefile	/^srcdir = .$/;"	m
 srcdir	mmanager/Makefile	/^srcdir = .$/;"	m
 srcdir	netlink/Makefile	/^srcdir = .$/;"	m
+srcdir	pma2-agent/command/Makefile	/^srcdir = .$/;"	m
+srcdir	pma2-router/command/Makefile	/^srcdir = .$/;"	m
 srcdir	policy/Makefile	/^srcdir = .$/;"	m
 srcdir	reg/Makefile	/^srcdir = .$/;"	m
 srcdir	router/Makefile	/^srcdir = .$/;"	m
@@ -23161,6 +23646,8 @@ subdir	lsd/Makefile	/^subdir = lsd$/;"	m
 subdir	lsdb/Makefile	/^subdir = lsdb$/;"	m
 subdir	mmanager/Makefile	/^subdir = mmanager$/;"	m
 subdir	netlink/Makefile	/^subdir = netlink$/;"	m
+subdir	pma2-agent/command/Makefile	/^subdir = command$/;"	m
+subdir	pma2-router/command/Makefile	/^subdir = command$/;"	m
 subdir	policy/Makefile	/^subdir = policy$/;"	m
 subdir	reg/Makefile	/^subdir = reg$/;"	m
 subdir	router/Makefile	/^subdir = router$/;"	m
@@ -23215,6 +23702,8 @@ sysconfdir	lsd/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
 sysconfdir	lsdb/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
 sysconfdir	mmanager/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
 sysconfdir	netlink/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
+sysconfdir	pma2-agent/command/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
+sysconfdir	pma2-router/command/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
 sysconfdir	policy/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
 sysconfdir	reg/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
 sysconfdir	router/Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
@@ -23274,6 +23763,7 @@ tablehead	snmp/includes/snmpcore.h	/^	char* tablehead;$/;"	m	struct:tableopt	acc
 tableopt	snmp/includes/snmpcore.h	/^typedef struct tableopt{$/;"	s
 tableopt	snmp/includes/snmpcore.h	/^}tableopt;$/;"	t	typeref:struct:tableopt
 tableopt::column	snmp/includes/snmpcore.h	/^	size_t column;$/;"	m	struct:tableopt	access:public
+tableopt::lock	snmp/includes/snmpcore.h	/^	pthread_mutex_t lock;$/;"	m	struct:tableopt	access:public
 tableopt::mapper	snmp/includes/snmpcore.h	/^	const int* mapper;$/;"	m	struct:tableopt	access:public
 tableopt::oids	snmp/includes/snmpcore.h	/^	const char* oids;$/;"	m	struct:tableopt	access:public
 tableopt::tablehead	snmp/includes/snmpcore.h	/^	char* tablehead;$/;"	m	struct:tableopt	access:public
@@ -23305,6 +23795,8 @@ target_alias	lsd/Makefile	/^target_alias = $/;"	m
 target_alias	lsdb/Makefile	/^target_alias = $/;"	m
 target_alias	mmanager/Makefile	/^target_alias = $/;"	m
 target_alias	netlink/Makefile	/^target_alias = $/;"	m
+target_alias	pma2-agent/command/Makefile	/^target_alias = $/;"	m
+target_alias	pma2-router/command/Makefile	/^target_alias = $/;"	m
 target_alias	policy/Makefile	/^target_alias = $/;"	m
 target_alias	reg/Makefile	/^target_alias = $/;"	m
 target_alias	router/Makefile	/^target_alias = $/;"	m
@@ -27140,6 +27632,8 @@ top_build_prefix	lsd/Makefile	/^top_build_prefix = ..\/$/;"	m
 top_build_prefix	lsdb/Makefile	/^top_build_prefix = ..\/$/;"	m
 top_build_prefix	mmanager/Makefile	/^top_build_prefix = ..\/$/;"	m
 top_build_prefix	netlink/Makefile	/^top_build_prefix = ..\/$/;"	m
+top_build_prefix	pma2-agent/command/Makefile	/^top_build_prefix = ..\/$/;"	m
+top_build_prefix	pma2-router/command/Makefile	/^top_build_prefix = ..\/$/;"	m
 top_build_prefix	policy/Makefile	/^top_build_prefix = ..\/$/;"	m
 top_build_prefix	reg/Makefile	/^top_build_prefix = ..\/$/;"	m
 top_build_prefix	router/Makefile	/^top_build_prefix = ..\/$/;"	m
@@ -27162,6 +27656,8 @@ top_builddir	lsd/Makefile	/^top_builddir = ..$/;"	m
 top_builddir	lsdb/Makefile	/^top_builddir = ..$/;"	m
 top_builddir	mmanager/Makefile	/^top_builddir = ..$/;"	m
 top_builddir	netlink/Makefile	/^top_builddir = ..$/;"	m
+top_builddir	pma2-agent/command/Makefile	/^top_builddir = ..$/;"	m
+top_builddir	pma2-router/command/Makefile	/^top_builddir = ..$/;"	m
 top_builddir	policy/Makefile	/^top_builddir = ..$/;"	m
 top_builddir	reg/Makefile	/^top_builddir = ..$/;"	m
 top_builddir	router/Makefile	/^top_builddir = ..$/;"	m
@@ -27185,6 +27681,8 @@ top_srcdir	lsd/Makefile	/^top_srcdir = ..$/;"	m
 top_srcdir	lsdb/Makefile	/^top_srcdir = ..$/;"	m
 top_srcdir	mmanager/Makefile	/^top_srcdir = ..$/;"	m
 top_srcdir	netlink/Makefile	/^top_srcdir = ..$/;"	m
+top_srcdir	pma2-agent/command/Makefile	/^top_srcdir = ..$/;"	m
+top_srcdir	pma2-router/command/Makefile	/^top_srcdir = ..$/;"	m
 top_srcdir	policy/Makefile	/^top_srcdir = ..$/;"	m
 top_srcdir	reg/Makefile	/^top_srcdir = ..$/;"	m
 top_srcdir	router/Makefile	/^top_srcdir = ..$/;"	m
@@ -27231,6 +27729,8 @@ transform	lsd/Makefile	/^transform = $(program_transform_name)$/;"	m
 transform	lsdb/Makefile	/^transform = $(program_transform_name)$/;"	m
 transform	mmanager/Makefile	/^transform = $(program_transform_name)$/;"	m
 transform	netlink/Makefile	/^transform = $(program_transform_name)$/;"	m
+transform	pma2-agent/command/Makefile	/^transform = $(program_transform_name)$/;"	m
+transform	pma2-router/command/Makefile	/^transform = $(program_transform_name)$/;"	m
 transform	policy/Makefile	/^transform = $(program_transform_name)$/;"	m
 transform	reg/Makefile	/^transform = $(program_transform_name)$/;"	m
 transform	router/Makefile	/^transform = $(program_transform_name)$/;"	m
@@ -27253,14 +27753,32 @@ truthProb	db/sqlite3.c	/^  LogEst truthProb;       \/* Probability of truth for 
 tunnel_command_handle	server/pem.c	/^int tunnel_command_handle(struct Packet_header* pkt)$/;"	f	signature:(struct Packet_header* pkt)
 tunnel_command_handle	server/pem.h	/^int tunnel_command_handle(struct Packet_header* pkt);$/;"	p	signature:(struct Packet_header* pkt)
 tunnelcmd	command/routercmd.h	/^struct tunnelcmd {$/;"	s
+tunnelcmd	pma2-agent/command/routercmd.h	/^struct tunnelcmd {$/;"	s
+tunnelcmd	pma2-router/command/routercmd.h	/^struct tunnelcmd {$/;"	s
 tunnelcmd::dst_ip	command/routercmd.h	/^	char dst_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::dst_ip	pma2-agent/command/routercmd.h	/^	char dst_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::dst_ip	pma2-router/command/routercmd.h	/^	char dst_ip[50];$/;"	m	struct:tunnelcmd	access:public
 tunnelcmd::in_label	command/routercmd.h	/^	__u32 in_label;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::in_label	pma2-agent/command/routercmd.h	/^	__u32 in_label;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::in_label	pma2-router/command/routercmd.h	/^	__u32 in_label;$/;"	m	struct:tunnelcmd	access:public
 tunnelcmd::next_ip	command/routercmd.h	/^	char next_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::next_ip	pma2-agent/command/routercmd.h	/^	char next_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::next_ip	pma2-router/command/routercmd.h	/^	char next_ip[50];$/;"	m	struct:tunnelcmd	access:public
 tunnelcmd::out_if	command/routercmd.h	/^	char out_if[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::out_if	pma2-agent/command/routercmd.h	/^	char out_if[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::out_if	pma2-router/command/routercmd.h	/^	char out_if[50];$/;"	m	struct:tunnelcmd	access:public
 tunnelcmd::out_label	command/routercmd.h	/^	__u32 out_label;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::out_label	pma2-agent/command/routercmd.h	/^	__u32 out_label;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::out_label	pma2-router/command/routercmd.h	/^	__u32 out_label;$/;"	m	struct:tunnelcmd	access:public
 tunnelcmd::outport	command/routercmd.h	/^	__u32 outport;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::outport	pma2-agent/command/routercmd.h	/^	__u32 outport;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::outport	pma2-router/command/routercmd.h	/^	__u32 outport;$/;"	m	struct:tunnelcmd	access:public
 tunnelcmd::src_ip	command/routercmd.h	/^	char src_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::src_ip	pma2-agent/command/routercmd.h	/^	char src_ip[50];$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::src_ip	pma2-router/command/routercmd.h	/^	char src_ip[50];$/;"	m	struct:tunnelcmd	access:public
 tunnelcmd::type	command/routercmd.h	/^	__u32 type;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::type	pma2-agent/command/routercmd.h	/^	__u32 type;$/;"	m	struct:tunnelcmd	access:public
+tunnelcmd::type	pma2-router/command/routercmd.h	/^	__u32 type;$/;"	m	struct:tunnelcmd	access:public
 tuple	test/include/gtest/internal/gtest-tuple.h	/^  tuple() : f0_(), f1_(), f2_(), f3_(), f4_(), f5_(), f6_(), f7_(), f8_(),$/;"	f	class:std::tr1::tuple	access:public	signature:()
 tuple	test/include/gtest/internal/gtest-tuple.h	/^  tuple() {}$/;"	f	class:std::tr1::tuple	access:public	signature:()
 tuple	test/include/gtest/internal/gtest-tuple.h	/^  tuple(const tuple& \/* t *\/)  {}$/;"	f	class:std::tr1::tuple	access:public	signature:(const tuple& )
@@ -27299,6 +27817,8 @@ type	lsd/lsd_exchange.h	/^	u8 type;$/;"	m	struct:exchange	access:public
 type	lsd/lsd_flood.h	/^	u8 type;$/;"	m	struct:flood	access:public
 type	lsd/lsd_if.h	/^    enum eth_type type;$/;"	m	struct:common_eth	typeref:enum:common_eth::eth_type	access:public
 type	netlink/route.h	/^	int type;$/;"	m	struct:route	access:public
+type	pma2-agent/command/routercmd.h	/^	__u32 type;$/;"	m	struct:tunnelcmd	access:public
+type	pma2-router/command/routercmd.h	/^	__u32 type;$/;"	m	struct:tunnelcmd	access:public
 type	router/interface.h	/^    enum if_type type;$/;"	m	struct:rinterface	typeref:enum:rinterface::if_type	access:public
 type	router/router.h	/^	u32 type;$/;"	m	struct:router	access:public
 type	snmp/includes/snmpcore.h	/^	char* type;$/;"	m	struct:IpRouteTable	access:public

@@ -7,8 +7,7 @@
 
 extern struct pem_conf conf;
 /**
- * 执行cmd命令
- */
+ * 执行cmd命令 */
 int runRouterCmd(struct tunnelcmd *cmd) {
 
 	if ( is_fastmpls() )
@@ -21,11 +20,11 @@ int runRouterCmd(struct tunnelcmd *cmd) {
 			case 0x01:
 				add_mpls_in(cmd->out_label, cmd->out_if, cmd->next_ip ,
 					&rkey);
-				get_iptables( strcmp( cmd->src_ip, "") ? cmd->src_ip : NULL, 
-						cmd->dst_ip, &num, &key);
-				if( num != 0){
-					del_iptables(num);
-				}
+			//	get_iptables( strcmp( cmd->src_ip, "") ? cmd->src_ip : NULL, 
+		//				cmd->dst_ip, &num, &key);
+		//		if( num != 0){
+		//			del_iptables(num);
+		//		}
 				add_iptables( strcmp(cmd->src_ip, "") ? cmd->src_ip : NULL, 
 						cmd->dst_ip, rkey);
 				break;
