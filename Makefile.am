@@ -151,6 +151,7 @@ EXTRA_DIST=config/* \
 		   agent.conf\
 		   pmalog.conf\
 		   pma.db\
+		   make_config.sh\
 		   test\
 		   icm.ini\
 			pma.sh\
